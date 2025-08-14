@@ -11,6 +11,9 @@ book:
   chapters:
     - index.qmd
     - intro_r.qmd
+    - data_wrangling.qmd
+    - univariate_analysis.qmd
+    - data_visualization.qmd
     - references.qmd
   appendices:
     - data_sources.qmd

@@ -25,6 +25,20 @@ code, pre {
     font-variant-ligatures: none;
 }
 
+pre, div.sourceCode {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+div.cell-output-stdout pre {
+  color: $gray-800;
+}
+
+div.cell-output-display figure {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .MathJax {
   font-size: 100% !important;
 }

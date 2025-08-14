@@ -6,6 +6,7 @@
 # Required packages
 library("tidyverse")
 library("archive")
+library("assertr")
 library("dataverse")
 library("WDI")
 
@@ -213,6 +214,7 @@ Clean data to have one row per county-year:
 
 ```{r}
 df_county_pres <- df_county_pres_raw |>
+  filter(!is.na(party), totalvotes > 0) |>
   rename(county = county_name) |>
   group_by(year, state, county) |>
   summarize(
@@ -223,7 +225,7 @@ df_county_pres <- df_county_pres_raw |>
     .groups = "drop"
   ) |>
   mutate(
-    census_region = fct_collapse(
+    region = fct_collapse(
       state,
       Northeast = c(
         "CONNECTICUT", "MAINE", "MASSACHUSETTS", "NEW HAMPSHIRE", "RHODE ISLAND",
@@ -261,7 +263,9 @@ df_county_pres <- df_county_pres_raw |>
   mutate(
     dem_win_state = as.numeric(sum(dem_votes) > sum(rep_votes)),
   ) |>
-  ungroup()
+  ungroup() |>
+  assert(not_na, everything()) |>
+  select(year, state, region, everything())
 ```
 
 Save to `county_pres.csv`:
@@ -311,7 +315,15 @@ df_wdi <- df_wdi_raw |>
   as_tibble() |>
   select(-iso2c, -status, -lastupdated, -capital, -longitude, -latitude) |>
   filter(region != "Aggregates") |>
-  filter(income != "Not classified")
+  filter(income != "Not classified") |>
+  mutate(income = case_match(
+    income,
+    "Low income" ~ "1. Low",
+    "Lower middle income" ~ "2. Lower-middle",
+    "Upper middle income" ~ "3. Upper-middle",
+    "High income" ~ "4. High"
+  ))
+
 
 glimpse(df_wdi)
 ```
