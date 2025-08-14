@@ -1,0 +1,14 @@
+{
+  "name": "qps1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless actions for GPT-2300 to search bkenkel.com/qps1 via Quarto search.json",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "minisearch": "^7.1.0",
+    "fast-glob": "^3.3.3"
+  }
+}

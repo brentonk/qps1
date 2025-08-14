@@ -1,0 +1,210 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "QPS1 Search API",
+    "description": "Search endpoints for the QPS1 course. Provides search over the published Quarto site, search over raw Quarto (.qmd) source files in the qps1 GitHub repo root, and retrieval of a specific Quarto page.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://searchqps1.vercel.app",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/search_qps1": {
+      "post": {
+        "operationId": "search_qps1",
+        "summary": "Search the published QPS1 Quarto site",
+        "description": "Searches the published QPS1 course site at bkenkel.com/qps1 for matching text. Returns lecture/section info, snippet, and metadata.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Search term to look for in the published Quarto site."
+          },
+          {
+            "in": "query",
+            "name": "top_k",
+            "required": false,
+            "schema": { "type": "integer", "default": 5 },
+            "description": "Maximum number of results to return."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful search",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "title": { "type": "string" },
+                      "url": { "type": "string" },
+                      "lecture_label": { "type": "string" },
+                      "section": { "type": "string" },
+                      "slide_number": { "type": ["integer", "null"] },
+                      "snippet": { "type": "string" },
+                      "score": { "type": "number" },
+                      "updated_at": { "type": "string", "format": "date-time" }
+                    }
+                  }
+                },
+                "examples": {
+                  "example1": {
+                    "value": [
+                      {
+                        "title": "Lecture 03 — Regression",
+                        "url": "https://bkenkel.com/qps1/lectures/03-regression.html#aesthetics",
+                        "lecture_label": "Lecture 03",
+                        "section": "Aesthetics",
+                        "slide_number": 12,
+                        "snippet": "Regression describes the relationship between...",
+                        "score": 0.87,
+                        "updated_at": "2025-08-14T12:00:00Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/search_repo_qps1": {
+      "post": {
+        "operationId": "search_repo_qps1",
+        "summary": "Search raw Quarto source (.qmd) in the qps1 GitHub repo root",
+        "description": "Searches the qps1 GitHub repository for matches to a text query, limited to .qmd files in the root directory. Returns file path, GitHub URL, latest commit SHA, text snippet, language, and optional chunk label.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Search term to look for in the repo."
+          },
+          {
+            "in": "query",
+            "name": "top_k",
+            "required": false,
+            "schema": { "type": "integer", "default": 5 },
+            "description": "Maximum number of results to return."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful search",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": { "type": "string" },
+                      "url": { "type": "string" },
+                      "commit_sha": { "type": "string" },
+                      "snippet": { "type": "string" },
+                      "score": { "type": "number" },
+                      "language": { "type": "string" },
+                      "chunk_label": { "type": ["string", "null"] }
+                    }
+                  }
+                },
+                "examples": {
+                  "example1": {
+                    "value": [
+                      {
+                        "path": "overview.qmd",
+                        "url": "https://github.com/brentonk/qps1/blob/main/overview.qmd",
+                        "commit_sha": "abc123def456",
+                        "snippet": "In this section we introduce regression...",
+                        "score": 1.0,
+                        "language": "markdown",
+                        "chunk_label": null
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get_page_qps1": {
+      "post": {
+        "operationId": "get_page_qps1",
+        "summary": "Fetch a specific QPS1 Quarto page",
+        "description": "Retrieves the full HTML/text content, headings, anchors, code blocks, figures, and tables from a specific QPS1 Quarto page URL.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": { "type": "string", "format": "uri" },
+            "description": "Full URL of the QPS1 Quarto page to fetch."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Page retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": { "type": "string" },
+                    "url": { "type": "string" },
+                    "headings": { "type": "array", "items": { "type": "string" } },
+                    "anchors": { "type": "array", "items": { "type": "string" } },
+                    "plain_html": { "type": "string" },
+                    "plain_text": { "type": "string" },
+                    "code_blocks": { "type": "array", "items": { "type": "string" } },
+                    "figures": { "type": "array", "items": { "type": "string" } },
+                    "tables": { "type": "array", "items": { "type": "string" } }
+                  }
+                },
+                "examples": {
+                  "example1": {
+                    "value": {
+                      "title": "Lecture 03 — Regression",
+                      "url": "https://bkenkel.com/qps1/lectures/03-regression.html#aesthetics",
+                      "headings": [
+                        "Introduction",
+                        "Aesthetics",
+                        "Linear Regression"
+                      ],
+                      "anchors": [
+                        "introduction",
+                        "aesthetics",
+                        "linear-regression"
+                      ],
+                      "plain_html": "<h2>Aesthetics</h2><p>Regression describes the relationship...</p>",
+                      "plain_text": "Aesthetics\nRegression describes the relationship...",
+                      "code_blocks": [
+                        "library(ggplot2)\nggplot(data, aes(x, y)) + geom_point()"
+                      ],
+                      "figures": [
+                        "figures/regression-plot.png"
+                      ],
+                      "tables": [
+                        "<table><tr><th>Variable</th><th>Coefficient</th></tr><tr><td>x</td><td>1.23</td></tr></table>"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
