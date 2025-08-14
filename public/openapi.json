@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://searchqps1.vercel.app",
+      "url": "https://qps1.vercel.app",
       "description": "Production server"
     }
   ],
@@ -17,57 +17,64 @@
         "operationId": "search_qps1",
         "summary": "Search the published QPS1 Quarto site",
         "description": "Searches the published QPS1 course site at bkenkel.com/qps1 for matching text. Returns lecture/section info, snippet, and metadata.",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "query",
-            "required": true,
-            "schema": { "type": "string" },
-            "description": "Search term to look for in the published Quarto site."
-          },
-          {
-            "in": "query",
-            "name": "top_k",
-            "required": false,
-            "schema": { "type": "integer", "default": 5 },
-            "description": "Maximum number of results to return."
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": { "type": "string" },
+                  "top_k": { "type": "integer", "default": 5 },
+                  "filters": { "type": ["object", "null"] }
+                },
+                "required": ["query"]
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Successful search",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "title": { "type": "string" },
-                      "url": { "type": "string" },
-                      "lecture_label": { "type": "string" },
-                      "section": { "type": "string" },
-                      "slide_number": { "type": ["integer", "null"] },
-                      "snippet": { "type": "string" },
-                      "score": { "type": "number" },
-                      "updated_at": { "type": "string", "format": "date-time" }
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "title": { "type": "string" },
+                          "url": { "type": "string" },
+                          "lecture_label": { "type": "string" },
+                          "section": { "type": "string" },
+                          "slide_number": { "type": ["integer", "null"] },
+                          "snippet": { "type": "string" },
+                          "score": { "type": "number" },
+                          "updated_at": { "type": "string", "format": "date-time" }
+                        }
+                      }
                     }
                   }
                 },
                 "examples": {
                   "example1": {
-                    "value": [
-                      {
-                        "title": "Lecture 03 — Regression",
-                        "url": "https://bkenkel.com/qps1/lectures/03-regression.html#aesthetics",
-                        "lecture_label": "Lecture 03",
-                        "section": "Aesthetics",
-                        "slide_number": 12,
-                        "snippet": "Regression describes the relationship between...",
-                        "score": 0.87,
-                        "updated_at": "2025-08-14T12:00:00Z"
-                      }
-                    ]
+                    "value": {
+                      "results": [
+                        {
+                          "title": "Lecture 03 — Regression",
+                          "url": "https://bkenkel.com/qps1/lectures/03-regression.html#aesthetics",
+                          "lecture_label": "Lecture 03",
+                          "section": "Aesthetics",
+                          "slide_number": 12,
+                          "snippet": "Regression describes the relationship between...",
+                          "score": 0.87,
+                          "updated_at": "2025-08-14T12:00:00Z"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -81,22 +88,21 @@
         "operationId": "search_repo_qps1",
         "summary": "Search raw Quarto source (.qmd) in the qps1 GitHub repo root",
         "description": "Searches the qps1 GitHub repository for matches to a text query, limited to .qmd files in the root directory. Returns file path, GitHub URL, latest commit SHA, text snippet, language, and optional chunk label.",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "query",
-            "required": true,
-            "schema": { "type": "string" },
-            "description": "Search term to look for in the repo."
-          },
-          {
-            "in": "query",
-            "name": "top_k",
-            "required": false,
-            "schema": { "type": "integer", "default": 5 },
-            "description": "Maximum number of results to return."
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": { "type": "string" },
+                  "top_k": { "type": "integer", "default": 5 }
+                },
+                "required": ["query"]
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Successful search",
@@ -143,15 +149,20 @@
         "operationId": "get_page_qps1",
         "summary": "Fetch a specific QPS1 Quarto page",
         "description": "Retrieves the full HTML/text content, headings, anchors, code blocks, figures, and tables from a specific QPS1 Quarto page URL.",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "url",
-            "required": true,
-            "schema": { "type": "string", "format": "uri" },
-            "description": "Full URL of the QPS1 Quarto page to fetch."
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": { "type": "string", "format": "uri" }
+                },
+                "required": ["url"]
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Page retrieved successfully",
@@ -160,12 +171,11 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string" },
+                    "title": { "type": ["string", "null"] },
                     "url": { "type": "string" },
                     "headings": { "type": "array", "items": { "type": "string" } },
                     "anchors": { "type": "array", "items": { "type": "string" } },
                     "plain_html": { "type": "string" },
-                    "plain_text": { "type": "string" },
                     "code_blocks": { "type": "array", "items": { "type": "string" } },
                     "figures": { "type": "array", "items": { "type": "string" } },
                     "tables": { "type": "array", "items": { "type": "string" } }
@@ -187,9 +197,8 @@
                         "linear-regression"
                       ],
                       "plain_html": "<h2>Aesthetics</h2><p>Regression describes the relationship...</p>",
-                      "plain_text": "Aesthetics\nRegression describes the relationship...",
                       "code_blocks": [
-                        "library(ggplot2)\nggplot(data, aes(x, y)) + geom_point()"
+                        "library(ggplot2)\\nggplot(data, aes(x, y)) + geom_point()"
                       ],
                       "figures": [
                         "figures/regression-plot.png"
@@ -208,3 +217,4 @@
     }
   }
 }
+
