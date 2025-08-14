@@ -8,7 +8,8 @@
     "node": ">=18"
   },
   "dependencies": {
-    "minisearch": "^7.1.0",
-    "fast-glob": "^3.3.3"
+    "@vscode/ripgrep": "^1.15.14",
+    "fast-glob": "^3.3.3",
+    "minisearch": "^7.1.0"
   }
 }
