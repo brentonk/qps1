@@ -373,7 +373,7 @@ It does come up sometimes in machine learning applications, but not for the anal
 :::
 
 
-### Standard deviation
+### Standard deviation {#sec-standard-deviation}
 
 By far the most common measure of spread for a continuous variable is the [standard deviation]{.concept}.
 Very loosely, I think of the standard deviation as telling us "What's a normal difference between a random observation and the average?"
@@ -440,7 +440,7 @@ What does this tell us about how elections are changing over time?
 I will admit that the formula for the standard deviation is kind of intense:
 $$
 \text{sd} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}.
-$$
+$$ {#eq-standard-deviation}
 Here's what's going on:
 
 *   We take each of the $N$ observations of our variable, $x_1, x_2, \ldots, x_N$.

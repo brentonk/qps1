@@ -17,6 +17,8 @@ book:
     - data_wrangling.qmd
     - univariate_analysis.qmd
     - data_visualization.qmd
+    - correlation_regression.qmd
+    - simulation_resampling.qmd
     - references.qmd
   appendices:
     - using_chatgpt.qmd

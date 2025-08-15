@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-79d3918912887b4bd78ab83161c22443.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d19a348d1c3c577774653d463d75021c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -203,6 +203,18 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./correlation_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simulation_resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulation and Resampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -250,7 +262,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#spread-how-far-from-the-central-tendency-is-typical" id="toc-spread-how-far-from-the-central-tendency-is-typical" class="nav-link" data-scroll-target="#spread-how-far-from-the-central-tendency-is-typical"><span class="header-section-number">3.3</span> Spread: How far from the central tendency is typical?</a>
   <ul class="collapse">
-  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation"><span class="header-section-number">3.3.1</span> Standard deviation</a></li>
+  <li><a href="#sec-standard-deviation" id="toc-sec-standard-deviation" class="nav-link" data-scroll-target="#sec-standard-deviation"><span class="header-section-number">3.3.1</span> Standard deviation</a></li>
   <li><a href="#median-absolute-deviation" id="toc-median-absolute-deviation" class="nav-link" data-scroll-target="#median-absolute-deviation"><span class="header-section-number">3.3.2</span> Median absolute deviation</a></li>
   <li><a href="#sec-quartiles" id="toc-sec-quartiles" class="nav-link" data-scroll-target="#sec-quartiles"><span class="header-section-number">3.3.3</span> Quartiles and other percentages</a></li>
   </ul></li>
@@ -690,8 +702,8 @@ In-class exercise
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>The measure I’m most familiar with for categorical variables is <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">information entropy</a>. It does come up sometimes in machine learning applications, but not for the analyses we’ll do in PSCI 2300.</p>
-</div></div><section id="standard-deviation" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="standard-deviation"><span class="header-section-number">3.3.1</span> Standard deviation</h3>
+</div></div><section id="sec-standard-deviation" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-standard-deviation"><span class="header-section-number">3.3.1</span> Standard deviation</h3>
 <p>By far the most common measure of spread for a continuous variable is the <span class="concept">standard deviation</span>. Very loosely, I think of the standard deviation as telling us “What’s a normal difference between a random observation and the average?”</p>
 <div id="tbl-sd-surprise-factor" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -789,9 +801,9 @@ In-class exercise
 </div>
 </div>
 </div>
-<p>I will admit that the formula for the standard deviation is kind of intense: <span class="math display">\[
+<p>I will admit that the formula for the standard deviation is kind of intense: <span id="eq-standard-deviation"><span class="math display">\[
 \text{sd} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}.
-\]</span> Here’s what’s going on:</p>
+\tag{3.1}\]</span></span> Here’s what’s going on:</p>
 <ul>
 <li><p>We take each of the <span class="math inline">\(N\)</span> observations of our variable, <span class="math inline">\(x_1, x_2, \ldots, x_N\)</span>.</p></li>
 <li><p>For each of these observations, <span class="math inline">\(x_i\)</span>, we find the difference between it and the mean: <span class="math inline">\(x_i - \bar{x}\)</span>.</p></li>

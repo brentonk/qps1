@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Correlation and Regression – Quantitative Political Science I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./simulation_resampling.html" rel="next">
+<link href="./data_visualization.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d19a348d1c3c577774653d463d75021c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./correlation_regression.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Quantitative Political Science I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./univariate_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Univariate Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_regression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simulation_resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulation and Resampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./using_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Using ChatGPT</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Data Sources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-2020-american-national-election-study" id="toc-data-2020-american-national-election-study" class="nav-link active" data-scroll-target="#data-2020-american-national-election-study"><span class="header-section-number">5.1</span> Data: 2020 American National Election Study</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">5.2</span> Correlation</a>
+  <ul class="collapse">
+  <li><a href="#research-question-feelings-toward-police-and-trump" id="toc-research-question-feelings-toward-police-and-trump" class="nav-link" data-scroll-target="#research-question-feelings-toward-police-and-trump"><span class="header-section-number">5.2.1</span> Research question: Feelings toward police and Trump</a></li>
+  <li><a href="#the-correlation-coefficient" id="toc-the-correlation-coefficient" class="nav-link" data-scroll-target="#the-correlation-coefficient"><span class="header-section-number">5.2.2</span> The correlation coefficient</a></li>
+  <li><a href="#calculating-the-correlation-coefficient" id="toc-calculating-the-correlation-coefficient" class="nav-link" data-scroll-target="#calculating-the-correlation-coefficient"><span class="header-section-number">5.2.3</span> Calculating the correlation coefficient</a></li>
+  </ul></li>
+  <li><a href="#regression-with-one-feature" id="toc-regression-with-one-feature" class="nav-link" data-scroll-target="#regression-with-one-feature"><span class="header-section-number">5.3</span> Regression with one feature</a>
+  <ul class="collapse">
+  <li><a href="#the-statistical-model" id="toc-the-statistical-model" class="nav-link" data-scroll-target="#the-statistical-model"><span class="header-section-number">5.3.1</span> The statistical model</a></li>
+  <li><a href="#working-with-regression-results" id="toc-working-with-regression-results" class="nav-link" data-scroll-target="#working-with-regression-results"><span class="header-section-number">5.3.2</span> Working with regression results</a></li>
+  <li><a href="#correlation-and-r-squared" id="toc-correlation-and-r-squared" class="nav-link" data-scroll-target="#correlation-and-r-squared"><span class="header-section-number">5.3.3</span> Correlation and R-squared</a></li>
+  <li><a href="#binary-and-categorical-features" id="toc-binary-and-categorical-features" class="nav-link" data-scroll-target="#binary-and-categorical-features"><span class="header-section-number">5.3.4</span> Binary and categorical features</a></li>
+  <li><a href="#binary-responses" id="toc-binary-responses" class="nav-link" data-scroll-target="#binary-responses"><span class="header-section-number">5.3.5</span> Binary responses</a></li>
+  </ul></li>
+  <li><a href="#regression-with-multiple-features" id="toc-regression-with-multiple-features" class="nav-link" data-scroll-target="#regression-with-multiple-features"><span class="header-section-number">5.4</span> Regression with multiple features</a></li>
+  <li><a href="#sec-regression-formula" id="toc-sec-regression-formula" class="nav-link" data-scroll-target="#sec-regression-formula"><span class="header-section-number">5.5</span> Optional: Deriving the regression formula</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-correlation-regression" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In the previous section on data visualization (<a href="data_visualization.html" class="quarto-xref"><span>Chapter 4</span></a>), we started to think about how to analyze relationships between variables. Now we’re going to extend some of those intuitions into more formal statistical calculations.</p>
+<ul>
+<li><p>The <span class="concept">correlation coefficient</span> provides a summary of the strength of the relationship between two continuous variables.</p>
+<ul>
+<li><p>A positive correlation coefficient means an above-average value of one variable is predictive of an above-average value of the other.</p></li>
+<li><p>A negative correlation coefficient means an above-average value of one variable is predictive of a below-average value of the other.</p></li>
+<li><p>The closer the absolute value of the correlation coefficient is to 1, the stronger the relationship—i.e., the more predictive each variable is of the other one.</p></li>
+</ul></li>
+<li><p><span class="concept">Linear regression</span> extends the correlation idea, giving us a formula that lets us predict the value of the <span class="concept">response</span> as a function of one or more <span class="concept">features</span>.</p>
+<ul>
+<li><p>The response can be continuous or binary.</p></li>
+<li><p>The features can be continuous, binary, or categorical.</p></li>
+<li><p>Regression with a single feature is just the best-fitting line through the scatterplot.</p></li>
+<li><p>Regression with multiple features lets us make all-else-equal comparisons and improve the predictive power of the model.</p></li>
+</ul></li>
+</ul>
+<section id="data-2020-american-national-election-study" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="data-2020-american-national-election-study"><span class="header-section-number">5.1</span> Data: 2020 American National Election Study</h2>
+<p>To study correlation and regression, we’ll look at a selection of data from the 2020 <a href="https://electionstudies.org">American National Election Study</a>. The data file is called <code>anes_2020.csv</code> and is hosted on my website at <a href="https://bkenkel.com/qps1/data/anes_2020.csv" class="uri">https://bkenkel.com/qps1/data/anes_2020.csv</a>.</p>
+<p>Each row in the dataset is a different American survey respondent who was randomly sampled for inclusion in the survey. The columns record a variety of demographic and political information about each respondent. There are <em>many</em> more variables available in the raw data — we are only scratching the surface here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/anes_2020.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 8,280
+Columns: 31
+$ id                   &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15…
+$ state                &lt;chr&gt; "Oklahoma", "Idaho", "Virginia", "California", "C…
+$ female               &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0…
+$ lgbt                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ race                 &lt;chr&gt; "Hispanic", "Asian", "White", "Asian", "Native Am…
+$ age                  &lt;dbl&gt; 46, 37, 40, 41, 72, 71, 37, 45, 70, 43, 37, 55, 3…
+$ education            &lt;chr&gt; "Bachelor's degree", "Some college", "High school…
+$ employed             &lt;dbl&gt; 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1…
+$ hours_worked         &lt;dbl&gt; 40, 40, 0, 40, 0, 0, 30, 40, 0, 30, 25, 50, 0, 50…
+$ watch_tucker         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ watch_maddow         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ therm_biden          &lt;dbl&gt; 0, 0, 65, 70, 15, 85, 50, 50, 85, 85, 100, 60, 0,…
+$ therm_trump          &lt;dbl&gt; 100, 0, 0, 15, 85, 0, 75, 100, 0, 0, 0, 0, 100, 0…
+$ therm_harris         &lt;dbl&gt; 0, 0, 65, 85, 15, 85, 15, 50, 85, 50, 100, 85, 0,…
+$ therm_pence          &lt;dbl&gt; 85, 0, 0, 15, 90, 0, 75, 50, 0, 50, 0, 50, 0, 0, …
+$ therm_obama          &lt;dbl&gt; 0, 50, 90, 85, 10, 60, 15, 50, 60, 100, 100, 85, …
+$ therm_dem_party      &lt;dbl&gt; 0, 0, 60, 50, 20, 85, 15, 50, NA, 60, 100, 50, 0,…
+$ therm_rep_party      &lt;dbl&gt; 85, 50, 0, 70, 70, 15, 75, 100, NA, 50, 0, 30, 85…
+$ therm_feminists      &lt;dbl&gt; 65, 100, 75, 70, 30, 60, 60, 100, 50, 50, 0, 70, …
+$ therm_liberals       &lt;dbl&gt; 30, 0, 75, 70, 10, 70, 0, NA, 30, 50, 50, 70, 0, …
+$ therm_labor_unions   &lt;dbl&gt; 30, 70, 75, 70, 50, 50, 50, 0, 30, 50, 50, 50, 50…
+$ therm_big_business   &lt;dbl&gt; 70, 50, 0, 85, 0, 40, 50, 0, 50, 15, 50, 60, 0, 0…
+$ therm_conservatives  &lt;dbl&gt; 85, 15, 0, 70, 60, 40, 60, NA, 50, 50, 50, 40, 85…
+$ therm_supreme_court  &lt;dbl&gt; 100, 50, 25, 85, 60, 60, 70, 50, 50, 50, 40, 50, …
+$ therm_congress       &lt;dbl&gt; 40, 15, 0, 100, 10, 85, 50, 50, 50, 40, 50, 50, 0…
+$ therm_police         &lt;dbl&gt; 85, 90, 40, 100, 70, 70, 60, 100, 60, 70, 50, 70,…
+$ therm_scientists     &lt;dbl&gt; 100, 70, 100, 85, 60, 85, 85, NA, 60, 50, 85, 100…
+$ contributed_to_party &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ voted                &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1…
+$ voted_for_biden      &lt;dbl&gt; NA, 0, 1, 1, 0, 1, 0, NA, NA, 1, 1, 1, 0, NA, NA,…
+$ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1, NA, NA,…</code></pre>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column name</th>
+<th>Variable type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>Categorical, unordered</td>
+<td>Unique identifier for each respondent</td>
+</tr>
+<tr class="even">
+<td><code>state</code></td>
+<td>Categorical, unordered</td>
+<td>The state where the respondent is registered to vote</td>
+</tr>
+<tr class="odd">
+<td><code>female</code></td>
+<td>Binary</td>
+<td>Whether the respondent identifies as female (1 = yes)</td>
+</tr>
+<tr class="even">
+<td><code>lgbt</code></td>
+<td>Binary</td>
+<td>Whether the respondent identifies as LGBT (1 = yes)</td>
+</tr>
+<tr class="odd">
+<td><code>race</code></td>
+<td>Categorical, unordered</td>
+<td>Respondent’s racial identification</td>
+</tr>
+<tr class="even">
+<td><code>age</code></td>
+<td>Continuous</td>
+<td>Respondent’s age in years, capped at 80</td>
+</tr>
+<tr class="odd">
+<td><code>education</code></td>
+<td>Categorical, ordered</td>
+<td>Highest level of education that respondent has attained</td>
+</tr>
+<tr class="even">
+<td><code>employed</code></td>
+<td>Binary</td>
+<td>Whether the respondent worked for pay in the week before the survey (1 = yes)</td>
+</tr>
+<tr class="odd">
+<td><code>hours_worked</code></td>
+<td>Continuous</td>
+<td>Respondent’s average hours per week worked over the past year</td>
+</tr>
+<tr class="even">
+<td><code>watch_tucker</code></td>
+<td>Binary</td>
+<td>Whether the respondent watches Tucker Carlson’s Fox News show (1 = yes)</td>
+</tr>
+<tr class="odd">
+<td><code>watch_maddow</code></td>
+<td>Binary</td>
+<td>Whether the respondent watches Rachel Maddow’s MSNBC show (1 = yes)</td>
+</tr>
+<tr class="even">
+<td><code>therm_*</code></td>
+<td>Continuous</td>
+<td>Respondent’s “feeling thermometer” (0 = coldest, 100 = warmest) toward various politicians and groups</td>
+</tr>
+<tr class="odd">
+<td><code>contributed_to_party</code></td>
+<td>Binary</td>
+<td>Whether the respondent made a donation to a political party in the 2020 election cycle (1 = yes)</td>
+</tr>
+<tr class="even">
+<td><code>voted</code></td>
+<td>Binary</td>
+<td>Whether the respondent voted in 2020 (1 = yes)</td>
+</tr>
+<tr class="odd">
+<td><code>voted_for_biden</code></td>
+<td>Binary</td>
+<td>Whether the respondent voted for Joe Biden in 2020 (1 = yes, NA = did not vote)</td>
+</tr>
+<tr class="even">
+<td><code>voted_for_trump</code></td>
+<td>Binary</td>
+<td>Whether the respondent voted for Donald Trump in 2020 (1 = yes, NA = did not vote)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled" title="Working with survey data">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Working with survey data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When working with the ANES data in this course, we are going to treat the dataset as if it were a simple random sample from the population of potential American voters. In particular, we will not use any weighting in our analysis — every data point will be treated the same.</p>
+<p>For real-world academic or political research with survey data, you need to be <u>much</u> more careful. If certain groups are overrepresented in your sample, you may want to downweight their data so that your final results are representative of the population as a whole (and vice versa for groups that are underrepresented in the sample). To calculate these weights and apply them in statistical research, you’d need to learn techniques that are outside the scope of PSCI 2300.</p>
+</div>
+</div>
+</section>
+<section id="correlation" class="level2 page-columns page-full" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="correlation"><span class="header-section-number">5.2</span> Correlation</h2>
+<section id="research-question-feelings-toward-police-and-trump" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="research-question-feelings-toward-police-and-trump"><span class="header-section-number">5.2.1</span> Research question: Feelings toward police and Trump</h3>
+<p>Policing was one of the major topics in the 2020 presidential election. The murder of George Floyd by a police officer in Minneapolis in May 2020 brought attention to the issue of police brutality. The Black Lives Matter movement gained political support, as did proposals ranging from minor police reforms all the way to defunding police departments. These criticisms and policy proposals sparked a backlash, with many politicians — including Donald Trump — making support for the police a key element of their appeal to voters.</p>
+<p>The question I want to ask today is <em>how strongly was support for the police in 2020 related to support for Donald Trump</em>? For now, we will quantify support using the feeling thermometer scores from the ANES. Scores from 0–49 represent cold feelings, 50 is neutral, and 51–100 is warm. Just to orient ourselves here, let’s calculate the average feeling toward the police and toward Trump in this data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_anes<span class="sc">$</span>therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 40.44061</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_anes<span class="sc">$</span>therm_police, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70.57485</code></pre>
+</div>
+</div>
+<p>In our previous unit on Data Visualization, we saw how to use scatterplots to get an idea of the correlation between two variables. So let’s make a scatterplot of feelings towards the police versus feelings toward Trump.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change ggplot theme to cowplot</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"cowplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'cowplot'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:lubridate':
+
+    stamp</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_cowplot</span>()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> therm_trump)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1090 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1090 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="correlation_regression_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="correlation_regression_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Before substantively interpreting this plot, I want to draw your attention to a couple of arguments I put into <code>geom_point()</code> that you haven’t seen before:</p>
+<ul>
+<li><p><code>position = "jitter"</code> jitters the points on the plot so they don’t all sit on top of each other. This is useful when there is a lot of exact overlap among points on a scatterplot. For example, there are a lot of respondents who say their feeling toward the police is 100 and their feeling toward Trump is 100 too. The jittering lets us see the individual points.</p></li>
+<li><p><code>alpha = 0.1</code> sets the transparency of the points. The <code>alpha</code> parameter ranges from 0 (completely transparent) to 1 (completely opaque), with a default of 1. I use it here so that the parts of the graph with more data will show up darker, giving us a further idea of how much data lies where. Like jittering, transparency is particularly useful when you have many closely overlapping data points.</p></li>
+</ul>
+<p>Now let’s think about what the scatterplot is telling us. Among respondents with a below-average feeling toward the police, feelings toward Trump also tend to be below-average. Among those with an above-average feeling toward the police, the typical feeling toward Trump tends to be above-average. This is the hallmark of a positive correlation. At the same time, the relationship is by no means one-to-one. There are plenty of respondents who love the police and hate Trump, and a smaller number who hate the police and love Trump.</p>
+</section>
+<section id="the-correlation-coefficient" class="level3 page-columns page-full" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="the-correlation-coefficient"><span class="header-section-number">5.2.2</span> The correlation coefficient</h3>
+<p>How can we more precisely quantify the idea that police support is positively correlated, but only imperfectly, with support for Trump? We will calculate the <span class="concept">correlation coefficient</span>, a measure of the strength of the relationship between two continuous variables.</p>
+<ul>
+<li><p>The correlation coefficient takes a value between -1 and 1.</p></li>
+<li><p>Positive values represent a positive correlation. The closer the value is to 1, the tighter the relationship is.</p></li>
+<li><p>Negative values represent a negative correlation. The closer the value is to -1, the tighter the relationship is.</p></li>
+<li><p>A value of zero represents no correlation: the value of one variable has no relationship with whether the other is above- or below-average.</p></li>
+</ul>
+<p>What do I mean when I say a correlation closer to 1 (or -1) represents a “tighter” relationship? A picture of some hypothetical datasets might illustrate it best:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="correlation_regression_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="correlation_regression_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let’s calculate the correlation between feelings toward police and feelings toward Trump among the 2020 ANES respondents. We do that with the <code>cor()</code> function. Just like <code>mean()</code> and <code>sd()</code>, by default it will return <code>NA</code> in the presence of missing data, so we have to tell it to ignore the missing values.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Annoyingly, unlike the vast majority of statistical functions in R, <code>cor()</code> does not allow us to remove missing data via <code>na.rm = TRUE</code>. Instead, we have to write <code>use = "complete"</code> (as in: only use the rows with complete data).</p>
+</div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df_anes<span class="sc">$</span>therm_police, df_anes<span class="sc">$</span>therm_trump, <span class="at">use =</span> <span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.467033</code></pre>
+</div>
+</div>
+<p>We see that there is a moderate positive correlation between feelings toward police and feelings toward Trump. However, just like the scatterplot showed us, the correlation is telling us that police support is not perfectly predictive of Trump support. If all we know about someone is how they feel about the police, we will only have a so-so guess about how they feel about Trump — better than nothing, but certainly not wildly accurate.</p>
+<p>One way to interpret the precise value of the correlation coefficient is in terms of “variance explained.” The square of the correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> represents the proportion of the variance in <span class="math inline">\(y\)</span> that can be accounted for by the value of <span class="math inline">\(x\)</span> (or vice versa). For a correlation of 0.47 like we’re seeing here, this means that about 22% (22% = 0.22 = 0.47^2) of the variation in feelings toward Trump can be “explained” by feelings toward police.</p>
+<p>I’ll give you a more precise definition of “variance explained” once we get into regression. The important thing to understand for now is <em>not to interpret correlation in terms of cause and effect</em>. There could be some third factor (or more likely, a whole lot of outside factors) that are responsible both for one’s feelings toward the police and for one’s feelings toward Trump. A nonzero correlation, or even a strong correlation, doesn’t at all imply that one variable has a causal effect on the other.</p>
+<p>I prefer to think about correlation in terms of prediction. If I know someone’s feeling thermometer toward the police, I can predict their feelings toward Trump 22% better (in a sense that I’ll be more precise about soon) than if I didn’t have any additional information about them. It’s easier to remind ourselves about this in contexts where the causal relationships are simpler. There’s a very strong correlation between me wearing a rain jacket and whether it’s raining in Nashville that day. If you told me that I wore a rain jacket on October 1, I’d say there’s a very solid chance it was raining that day. But obviously me wearing a rain jacket doesn’t <em>cause</em> it to rain in Nashville.</p>
+</section>
+<section id="calculating-the-correlation-coefficient" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="calculating-the-correlation-coefficient"><span class="header-section-number">5.2.3</span> Calculating the correlation coefficient</h3>
+<div class="callout callout-style-default callout-warning callout-titled" title="Math ahead">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Math ahead
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Professor’s note because I know students get anxious about this kind of thing.</p>
+<ul>
+<li><p>You <u>don’t</u> need to know the precise mathematical formulas for the correlation coefficient for the exams.</p></li>
+<li><p>You <u>do</u> need to know what a Z-score is (number of standard deviations above or below the mean), and to understand at a conceptual level how Z-scores are related to correlation.</p></li>
+</ul>
+</div>
+</div>
+<p>The formula behind the correlation coefficient is designed to capture whether an above-average value of one variable is predictive of an above- or below-average value of the other variable.</p>
+<p>Say we have <span class="math inline">\(N\)</span> observations of variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, so our data consists of a sequence of pairs: <span class="math inline">\((x_1, y_1), (x_2, y_2), \ldots, (x_N, y_N)\)</span>. We’ll use <span class="math inline">\(\bar{x}\)</span> to refer to the mean of <span class="math inline">\(x\)</span>, and similarly <span class="math inline">\(\bar{y}\)</span> to refer to the mean of <span class="math inline">\(y\)</span>. We’ll also use <span class="math inline">\(s_x\)</span> to refer to the standard deviation of <span class="math inline">\(x\)</span>, and <span class="math inline">\(s_y\)</span> for the standard deviation of <span class="math inline">\(y\)</span>.</p>
+<p>We start by calculating the <span class="concept">Z-score</span> for both variables for each observation in our data. The Z-score is simply how many standard deviations above or below the mean the observation is: <span class="math display">\[Z_{x, i} = \frac{x_i - \bar{x}}{s_x}, \qquad Z_{y, i} = \frac{y_i - \bar{y}}{s_y}.\]</span> For example, if <span class="math inline">\(\bar{x} = 10\)</span> and <span class="math inline">\(s_x = 2\)</span>, and the first observation’s value of <span class="math inline">\(x\)</span> is <span class="math inline">\(9\)</span>, then its Z-score for <span class="math inline">\(x\)</span> would be -0.5 (half a standard deviation below the mean): <span class="math display">\[Z_{x, 1} = \frac{9 - 10}{2} = -\frac{1}{2}.\]</span></p>
+<p>Now let’s think about multiplying together the Z-scores of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> for a particular observation. This might seem like a weird thing to do, but it’s helpful for our purposes. Remember that a positive correlation means above-average values of <span class="math inline">\(x\)</span> tend to go with above-average values of <span class="math inline">\(y\)</span>, and below-average values of <span class="math inline">\(x\)</span> tend to go with below-average values of <span class="math inline">\(y\)</span>. Now think about what happens when we multiply Z-scores together:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Z_{x, i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Z_{y, i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Z_{x, i} \cdot Z_{y, i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">above <span class="math inline">\(\bar{x}\)</span></td>
+<td style="text-align: center;">above <span class="math inline">\(\bar{y}\)</span></td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">above <span class="math inline">\(\bar{x}\)</span></td>
+<td style="text-align: center;">below <span class="math inline">\(\bar{y}\)</span></td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">below <span class="math inline">\(\bar{x}\)</span></td>
+<td style="text-align: center;">above <span class="math inline">\(\bar{y}\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">below <span class="math inline">\(\bar{x}\)</span></td>
+<td style="text-align: center;">below <span class="math inline">\(\bar{y}\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+</td>
+</tr>
+</tbody>
+</table>
+<p>Altogether this implies:</p>
+<ul>
+<li><p>If <span class="math inline">\(x\)</span> tends to be above-average when <span class="math inline">\(y\)</span> is above-average, and below-average when <span class="math inline">\(y\)</span> is below-average, the product of Z-scores will usually be positive.</p></li>
+<li><p>If <span class="math inline">\(x\)</span> tends to be below-average when <span class="math inline">\(y\)</span> is above-average, and above-average when <span class="math inline">\(y\)</span> is below-average, the product of Z-scores will usually be negative.</p></li>
+</ul>
+<p>This observation leads us to the formula for the correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. It is the mean of the product of the Z-scores: <span class="math display">\[r_{x, y} = \frac{1}{N - 1} \sum_{i=1}^N Z_{x, i} \cdot Z_{y, i}.\]</span> As with the formula for the standard deviation (<a href="univariate_analysis.html#eq-standard-deviation" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>), we divide by <span class="math inline">\(N - 1\)</span> rather than <span class="math inline">\(N\)</span> for statistical reasons that I won’t get into here.</p>
+</section>
+</section>
+<section id="regression-with-one-feature" class="level2 page-columns page-full" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="regression-with-one-feature"><span class="header-section-number">5.3</span> Regression with one feature</h2>
+<p>If all you knew about someone was their feelings toward police, what would you guess are their feelings toward Trump? The positive correlation between these two variables tells us that we’d guess the Trump score is above its average of 40 if the police score is above its average of 70, and the opposite if the police score is below average. But can we get a more precise answer than that?</p>
+<section id="the-statistical-model" class="level3 page-columns page-full" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="the-statistical-model"><span class="header-section-number">5.3.1</span> The statistical model</h3>
+<p><span class="concept">Linear regression</span> is probably the most popular statistical model of a relationship between variables. It is called linear because we will model the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> as a linear function. It is called regression for weird historical reasons that actually don’t have to do with the underlying statistics.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>There’s a biological phenomenon known as “regression to the mean”. If your parents are much taller than average, then you’ll likely also be taller than average—but not as tall as they are. Early statisticians used the statistical techniques we now call regression to analyze data on how fathers’ heights compared to sons’ heights. Somehow the name stuck, even though “regression” was more of a property of the findings for their particular application than a description of the technique itself.</p>
+</div></div><p>In a regression analysis, the first thing we need to do is to identify the variable we want to explain or predict. In this case, that’s feelings toward Trump. This is most often called the <span class="concept">dependent variable</span>, though to avoid accidentally slipping into cause-and-effect language I prefer to call it the <span class="concept">response variable</span>. I’ll usually use <span class="math inline">\(y_i\)</span> to denote the value of the response variable for the <span class="math inline">\(i\)</span>’th observation in the data.</p>
+<p>Next up is to identify the variable(s) we wish to use in order to explain or predict the response. For our research question here, that’s feelings toward the police. These are often called <span class="concept">independent variables</span> in social science, though again to avoid causal language I’ll call them <span class="concept">features</span>. When there is only one feature, like we have for now, I’ll use <span class="math inline">\(x_i\)</span> to denote its value for the <span class="math inline">\(i\)</span>’th observation. Once we start working with multiple features, say <span class="math inline">\(K\)</span> of them, I’ll write <span class="math inline">\(x_{i, 1}\)</span> for the value of the first feature for the <span class="math inline">\(i\)</span>’th observation, <span class="math inline">\(x_{i, 2}\)</span> for the second feature, and so on up to <span class="math inline">\(x_{i, K}\)</span>.</p>
+<p>Linear regression “assumes” a linear relationship between the feature and the response. I put “assumes” in scare quotes because we usually know the relationship isn’t truly linear — it’s more accurate to say we’re using a linear approximation. In any case, the formula is <span class="math display">\[y_i \approx \alpha + \beta x_i.\]</span> In this formula, <span class="math inline">\(y_i\)</span> and <span class="math inline">\(x_i\)</span> are the “knowns” — the values of the variable we observe in our data. The “unknowns” <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> will be estimated using a statistical formula.</p>
+<ul>
+<li><p><span class="math inline">\(\alpha\)</span> is the <span class="concept">intercept</span>. It represents the value we would guess for the response <span class="math inline">\(y_i\)</span> if we knew that the value of the feature <span class="math inline">\(x_i\)</span> were zero.</p></li>
+<li><p><span class="math inline">\(\beta\)</span> is the <span class="concept">slope</span>. It represents how much our predicted value for the response <span class="math inline">\(y_i\)</span> would increase (if <span class="math inline">\(\beta\)</span> is positive) or decrease (if <span class="math inline">\(\beta\)</span> is negative) due to a one-unit increase in <span class="math inline">\(x_i\)</span>.</p></li>
+</ul>
+<p>We refer to the intercept and slope together as the regression <span class="concept">coefficients</span>.</p>
+<p>I think it’ll be easier to wrap our heads around regression once we see it in practice. We calculate linear regressions in R using the <code>lm()</code> command, where <code>lm</code> stands for “linear model”. The basic syntax of <code>lm()</code> is <code>lm(response ~ feature, data = df)</code>, where <code>response</code> and <code>feature</code> are names of columns in <code>df</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   response   ~  feature(s)  </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ therm_police, data = df_anes)
+
+Coefficients:
+ (Intercept)  therm_police  
+    -12.7889        0.7476  </code></pre>
+</div>
+</div>
+<p>Our estimate of the intercept is roughly -13, and our estimate of the slope is roughly 0.75:</p>
+<ul>
+<li><p>The intercept means we would predict a Trump feeling thermometer of -13 for someone whose police feeling thermometer is 0.</p>
+<p>This might seem like an error, since feeling thermometers only go from 0 to 100! But it’s not an error; it’s a natural limitation of a linear approximation. Regression predictions tend to be most accurate close to the mean of the feature, which in this case is about 70. At the extremes of the feature space, the predictions might be implausibly extreme or even impossible.</p></li>
+<li><p>The slope means that for each one-point increase in police feeling thermometer, our predicted Trump feeling thermometer increases by 0.75 points.</p></li>
+</ul>
+<p>You can visualize the regression line in ggplot using <code>geom_smooth(method = "lm")</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> therm_trump)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1090 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1090 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="correlation_regression_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="correlation_regression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Using the formula <span class="math display">\[ThermTrump \approx -13 + 0.75 ThermPolice,\]</span> here is what we would predict about a respondent’s Trump opinion given various potential values of their police opinion.</p>
+<div id="tbl-lm-trump-police" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lm-trump-police-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: Predictions from the linear regression of Trump opinions on police opinions.
+</figcaption>
+<div aria-describedby="tbl-lm-trump-police-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Police thermometer</th>
+<th style="text-align: center;">Predicted Trump thermometer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">62</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>So in order to predict that a respondent feels warmly toward Trump, we’d need their feeling thermometer toward the police to be at least a few points above 80.</p>
+<p>The table above is an example of extracting <span class="concept">predicted values</span>, sometimes also called <span class="concept">fitted values</span>, from a regression model. The regression estimates give us a predicted value of the response for each observation in our data, <span class="math display">\[\hat{y}_i = \alpha + \beta x_i.\]</span> (In case you’re curious, <span class="math inline">\(\hat{y}\)</span> is pronounced “y hat”.)</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>You’ll often see “fitted” used when the formula is used to calculate the expected response for data points used to calculate the regression, and “predicted” when the formula is used for new observations not used to calculate the regression coefficients. The distinction between in- and out-of-sample fit is particularly important in machine learning applications, less so for our purposes today.</p>
+</div></div><p>The regression coefficients are calculated to make the predicted values as close as possible to the observed values. The <span class="concept">residual</span> is the difference between the observed value and the predicted value, <span class="math display">\[y_i - \hat{y}_i.\]</span> A positive residual indicates that the observed value is greater than the prediction. For example, in the model we’ve been working with, if a respondent had a police thermometer of 60 and a Trump thermometer of 40 (compared to the predicted value of 32), the residual for that observation would be <span class="math display">\[y_i - \hat{y}_i = 40 - 32 = +8.\]</span> A negative residual indicates the opposite — the observed value is less than the predicted value.</p>
+<p>If our goal is to make the regression line fall as close as possible to the observed values, we want each residual to be close to 0. The intercept and slope are calculated using a formula that tries to accomplish this goal. The formula is designed to minimize the sum of squared residuals, <span class="math display">\[(y_1 - \hat{y}_1)^2 + (y_2 - \hat{y}_2)^2 + \cdots + (y_N - \hat{y}_N)^2 = \sum_{i=1}^N (y_i - \hat{y}_i)^2.\]</span> This way, the formula tries to get each residual as close to 0 as possible. In case you know a bit of calculus and are curious about the details, the optional <a href="#sec-regression-formula" class="quarto-xref"><span>Section 5.5</span></a> shows the formula and how it’s derived.</p>
+</section>
+<section id="working-with-regression-results" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="working-with-regression-results"><span class="header-section-number">5.3.2</span> Working with regression results</h3>
+<p>When you run a regression in R, it calculates a lot more useful information than just the slope and intercept. To access this, you will want to save the regression as a variable. This lets you run additional functions with the regression and extract additional information from it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>fit_trump_police</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ therm_police, data = df_anes)
+
+Coefficients:
+ (Intercept)  therm_police  
+    -12.7889        0.7476  </code></pre>
+</div>
+</div>
+<p>Running <code>summary()</code> on a regression model object gives you a bunch of additional info about the model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ therm_police, data = df_anes)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-61.972 -32.068  -1.972  34.242 112.789 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -12.7889     1.2503  -10.23   &lt;2e-16 ***
+therm_police   0.7476     0.0167   44.78   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 35.69 on 7188 degrees of freedom
+  (1090 observations deleted due to missingness)
+Multiple R-squared:  0.2181,    Adjusted R-squared:  0.218 
+F-statistic:  2005 on 1 and 7188 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Here’s what each component of the output means:</p>
+<ul>
+<li><p>Call: The formula you used to estimate the regression. (Useful if you have run a bunch of different regressions and forgot which was which.)</p></li>
+<li><p>Residuals: Quantiles of the regression residuals. Here we see that half of the regression predictions are between 32 points below the actual value and 34 points above it. The other half are even further away.</p></li>
+<li><p>Coefficients: The most important part of the <code>summary()</code> output, giving us detailed information about the estimates.</p>
+<ul>
+<li><p>Estimate: The estimated value of the coefficient.</p></li>
+<li><p>Standard error: A measure of variability in the coefficient estimate, closely related to the concept of a standard deviation. Specifically, this is an estimate of how much we would expect the coefficients to vary if we took a different random sample and ran the same regression model on it. We’ll go into more detail on this in <a href="simulation_resampling.html" class="quarto-xref"><span>Chapter 6</span></a>.</p></li>
+<li><p>t value: Estimate divided by standard error, used to calculate certain statistical tests.</p></li>
+<li><p><code>Pr(&gt;|t|)</code>, better known as the p-value: A statistical test that answers a particular (kind of weird) question, namely “How likely is it that a random sample of this size would give us a coefficient at least this far from zero, if in fact the coefficient in the full population were zero?” As with the standard error, we’ll go into further detail later.</p></li>
+</ul></li>
+<li><p>Residual standard deviation: The standard deviation of the residuals. Another way to think about “If we use this regression model to predict <span class="math inline">\(y\)</span>, how far away is our guess likely to be?” Smaller values indicate more accurate predictions.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Residual standard deviation terminology">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Residual standard deviation terminology
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>R calls this the “residual standard error,” which is stupid because it isn’t a standard error. Thanks to R’s poor wording choice, there is no non-confusing way to do this, so I am going to proceed with calling it the residual standard deviation.</p>
+</div>
+</div></li>
+<li><p>R-squared: A measure of model fit, specifically the square of the correlation coefficient between the predicted values and the observed values. In a regression with just one feature, this is just the square of the ordinary correlation coefficient.</p></li>
+<li><p>F-statistic: Another statistical test that we won’t worry about.</p></li>
+</ul>
+<p>If you want to extract information about the regression for further calculations or visualization, the easiest way is using the <code>broom</code> package. This is yet another overly cutely named R package, intended to “sweep up” the results of statistical models in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"broom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>tidy()</code> function extracts a data frame containing the coefficients, standard errors, and related information.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term         estimate std.error statistic  p.value
+  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   -12.8      1.25       -10.2 2.17e-24
+2 therm_police    0.748    0.0167      44.8 0       </code></pre>
+</div>
+</div>
+<p>The <code>glance()</code> function extracts a data frame containing the R-squared and other model-level information.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic p.value    df  logLik    AIC    BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     0.218         0.218  35.7     2005.       0     1 -35904. 71813. 71834.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>The values we most care about are <code>"r.squared"</code>, <code>"sigma"</code> (the residual standard deviation), and <code>"nobs"</code> (the number of observations used to estimate the regression).</p>
+<p>The <code>augment()</code> function “augments” the data used to fit the model with regression predictions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7,190 × 9
+   .rownames therm_trump therm_police .fitted .resid     .hat .sigma   .cooksd
+   &lt;chr&gt;           &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+ 1 1                 100           85    50.8   49.2 0.000185   35.7 0.000176 
+ 2 2                   0           90    54.5  -54.5 0.000222   35.7 0.000259 
+ 3 3                   0           40    17.1  -17.1 0.000343   35.7 0.0000395
+ 4 4                  15          100    62.0  -47.0 0.000329   35.7 0.000285 
+ 5 5                  85           70    39.5   45.5 0.000139   35.7 0.000113 
+ 6 6                   0           70    39.5  -39.5 0.000139   35.7 0.0000855
+ 7 7                  75           60    32.1   42.9 0.000163   35.7 0.000118 
+ 8 8                 100          100    62.0   38.0 0.000329   35.7 0.000187 
+ 9 9                   0           60    32.1  -32.1 0.000163   35.7 0.0000660
+10 10                  0           70    39.5  -39.5 0.000139   35.7 0.0000855
+# ℹ 7,180 more rows
+# ℹ 1 more variable: .std.resid &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>The <code>".fitted"</code> column contains the fitted values, and <code>".resid"</code> contains the residuals.</p>
+<p>We can also use the <code>augment()</code> function to calculate predictions for new data that wasn’t used to estimate the regression. For example, let’s look at the subset of ANES respondents who answered the question about their feelings towards the police but didn’t say how they felt about Trump.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_anes_notrump <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(therm_trump)) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(therm_police)) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, therm_police)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>df_anes_notrump</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 198 × 2
+      id therm_police
+   &lt;dbl&gt;        &lt;dbl&gt;
+ 1    29           70
+ 2    74           85
+ 3   122           40
+ 4   153           70
+ 5   179          100
+ 6   180          100
+ 7   216          100
+ 8   241           85
+ 9   255           40
+10   323          100
+# ℹ 188 more rows</code></pre>
+</div>
+</div>
+<p>By using the <code>newdata</code> argument of <code>augment()</code>, we can predict how these respondents feel about Trump based on their feelings toward the police.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police, <span class="at">newdata =</span> df_anes_notrump)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 198 × 3
+      id therm_police .fitted
+   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;
+ 1    29           70    39.5
+ 2    74           85    50.8
+ 3   122           40    17.1
+ 4   153           70    39.5
+ 5   179          100    62.0
+ 6   180          100    62.0
+ 7   216          100    62.0
+ 8   241           85    50.8
+ 9   255           40    17.1
+10   323          100    62.0
+# ℹ 188 more rows</code></pre>
+</div>
+</div>
+<p>Using the <code>interval</code> argument, we can get a rough estimate of how precise these predictions are.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  fit_trump_police,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> df_anes_notrump,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.level =</span> <span class="fl">0.5</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 198 × 5
+      id therm_police .fitted .lower .upper
+   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1    29           70    39.5  15.5    63.6
+ 2    74           85    50.8  26.7    74.8
+ 3   122           40    17.1  -6.96   41.2
+ 4   153           70    39.5  15.5    63.6
+ 5   179          100    62.0  37.9    86.0
+ 6   180          100    62.0  37.9    86.0
+ 7   216          100    62.0  37.9    86.0
+ 8   241           85    50.8  26.7    74.8
+ 9   255           40    17.1  -6.96   41.2
+10   323          100    62.0  37.9    86.0
+# ℹ 188 more rows</code></pre>
+</div>
+</div>
+<p><code>conf.level</code> is a number between 0 and 1 specifying the confidence level for the prediction. Here I went with 50%, aka <code>conf.level = 0.5</code>. What this is telling us, for example, is that for a respondent with the same features as our first one (namely, a police feeling thermometer of 70), we’d expect their Trump feeling thermometer to be between 15.5 and 63.6 about half of the time. In other words, there is a lot of uncertainty about these predictions!</p>
+<p>The <code>augment()</code> function can also be useful for visualizing our regression results. For example, suppose we wanted to plot our prediction + the uncertainty around it for each possible police thermometer that’s a multiple of 5. First we’d create a data frame with the values of the police thermometer we care about. I’ll use the <code>seq()</code> function to generate an evenly spaced sequence of numbers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_police_spaced <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">therm_police =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_police_spaced</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 1
+   therm_police
+          &lt;dbl&gt;
+ 1            0
+ 2            5
+ 3           10
+ 4           15
+ 5           20
+ 6           25
+ 7           30
+ 8           35
+ 9           40
+10           45
+# ℹ 11 more rows</code></pre>
+</div>
+</div>
+<p>Now we can calculate predictions with <code>augment()</code> and plot them.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> df_police_spaced,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">conf.level =</span> <span class="fl">0.5</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper)) <span class="sc">+</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="correlation_regression_files/figure-html/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="correlation_regression_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation-and-r-squared" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="correlation-and-r-squared"><span class="header-section-number">5.3.3</span> Correlation and R-squared</h3>
+<p>When I introduced the correlation coefficient, I mentioned that its square could be thought of as the percentage of variation in one variable that is “explained” by the other. Having worked through regression, we can be much more precise about what that means.</p>
+<p>Remember that the correlation between police feeling thermometer and Trump feeling thermometer is roughly 0.47, so its square is roughly 0.22.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>cor_trump_police <span class="ot">&lt;-</span> <span class="fu">cor</span>(</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  df_anes<span class="sc">$</span>therm_trump,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  df_anes<span class="sc">$</span>therm_police,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">use =</span> <span class="st">"complete"</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>cor_trump_police</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.467033</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cor_trump_police<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2181198</code></pre>
+</div>
+</div>
+<p>This lines up exactly with the R-squared value from our regression model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2181198</code></pre>
+</div>
+</div>
+<p>Now I’m going to compare two values:</p>
+<ul>
+<li><p>Average squared difference between the observed Trump thermometers and the mean Trump thermometer (what we’d use for prediction in the absence of any other information).</p></li>
+<li><p>Average squared regression residual, aka average squared difference between the observed Trump thermometers and the regression predictions.</p></li>
+</ul>
+<p>What I want to show you is that the second value is about 78% as large as the first. Why 78%? Because <span class="math inline">\(1 - R^2 = 1 - 0.22 = 0.78\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the two squared differences</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police) <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dist_from_mean =</span> therm_trump <span class="sc">-</span> <span class="fu">mean</span>(therm_trump)) <span class="sc">|&gt;</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sq_dist =</span> <span class="fu">mean</span>(dist_from_mean<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sq_residual =</span> <span class="fu">mean</span>(.resid<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> sq_residual <span class="sc">/</span> sq_dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  sq_dist sq_residual ratio
+    &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+1   1628.       1273. 0.782</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to 1 - R^2</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> cor_trump_police<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7818802</code></pre>
+</div>
+</div>
+<p>In this particular sense, we do 22% better at predicting respondents’ opinions toward Trump when we base our prediction on their opinion of the police, compared to just predicting that every single respondent has an average opinion toward Trump.</p>
+</section>
+<section id="binary-and-categorical-features" class="level3 page-columns page-full" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="binary-and-categorical-features"><span class="header-section-number">5.3.4</span> Binary and categorical features</h3>
+<p>What if we want to predict the response as a function of a binary or categorical feature? The R commands stay pretty much the same — all that changes is the way we interpret the results.</p>
+<p>As an example of a binary feature, let’s think about modeling each survey respondent’s opinion toward Trump as a function of their gender identity. Remember that gender identity is represented by the <code>female</code> column of our data frame, with 0 representing men and 1 representing women.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  female number
+   &lt;dbl&gt;  &lt;int&gt;
+1      0   3763
+2      1   4450
+3     NA     67</code></pre>
+</div>
+</div>
+<p>We use the same <code>lm(response ~ feature, data = df)</code> syntax to run a regression when the feature is a binary variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fit_trump_gender <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> female, <span class="at">data =</span> df_anes)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ female, data = df_anes)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-43.897 -37.548  -7.548  41.103  62.452 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  43.8969     0.6622  66.292  &lt; 2e-16 ***
+female       -6.3494     0.9022  -7.038 2.12e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 40.21 on 7990 degrees of freedom
+  (288 observations deleted due to missingness)
+Multiple R-squared:  0.00616,   Adjusted R-squared:  0.006036 
+F-statistic: 49.53 on 1 and 7990 DF,  p-value: 2.118e-12</code></pre>
+</div>
+</div>
+<p>We end up with an intercept of about 44 and a slope of about -6. To interpret these numbers, let’s think again about the regression formula: <span class="math display">\[\text{Trump Feeling} \approx 44 - 6 \times \text{female}.\]</span> We have female = 0 for male respondents, so the formula predicts a Trump thermometer score of 44 for men. We have female = 1 for female respondents, so the formula predicts a Trump thermometer of 38 for women. These values line up exactly with the averages we see for each group in the raw data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_therm_trump =</span> <span class="fu">mean</span>(therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  female avg_therm_trump
+   &lt;dbl&gt;           &lt;dbl&gt;
+1      0            43.9
+2      1            37.5
+3     NA            35.3</code></pre>
+</div>
+</div>
+<p>In general, when we run a regression on a single binary feature:</p>
+<ul>
+<li><p>The intercept represents the raw prediction when feature = 0.</p></li>
+<li><p>The slope represents the <em>difference</em> in predictions between when feature = 1 and when feature = 0.</p></li>
+</ul>
+<p>Now let’s move on to more general categorical features, with potentially multiple categories. For example, we might want to predict someone’s opinion toward Trump as a function of their educational attainment, represented by the <code>education</code> column in our dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">|&gt;</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  education             number
+  &lt;chr&gt;                  &lt;int&gt;
+1 Bachelor's degree       2055
+2 Graduate degree         1592
+3 High school             1336
+4 Less than high school    376
+5 Some college            2790
+6 &lt;NA&gt;                     131</code></pre>
+</div>
+</div>
+<p>Once again, the syntax for running a regression is exactly the same. All that changes is how we interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>fit_trump_educ <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> education, <span class="at">data =</span> df_anes)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_educ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ education, data = df_anes)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-49.91 -35.55 -13.25  39.14  71.75 
+
+Coefficients:
+                               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                      35.555      0.878  40.496  &lt; 2e-16 ***
+educationGraduate degree         -7.308      1.332  -5.486 4.25e-08 ***
+educationHigh school             14.351      1.415  10.139  &lt; 2e-16 ***
+educationLess than high school   10.498      2.272   4.620 3.90e-06 ***
+educationSome college            10.306      1.160   8.883  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 39.55 on 7926 degrees of freedom
+  (349 observations deleted due to missingness)
+Multiple R-squared:  0.03764,   Adjusted R-squared:  0.03715 
+F-statistic:  77.5 on 4 and 7926 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>You might notice that we now have an intercept and <em>four</em> coefficients — one for each education category other than “bachelor’s degree.” To understand why we end up with this many coefficients, you need to know what’s happening under the hood in R when you run a regression with a categorical variable. In order to do a statistical analysis, R needs some way to turn the category text into numbers. R does this by turning a categorical variable with <span class="math inline">\(K\)</span> categories into <span class="math inline">\(K\)</span> separate binary variables, one for each category. So if the raw data on the education feature looked like this …</p>
+<pre class="text"><code>Bachelor's degree
+Graduate degree
+Graduate degree
+High school
+High school
+High school
+Less than high school
+Some college
+Some college
+Some college</code></pre>
+<p>… R would translate it into this set of binary variables before running the regression:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   `Bachelor's degree` `Graduate degree` `High school` `Less than high school`
+                 &lt;dbl&gt;             &lt;dbl&gt;         &lt;dbl&gt;                   &lt;dbl&gt;
+ 1                   1                 0             0                       0
+ 2                   0                 1             0                       0
+ 3                   0                 1             0                       0
+ 4                   0                 0             1                       0
+ 5                   0                 0             1                       0
+ 6                   0                 0             1                       0
+ 7                   0                 0             0                       1
+ 8                   0                 0             0                       0
+ 9                   0                 0             0                       0
+10                   0                 0             0                       0
+   `Some college`
+            &lt;dbl&gt;
+ 1              0
+ 2              0
+ 3              0
+ 4              0
+ 5              0
+ 6              0
+ 7              0
+ 8              1
+ 9              1
+10              1</code></pre>
+</div>
+</div>
+<p>Going back to the regression results, you might notice that there are only four categories listed. What happened to the bachelor’s degree category? Whenever we put a categorical variable into a regression, there will be a single <span class="concept">omitted category</span>. This happens for mathematical reasons beyond the scope of this course.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>For those who have taken linear algebra: The formula that we use to calculate the regression coefficients involves a matrix inversion, and the relevant matrix is not invertible unless we exclude one of the binary category indicators. See <a href="https://bkenkel.com/pdaps/specification.html#categorical-variables">my graduate lecture notes</a> if for some reason you really want to go deep on this.</p>
+</div></div><p>The important thing for you to know is to be able to identify the omitted category — in this case, those whose highest level of educational attainment is a bachelor’s degree. For these respondents, all of the other four binary indicators will equal 0. Our prediction for them will just be the intercept, which in this case is roughly 36. For the other categories, the reported coefficient reflects the <em>difference</em> in the prediction compared to the omitted category. In this case:</p>
+<ul>
+<li><p>The coefficient of -7 for those with a graduate degree indicates that our predicted Trump thermometer for this category is 7 less than for the omitted category of bachelor’s degree holders. Roughly, this gives us a prediction of 36 - 7 = 29.</p></li>
+<li><p>The coefficient of 14 for those with a high school education indicates that our prediction for high school graduates is 14 higher than for those with a bachelor’s degree: 36 + 14 = 50.</p></li>
+<li><p>The coefficients of 10 for less than high school and for some college indicates that our predictions for these two groups are 10 higher than for those with a bachelor’s degree: 36 + 10 = 46.</p></li>
+</ul>
+<p>Once again, these predictions line up exactly with the raw averages in the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">|&gt;</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_therm_trump =</span> <span class="fu">mean</span>(therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  education             avg_therm_trump
+  &lt;chr&gt;                           &lt;dbl&gt;
+1 Bachelor's degree                35.6
+2 Graduate degree                  28.2
+3 High school                      49.9
+4 Less than high school            46.1
+5 Some college                     45.9
+6 &lt;NA&gt;                             41.8</code></pre>
+</div>
+</div>
+<p>By default, R makes the omitted category whichever one comes first in alphabetical order. Sometimes you might find it easier to interpret the results by omitting a different category. Say we wanted the coefficients to reflect comparisons to those whose highest educational attainment is a high school diploma. You can use the <code>fct_relevel()</code> function to tell R which category to put first, thereby making it the omitted category.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">education =</span> <span class="fu">fct_relevel</span>(education, <span class="st">"High school"</span>))</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>fit_trump_educ_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> education, <span class="at">data =</span> df_anes)</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_educ_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ education, data = df_anes)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-49.91 -35.55 -13.25  39.14  71.75 
+
+Coefficients:
+                               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                      49.906      1.110  44.953  &lt; 2e-16 ***
+educationBachelor's degree      -14.351      1.415 -10.139  &lt; 2e-16 ***
+educationGraduate degree        -21.659      1.495 -14.483  &lt; 2e-16 ***
+educationLess than high school   -3.853      2.372  -1.624  0.10434    
+educationSome college            -4.046      1.345  -3.009  0.00263 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 39.55 on 7926 degrees of freedom
+  (349 observations deleted due to missingness)
+Multiple R-squared:  0.03764,   Adjusted R-squared:  0.03715 
+F-statistic:  77.5 on 4 and 7926 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Reordering the categories doesn’t change the regression predictions at all, just the way R structures and reports them.</p>
+<p>The inferential statistics (standard errors and <span class="math inline">\(p\)</span>-values) on the category coefficients should be interpreted in terms of differences with the baseline category. For example, we see a very small <span class="math inline">\(p\)</span>-value on the “Bachelor’s degree” category in the regression above — meaning that if bachelor’s degree holders and high school diploma holders had the same opinion of Trump in the population at large, it would be highly unlikely to draw a sample of this size with as big of a difference as the one we observed.</p>
+<p>On the other hand, the <span class="math inline">\(p\)</span>-value on the “Less than high school” category is just above 0.10, not statistically significant by the typical political science standard of 0.05. This <span class="math inline">\(p\)</span>-value means that if there were no difference in Trump opinion between high school diploma holders and those who didn’t finish high school in the population at large, there would be about a 10% chance of drawing a sample with as big of a difference as we see here. That’s not incredibly likely, but it’s a great enough chance that we wouldn’t feel confident ruling out the idea of no difference in the population at large.</p>
+</section>
+<section id="binary-responses" class="level3" data-number="5.3.5">
+<h3 data-number="5.3.5" class="anchored" data-anchor-id="binary-responses"><span class="header-section-number">5.3.5</span> Binary responses</h3>
+<p>We can also use linear models to predict a binary response. For example, instead of modeling mere opinions toward Trump as a function of opinions toward the police, let’s model <em>voting</em> for Trump as a function of these opinions.</p>
+<p>Once again, the R syntax is the same; the only difference is how we interpret the numbers in the results. When we put a binary response in our regression model, we are essentially modeling the data as <span class="math display">\[\Pr(\text{response} = 1) \approx \text{intercept} + \text{slope} \times \text{feature}.\]</span></p>
+<ul>
+<li><p>Intercept: predicted probability of response = 1 given feature = 0.</p></li>
+<li><p>Slope: predicted increase (if positive) or decrease (if negative) in the probability of response = 1 due to a 1-unit increase in feature.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>fit_vote_police <span class="ot">&lt;-</span> <span class="fu">lm</span>(voted_for_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_vote_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = voted_for_trump ~ therm_police, data = df_anes)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.68341 -0.40106 -0.09519  0.41071  1.25774 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -0.2577404  0.0177155  -14.55   &lt;2e-16 ***
+therm_police  0.0094115  0.0002335   40.31   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4364 on 5842 degrees of freedom
+  (2436 observations deleted due to missingness)
+Multiple R-squared:  0.2176,    Adjusted R-squared:  0.2174 
+F-statistic:  1625 on 1 and 5842 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The regression equation here is <span class="math display">\[\Pr(\text{Voted for Trump}) \approx -0.25 + 0.01 \times \text{Police Feeling}.\]</span> The slope of 0.01, aka 1%, means that our prediction about the probability that a respondent would vote for Trump goes up 1 percentage point for each point on their feeling thermometer toward the police. In other words, if we compared Person A whose feeling toward the police is 70 to Person B whose feeling is 60, we’d guess that A is about 10% more likely to vote for Trump than B is.</p>
+<p>The intercept is a bit trickier to interpret. It tells us that for someone whose feeling thermometer toward the police is 0, their predicted probability of voting for Trump is -25% … which is nonsensical. This kind of nonsense prediction is one of the downsides of using a linear model — if you go out far enough to one extreme or the other, you’ll potentially start getting predictions below 0% or above 100%. If you find yourself in a real-world setting where you absolutely need your predictions to be between 0% and 100%, you can use an alternative model like <a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a>. For now, just know that these types of predictions are a natural consequence of the geometry of linear regression.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> voted_for_trump)) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">2.5</span>, <span class="at">height =</span> <span class="fl">0.1</span>),</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.1</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2436 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2436 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="correlation_regression_files/figure-html/unnamed-chunk-31-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="correlation_regression_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You may wonder about a categorical response with more than two categories. Unlike a binary response, linear regression can’t be naturally adapted to that setting. We’ll need to use more sophisticated classification models to model a (non-binary) categorical response, so we won’t tackle that just yet.</p>
+</section>
+</section>
+<section id="regression-with-multiple-features" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="regression-with-multiple-features"><span class="header-section-number">5.4</span> Regression with multiple features</h2>
+<p>There are two reasons to include multiple features in a regression.</p>
+<ol type="1">
+<li><p>Including multiple features lets us make <span class="concept">all-else-equal statements</span>. In particular, if we want to analyze the relationship between the feature and the response while holding other features fixed, regression gives us a way to do that.</p></li>
+<li><p>More features may <span class="concept">increase the predictive accuracy</span> of the model. Essentially, the more information we have about each observation, the more precisely we should be able to predict the value of the response.</p></li>
+</ol>
+<p>As an example of when we might want to make an all-else-equal statement, let’s think about the role racial identity plays in opinions toward the police and toward Donald Trump. Police brutality disproportionately affects Black and Latino communities, and movements like Black Lives Matter have sought to heighten the salience of the racially disparate impacts of policing, so we might expect overall opinions toward the police to be lower among Black and Latino respondents. Donald Trump also has a history of denigrating both individuals and groups with minority racial identities, so we might expect overall opinions of Trump to be lower among Black and Latino respondents. Putting this all together, is it possible that the relationship we see between police opinions and Trump opinions would go away — or at least be less strong — if we only made comparisons between respondents with the same racial identity?</p>
+<p>Regression allows us to make this kind of all-else-equal comparison, by <span class="concept">controlling</span> for additional features. With <span class="math inline">\(K\)</span> features, the linear regression model becomes <span class="math display">\[\text{response} \approx \text{intercept} + \text{slope}_1 \times \text{feature}_1 + \text{slope}_2 \times \text{feature}_2 + \cdots + \text{slope}_K \times \text{feature}_K.\]</span> The slope on each individual feature represents: “How much does the predicted value of the response change due to a 1-unit increase in this feature, <em>holding all other feature values fixed</em>?”</p>
+<p>It’s easy to include multiple features in a regression model in R. Just use <code>lm(response ~ feature1 + feature2 + ...)</code>. For example, to control for race when analyzing the relationship between police opinion and Trump opinion:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police_race <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  therm_trump <span class="sc">~</span> therm_police <span class="sc">+</span> race,</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df_anes</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_police_race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ therm_police + race, data = df_anes)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-65.828 -32.854  -1.938  33.062 114.752 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         -10.76435    2.52044  -4.271 1.97e-05 ***
+therm_police          0.70982    0.01737  40.867  &lt; 2e-16 ***
+raceBlack           -11.06104    2.68564  -4.119 3.86e-05 ***
+raceHispanic         -3.98716    2.66588  -1.496    0.135    
+raceMultiracial       1.38913    3.27692   0.424    0.672    
+raceNative American   5.60968    3.69893   1.517    0.129    
+raceWhite             2.36714    2.32122   1.020    0.308    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 35.48 on 7113 degrees of freedom
+  (1160 observations deleted due to missingness)
+Multiple R-squared:  0.2283,    Adjusted R-squared:  0.2277 
+F-statistic: 350.8 on 6 and 7113 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>When we control for race, we still see a substantial relationship between opinions about the police and opinions about Donald Trump. Among individuals of the <em>same</em> racial identity, for each 1-point increase in the police feeling thermometer we would predict about a 0.71-point greater feeling toward Donald Trump. Importantly, unlike our original model, this accounts for the fact that Black and Hispanic respondents tend to have lower opinions toward Trump on average. Even so, the slope is not hugely different from the 0.75 we saw in the uncontrolled regression above.</p>
+<p>So can we conclude that more favorable attitudes toward the police <em>cause</em> more favorable attitudes toward Donald Trump? Not so fast. Loosely speaking, it’s true that controlled comparisons like this get us closer to cause-and-effect statements than uncontrolled bivariate regressions. But “closer” does not mean “all the way there”. In order to make a precise causal inference from this sort of regression model, we would need to control for <em>every</em> possible confounding variable that might affect both attitudes toward the police and one’s opinion of Donald Trump. Even with a pretty deep survey like the one the ANES fields, it’s pretty unlikely we would ever really be able to control for all of the confounding variables.</p>
+<p>Comparing the regressions with and without the race control, we also see that the predictive accuracy is higher with the control. The residual standard deviation is lower, and the <span class="math inline">\(R^2\)</span> is higher.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># w/o race control</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police) <span class="sc">|&gt;</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigma, r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  sigma r.squared
+  &lt;dbl&gt;     &lt;dbl&gt;
+1  35.7     0.218</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># w/ race control</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police_race) <span class="sc">|&gt;</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigma, r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  sigma r.squared
+  &lt;dbl&gt;     &lt;dbl&gt;
+1  35.5     0.228</code></pre>
+</div>
+</div>
+<p>The more information we use to generate our prediction, the more accurate it can be. This isn’t always true in the realm of <span class="concept">out-of-sample prediction</span>, where we use a regression model to try to predict outcomes on new data not used to estimate the regression coefficients. However, we won’t get into that issue just yet here.</p>
+</section>
+<section id="sec-regression-formula" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-regression-formula"><span class="header-section-number">5.5</span> Optional: Deriving the regression formula</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="For intellectual edification only">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+For intellectual edification only
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Optional” means “No, this won’t be on the test.”</p>
+</div>
+</div>
+<p>The formula for the regression slope is <span class="math display">\[\beta = \frac{\sum_{i=1}^N x_i (y_i - \bar{y})}{\sum_{i=1}^N x_i (x_i - \bar{x})},\]</span> where <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\bar{y}\)</span> are the means of <span class="math inline">\(x_1, x_2, \ldots, x_N\)</span> and <span class="math inline">\(y_1, y_2, \ldots, y_N\)</span> respectively. The formula for the regression intercept is <span class="math display">\[\alpha = \bar{y} - \beta \bar{x}.\]</span> In other words, the intercept is calculated to ensure that the predicted value given <span class="math inline">\(x_i = \bar{x}\)</span> is <span class="math inline">\(y_i = \bar{y}\)</span>; i.e., the regression line must pass through the point <span class="math inline">\((\bar{x}, \bar{y})\)</span>.</p>
+<p>How did statisticians arrive at these formulas? Remember that the regression coefficients are chosen to minimize the sum of squared residuals, <span class="math display">\[\sum_{i=1}^N (y_i - \hat{y}_i)^2.\]</span> Let’s rewrite this as an explicit function of the intercept and slope, <span class="math display">\[SSR(\alpha, \beta) = \sum_{i=1}^N (y_i - \alpha - \beta x_i)^2.\]</span></p>
+<p>If you’ve taken multivariate calculus, you know that a necessary condition for the minimization of a differentiable function is that its partial derivatives equal zero. (I won’t prove this here, but the SSR function is convex, so the necessary conditions also turn out to be sufficient.) So our estimates of the intercept and slope must satisfy <span class="math display">\[\begin{alignat*}{2}
+\frac{\partial SSR(\alpha, \beta)}{\partial \alpha} &amp;= -2 \sum_{i=1}^N (y_i - \alpha - \beta x_i) &amp;&amp;= 0, \\
+\frac{\partial SSR(\alpha, \beta)}{\partial \beta} &amp;= -2 \sum_{i=1}^N x_i (y_i - \alpha - \beta x_i) &amp;&amp;= 0.
+\end{alignat*}\]</span> If we cancel out the -2s and break up the sums, we end up with <span class="math display">\[\begin{align*}
+\sum_{i=1}^N y_i - \sum_{i=1}^N \alpha - \beta \sum_{i=1}^N x_i &amp;= 0, \\
+\sum_{i=1}^N x_i y_i - \alpha \sum_{i=1}^N x_i - \beta \sum_{i=1}^N x_i^2 &amp;= 0.
+\end{align*}\]</span> Let’s start with the first of these equations. <span class="math inline">\(\alpha\)</span> is a constant, so <span class="math inline">\(\sum_{i=1}^N \alpha = N \alpha\)</span>. And remember that the sample mean is defined as <span class="math inline">\(\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i\)</span>, which means that <span class="math inline">\(\sum_{i=1}^N x_i = N \bar{x}\)</span>. For the same reason, <span class="math inline">\(\sum_{i=1}^N y_i = N \bar{y}\)</span>. Substituting these facts into the first equation turns it into <span class="math display">\[N \bar{y} - N \alpha - N \beta \bar{x} = 0.\]</span> Cancelling out <span class="math inline">\(N\)</span> and moving <span class="math inline">\(\alpha\)</span> to the other side confirms our formula for the intercept, <span class="math display">\[\alpha = \bar{y} - \beta \bar{x}.\]</span></p>
+<p>This formula for the intercept is only of limited use so far—it relies on the slope <span class="math inline">\(\beta\)</span>, which we haven’t calculated yet. So now let’s work with the second equation we derived up above, <span class="math display">\[\sum_{i=1}^N x_i y_i - \alpha \sum_{i=1}^N x_i - \beta \sum_{i=1}^N x_i^2 = 0.\]</span> By moving the middle term to the other side, we can rearrange this equation to <span class="math display">\[\sum_{i=1}^N x_i y_i - \beta \sum_{i=1}^N x_i^2 = \alpha \sum_{i=1}^N x_i.\]</span> By replacing <span class="math inline">\(\alpha\)</span> with the formula we derived above, we can expand this equation to <span class="math display">\[\begin{align*}
+\sum_{i=1}^N x_i y_i - \beta \sum_{i=1}^N x_i^2 &amp;= (\bar{y} - \beta \bar{x}) \sum_{i=1}^N x_i \\
+&amp;= \bar{y} \sum_{i=1}^N x_i - \beta \bar{x} \sum_{i=1}^N x_i.
+\end{align*}\]</span> By rearranging terms, we end up with <span class="math display">\[\sum_{i=1}^N x_i y_i - \bar{y} \sum_{i=1}^N x_i = \beta \left[\sum_{i=1}^N x_i^2 - \bar{x} \sum_{i=1}^N x_i\right].\]</span> Finally, we can divide and do a bit more rearranging to end up with our formula for the slope: <span class="math display">\[\begin{align*}
+\beta &amp;= \frac{\sum_{i=1}^N x_i y_i - \bar{y} \sum_{i=1}^N x_i}{\sum_{i=1}^N x_i^2 - \bar{x} \sum_{i=1}^N x_i} \\
+&amp;= \frac{\sum_{i=1}^N x_i (y_i - \bar{y})}{\sum_{i=1}^N x_i (x_i - \bar{x})}.
+\end{align*}\]</span></p>
+<p>To confirm that this formula works, let’s try it out with the feeling thermometer data, checking that it gives us the same answers as <code>lm()</code> does.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Make sure to use same observations as used in the regression</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>df_anes_no_na <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(therm_trump)) <span class="sc">|&gt;</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(therm_police))</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> df_anes_no_na<span class="sc">$</span>therm_police</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> df_anes_no_na<span class="sc">$</span>therm_trump</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Calculate slope</span></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>slope_num <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y)))</span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>slope_denom <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)))</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>slope <span class="ot">&lt;-</span> slope_num <span class="sc">/</span> slope_denom</span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Calculate intercept</span></span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">mean</span>(y) <span class="sc">-</span> slope <span class="sc">*</span> <span class="fu">mean</span>(x)</span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare to regression values</span></span>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(intercept, slope)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -12.7889017   0.7476096</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> (Intercept) therm_police 
+ -12.7889017    0.7476096 </code></pre>
+</div>
+</div>
+<p>What about regression with more than one feature? To derive that formula, you need not only calculus but also a bit of linear algebra. You can take a look at my <a href="https://bkenkel.com/pdaps/bivariate.html#least-squares">graduate statistics notes</a> if you want the details for that case.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_visualization.html" class="pagination-link" aria-label="Data Visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Visualization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./simulation_resampling.html" class="pagination-link" aria-label="Simulation and Resampling">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulation and Resampling</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p xmlns:cc="http://creativecommons.org/ns#" class="cc-footer">
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>
+</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
