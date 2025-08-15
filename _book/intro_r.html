@@ -221,8 +221,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./using_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Using ChatGPT</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./data_sources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data Sources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Data Sources</span></span></a>
   </div>
 </li>
       </ul>
@@ -617,7 +623,7 @@ Comments in R code
 <p>This data comes from the <a href="https://election.lab.ufl.edu/voter-turnout/">Election Lab</a> at the University of Florida. They track important statistics about turnout in federal elections: how many people were old enough to vote, how many of those were actually eligible to vote (i.e., excluding noncitizens and felons), and how many ballots were actually cast. Here’s a guide to the variables that are included here:</p>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>See <a href="data_sources.html" class="quarto-xref"><span>Appendix A</span></a> for more detail on all data files used in these notes.</p>
+<p>See <a href="data_sources.html" class="quarto-xref"><span>Appendix B</span></a> for more detail on all data files used in these notes.</p>
 </div></div><table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
@@ -711,16 +717,17 @@ Reading data from a file on your computer
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"                   "_quarto.yml"            
- [3] "_raw"                    "cover.png"              
- [5] "data"                    "data_sources_cache"     
- [7] "data_sources.qmd"        "data_visualization.qmd" 
- [9] "data_wrangling.qmd"      "img"                    
-[11] "index.html"              "index.qmd"              
-[13] "intro_r.qmd"             "intro_r.rmarkdown"      
-[15] "qps1.scss"               "references.bib"         
-[17] "references.qmd"          "site_libs"              
-[19] "univariate_analysis.qmd"</code></pre>
+<pre><code> [1] "_book"                   "_freeze"                
+ [3] "_quarto.yml"             "_raw"                   
+ [5] "cover.png"               "data"                   
+ [7] "data_sources_cache"      "data_sources.qmd"       
+ [9] "data_visualization.qmd"  "data_wrangling.qmd"     
+[11] "img"                     "index.html"             
+[13] "index.qmd"               "intro_r.qmd"            
+[15] "intro_r.rmarkdown"       "qps1.scss"              
+[17] "references.bib"          "references.qmd"         
+[19] "site_libs"               "univariate_analysis.qmd"
+[21] "using_chatgpt.qmd"      </code></pre>
 </div>
 </div>
 <p>Finally, once you’ve confirmed that the data file you want to analyze shows up here, you can load it into R by plugging the filename into <code>read_csv()</code>. As always, the filename will need go inside quotation marks. For example, if the file is called <code>pre_election_polls.csv</code>, you would run:</p>

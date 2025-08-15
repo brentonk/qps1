@@ -4,6 +4,9 @@ project:
     - img/*
   post-render: cp -R data _book
 
+execute:
+  freeze: auto
+
 book:
   title: "Quantitative Political Science I"
   author: "Brenton Kenkel"
@@ -16,6 +19,7 @@ book:
     - data_visualization.qmd
     - references.qmd
   appendices:
+    - using_chatgpt.qmd
     - data_sources.qmd
   license: "CC BY-NC-SA 4.0"
   sidebar:
