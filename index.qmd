@@ -1,0 +1,11 @@
+# Preface {.unnumbered}
+
+These are the course notes for Prof. [Brenton Kenkel](https://bkenkel.com)'s course PSCI 2300 (Quantitative Political Science I: Computing) at Vanderbilt University.
+
+These notes are written in [Quarto](https://quarto.org/) and published on [GitHub Pages](https://pages.github.com/).
+You can find the Quarto source files [on GitHub](https://github.com/brentonk/qps1).
+
+**Acknowledgments:**
+I've taken a lot from lecture notes written by my colleague [Josh Clinton](https://my.vanderbilt.edu/joshclinton/) for prior iterations of PSCI 2300.
+My colleague [Jim Bisbee](https://www.jamesbisbee.com/)'s notes for [his offering of DS 1000](https://github.com/jbisbee1/DS1000_S2024) have been helpful too.
+I'm also grateful to students from the fall 2024 offering of PSCI 2300 for their suggestions, and to [Nguyen Ha](https://thaonguyen-ha.com/) who gave lots of helpful feedback in her capacity as the TA.
