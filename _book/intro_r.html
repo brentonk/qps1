@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d19a348d1c3c577774653d463d75021c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-79d3918912887b4bd78ab83161c22443.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -217,12 +246,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">1.1.5</span> Quarto</a></li>
   </ul></li>
   <li><a href="#sec-working-directories" id="toc-sec-working-directories" class="nav-link" data-scroll-target="#sec-working-directories"><span class="header-section-number">1.2</span> Working with working directories</a></li>
-  <li><a href="#sec-quarto" id="toc-sec-quarto" class="nav-link" data-scroll-target="#sec-quarto"><span class="header-section-number">1.3</span> Quarto</a>
+  <li><a href="#sec-quarto" id="toc-sec-quarto" class="nav-link" data-scroll-target="#sec-quarto"><span class="header-section-number">1.3</span> Writing documents in Quarto</a>
   <ul class="collapse">
   <li><a href="#the-header" id="toc-the-header" class="nav-link" data-scroll-target="#the-header"><span class="header-section-number">1.3.1</span> The header</a></li>
   <li><a href="#ordinary-text-in-markdown-format" id="toc-ordinary-text-in-markdown-format" class="nav-link" data-scroll-target="#ordinary-text-in-markdown-format"><span class="header-section-number">1.3.2</span> Ordinary text in Markdown format</a></li>
   <li><a href="#code-blocks" id="toc-code-blocks" class="nav-link" data-scroll-target="#code-blocks"><span class="header-section-number">1.3.3</span> Code blocks</a></li>
   <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering"><span class="header-section-number">1.3.4</span> Rendering</a></li>
+  </ul></li>
+  <li><a href="#pulling-data-into-r" id="toc-pulling-data-into-r" class="nav-link" data-scroll-target="#pulling-data-into-r"><span class="header-section-number">1.4</span> Pulling data into R</a>
+  <ul class="collapse">
+  <li><a href="#reading-a-csv" id="toc-reading-a-csv" class="nav-link" data-scroll-target="#reading-a-csv"><span class="header-section-number">1.4.1</span> Reading a CSV</a></li>
+  <li><a href="#looking-at-the-data" id="toc-looking-at-the-data" class="nav-link" data-scroll-target="#looking-at-the-data"><span class="header-section-number">1.4.2</span> Looking at the data</a></li>
+  <li><a href="#simple-analysis" id="toc-simple-analysis" class="nav-link" data-scroll-target="#simple-analysis"><span class="header-section-number">1.4.3</span> Simple analysis</a></li>
+  <li><a href="#simple-data-visualization" id="toc-simple-data-visualization" class="nav-link" data-scroll-target="#simple-data-visualization"><span class="header-section-number">1.4.4</span> Simple data visualization</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -433,7 +469,7 @@ Figure&nbsp;1.2: Setting the working directory in RStudio.
 </ul>
 </section>
 <section id="sec-quarto" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="sec-quarto"><span class="header-section-number">1.3</span> Quarto</h2>
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-quarto"><span class="header-section-number">1.3</span> Writing documents in Quarto</h2>
 <p>We will do all of our work within Quarto files. A Quarto file is a plain text file: if you open it in a bare-bones editor like Notepad (Windows) or TextEdit (Mac), you will see exactly the same content that you see in RStudio, except without the pretty colors used for syntax highlighting.</p>
 <p>There are three components to a Quarto file:</p>
 <ol type="1">
@@ -532,6 +568,395 @@ See https://quarto.org/docs/computations/execution-options.html#fenced-echo for 
 <h3 data-number="1.3.4" class="anchored" data-anchor-id="rendering"><span class="header-section-number">1.3.4</span> Rendering</h3>
 <p>When you’re done writing your Quarto file and want to turn it into a PDF, hit the “Render” button in the RStudio interface. Assuming that there aren’t any errors in your R code chunks that prevent the document from compiling, you’ll see the PDF output in RStudio’s Preview window (or perhaps in an external browser or PDF viewer, depending on RStudio’s settings).</p>
 <p>But you really shouldn’t wait until you’re all done to render. As you write, you should <u>regularly take a look at the rendered output</u> to make sure there are no errors and that it looks how you expect. When I’m writing in Quarto (including these notes), at a minimum I re-render and check the output every time I finish writing a paragraph of text or a full code block. Even more aggressively, you can check the “Render on Save” box to automatically render the document every time you save.</p>
+</section>
+</section>
+<section id="pulling-data-into-r" class="level2 page-columns page-full" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="pulling-data-into-r"><span class="header-section-number">1.4</span> Pulling data into R</h2>
+<p>We are finally ready for the fun part — data!</p>
+<p>Once you’ve opened RStudio, make sure you’ve loaded the tidyverse package if you haven’t done so already.</p>
+<!--
+By using {.r} instead of {r} in the next code block, I ensure that the code appears but doesn't run.
+I already loaded the tidyverse package in a block earlier in the document, so no need to have the Quarto engine do so twice when rendering this file.
+-->
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)  <span class="co"># tells R to put the tidyverse functions into its memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will use the tidyverse package basically every day in this class. R has built-in functions for loading and manipulating data, but these got old and creaky over time. The tidyverse provides a more modern and full-featured set of functions to load and work with data. You should probably just put <code>library("tidyverse")</code> in an R code chunk at the start of all your Quarto documents so that you don’t need to worry about which functions come from the tidyverse and which ones are built into R.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Comments in R code">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Comments in R code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The hashtag character <code>#</code> begins a <span class="concept">comment</span> in R. Once you put <code>#</code> in a line of R code, the R console will ignore everything after it until the end of the line. So both of these lines of code are the same, as far as R is concerned:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span> <span class="co"># + 1000 * 92 - infinity</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p>Comments are useful to leave notes to yourself, or to anyone else who might read your code, to explain what you’re doing or why you did it. They’re a bit less important in Quarto documents than in raw R scripts, since you can include full-text explanations in Quarto, but you’ll still see me use comments pretty frequently within code chunks too.</p>
+</div>
+</div>
+<section id="reading-a-csv" class="level3 page-columns page-full" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="reading-a-csv"><span class="header-section-number">1.4.1</span> Reading a CSV</h3>
+<p>The data file we’ll work with today is called <code>turnout.csv</code>. It’s stored on the website for these lecture notes, at <a href="https://bkenkel.com/qps1/data/turnout.csv" class="uri">https://bkenkel.com/qps1/data/turnout.csv</a>.</p>
+<p>CSV stands for <span class="concept">comma-separated values</span>. It is the most common way that political scientists distribute datasets, and all of the datasets I give you in this course will be in CSV format. The first row contains the names of the variables, each separated by a comma. Each subsequent row contains an observation, with the value of each variable again separated by commas. If you open up <code>turnout.csv</code> in a plain text editor (like Notepad on Windows or TextEdit on a Mac), the first few lines look like this:</p>
+<pre class="csv"><code>year,votes_counted,voting_age_pop,voting_eligible_pop,ineligible_felons,ineligible_noncitizens,eligible_overseas
+1980,86.515221,164.445475,159.690927,0.801977,5.755591625000001,1.803021
+1982,67.615576,166.027633,160.408786,0.959637,6.64110532,1.981895
+1984,92.65268,173.99461,167.708463,1.165246,7.481768229999999,2.360867
+1986,64.991128,177.92233,170.408916,1.367117,8.36234951,2.216053
+1988,91.594691,181.955484,173.609148,1.593976,9.279729683999998,2.52737</code></pre>
+<p>This data comes from the <a href="https://election.lab.ufl.edu/voter-turnout/">Election Lab</a> at the University of Florida. They track important statistics about turnout in federal elections: how many people were old enough to vote, how many of those were actually eligible to vote (i.e., excluding noncitizens and felons), and how many ballots were actually cast. Here’s a guide to the variables that are included here:</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>See <a href="data_sources.html" class="quarto-xref"><span>Appendix A</span></a> for more detail on all data files used in these notes.</p>
+</div></div><table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable name</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>year</code></td>
+<td>Election year</td>
+</tr>
+<tr class="even">
+<td><code>votes_counted</code></td>
+<td>Number of votes cast that election year (in millions)</td>
+</tr>
+<tr class="odd">
+<td><code>voting_age_pop</code></td>
+<td>Voting-age population (in millions)</td>
+</tr>
+<tr class="even">
+<td><code>voting_eligible_pop</code></td>
+<td>Voting-eligible population (in millions)</td>
+</tr>
+<tr class="odd">
+<td><code>ineligible_felons</code></td>
+<td>Citizens ineligible to vote due to felonies (in millions)</td>
+</tr>
+<tr class="even">
+<td><code>ineligible_noncitizens</code></td>
+<td>Residents ineligible to vote because not citizens (in millions)</td>
+</tr>
+<tr class="odd">
+<td><code>eligible_overseas</code></td>
+<td>Number of voting-eligible citizens living outside the US (in millions)</td>
+</tr>
+</tbody>
+</table>
+<p>We need to load this into R as a <span class="concept">data frame</span>, which is kind of like the equivalent of a spreadsheet within R. To that end, we’ll plug the URL into the <code>read_csv()</code> function. (Make sure you type the URL exactly right — it’s probably easiest to just copy-paste the following line.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/turnout.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let me break down that line for you, because there’s a lot going on here:</p>
+<ul>
+<li><p><code>df_turnout</code> is a <span class="concept">variable name</span>, which we will use to store and retrieve the data. The choice of variable name is totally up to you — but you’ll find yourself less confused and making fewer mistakes if you give your variables descriptive, memorable names. I usually name data frames <code>df_topic</code>, where <code>df</code> stands for “data frame” (you’ll create plenty of other variables that aren’t data frames) and where <code>topic</code> is whatever the data is about.</p></li>
+<li><p><code>&lt;-</code> is the <span class="concept">assignment operator</span>. When we write <code>varname &lt;- value</code>, what we are telling R is: “Calculate the value on the right-hand side. Then stuff the result of that calculation into <code>varname</code>, so that when I type <code>varname</code> into the R console later, it’s treated as the value of the calculation.”</p></li>
+<li><p><code>read_csv("https://bkenkel.com/qps1/data/turnout.csv")</code> tells R to visit the URL, take the contents of the file there, and put the data from it into a data frame. Notice that the URL goes into quotation marks.</p></li>
+</ul>
+<p>What if we were to run <code>read_csv(...)</code> alone, without assigning to a variable name? R would read the data, put it in a data frame, print the first few rows of the data frame, and then promptly forget that the data was ever there. Since the goal is to analyze the data, we want to store it as a variable to perform further calculations.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="`read_csv` versus `read.csv`">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>read_csv</code> versus <code>read.csv</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this class, I’ll always read data files using the <code>read_csv()</code> function. Sometimes you’ll see people using <code>read.csv()</code> instead, with a dot instead of an underscore. For the most part, <code>read.csv()</code> works the same way as <code>read_csv()</code>. However, I prefer <code>read_csv()</code> because it works faster on large datasets and has better default options.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Reading data from a file on your computer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reading data from a file on your computer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sometimes you can’t read data directly from a URL. Maybe you’re about to get on an airplane and won’t have wi-fi, or maybe someone emailed you a file you want to analyze. Either way, once you’ve downloaded the file to your computer, how do you get it into R?</p>
+<p>In this situation, you need to be especially mindful of your working directory (see <a href="#sec-working-directories" class="quarto-xref"><span>Section 1.2</span></a>). You want R’s working directory to match the location of the downloaded file, which means doing one of two things:</p>
+<ol type="1">
+<li><p>Before downloading the file, run <code>getwd()</code> in R to see where its working directory is. When you download the file, make sure to save it to that directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/home/brenton/Dropbox/courses/qps1/notes"</code></pre>
+</div>
+</div>
+<p>For example, I would need to save the file to (deep breath) the <code>notes</code> directory inside the <code>qps1</code> directory inside the <code>courses</code> directory in my Dropbox.</p></li>
+<li><p>Alternatively, after downloading the file, change the working directory in R to be wherever you put it. You can do this by giving the full directory path to <code>setwd()</code>, but it’s probably easier to use the file navigator in the RStudio interface, as illustrated in <a href="#fig-setwd" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>.</p></li>
+</ol>
+<p>After following either of these methods, you can use the <code>dir()</code> command to look at the list of files that R “sees” in the current working directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "_book"                   "_quarto.yml"            
+ [3] "_raw"                    "cover.png"              
+ [5] "data"                    "data_sources_cache"     
+ [7] "data_sources.qmd"        "data_visualization.qmd" 
+ [9] "data_wrangling.qmd"      "img"                    
+[11] "index.html"              "index.qmd"              
+[13] "intro_r.qmd"             "intro_r.rmarkdown"      
+[15] "qps1.scss"               "references.bib"         
+[17] "references.qmd"          "site_libs"              
+[19] "univariate_analysis.qmd"</code></pre>
+</div>
+</div>
+<p>Finally, once you’ve confirmed that the data file you want to analyze shows up here, you can load it into R by plugging the filename into <code>read_csv()</code>. As always, the filename will need go inside quotation marks. For example, if the file is called <code>pre_election_polls.csv</code>, you would run:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_polls <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"pre_election_polls.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="looking-at-the-data" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="looking-at-the-data"><span class="header-section-number">1.4.2</span> Looking at the data</h3>
+<p>If in the bottom of your heart you long for the comfort of Microsoft Excel, you can get a spreadsheet-type view of the data using the <code>View()</code> command in RStudio:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df_turnout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or you can see info in the R console by typing the variable name into the prompt and hitting enter:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_turnout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 7
+    year votes_counted voting_age_pop voting_eligible_pop ineligible_felons
+   &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;             &lt;dbl&gt;
+ 1  1980          86.5           164.                160.             0.802
+ 2  1982          67.6           166.                160.             0.960
+ 3  1984          92.7           174.                168.             1.17 
+ 4  1986          65.0           178.                170.             1.37 
+ 5  1988          91.6           182.                174.             1.59 
+ 6  1990          67.9           186.                177.             1.90 
+ 7  1992         104.            191.                180.             2.18 
+ 8  1994          75.1           195.                183.             2.44 
+ 9  1996          96.3           200.                186.             2.59 
+10  1998          74.8           205.                190.             2.92 
+# ℹ 12 more rows
+# ℹ 2 more variables: ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>“tibble” is just tidyverse’s cutesy name for data frames. I will use “tibble” and “data frame” interchangeably, though I’ll usually say “data frame” because “tibble” sounds more like a name for a stray cat. The <code>&lt;dbl&gt;</code> under each variable name indicates the type of variable. <code>&lt;dbl&gt;</code> just means the variable is a number (it comes from “double precision”, which is a particular way numbers are stored in computers). The other most common categorization you’ll see is <code>&lt;chr&gt;</code>, for variables that are “characters” rather than numbers.</p>
+<p>Unless your data frame has unusually few columns, this view will wind up with some of them being cut off. To see the first few entries of every single column, use <code>glimpse()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 22
+Columns: 7
+$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 1992, 1994,…
+$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113, 91.5946…
+$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223, 181.955…
+$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089, 173.609…
+$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117, 1.59397…
+$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350, 9.27973…
+$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.52737…</code></pre>
+</div>
+</div>
+<p>You can extract an individual row from a data frame using square brackets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_turnout[<span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 7
+   year votes_counted voting_age_pop voting_eligible_pop ineligible_felons
+  &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;             &lt;dbl&gt;
+1  1984          92.7           174.                168.              1.17
+# ℹ 2 more variables: ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>To retrieve a consecutive sequence of rows, use a colon:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_turnout[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+   year votes_counted voting_age_pop voting_eligible_pop ineligible_felons
+  &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;             &lt;dbl&gt;
+1  1984          92.7           174.                168.              1.17
+2  1986          65.0           178.                170.              1.37
+3  1988          91.6           182.                174.              1.59
+4  1990          67.9           186.                177.              1.90
+# ℹ 2 more variables: ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>You can retrieve a column by numeric index within brackets…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_turnout[, <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 1
+   voting_eligible_pop
+                 &lt;dbl&gt;
+ 1                160.
+ 2                160.
+ 3                168.
+ 4                170.
+ 5                174.
+ 6                177.
+ 7                180.
+ 8                183.
+ 9                186.
+10                190.
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+<p>…or by name (quoted) within brackets…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_turnout[, <span class="st">"voting_eligible_pop"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 1
+   voting_eligible_pop
+                 &lt;dbl&gt;
+ 1                160.
+ 2                160.
+ 3                168.
+ 4                170.
+ 5                174.
+ 6                177.
+ 7                180.
+ 8                183.
+ 9                186.
+10                190.
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+<p>…or, the option I most prefer, by name (not quoted) with a dollar sign.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_turnout<span class="sc">$</span>voting_eligible_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 159.6909 160.4088 167.7085 170.4089 173.6091 176.6783 179.5657 182.5494
+ [9] 186.3277 190.3424 194.2597 198.3647 202.9729 207.1481 213.3062 221.7765
+[17] 222.4375 227.1371 230.7808 236.9181 242.0778 242.9077</code></pre>
+</div>
+</div>
+<p>What do you think the following code does?</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_turnout[, <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Selecting a column from a data frame">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Selecting a column from a data frame
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As you can see in the preceding code blocks, when you select a column using brackets (whether by number or by name), R gives you a data frame with a single column. When you use the dollar sign, it gives you a <span class="concept">vector</span> — which you can think of as just a list of numbers, without the row-column structure of a data frame.</p>
+<p>If you’re planning to do other calculations like taking a sum or average, it’s usually more convenient to work with vectors than with single-column data frames. Hence my preference for <code>df_turnout$voting_eligible_pop</code> over <code>df_turnout[, "voting_eligible_pop"]</code>.</p>
+</div>
+</div>
+</section>
+<section id="simple-analysis" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="simple-analysis"><span class="header-section-number">1.4.3</span> Simple analysis</h3>
+<p>What has been the average voter turnout in federal elections since 1986? What about the highest and lowest? How has it varied over time?</p>
+<p>To answer these questions, first we need to actually calculate turnout as a percentage: <span class="math display">\[\text{turnout \%} = \frac{\text{votes cast}}{\text{eligible voters}} \times 100.\]</span> Let’s implement this formula in R, storing the result in a variable called <code>turnout_pct</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>turnout_pct <span class="ot">&lt;-</span> df_turnout<span class="sc">$</span>votes_counted <span class="sc">/</span> df_turnout<span class="sc">$</span>voting_eligible_pop</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>turnout_pct <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> turnout_pct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first line exploits a very convenient feature of R. If we have two vectors <code>x</code> and <code>y</code> with the same number of entries, then <code>x / y</code> will divide the first element of <code>x</code> by the first of <code>y</code>, the second element of <code>x</code> with the second of <code>y</code>, and so on. The same logic applies to <code>x + y</code>, <code>x - y</code>, <code>x * y</code>, <code>x^y</code> (<code>x</code> to the <code>y</code>’th power), and many more basic mathematical operations.</p>
+<p>The second line shows how we can modify a variable “in place”. I often break up complex calculations into multiple lines this way, just to make the code as easy to follow and read as possible.</p>
+<p>We can now calculate the lowest, highest, average, and median turnout.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(turnout_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 36.61048</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(turnout_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 65.98637</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(turnout_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 49.5346</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(turnout_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50.85756</code></pre>
+</div>
+</div>
+<p>The <code>summary()</code> command does all this at once, and more:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(turnout_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  36.61   41.02   50.86   49.53   57.43   65.99 </code></pre>
+</div>
+</div>
+<p>The first quartile is the 25th percentile: turnout is lower than 41% in a quarter of elections, and greater than 41% in the other three quarters of the elections. The third quartile is the mirror image of this: turnout is lower than 57% in three-quarters of elections, and greater than 57% in the other quarter.</p>
+</section>
+<section id="simple-data-visualization" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="simple-data-visualization"><span class="header-section-number">1.4.4</span> Simple data visualization</h3>
+<p>We’ll use <code>ggplot()</code> for data visualization throughout this course. The syntax for it is kind of weird, so don’t worry if it’s not all clear at first. You’ll get used to it over time, and we’ll talk about it in much more detail in the coming weeks.</p>
+<p>The first thing we need to do is put our turnout percentage calculation into our data frame as a column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_turnout<span class="sc">$</span>turnout_pct <span class="ot">&lt;-</span> turnout_pct</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout)  <span class="co"># now includes an 8th column containing turnout</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 22
+Columns: 8
+$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 1992, 1994,…
+$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113, 91.5946…
+$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223, 181.955…
+$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089, 173.609…
+$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117, 1.59397…
+$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350, 9.27973…
+$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.52737…
+$ turnout_pct            &lt;dbl&gt; 54.17667, 42.15204, 55.24628, 38.13834, 52.7591…</code></pre>
+</div>
+</div>
+<p>Now let’s make a <em>very</em> rough graph of how turnout has changed over time. Quarto will helpfully display the graph in the output once we render it!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_turnout, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> turnout_pct)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_r_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What stands out to me about this graph is the cyclical pattern, with turnout typically being 10–15 percentage points lower in midterm years than in presidential election years.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="'Percent' versus 'percentage point'">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+‘Percent’ versus ‘percentage point’
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Voter turnout was about 65% in 2020 and about 50% in 2018. So which of the following sentences is true, and which is false?</p>
+<ol type="1">
+<li><p>“Turnout in 2018 was 15 percent lower than turnout in 2020.”</p></li>
+<li><p>“Turnout in 2018 was 15 percentage points lower than turnout in 2020.”</p></li>
+</ol>
+<p>You might be surprised to learn that these sentences don’t mean the same thing. In fact, #2 is true, but #1 is false. If you found yourself surprised here, take a look at this <a href="https://journalistsresource.org/home/percent-change-math-for-journalists/">very short article on the difference between percent and percentage point</a>.</p>
+<p>Here’s my heuristic for deciding whether I’m calculating a “percent” or a “percentage point” change:</p>
+<ul>
+<li><p>If I’m using division to make the comparison, then I’m calculating a percent. For example, because <span class="math display">\[\frac{50}{65} \approx 0.77 = 77\%,\]</span> I would say that turnout in 2018 was about 23 percent lower than in 2020.</p></li>
+<li><p>If I’m using subtraction to make the comparison, then I’m calculating a percentage point. For example, because <span class="math inline">\(65 - 50 = 15\)</span>, I would say that turnout in 2018 was about 15 percentage points lower than in 2020.</p></li>
+</ul>
+<p>If you’re uncertain whether to report a percent difference or a percentage point difference, default to using the percentage point difference — it’s less confusing, especially to audiences that might not be finely attuned to the distinction. For example, imagine I said that jaywalking on 21st Ave raises your chance of being hit by a car by 50 percent. An inattentive or uninformed listener might incorrectly take that to mean that at least half of jaywalkers are getting hit. But if it’s actually just 2 out of every 10,000 non-jaywalkers who are getting hit, my statement would only mean that the rate is 3 out of 10,000 for jaywalkers.</p>
+</div>
+</div>
 
 
 </section>
