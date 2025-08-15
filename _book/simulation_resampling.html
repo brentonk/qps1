@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -42,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-d19a348d1c3c577774653d463d75021c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,10 +108,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -183,11 +250,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link active" data-scroll-target="#simulation"><span class="header-section-number">6.1</span> Simulation</a>
+  <ul class="collapse">
+  <li><a href="#random-number-generators" id="toc-random-number-generators" class="nav-link" data-scroll-target="#random-number-generators"><span class="header-section-number">6.1.1</span> Random number generators</a></li>
+  <li><a href="#simulating-regression-data" id="toc-simulating-regression-data" class="nav-link" data-scroll-target="#simulating-regression-data"><span class="header-section-number">6.1.2</span> Simulating regression data</a></li>
+  </ul></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops"><span class="header-section-number">6.2</span> Loops</a></li>
+  <li><a href="#resampling" id="toc-resampling" class="nav-link" data-scroll-target="#resampling"><span class="header-section-number">6.3</span> Resampling</a>
+  <ul class="collapse">
+  <li><a href="#resampling-coefficients" id="toc-resampling-coefficients" class="nav-link" data-scroll-target="#resampling-coefficients"><span class="header-section-number">6.3.1</span> Resampling coefficients</a></li>
+  <li><a href="#resampling-predictions" id="toc-resampling-predictions" class="nav-link" data-scroll-target="#resampling-predictions"><span class="header-section-number">6.3.2</span> Resampling predictions</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -208,8 +291,711 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!-- See notes below for what the set.seed() function does -->
+<p>Some of the calculations in our discussion of regression (<a href="correlation_regression.html#sec-regression" class="quarto-xref"><span>Section 5.3</span></a>), like the standard error and the <span class="math inline">\(p\)</span>-value, depended on some quirky statistical logic: If we could repeat our statistical procedure over and over on new samples, what would the distribution of results look like?</p>
+<p>Our main goal in this unit is to accomplish two things.</p>
+<ol type="1">
+<li><p>Make these statistical calculations a little bit less weird, by actually going through the “draw new samples over and over” process ourselves. In other words, we will run <span class="concept">simulations</span> to get an idea of how these statistical calculations work.</p></li>
+<li><p>Harness the true power of computer programming. Computers are really, really good at doing the same thing over and over. We will use the <span class="concept">for loop</span> in R to execute the same code very many times.</p></li>
+</ol>
+<section id="simulation" class="level2 page-columns page-full" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="simulation"><span class="header-section-number">6.1</span> Simulation</h2>
+<section id="random-number-generators" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="random-number-generators"><span class="header-section-number">6.1.1</span> Random number generators</h3>
+<p>R has built-in <span class="concept">random number generators</span>, which let you draw random numbers from a specified distribution. There are tons available, but we will use just a few in this course:</p>
+<ul>
+<li><p><code>sample()</code>, to randomly sample values from a particular vector.</p></li>
+<li><p><code>runif()</code>, to randomly draw numbers from a uniform distribution — every value between two points is equally likely.</p></li>
+<li><p><code>rnorm()</code>, to randomly draw numbers from a normal distribution — the familiar bell curve.</p></li>
+</ul>
+<p>If we want to tell R “randomly pick a number from 1 to 10”, we can use the <code>sample()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>The <code>x</code> argument gives the function the set of values to choose from, and the <code>size</code> argument tells it how many to choose. When your <code>size</code> is greater than 1, you may also want to set <code>replace = TRUE</code> to allow for sampling with replacement, where the same value can be chosen more than once. (The default is to sample without replacement.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>)  <span class="co"># no repeats possible</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8 2 3 5 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)  <span class="co"># repeats possible</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9 4 4 5 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"bear"</span>, <span class="st">"moose"</span>, <span class="st">"pizza"</span>), <span class="at">size =</span> <span class="dv">2</span>)  <span class="co"># sampling non-numeric values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "pizza" "moose"</code></pre>
+</div>
+</div>
+<p>Every time you use a random number function like <code>sample()</code>, you will get different results. That can be annoying when you’re writing a Quarto document — every time you render it, the numbers change! To prevent this, you can set a <span class="concept">random seed</span> with the <code>set.seed()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">14</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  9  9  4  4 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Will get same results after setting same seed</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">14</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  9  9  4  4 10</code></pre>
+</div>
+</div>
+<p>You can put any whole number into the <code>set.seed()</code> function. I often use the jersey numbers of athletes I like and the years of memorable historical events.</p>
+<p>Another useful function is <code>runif()</code>, which samples from the <span class="concept">uniform distribution</span> between two points. Use the <code>min</code> and <code>max</code> arguments to specify these points.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>)  <span class="co"># between 0 and 1 by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1637900 0.4741345 0.8512112 0.8574638 0.7396847</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 41.77897 70.60358 86.64114 63.58222 41.58333</code></pre>
+</div>
+</div>
+<p>Use <code>runif()</code> when you want a flat histogram.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"cowplot"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_cowplot</span>()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">fake_x =</span> <span class="fu">runif</span>(<span class="dv">10000</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> fake_x)) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="simulation_resampling_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="simulation_resampling_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The last random number generator we’ll look at is <code>rnorm()</code>, which samples from the <span class="concept">normal distribution</span>. The normal distribution is a bell-curve-shaped probability distribution. Use the <code>mean</code> and <code>sd</code> arguments to specify the mean and standard deviation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>)  <span class="co"># mean 0, sd 1 by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5305785  0.1476253  0.4697936  0.4822537 -1.4676395</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  96.95443 106.14779 107.88788 100.81268  94.27664</code></pre>
+</div>
+</div>
+<p>The histogram of normally distributed values has the familiar bell curve shape.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_fake_normal <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">fake_x =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">20</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df_fake_normal <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> fake_x)) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="simulation_resampling_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="simulation_resampling_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The heuristic I mentioned in <a href="univariate_analysis.html#sec-standard-deviation" class="quarto-xref"><span>Section 3.3.1</span></a>, that 95% of the data falls within 2 standard deviations of the mean, is exact in the case of a normal distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_fake_normal <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">within2 =</span> <span class="fu">if_else</span>(fake_x <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> fake_x <span class="sc">&lt;=</span> <span class="dv">90</span>, <span class="st">"within"</span>, <span class="st">"outside"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(within2) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  within2     n   prop
+  &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;
+1 outside   487 0.0487
+2 within   9513 0.951 </code></pre>
+</div>
+</div>
+</section>
+<section id="simulating-regression-data" class="level3 page-columns page-full" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="simulating-regression-data"><span class="header-section-number">6.1.2</span> Simulating regression data</h3>
+<p>It can often be useful to simulate data using random number generators. That might seem weird, since our ultimate goal is to learn about the real world, and numbers that we make up on our computer aren’t from the real world. But there are a couple of ways a simulation can help us:</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>The weirdness of simulations hasn’t stopped certain political scientists from trying to use ChatGPT responses in place of real survey data! See my <a href="https://doi.org/10.1017/pan.2024.5"><em>Political Analysis</em> article</a> with fellow Vanderbilt professors Jim Bisbee, Josh Clinton, Cassy Dorff, and Jenn Larson.</p>
+</div></div><ul>
+<li><p>Giving us a benchmark to test against. If we know exactly what patterns our analysis <em>should</em> find — which we do if we control exactly how the data was generated — then we can use a simulation to gauge how far off our statistical models might be in practice.</p></li>
+<li><p>What we’ll be doing today — helping us wrap our heads around difficult statistical concepts. Concepts like the standard error and <span class="math inline">\(p\)</span>-value are about what would happen if you took lots of samples from a population with certain properties. It can be weird to think about those with real data, since we typically only have one sample to work with. Simulations make it much easier to think through.</p></li>
+</ul>
+<p>Let’s simulate data that follows a linear regression model: <span class="math display">\[y \approx 10 + 0.5 x.\]</span> To make it a bit more fun than just calling the variables “x” and “y” — with no effect on the simulation results, as this is fake data — let’s assume the feature represents someone’s feeling thermometer score toward Chancellor Diermeier, and the response is their feeling toward Elon Musk. We’ll set it up so that we have a residual standard deviation of 5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1873</span>)  <span class="co"># crescere aude!</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df_simulation <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_diermeier =</span> <span class="fu">runif</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">50</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="dv">20</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="dv">80</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_musk =</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> x_diermeier <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>df_simulation <span class="sc">|&gt;</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x_diermeier, <span class="at">y =</span> y_musk)) <span class="sc">+</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="simulation_resampling_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="simulation_resampling_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression results</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fit_musk_diermeier <span class="ot">&lt;-</span> <span class="fu">lm</span>(y_musk <span class="sc">~</span> x_diermeier, <span class="at">data =</span> df_simulation)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_musk_diermeier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y_musk ~ x_diermeier, data = df_simulation)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-10.7309  -3.5182  -0.4258   4.1335  10.8545 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  9.01924    2.30978   3.905 0.000294 ***
+x_diermeier  0.52482    0.04285  12.249  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.437 on 48 degrees of freedom
+Multiple R-squared:  0.7576,    Adjusted R-squared:  0.7526 
+F-statistic:   150 on 1 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The “true” intercept and slope are 10 and 0.5, respectively. We estimate an intercept and slope of roughly 9.0 and 0.52, each within a standard error of the true value. The <span class="math inline">\(p\)</span>-value also tells us that it would be very unlikely to get such a steep slope from a sample of this size if the slope in the population were 0.</p>
+<p>You might remember that the standard error has a kind of weird definition. The <span class="concept">sampling distribution</span> of a statistic (e.g., a regression coefficient) is the distribution of values it would take across <em>every</em> possible sample from the population. The standard error is the standard deviation of that distribution. Usually we can’t directly observe sampling distributions because we only have one sample. However, when we are running a simulation where we generate the data, we can generate as many samples as we want to!</p>
+<p>Now we can’t take every possible sample from the distribution we used to generate our data, as there are infinitely many. But we can take <em>a lot</em> of samples, in order to closely approximate the sampling distribution. We then run into another problem — isn’t this going to be really tedious? If we want to run a hundred simulations, do we have to repeat our code hundreds of times?</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_simulation_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_diermeier =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">50</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">min =</span> <span class="dv">20</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">max =</span> <span class="dv">80</span>),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_musk =</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> x_diermeier <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>fit_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y_musk <span class="sc">~</span> x_diermeier, <span class="at">data =</span> df_simulation_1)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>df_simulation_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_diermeier =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">50</span>,</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">min =</span> <span class="dv">20</span>,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">max =</span> <span class="dv">80</span>),</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_musk =</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> x_diermeier <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>fit_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y_musk <span class="sc">~</span> x_diermeier, <span class="at">data =</span> df_simulation_2)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ... and so on?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="loops" class="level2 page-columns page-full" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="loops"><span class="header-section-number">6.2</span> Loops</h2>
+<p>It turns out we don’t have to write the same code hundreds of times. R, like virtually every programming language, has a feature called a <span class="concept">for loop</span> that lets us repeatedly run code with the same structure.</p>
+<p>A for loop in R has the following syntax:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> values) {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## code goes here</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><code>values</code>: The values to iterate over. Whatever the length of <code>values</code> is, that’s the number of times the loop will run. So if you put <code>1:10</code> here, it will run ten times. If you put <code>c("bear", "moose", "pizza")</code>, it will run three times.</p></li>
+<li><p><code>i</code>: A variable name that is assigned to the corresponding element of <code>values</code> each time the loop runs. You can use any valid variable name in place of <code>i</code> here, though <code>i</code> is what you’ll see most commonly.</p></li>
+<li><p>Inside the brackets: Code that is run every time the loop is executed.</p></li>
+</ul>
+<p>Before getting into a more complicated situation, let’s look at a couple of simple examples of for loops. Here’s one where we repeat the following process ten times: Sample five random numbers from a normal distribution with mean 100 and standard deviation 10, and calculate their mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">97</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">mean</span>(x))</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 105.1824
+[1] 97.267
+[1] 98.56986
+[1] 101.0031
+[1] 95.62228
+[1] 108.3287
+[1] 98.22445
+[1] 96.06675
+[1] 103.3609
+[1] 95.77259</code></pre>
+</div>
+</div>
+<p>When we do it that way, the results just disappear into the ether. If you want to save the results to work with later (e.g., to plot them), you need to write the loop to save them.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p><strong>Nerd note:</strong> In the code here, I just set up a null variable to hold the results, and then in each iteration of the loop I append the current iteration’s results to that variable. If you’re ever doing high-end computational work in R, this way will run more slowly than if you set up the full vector to store the results first. For example, in this case I could have done <code>sim_results &lt;- rep(NA, 10)</code> before the loop, and then did <code>sim_results[i] &lt;- mean(x)</code> inside the loop. For our purposes in this class I’m going to stick with the easier way, but you should be aware in case you ever find yourself doing more advanced computational work.</p>
+</div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">97</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sim_results <span class="ot">&lt;-</span> <span class="cn">NULL</span>  <span class="co"># variable that will hold the results</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  sim_results <span class="ot">&lt;-</span> <span class="fu">c</span>(sim_results, <span class="fu">mean</span>(x))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>sim_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 105.18240  97.26700  98.56986 101.00311  95.62228 108.32866
+ [7]  98.22445  96.06675 103.36093  95.77259</code></pre>
+</div>
+</div>
+<p>Now let’s use a loop to look at the sampling distribution of the regression coefficients when we simulate data according to our regression formula. We will repeat the following process 100 times:</p>
+<ol type="1">
+<li><p>Simulate a dataset according to our formula.</p></li>
+<li><p>Run a regression on the simulated data.</p></li>
+<li><p>Extract the coefficient and standard error estimates, storing them as a data frame.</p></li>
+</ol>
+<p>Our goal is to see how much our estimates of the slope and intercept vary from sample to sample.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"broom"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed as described above</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1618</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty data frame to store results</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>df_regression_sim <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simulate data</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  df_loop <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_diermeier =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">min =</span> <span class="dv">20</span>, <span class="at">max =</span> <span class="dv">80</span>),</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_musk =</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> x_diermeier <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run regression</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  fit_loop <span class="ot">&lt;-</span> <span class="fu">lm</span>(y_musk <span class="sc">~</span> x_diermeier, <span class="at">data =</span> df_loop)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store results of this iteration</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>  df_regression_sim <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_regression_sim, <span class="fu">tidy</span>(fit_loop))</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>df_regression_sim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 200 × 5
+   term        estimate std.error statistic  p.value
+   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1 (Intercept)    7.87     2.85        2.76 8.19e- 3
+ 2 x_diermeier    0.513    0.0590      8.70 2.00e-11
+ 3 (Intercept)    9.81     2.00        4.91 1.08e- 5
+ 4 x_diermeier    0.503    0.0394     12.8  4.98e-17
+ 5 (Intercept)    8.92     2.48        3.59 7.69e- 4
+ 6 x_diermeier    0.496    0.0469     10.6  3.82e-14
+ 7 (Intercept)    6.32     2.22        2.85 6.45e- 3
+ 8 x_diermeier    0.573    0.0424     13.5  5.68e-18
+ 9 (Intercept)    8.80     2.37        3.71 5.36e- 4
+10 x_diermeier    0.507    0.0439     11.6  1.83e-15
+# ℹ 190 more rows</code></pre>
+</div>
+</div>
+<p><code>df_regression_sim</code> contains the output from our simulation. It has 200 rows — two per simulation iteration, one for the intercept and one for the slope. You can see just from glancing at the results that there’s some variation from simulated sample to simulated sample, but the intercepts are fairly close to the true value of 10 and the slopes are very close to the true value of 0.5.</p>
+<p>Remember from above that the standard error is the standard deviation of the sampling distribution. So to get an idea of how much the intercept and slope vary from sample to sample, we will calculate the standard deviation of the 100 draws we took from the sampling distribution. The number that R spits out as the “standard error” with regression results (the <code>"std.error"</code> column of <code>tidy()</code> output) is actually an <em>estimate</em> of the true standard error. We’ll also take the average of these standard error estimates to see how they compare to the true variability of the coefficients from sample to sample.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_regression_sim <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_est =</span> <span class="fu">mean</span>(estimate),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">true_se =</span> <span class="fu">sd</span>(estimate),</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_se_est =</span> <span class="fu">mean</span>(std.error)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  term        avg_est true_se avg_se_est
+  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+1 (Intercept)  10.1    2.21       2.24  
+2 x_diermeier   0.498  0.0417     0.0422</code></pre>
+</div>
+</div>
+<p>Here’s what this table is telling us:</p>
+<ul>
+<li><p>Across our 100 simulations, the average intercept is very close to its true value of 10, and the average slope is very close to its true value of 0.5. This is an illustration of the fact that linear regression is <a href="https://en.wikipedia.org/wiki/Bias_of_an_estimator">unbiased</a> in statistical terms.</p></li>
+<li><p>The <em>true</em> standard error of the intercept is about 2.2, so across samples we would expect to estimate an intercept within <span class="math inline">\(10 \pm 4.4\)</span> about 95% of the time. The true standard error of the slope is about 0.04, so across samples we would expect to estimate a slope within <span class="math inline">\(0.5 \pm 0.08\)</span> about 95% of the time.</p></li>
+<li><p>On average, R’s estimate of the standard error of both coefficients comes pretty close to the true standard error. The upshot is that these values are pretty reliable for statistical inference — any given sample will give us a good idea as to the range of plausible values for the intercept and slope.</p></li>
+</ul>
+<p>To illustrate that final point, there’s another question we can use our simulation results to answer. Let’s use the formula <span class="math display">\[\text{estimate} \pm 2 \times \text{std error}\]</span> to determine a range of plausible values for the coefficient. If we do this with each of the samples in our simulation, how often does the range of plausible values include the <em>true</em> value of 0.5?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_regression_sim <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x_diermeier"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(estimate) <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower =</span> estimate <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> std.error,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper =</span> estimate <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> std.error,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="fu">if_else</span>(</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>      lower <span class="sc">&lt;=</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> upper <span class="sc">&gt;=</span> <span class="fl">0.5</span>,</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"includes true slope"</span>,</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"doesn't include true slope"</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lower, <span class="at">xmax =</span> upper, <span class="at">y =</span> id)) <span class="sc">+</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">color =</span> type)) <span class="sc">+</span></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="simulation_resampling_files/figure-html/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="simulation_resampling_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The range includes the true slope in 94 out of our 100 samples. That’s very close to the 95% we would expect from a <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a> calculation like this one.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-class exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run a new simulation with a similar regression equation, except where the true slope is 0. This time do 1000 simulation iterations instead of 100. In how many of your iterations is the slope “statistically significant”, in terms of having a <span class="math inline">\(p\)</span>-value of 0.05 or less?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resampling" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="resampling"><span class="header-section-number">6.3</span> Resampling</h2>
+<p>The basic idea behind these simulations can also be applied to estimate uncertainty in real data problems. To see this principle in action, we will work with the same survey data as in <a href="correlation_regression.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/anes_2020.csv"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>df_anes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,280 × 31
+      id state  female  lgbt race    age education employed hours_worked
+   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+ 1     1 Oklah…      0     0 Hisp…    46 Bachelor…        1           40
+ 2     2 Idaho       1     0 Asian    37 Some col…        1           40
+ 3     3 Virgi…      1     0 White    40 High sch…        0            0
+ 4     4 Calif…      0     0 Asian    41 Some col…        1           40
+ 5     5 Color…      0     0 Nati…    72 Graduate…        0            0
+ 6     6 Texas       1     0 White    71 Some col…        0            0
+ 7     7 Wisco…      1     0 White    37 Some col…        1           30
+ 8     8 &lt;NA&gt;        1     0 White    45 High sch…        0           40
+ 9     9 Arizo…      1     0 White    70 High sch…        0            0
+10    10 Calif…      0     0 Hisp…    43 Some col…        1           30
+# ℹ 8,270 more rows
+# ℹ 22 more variables: watch_tucker &lt;dbl&gt;, watch_maddow &lt;dbl&gt;,
+#   therm_biden &lt;dbl&gt;, therm_trump &lt;dbl&gt;, therm_harris &lt;dbl&gt;,
+#   therm_pence &lt;dbl&gt;, therm_obama &lt;dbl&gt;, therm_dem_party &lt;dbl&gt;,
+#   therm_rep_party &lt;dbl&gt;, therm_feminists &lt;dbl&gt;, therm_liberals &lt;dbl&gt;,
+#   therm_labor_unions &lt;dbl&gt;, therm_big_business &lt;dbl&gt;,
+#   therm_conservatives &lt;dbl&gt;, therm_supreme_court &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<section id="resampling-coefficients" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="resampling-coefficients"><span class="header-section-number">6.3.1</span> Resampling coefficients</h3>
+<p>We want to separate the signal from the noise — to figure out what inferences we can reliably draw from the data we have, as opposed to patterns that might have shown up through sheer random chance. Our goal is to gauge “If we could draw a bunch of new random samples of the same size, how much would we expect our regression estimates to vary from sample to sample?” This may seem like an impossible question to answer with a single sample. It turns out, however, that we can get an approximate answer using a technique called <span class="concept">the bootstrap</span>.</p>
+<p>The basic idea behind the bootstrap is that we can generate new random samples by sampling <em>with replacement</em> from our original data. Because we are sampling with replacement, some of our original observations will show up 2, 3, or even more times in any given bootstrap sample, while others won’t be included at all. In the same fashion as the simulations we ran above, we won’t just draw one bootstrap sample—we will draw hundreds or even thousands of new samples, so as to get an idea of how our statistical calculations would vary from sample to sample.</p>
+<p>To draw a single bootstrap sample from a data frame, we can use the <code>slice_sample()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1789</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df_boot <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>df_boot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,280 × 31
+      id state  female  lgbt race    age education employed hours_worked
+   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+ 1  3243 Calif…      1     0 Nati…    64 Some col…        0            0
+ 2  7413 Michi…      1     0 White    70 Bachelor…        0            0
+ 3  3511 Washi…      0     0 White    76 Bachelor…        0            0
+ 4  4841 Massa…      1     0 White    80 &lt;NA&gt;             0            0
+ 5  6165 Washi…      1     0 White    64 Bachelor…        1           40
+ 6  2698 Maryl…      1     0 White    47 Graduate…        1           50
+ 7  5578 Calif…      0     0 Asian    55 Bachelor…        1           60
+ 8  3543 Nevada      1     0 Black    52 Some col…        1           40
+ 9  7316 Calif…      1     0 White    80 Less tha…        0            0
+10  3827 Flori…      0    NA Nati…    NA Some col…        0            0
+# ℹ 8,270 more rows
+# ℹ 22 more variables: watch_tucker &lt;dbl&gt;, watch_maddow &lt;dbl&gt;,
+#   therm_biden &lt;dbl&gt;, therm_trump &lt;dbl&gt;, therm_harris &lt;dbl&gt;,
+#   therm_pence &lt;dbl&gt;, therm_obama &lt;dbl&gt;, therm_dem_party &lt;dbl&gt;,
+#   therm_rep_party &lt;dbl&gt;, therm_feminists &lt;dbl&gt;, therm_liberals &lt;dbl&gt;,
+#   therm_labor_unions &lt;dbl&gt;, therm_big_business &lt;dbl&gt;,
+#   therm_conservatives &lt;dbl&gt;, therm_supreme_court &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>The <code>prop = 1</code> argument tells <code>slice_sample()</code> to draw the same number of observations as in the original sample. (If we wanted half as many, for example, we would use <code>prop = 0.5</code>.) The <code>replace = TRUE</code> argument tells it to sample with replacement. Without this argument, we would just end up with our original data but with the rows in a different order, giving us exactly the same statistical calculations as we got originally.</p>
+<p>If we look at the relationship between feelings toward the police and feelings toward Donald Trump, we see similar — but not exactly the same — estimates in the original sample and in our singular (so far) bootstrap resample.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fit_main <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_boot)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_main)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ therm_police, data = df_anes)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-61.972 -32.068  -1.972  34.242 112.789 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -12.7889     1.2503  -10.23   &lt;2e-16 ***
+therm_police   0.7476     0.0167   44.78   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 35.69 on 7188 degrees of freedom
+  (1090 observations deleted due to missingness)
+Multiple R-squared:  0.2181,    Adjusted R-squared:  0.218 
+F-statistic:  2005 on 1 and 7188 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_boot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = therm_trump ~ therm_police, data = df_boot)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-62.277 -31.733  -1.461  34.177 114.083 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -14.0829     1.2558  -11.21   &lt;2e-16 ***
+therm_police   0.7636     0.0168   45.47   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 35.59 on 7168 degrees of freedom
+  (1110 observations deleted due to missingness)
+Multiple R-squared:  0.2238,    Adjusted R-squared:  0.2237 
+F-statistic:  2067 on 1 and 7168 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>A single bootstrap sample doesn’t give us very much that’s interesting. The method requires that we resample from the data <em>many</em> times, then look at the distribution of the results. We can accomplish that with (hopefully you guessed it…) a for loop.</p>
+<!-- cache=TRUE saves the results of the code block, so it won't rerun every time I render the document.  Useful for blocks like this where the computation time is longer than usual. -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed as discussed above</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1066</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty data frame to store resampling results</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>df_coef_boot <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Resample the data 1000 times (aka: 1000 bootstrap iterations)</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw bootstrap sample</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  df_boot <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(df_anes, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Rerun regression model on bootstrap sample</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_boot)</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Save results</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>  df_coef_boot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_coef_boot, <span class="fu">tidy</span>(fit_boot))</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>df_coef_boot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 5
+   term         estimate std.error statistic  p.value
+   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1 (Intercept)   -10.7      1.25       -8.57 1.27e-17
+ 2 therm_police    0.722    0.0167     43.2  0       
+ 3 (Intercept)   -11.3      1.21       -9.30 1.79e-20
+ 4 therm_police    0.732    0.0163     45.0  0       
+ 5 (Intercept)   -13.2      1.27      -10.4  3.79e-25
+ 6 therm_police    0.752    0.0170     44.3  0       
+ 7 (Intercept)   -14.0      1.30      -10.8  7.64e-27
+ 8 therm_police    0.758    0.0173     43.9  0       
+ 9 (Intercept)   -10.2      1.22       -8.36 7.58e-17
+10 therm_police    0.711    0.0164     43.4  0       
+# ℹ 1,990 more rows</code></pre>
+</div>
+</div>
+<p>Using the results of the bootstrap resampling, we can directly look at the distribution of regression coefficients across samples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df_coef_boot <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> term, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">panel_border</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="simulation_resampling_files/figure-html/unnamed-chunk-20-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="simulation_resampling_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You might notice that both distributions have a bell curve shape. This isn’t a coincidence. It’s an example of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a>, an important result showing that many common statistics have approximately normal sampling distributions. You’ll also notice that both distributions are centered roughly around the coefficients from the regression with the original data. The estimated intercept tends to be between -15 and -10, while the estimated slope tends to be between 0.72 and 0.78.</p>
+<p>We can gauge the standard error by taking the standard deviation of the bootstrap distribution, and we can also calculate a range of plausible values by using the percentiles.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df_coef_boot <span class="sc">|&gt;</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term) <span class="sc">|&gt;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_err =</span> <span class="fu">sd</span>(estimate),</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower =</span> <span class="fu">quantile</span>(estimate, <span class="fl">0.025</span>),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper =</span> <span class="fu">quantile</span>(estimate, <span class="fl">0.975</span>)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  term         std_err   lower   upper
+  &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)   1.22   -15.2   -10.5  
+2 therm_police  0.0170   0.717   0.782</code></pre>
+</div>
+</div>
+<p>These are pretty close to the standard error from the original analysis, as well as the range of coefficients we would estimate with the “<span class="math inline">\(\pm\)</span> 2 standard errors” rule.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit_main) <span class="sc">|&gt;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate, std.error) <span class="sc">|&gt;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower =</span> estimate <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> std.error,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper =</span> estimate <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> std.error</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term         estimate std.error   lower   upper
+  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)   -12.8      1.25   -15.3   -10.3  
+2 therm_police    0.748    0.0167   0.714   0.781</code></pre>
+</div>
+</div>
+<p>What’s the point of bootstrapping if it ultimately yields close to the same answers as what we would get from the <code>summary()</code> output?</p>
+<ol type="1">
+<li><p>The bootstrap is more robust. In data situations with small samples, big outliers, or other issues, the bootstrap may be more reliable at estimating the amount of sample-to-sample variation in the regression coefficients than the standard formulas are.</p></li>
+<li><p>The bootstrap is very widely applicable to statistical measures. For some calculations, there’s not a standard error calculation reported by default like there is for regression coefficients. But you can still bootstrap them: just resample from your original data with replacement, calculate the statistic on each bootstrap iteration, and then look at the distribution of bootstrap estimates to gauge the amount of variability and the plausible range of estimates.</p></li>
+<li><p>By using the bootstrap and recovering close to the original results, you (I hope!) get a better idea of how it is that we can estimate sample-to-sample variability in a statistic even though we only actually observe a single sample of data.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-class exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose the statistic you are interested in is the median of respondents’ feeling thermometer score toward Donald Trump. Use the bootstrap to estimate the standard error of the median, as well as a range of plausible medians.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resampling-predictions" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="resampling-predictions"><span class="header-section-number">6.3.2</span> Resampling predictions</h3>
+<p>Suppose we want to predict someone’s feeling toward Donald Trump if all we know about them is that their feeling toward the police is a 50 on a 100-point scale. We know that we can use the regression formula, <span class="math display">\[\text{response} \approx \text{intercept} + \text{slope} \times 50,\]</span> to come up with a prediction. What’s harder is to gauge the amount of uncertainty in that prediction—i.e., to nail down the range of estimates that are plausible based on the knowledge we have. In part that’s because there are two sources of uncertainty.</p>
+<ol type="1">
+<li><p>The regression line doesn’t perfectly fit the data. There’s some spread between the points and the line, summarized by what R calls the residual standard error.</p></li>
+<li><p>The regression line we estimate from our sample might be different than the line we would fit if we had the full population of data. In other words, there’s statistical uncertainty about the values of the slope and the intercept.</p></li>
+</ol>
+<p>The bootstrap method lets us account for both of these sources of uncertainty. To accomplish this, we will use a simulation-within-a-simulation. For each bootstrap sample, we will:</p>
+<ul>
+<li><p>Run the regression of Trump feeling on police feeling.</p></li>
+<li><p>Use the intercept and slope to calculate predicted Trump feeling for someone whose police feeling is 50.</p></li>
+<li><p>Use the predicted value and the residual standard error to simulate a <em>distribution</em> of potential values of Trump feeling.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed as discussed above</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Null variable to store simulation results</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>pred_at_50 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulating 1000 times</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw bootstrap resample</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>  df_boot <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(df_anes, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit regression model and extract coefficients + residual sd</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>  fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_boot)</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>  tidy_boot <span class="ot">&lt;-</span> <span class="fu">tidy</span>(fit_boot)</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>  intercept <span class="ot">&lt;-</span> tidy_boot<span class="sc">$</span>estimate[<span class="dv">1</span>]</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>  slope <span class="ot">&lt;-</span> tidy_boot<span class="sc">$</span>estimate[<span class="dv">2</span>]</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> <span class="fu">glance</span>(fit_boot)<span class="sc">$</span>sigma</span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate main prediction at therm_police = 50</span></span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>  pred_boot <span class="ot">&lt;-</span> intercept <span class="sc">+</span> slope <span class="sc">*</span> <span class="dv">50</span></span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simulate distribution of predictions</span></span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a>  dist_pred_boot <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> pred_boot, <span class="at">sd =</span> sigma)</span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Append results to storage vector</span></span>
+<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a>  pred_at_50 <span class="ot">&lt;-</span> <span class="fu">c</span>(pred_at_50, dist_pred_boot)</span>
+<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can take a look at the distribution of predictions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(pred_at_50) <span class="sc">|&gt;</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> pred_at_50)) <span class="sc">+</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="simulation_resampling_files/figure-html/unnamed-chunk-24-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="simulation_resampling_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The main takeaway here is that there’s a <em>ton</em> of uncertainty in this prediction. A sizable percentage of the simulated predictions are below 0, and a few are even above 100. Let’s look at the average and standard deviation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(pred_at_50)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pred_at_50)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24.33769</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(pred_at_50)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35.74144</code></pre>
+</div>
+</div>
+<p>The standard deviation here is not much larger than the residual standard deviation in our regression model on the original data. That tells me that the statistical uncertainty about the coefficient values is contributing relatively little to our uncertainty about the prediction. Instead, most of the variation in predictions is coming from the fact that the points are spread out pretty far from the regression line in the first place.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In-class exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Repeat the simulation from this section, but for someone whose feeling toward the police is 75 rather than 50. What differences do you see in the central tendency and the spread of the distribution of resampled predictions?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -639,6 +1425,38 @@ This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

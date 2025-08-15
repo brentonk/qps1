@@ -1,1 +1,582 @@
 # Simulation and Resampling {#sec-simulation-resampling}
+
+<!-- See notes below for what the set.seed() function does -->
+
+```{r}
+#| echo: false
+set.seed(37)
+```
+
+Some of the calculations in our discussion of regression (@sec-regression), like the standard error and the $p$-value, depended on some quirky statistical logic: If we could repeat our statistical procedure over and over on new samples, what would the distribution of results look like?
+
+Our main goal in this unit is to accomplish two things.
+
+1.  Make these statistical calculations a little bit less weird, by actually going through the "draw new samples over and over" process ourselves.
+    In other words, we will run [simulations]{.concept} to get an idea of how these statistical calculations work.
+
+2.  Harness the true power of computer programming.
+    Computers are really, really good at doing the same thing over and over.
+    We will use the [for loop]{.concept} in R to execute the same code very many times.
+
+## Simulation
+
+### Random number generators
+
+R has built-in [random number generators]{.concept}, which let you draw random numbers from a specified distribution.
+There are tons available, but we will use just a few in this course:
+
+*   `sample()`, to randomly sample values from a particular vector.
+
+*   `runif()`, to randomly draw numbers from a uniform distribution --- every value between two points is equally likely.
+
+*   `rnorm()`, to randomly draw numbers from a normal distribution --- the familiar bell curve.
+
+If we want to tell R "randomly pick a number from 1 to 10", we can use the `sample()` function.
+
+```{r}
+sample(x = 1:10, size = 1)
+```
+
+The `x` argument gives the function the set of values to choose from, and the `size` argument tells it how many to choose.
+When your `size` is greater than 1, you may also want to set `replace = TRUE` to allow for sampling with replacement, where the same value can be chosen more than once.
+(The default is to sample without replacement.)
+
+```{r}
+sample(x = 1:10, size = 5)  # no repeats possible
+sample(x = 1:10, size = 5, replace = TRUE)  # repeats possible
+sample(x = c("bear", "moose", "pizza"), size = 2)  # sampling non-numeric values
+```
+
+Every time you use a random number function like `sample()`, you will get different results.
+That can be annoying when you're writing a Quarto document --- every time you render it, the numbers change!
+To prevent this, you can set a [random seed]{.concept} with the `set.seed()` function.
+
+```{r}
+set.seed(14)
+sample(x = 1:10, size = 5, replace = TRUE)
+
+# Will get same results after setting same seed
+set.seed(14)
+sample(x = 1:10, size = 5, replace = TRUE)
+```
+
+You can put any whole number into the `set.seed()` function.
+I often use the jersey numbers of athletes I like and the years of memorable historical events.
+
+Another useful function is `runif()`, which samples from the [uniform distribution]{.concept} between two points.
+Use the `min` and `max` arguments to specify these points.
+
+```{r}
+runif(n = 5)  # between 0 and 1 by default
+runif(n = 5, min = 10, max = 100)
+```
+
+Use `runif()` when you want a flat histogram.
+
+```{r}
+#| message: false
+library("tidyverse")
+library("cowplot")
+theme_set(
+  theme_cowplot()
+)
+
+tibble(fake_x = runif(10000, min = 0, max = 100)) |>
+  ggplot(aes(x = fake_x)) +
+  geom_histogram(binwidth = 5)
+```
+
+The last random number generator we'll look at is `rnorm()`, which samples from the [normal distribution]{.concept}.
+The normal distribution is a bell-curve-shaped probability distribution.
+Use the `mean` and `sd` arguments to specify the mean and standard deviation.
+
+```{r}
+rnorm(n = 5)  # mean 0, sd 1 by default
+rnorm(n = 5, mean = 100, sd = 10)
+```
+
+The histogram of normally distributed values has the familiar bell curve shape.
+
+```{r}
+df_fake_normal <- tibble(fake_x = rnorm(10000, mean = 50, sd = 20))
+
+df_fake_normal |>
+  ggplot(aes(x = fake_x)) +
+  geom_histogram(binwidth = 5)
+```
+
+The heuristic I mentioned in @sec-standard-deviation, that 95% of the data falls within 2 standard deviations of the mean, is exact in the case of a normal distribution.
+
+```{r}
+df_fake_normal |>
+  mutate(within2 = if_else(fake_x >= 10 & fake_x <= 90, "within", "outside")) |>
+  count(within2) |>
+  mutate(prop = n / sum(n))
+```
+
+### Simulating regression data
+
+It can often be useful to simulate data using random number generators.
+That might seem weird, since our ultimate goal is to learn about the real world, and numbers that we make up on our computer aren't from the real world.
+But there are a couple of ways a simulation can help us:
+
+::: {.aside}
+The weirdness of simulations hasn't stopped certain political scientists from trying to use ChatGPT responses in place of real survey data!  See my [*Political Analysis* article](https://doi.org/10.1017/pan.2024.5) with fellow Vanderbilt professors Jim Bisbee, Josh Clinton, Cassy Dorff, and Jenn Larson.
+:::
+
+*   Giving us a benchmark to test against.
+    If we know exactly what patterns our analysis *should* find --- which we do if we control exactly how the data was generated --- then we can use a simulation to gauge how far off our statistical models might be in practice.
+    
+*   What we'll be doing today --- helping us wrap our heads around difficult statistical concepts.
+    Concepts like the standard error and $p$-value are about what would happen if you took lots of samples from a population with certain properties.
+    It can be weird to think about those with real data, since we typically only have one sample to work with.
+    Simulations make it much easier to think through.
+
+Let's simulate data that follows a linear regression model: $$y \approx 10 + 0.5 x.$$
+To make it a bit more fun than just calling the variables "x" and "y" --- with no effect on the simulation results, as this is fake data --- let's assume the feature represents someone's feeling thermometer score toward Chancellor Diermeier, and the response is their feeling toward Elon Musk.
+We'll set it up so that we have a residual standard deviation of 5.
+
+```{r}
+set.seed(1873)  # crescere aude!
+df_simulation <- tibble(
+  x_diermeier = runif(
+    n = 50,
+    min = 20,
+    max = 80
+  ),
+  y_musk = 10 + 0.5 * x_diermeier + rnorm(n = 50, mean = 0, sd = 5)
+)
+
+# Scatterplot
+df_simulation |>
+  ggplot(aes(x = x_diermeier, y = y_musk)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Regression results
+fit_musk_diermeier <- lm(y_musk ~ x_diermeier, data = df_simulation)
+
+summary(fit_musk_diermeier)
+```
+
+The "true" intercept and slope are 10 and 0.5, respectively.
+We estimate an intercept and slope of roughly 9.0 and 0.52, each within a standard error of the true value.
+The $p$-value also tells us that it would be very unlikely to get such a steep slope from a sample of this size if the slope in the population were 0.
+
+You might remember that the standard error has a kind of weird definition.
+The [sampling distribution]{.concept} of a statistic (e.g., a regression coefficient) is the distribution of values it would take across *every* possible sample from the population.
+The standard error is the standard deviation of that distribution.
+Usually we can't directly observe sampling distributions because we only have one sample.
+However, when we are running a simulation where we generate the data, we can generate as many samples as we want to!
+
+Now we can't take every possible sample from the distribution we used to generate our data, as there are infinitely many.
+But we can take *a lot* of samples, in order to closely approximate the sampling distribution.
+We then run into another problem --- isn't this going to be really tedious?
+If we want to run a hundred simulations, do we have to repeat our code hundreds of times?
+
+```{.r}
+df_simulation_1 <- tibble(
+  x_diermeier = runif(n = 50,
+                      min = 20,
+                      max = 80),
+  y_musk = 10 + 0.5 * x_diermeier + rnorm(n = 50, mean = 0, sd = 5)
+)
+fit_1 <- lm(y_musk ~ x_diermeier, data = df_simulation_1)
+
+df_simulation_2 <- tibble(
+  x_diermeier = runif(n = 50,
+                      min = 20,
+                      max = 80),
+  y_musk = 10 + 0.5 * x_diermeier + rnorm(n = 50, mean = 0, sd = 5)
+)
+fit_2 <- lm(y_musk ~ x_diermeier, data = df_simulation_2)
+
+# ... and so on?
+```
+
+## Loops
+
+It turns out we don't have to write the same code hundreds of times.
+R, like virtually every programming language, has a feature called a [for loop]{.concept} that lets us repeatedly run code with the same structure.
+
+A for loop in R has the following syntax:
+
+```{.r}
+for (i in values) {
+  ## code goes here
+}
+```
+
+*   `values`: The values to iterate over.
+    Whatever the length of `values` is, that's the number of times the loop will run.
+    So if you put `1:10` here, it will run ten times.
+    If you put `c("bear", "moose", "pizza")`, it will run three times.
+    
+*   `i`: A variable name that is assigned to the corresponding element of `values` each time the loop runs.
+    You can use any valid variable name in place of `i` here, though `i` is what you'll see most commonly.
+    
+*   Inside the brackets: Code that is run every time the loop is executed.
+
+Before getting into a more complicated situation, let's look at a couple of simple examples of for loops.
+Here's one where we repeat the following process ten times: Sample five random numbers from a normal distribution with mean 100 and standard deviation 10, and calculate their mean.
+
+```{r}
+set.seed(97)
+for (i in 1:10) {
+  x <- rnorm(5, mean = 100, sd = 10)
+  print(mean(x))
+}
+```
+
+When we do it that way, the results just disappear into the ether.
+If you want to save the results to work with later (e.g., to plot them), you need to write the loop to save them.
+
+::: {.aside}
+**Nerd note:** In the code here, I just set up a null variable to hold the results, and then in each iteration of the loop I append the current iteration's results to that variable.  If you're ever doing high-end computational work in R, this way will run more slowly than if you set up the full vector to store the results first.  For example, in this case I could have done `sim_results <- rep(NA, 10)` before the loop, and then did `sim_results[i] <- mean(x)` inside the loop.  For our purposes in this class I'm going to stick with the easier way, but you should be aware in case you ever find yourself doing more advanced computational work.
+:::
+
+```{r}
+set.seed(97)
+sim_results <- NULL  # variable that will hold the results
+for (i in 1:10) {
+  x <- rnorm(5, mean = 100, sd = 10)
+  sim_results <- c(sim_results, mean(x))
+}
+
+sim_results
+```
+
+Now let's use a loop to look at the sampling distribution of the regression coefficients when we simulate data according to our regression formula.
+We will repeat the following process 100 times:
+
+1.  Simulate a dataset according to our formula.
+
+2.  Run a regression on the simulated data.
+
+3.  Extract the coefficient and standard error estimates, storing them as a data frame.
+
+Our goal is to see how much our estimates of the slope and intercept vary from sample to sample.
+
+```{r}
+library("broom")
+
+# Set random seed as described above
+set.seed(1618)
+
+# Empty data frame to store results
+df_regression_sim <- NULL
+
+for (i in 1:100) {
+  # Simulate data
+  df_loop <- tibble(
+    x_diermeier = runif(n = 50, min = 20, max = 80),
+    y_musk = 10 + 0.5 * x_diermeier + rnorm(n = 50, mean = 0, sd = 5)
+  )
+
+  # Run regression
+  fit_loop <- lm(y_musk ~ x_diermeier, data = df_loop)
+
+  # Store results of this iteration
+  df_regression_sim <- bind_rows(df_regression_sim, tidy(fit_loop))
+}
+
+df_regression_sim
+```
+
+`df_regression_sim` contains the output from our simulation.
+It has 200 rows --- two per simulation iteration, one for the intercept and one for the slope.
+You can see just from glancing at the results that there's some variation from simulated sample to simulated sample, but the intercepts are fairly close to the true value of 10 and the slopes are very close to the true value of 0.5.
+
+Remember from above that the standard error is the standard deviation of the sampling distribution.
+So to get an idea of how much the intercept and slope vary from sample to sample, we will calculate the standard deviation of the 100 draws we took from the sampling distribution.
+The number that R spits out as the "standard error" with regression results (the `"std.error"` column of `tidy()` output) is actually an *estimate* of the true standard error.
+We'll also take the average of these standard error estimates to see how they compare to the true variability of the coefficients from sample to sample.
+
+```{r}
+df_regression_sim |>
+  group_by(term) |>
+  summarize(
+    avg_est = mean(estimate),
+    true_se = sd(estimate),
+    avg_se_est = mean(std.error)
+  )
+```
+
+Here's what this table is telling us:
+
+*   Across our 100 simulations, the average intercept is very close to its true value of 10, and the average slope is very close to its true value of 0.5.
+    This is an illustration of the fact that linear regression is [unbiased](https://en.wikipedia.org/wiki/Bias_of_an_estimator) in statistical terms.
+    
+*   The *true* standard error of the intercept is about 2.2, so across samples we would expect to estimate an intercept within $10 \pm 4.4$ about 95% of the time.
+    The true standard error of the slope is about 0.04, so across samples we would expect to estimate a slope within $0.5 \pm 0.08$ about 95% of the time.
+    
+*   On average, R's estimate of the standard error of both coefficients comes pretty close to the true standard error.
+    The upshot is that these values are pretty reliable for statistical inference --- any given sample will give us a good idea as to the range of plausible values for the intercept and slope.
+    
+To illustrate that final point, there's another question we can use our simulation results to answer.
+Let's use the formula $$\text{estimate} \pm 2 \times \text{std error}$$ to determine a range of plausible values for the coefficient.
+If we do this with each of the samples in our simulation, how often does the range of plausible values include the *true* value of 0.5?
+
+```{r}
+df_regression_sim |>
+  filter(term == "x_diermeier") |>
+  arrange(estimate) |>
+  mutate(
+    id = row_number(),
+    lower = estimate - 2 * std.error,
+    upper = estimate + 2 * std.error,
+    type = if_else(
+      lower <= 0.5 & upper >= 0.5,
+      "includes true slope",
+      "doesn't include true slope"
+    )
+  ) |>
+  ggplot(aes(xmin = lower, xmax = upper, y = id)) +
+  geom_linerange(aes(color = type)) +
+  geom_vline(xintercept = 0.5, linetype = "dashed")
+```
+
+The range includes the true slope in 94 out of our 100 samples.
+That's very close to the 95% we would expect from a [confidence interval](https://en.wikipedia.org/wiki/Confidence_interval) calculation like this one.
+
+::: {.callout-note title="In-class exercise"}
+Run a new simulation with a similar regression equation, except where the true slope is 0.
+This time do 1000 simulation iterations instead of 100.
+In how many of your iterations is the slope "statistically significant", in terms of having a $p$-value of 0.05 or less?
+
+```{r}
+#
+# [Write your answer here]
+#
+```
+:::
+
+## Resampling
+
+The basic idea behind these simulations can also be applied to estimate uncertainty in real data problems.
+To see this principle in action, we will work with the same survey data as in @sec-correlation-regression.
+
+```{r}
+#| message: false
+df_anes <- read_csv("https://bkenkel.com/qps1/data/anes_2020.csv")
+
+df_anes
+```
+
+### Resampling coefficients
+
+We want to separate the signal from the noise --- to figure out what inferences we can reliably draw from the data we have, as opposed to patterns that might have shown up through sheer random chance.
+Our goal is to gauge "If we could draw a bunch of new random samples of the same size, how much would we expect our regression estimates to vary from sample to sample?"
+This may seem like an impossible question to answer with a single sample.
+It turns out, however, that we can get an approximate answer using a technique called [the bootstrap]{.concept}.
+
+The basic idea behind the bootstrap is that we can generate new random samples by sampling *with replacement* from our original data.
+Because we are sampling with replacement, some of our original observations will show up 2, 3, or even more times in any given bootstrap sample, while others won't be included at all.
+In the same fashion as the simulations we ran above, we won't just draw one bootstrap sample---we will draw hundreds or even thousands of new samples, so as to get an idea of how our statistical calculations would vary from sample to sample.
+
+To draw a single bootstrap sample from a data frame, we can use the `slice_sample()` function.
+
+```{r}
+set.seed(1789)
+
+df_boot <- df_anes |>
+  slice_sample(prop = 1, replace = TRUE)
+
+df_boot
+```
+
+The `prop = 1` argument tells `slice_sample()` to draw the same number of observations as in the original sample.
+(If we wanted half as many, for example, we would use `prop = 0.5`.)
+The `replace = TRUE` argument tells it to sample with replacement.
+Without this argument, we would just end up with our original data but with the rows in a different order, giving us exactly the same statistical calculations as we got originally.
+
+If we look at the relationship between feelings toward the police and feelings toward Donald Trump, we see similar --- but not exactly the same --- estimates in the original sample and in our singular (so far) bootstrap resample.
+
+```{r}
+fit_main <- lm(therm_trump ~ therm_police, data = df_anes)
+fit_boot <- lm(therm_trump ~ therm_police, data = df_boot)
+
+summary(fit_main)
+summary(fit_boot)
+```
+
+A single bootstrap sample doesn't give us very much that's interesting.
+The method requires that we resample from the data *many* times, then look at the distribution of the results.
+We can accomplish that with (hopefully you guessed it...) a for loop.
+
+<!-- cache=TRUE saves the results of the code block, so it won't rerun every time I render the document.  Useful for blocks like this where the computation time is longer than usual. -->
+
+```{r bootstrap_coefs}
+#| cache: true
+
+# Set random seed as discussed above
+set.seed(1066)
+
+# Empty data frame to store resampling results
+df_coef_boot <- NULL
+
+# Resample the data 1000 times (aka: 1000 bootstrap iterations)
+for (i in 1:1000) {
+  # Draw bootstrap sample
+  df_boot <- slice_sample(df_anes, prop = 1, replace = TRUE)
+
+  # Rerun regression model on bootstrap sample
+  fit_boot <- lm(therm_trump ~ therm_police, data = df_boot)
+
+  # Save results
+  df_coef_boot <- bind_rows(df_coef_boot, tidy(fit_boot))
+}
+
+df_coef_boot
+```
+
+Using the results of the bootstrap resampling, we can directly look at the distribution of regression coefficients across samples.
+
+```{r}
+df_coef_boot |>
+  ggplot(aes(x = estimate)) +
+  geom_histogram() +
+  facet_wrap(~ term, ncol = 2, scales = "free_x") +
+  panel_border()
+```
+
+You might notice that both distributions have a bell curve shape.
+This isn't a coincidence.
+It's an example of the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem), an important result showing that many common statistics have approximately normal sampling distributions.
+You'll also notice that both distributions are centered roughly around the coefficients from the regression with the original data.
+The estimated intercept tends to be between -15 and -10, while the estimated slope tends to be between 0.72 and 0.78.
+
+We can gauge the standard error by taking the standard deviation of the bootstrap distribution, and we can also calculate a range of plausible values by using the percentiles.
+
+```{r}
+df_coef_boot |>
+  group_by(term) |>
+  summarize(
+    std_err = sd(estimate),
+    lower = quantile(estimate, 0.025),
+    upper = quantile(estimate, 0.975)
+  )
+```
+
+These are pretty close to the standard error from the original analysis, as well as the range of coefficients we would estimate with the "$\pm$ 2 standard errors" rule.
+
+```{r}
+tidy(fit_main) |>
+  select(term, estimate, std.error) |>
+  mutate(
+    lower = estimate - 2 * std.error,
+    upper = estimate + 2 * std.error
+  )
+```
+
+What's the point of bootstrapping if it ultimately yields close to the same answers as what we would get from the `summary()` output?
+
+1.  The bootstrap is more robust.
+    In data situations with small samples, big outliers, or other issues, the bootstrap may be more reliable at estimating the amount of sample-to-sample variation in the regression coefficients than the standard formulas are.
+    
+2.  The bootstrap is very widely applicable to statistical measures.
+    For some calculations, there's not a standard error calculation reported by default like there is for regression coefficients.
+    But you can still bootstrap them: just resample from your original data with replacement, calculate the statistic on each bootstrap iteration, and then look at the distribution of bootstrap estimates to gauge the amount of variability and the plausible range of estimates.
+    
+3.  By using the bootstrap and recovering close to the original results, you (I hope!) get a better idea of how it is that we can estimate sample-to-sample variability in a statistic even though we only actually observe a single sample of data.
+
+::: {.callout-note title="In-class exercise"}
+Suppose the statistic you are interested in is the median of respondents' feeling thermometer score toward Donald Trump.
+Use the bootstrap to estimate the standard error of the median, as well as a range of plausible medians.
+
+```{r}
+#
+# [Write your answer here]
+#
+```
+:::
+
+### Resampling predictions
+
+Suppose we want to predict someone's feeling toward Donald Trump if all we know about them is that their feeling toward the police is a 50 on a 100-point scale.
+We know that we can use the regression formula, $$\text{response} \approx \text{intercept} + \text{slope} \times 50,$$ to come up with a prediction.
+What's harder is to gauge the amount of uncertainty in that prediction---i.e., to nail down the range of estimates that are plausible based on the knowledge we have.
+In part that's because there are two sources of uncertainty.
+
+1.  The regression line doesn't perfectly fit the data.
+    There's some spread between the points and the line, summarized by what R calls the residual standard error.
+    
+2.  The regression line we estimate from our sample might be different than the line we would fit if we had the full population of data.
+    In other words, there's statistical uncertainty about the values of the slope and the intercept.
+    
+The bootstrap method lets us account for both of these sources of uncertainty.
+To accomplish this, we will use a simulation-within-a-simulation.
+For each bootstrap sample, we will:
+
+*   Run the regression of Trump feeling on police feeling.
+
+*   Use the intercept and slope to calculate predicted Trump feeling for someone whose police feeling is 50.
+
+*   Use the predicted value and the residual standard error to simulate a *distribution* of potential values of Trump feeling.
+
+
+```{r bootstrap_predictions}
+#| cache: true
+
+# Set random seed as discussed above
+set.seed(1985)
+
+# Null variable to store simulation results
+pred_at_50 <- NULL
+
+# Simulating 1000 times
+for (i in 1:1000) {
+  # Draw bootstrap resample
+  df_boot <- slice_sample(df_anes, prop = 1, replace = TRUE)
+
+  # Fit regression model and extract coefficients + residual sd
+  fit_boot <- lm(therm_trump ~ therm_police, data = df_boot)
+  tidy_boot <- tidy(fit_boot)
+  intercept <- tidy_boot$estimate[1]
+  slope <- tidy_boot$estimate[2]
+  sigma <- glance(fit_boot)$sigma
+
+  # Calculate main prediction at therm_police = 50
+  pred_boot <- intercept + slope * 50
+
+  # Simulate distribution of predictions
+  dist_pred_boot <- rnorm(100, mean = pred_boot, sd = sigma)
+
+  # Append results to storage vector
+  pred_at_50 <- c(pred_at_50, dist_pred_boot)
+}
+```
+
+We can take a look at the distribution of predictions:
+
+```{r}
+tibble(pred_at_50) |>
+  ggplot(aes(x = pred_at_50)) +
+  geom_histogram()
+```
+
+The main takeaway here is that there's a *ton* of uncertainty in this prediction.
+A sizable percentage of the simulated predictions are below 0, and a few are even above 100.
+Let's look at the average and standard deviation.
+
+```{r}
+length(pred_at_50)
+mean(pred_at_50)
+sd(pred_at_50)
+```
+
+The standard deviation here is not much larger than the residual standard deviation in our regression model on the original data.
+That tells me that the statistical uncertainty about the coefficient values is contributing relatively little to our uncertainty about the prediction.
+Instead, most of the variation in predictions is coming from the fact that the points are spread out pretty far from the regression line in the first place.
+
+::: {.callout-note title="In-class exercise"}
+Repeat the simulation from this section, but for someone whose feeling toward the police is 75 rather than 50.
+What differences do you see in the central tendency and the spread of the distribution of resampled predictions?
+
+```{r}
+#
+# [Write your answer here]
+#
+```
+:::
+

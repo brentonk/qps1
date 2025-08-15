@@ -1,7 +1,3 @@
----
-lightbox: true  # can see bigger version of figure by clicking on it
----
-
 # Data Visualization {#sec-data-visualization}
 
 Visualization is one of the most powerful ways to convey the results of a statistical analysis.

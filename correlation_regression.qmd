@@ -1,7 +1,3 @@
----
-lightbox: true  # allow clicking on figures to enlarge
----
-
 # Correlation and Regression {#sec-correlation-regression}
 
 In the previous section on data visualization (@sec-data-visualization), we started to think about how to analyze relationships between variables.
@@ -244,7 +240,7 @@ It is the mean of the product of the Z-scores: $$r_{x, y} = \frac{1}{N - 1} \sum
 As with the formula for the standard deviation (@eq-standard-deviation), we divide by $N - 1$ rather than $N$ for statistical reasons that I won't get into here.
 
 
-## Regression with one feature
+## Regression with one feature {#sec-regression}
 
 If all you knew about someone was their feelings toward police, what would you guess are their feelings toward Trump?
 The positive correlation between these two variables tells us that we'd guess the Trump score is above its average of 40 if the police score is above its average of 70, and the opposite if the police score is below average.

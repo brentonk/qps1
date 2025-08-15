@@ -41,4 +41,5 @@ format:
     monofont: 'Iosevka Web'
     linestretch: 1.6
     cap-location: top
+    lightbox: true
 

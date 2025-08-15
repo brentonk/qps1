@@ -262,7 +262,7 @@ window.Quarto = {
   <li><a href="#the-correlation-coefficient" id="toc-the-correlation-coefficient" class="nav-link" data-scroll-target="#the-correlation-coefficient"><span class="header-section-number">5.2.2</span> The correlation coefficient</a></li>
   <li><a href="#calculating-the-correlation-coefficient" id="toc-calculating-the-correlation-coefficient" class="nav-link" data-scroll-target="#calculating-the-correlation-coefficient"><span class="header-section-number">5.2.3</span> Calculating the correlation coefficient</a></li>
   </ul></li>
-  <li><a href="#regression-with-one-feature" id="toc-regression-with-one-feature" class="nav-link" data-scroll-target="#regression-with-one-feature"><span class="header-section-number">5.3</span> Regression with one feature</a>
+  <li><a href="#sec-regression" id="toc-sec-regression" class="nav-link" data-scroll-target="#sec-regression"><span class="header-section-number">5.3</span> Regression with one feature</a>
   <ul class="collapse">
   <li><a href="#the-statistical-model" id="toc-the-statistical-model" class="nav-link" data-scroll-target="#the-statistical-model"><span class="header-section-number">5.3.1</span> The statistical model</a></li>
   <li><a href="#working-with-regression-results" id="toc-working-with-regression-results" class="nav-link" data-scroll-target="#working-with-regression-results"><span class="header-section-number">5.3.2</span> Working with regression results</a></li>
@@ -646,8 +646,8 @@ Math ahead
 <p>This observation leads us to the formula for the correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. It is the mean of the product of the Z-scores: <span class="math display">\[r_{x, y} = \frac{1}{N - 1} \sum_{i=1}^N Z_{x, i} \cdot Z_{y, i}.\]</span> As with the formula for the standard deviation (<a href="univariate_analysis.html#eq-standard-deviation" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>), we divide by <span class="math inline">\(N - 1\)</span> rather than <span class="math inline">\(N\)</span> for statistical reasons that I won’t get into here.</p>
 </section>
 </section>
-<section id="regression-with-one-feature" class="level2 page-columns page-full" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="regression-with-one-feature"><span class="header-section-number">5.3</span> Regression with one feature</h2>
+<section id="sec-regression" class="level2 page-columns page-full" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-regression"><span class="header-section-number">5.3</span> Regression with one feature</h2>
 <p>If all you knew about someone was their feelings toward police, what would you guess are their feelings toward Trump? The positive correlation between these two variables tells us that we’d guess the Trump score is above its average of 40 if the police score is above its average of 70, and the opposite if the police score is below average. But can we get a more precise answer than that?</p>
 <section id="the-statistical-model" class="level3 page-columns page-full" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="the-statistical-model"><span class="header-section-number">5.3.1</span> The statistical model</h3>
