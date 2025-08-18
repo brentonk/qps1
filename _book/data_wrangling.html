@@ -186,6 +186,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./text_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -284,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="2.1" class="anchored" data-anchor-id="data-international-crises"><span class="header-section-number">2.1</span> Data: International crises</h2>
 <p>We will work with data from the <a href="https://sites.duke.edu/icbdata/data-collections/">International Crisis Behavior Project</a> on countries involved in international crises. The project’s operational definition of an international crisis is a situation in which there is</p>
 <blockquote class="blockquote">
-<p>… (1) a change in type and/or an increase in intensity of <em>disruptive</em>, that is, hostile verbal or physical <em>interactions</em> between two or more states, with a heightened probability of <em>military hostilities</em>; that, in turn, (2) destabilizes their relationship and <em>challenges</em> the <em>structure</em> of an international system—global, dominant, or subsystem.</p>
+<p>… (1) a change in type and/or an increase in intensity of <em>disruptive</em>, that is, hostile verbal or physical <em>interactions</em> between two or more states, with a heightened probability of <em>military hostilities</em>; that, in turn, (2) destabilizes their relationship and <em>challenges</em> the <em>structure</em> of an international system — global, dominant, or subsystem.</p>
 </blockquote>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
@@ -298,25 +304,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_crises</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN C…      9
- 2 ICB2       2      2     93 NIC       1918        5       25 COSTA RIC…      7
- 3 ICB2       2      3     94 COS       1918        5       25 COSTA RIC…      4
- 4 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN C…      7
- 5 ICB2       4      5    365 RUS       1918       11       18 BALTIC IN…      6
- 6 ICB2       4      6    366 EST       1918       11       18 BALTIC IN…      9
- 7 ICB2       4      7    368 LIT       1918       11       18 BALTIC IN…      9
- 8 ICB2       4      8    367 LAT       1918       11       18 BALTIC IN…      9
- 9 ICB2       5      9    315 CZE       1919        1       15 TESCHEN         2
-10 ICB2       5     10    290 POL       1919        1       15 TESCHEN         7
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN …
+ 2 ICB2       2      2     93 NIC       1918        5       25 COSTA RI…
+ 3 ICB2       2      3     94 COS       1918        5       25 COSTA RI…
+ 4 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN …
+ 5 ICB2       4      5    365 RUS       1918       11       18 BALTIC I…
+ 6 ICB2       4      6    366 EST       1918       11       18 BALTIC I…
+ 7 ICB2       4      7    368 LIT       1918       11       18 BALTIC I…
+ 8 ICB2       4      8    367 LAT       1918       11       18 BALTIC I…
+ 9 ICB2       5      9    315 CZE       1919        1       15 TESCHEN  
+10 ICB2       5     10    290 POL       1919        1       15 TESCHEN  
 # ℹ 1,121 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>As you can see, there are a <em>ton</em> of variables here. The ICB Project provides <a href="https://duke.box.com/s/l4glcl5jaipmycs7unzraxkp92w1nh3d">a full codebook</a> describing each variable in the dataset. The most important variables you need to know from the start are:</p>
@@ -359,25 +365,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_crises</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN C…      9
- 2 ICB2       2      2     93 NIC       1918        5       25 COSTA RIC…      7
- 3 ICB2       2      3     94 COS       1918        5       25 COSTA RIC…      4
- 4 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN C…      7
- 5 ICB2       4      5    365 RUS       1918       11       18 BALTIC IN…      6
- 6 ICB2       4      6    366 EST       1918       11       18 BALTIC IN…      9
- 7 ICB2       4      7    368 LIT       1918       11       18 BALTIC IN…      9
- 8 ICB2       4      8    367 LAT       1918       11       18 BALTIC IN…      9
- 9 ICB2       5      9    315 CZE       1919        1       15 TESCHEN         2
-10 ICB2       5     10    290 POL       1919        1       15 TESCHEN         7
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN …
+ 2 ICB2       2      2     93 NIC       1918        5       25 COSTA RI…
+ 3 ICB2       2      3     94 COS       1918        5       25 COSTA RI…
+ 4 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN …
+ 5 ICB2       4      5    365 RUS       1918       11       18 BALTIC I…
+ 6 ICB2       4      6    366 EST       1918       11       18 BALTIC I…
+ 7 ICB2       4      7    368 LIT       1918       11       18 BALTIC I…
+ 8 ICB2       4      8    367 LAT       1918       11       18 BALTIC I…
+ 9 ICB2       5      9    315 CZE       1919        1       15 TESCHEN  
+10 ICB2       5     10    290 POL       1919        1       15 TESCHEN  
 # ℹ 1,121 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>All the original data is still there. Unlike some other programming languages, R essentially never modifies data “in place”. If you want to overwrite <code>df_crises</code> with the subsetted version, you need to explicitly tell R to overwrite it by assigning the <code>select()</code>’ed data frame to <code>df_crises</code>, as in:</p>
@@ -433,25 +439,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="sc">-</span>icb2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 94
-   crisno cracno cracid actor systrgyr systrgmo systrgda crisname  triggr yrtrig
-    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;
- 1      1      1    365 RUS       1918        5       NA RUSSIAN …      9   1918
- 2      2      2     93 NIC       1918        5       25 COSTA RI…      7   1918
- 3      2      3     94 COS       1918        5       25 COSTA RI…      4   1919
- 4      3      4    365 RUS       1918        6       23 RUSSIAN …      7   1918
- 5      4      5    365 RUS       1918       11       18 BALTIC I…      6   1918
- 6      4      6    366 EST       1918       11       18 BALTIC I…      9   1918
- 7      4      7    368 LIT       1918       11       18 BALTIC I…      9   1918
- 8      4      8    367 LAT       1918       11       18 BALTIC I…      9   1918
- 9      5      9    315 CZE       1919        1       15 TESCHEN        2   1919
-10      5     10    290 POL       1919        1       15 TESCHEN        7   1919
+   crisno cracno cracid actor systrgyr systrgmo systrgda crisname triggr
+    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1      1      1    365 RUS       1918        5       NA RUSSIAN…      9
+ 2      2      2     93 NIC       1918        5       25 COSTA R…      7
+ 3      2      3     94 COS       1918        5       25 COSTA R…      4
+ 4      3      4    365 RUS       1918        6       23 RUSSIAN…      7
+ 5      4      5    365 RUS       1918       11       18 BALTIC …      6
+ 6      4      6    366 EST       1918       11       18 BALTIC …      9
+ 7      4      7    368 LIT       1918       11       18 BALTIC …      9
+ 8      4      8    367 LAT       1918       11       18 BALTIC …      9
+ 9      5      9    315 CZE       1919        1       15 TESCHEN       2
+10      5     10    290 POL       1919        1       15 TESCHEN       7
 # ℹ 1,121 more rows
-# ℹ 84 more variables: motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;,
+#   trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;,
+#   sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;, majres &lt;dbl&gt;,
+#   yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;, trgresra &lt;dbl&gt;,
+#   crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
+#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
@@ -556,25 +562,25 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(df_crises, <span class="at">year =</span> systrgyr, <span class="at">name =</span> crisname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   icb2  crisno cracno cracid actor  year systrgmo systrgda name   triggr yrtrig
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;
- 1 ICB2       1      1    365 RUS    1918        5       NA RUSSI…      9   1918
- 2 ICB2       2      2     93 NIC    1918        5       25 COSTA…      7   1918
- 3 ICB2       2      3     94 COS    1918        5       25 COSTA…      4   1919
- 4 ICB2       3      4    365 RUS    1918        6       23 RUSSI…      7   1918
- 5 ICB2       4      5    365 RUS    1918       11       18 BALTI…      6   1918
- 6 ICB2       4      6    366 EST    1918       11       18 BALTI…      9   1918
- 7 ICB2       4      7    368 LIT    1918       11       18 BALTI…      9   1918
- 8 ICB2       4      8    367 LAT    1918       11       18 BALTI…      9   1918
- 9 ICB2       5      9    315 CZE    1919        1       15 TESCH…      2   1919
-10 ICB2       5     10    290 POL    1919        1       15 TESCH…      7   1919
+   icb2  crisno cracno cracid actor  year systrgmo systrgda name  triggr
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
+ 1 ICB2       1      1    365 RUS    1918        5       NA RUSS…      9
+ 2 ICB2       2      2     93 NIC    1918        5       25 COST…      7
+ 3 ICB2       2      3     94 COS    1918        5       25 COST…      4
+ 4 ICB2       3      4    365 RUS    1918        6       23 RUSS…      7
+ 5 ICB2       4      5    365 RUS    1918       11       18 BALT…      6
+ 6 ICB2       4      6    366 EST    1918       11       18 BALT…      9
+ 7 ICB2       4      7    368 LIT    1918       11       18 BALT…      9
+ 8 ICB2       4      8    367 LAT    1918       11       18 BALT…      9
+ 9 ICB2       5      9    315 CZE    1919        1       15 TESC…      2
+10 ICB2       5     10    290 POL    1919        1       15 TESC…      7
 # ℹ 1,121 more rows
-# ℹ 84 more variables: motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;,
+#   trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;,
+#   sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;, majres &lt;dbl&gt;,
+#   yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;, trgresra &lt;dbl&gt;,
+#   crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
+#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>If you want certain columns to be placed first, use the <code>relocate()</code> function.</p>
@@ -582,25 +588,25 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">relocate</span>(df_crises, crisname, actor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   crisname   actor icb2  crisno cracno cracid systrgyr systrgmo systrgda triggr
-   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
- 1 RUSSIAN C… RUS   ICB2       1      1    365     1918        5       NA      9
- 2 COSTA RIC… NIC   ICB2       2      2     93     1918        5       25      7
- 3 COSTA RIC… COS   ICB2       2      3     94     1918        5       25      4
- 4 RUSSIAN C… RUS   ICB2       3      4    365     1918        6       23      7
- 5 BALTIC IN… RUS   ICB2       4      5    365     1918       11       18      6
- 6 BALTIC IN… EST   ICB2       4      6    366     1918       11       18      9
- 7 BALTIC IN… LIT   ICB2       4      7    368     1918       11       18      9
- 8 BALTIC IN… LAT   ICB2       4      8    367     1918       11       18      9
- 9 TESCHEN    CZE   ICB2       5      9    315     1919        1       15      2
-10 TESCHEN    POL   ICB2       5     10    290     1919        1       15      7
+   crisname  actor icb2  crisno cracno cracid systrgyr systrgmo systrgda
+   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1 RUSSIAN … RUS   ICB2       1      1    365     1918        5       NA
+ 2 COSTA RI… NIC   ICB2       2      2     93     1918        5       25
+ 3 COSTA RI… COS   ICB2       2      3     94     1918        5       25
+ 4 RUSSIAN … RUS   ICB2       3      4    365     1918        6       23
+ 5 BALTIC I… RUS   ICB2       4      5    365     1918       11       18
+ 6 BALTIC I… EST   ICB2       4      6    366     1918       11       18
+ 7 BALTIC I… LIT   ICB2       4      7    368     1918       11       18
+ 8 BALTIC I… LAT   ICB2       4      8    367     1918       11       18
+ 9 TESCHEN   CZE   ICB2       5      9    315     1919        1       15
+10 TESCHEN   POL   ICB2       5     10    290     1919        1       15
 # ℹ 1,121 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>To rearrange the rows of the data, you can use the <code>arrange()</code> function. By default, it sorts the data in ascending order of the column name(s) you feed it.</p>
@@ -609,49 +615,49 @@ In-class exercise
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, cracid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2      59    128      2 USA       1937       12       12 PANAY INC…      9
- 2 ICB2      88    224      2 USA       1941       11       26 PEARL HAR…      9
- 3 ICB2     104    251      2 USA       1945        5        1 TRIESTE I       7
- 4 ICB2     108    259      2 USA       1945        8       23 AZERBAIJAN      7
- 5 ICB2     111    265      2 USA       1946        8        7 TURKISH S…      2
- 6 ICB2     114    271      2 USA       1947        2       21 TRUMAN DO…      2
- 7 ICB2     123    293      2 USA       1948        6        7 BERLIN BL…      3
- 8 ICB2     125    295      2 USA       1948        9       23 CHINA CIV…      8
- 9 ICB2     132    308      2 USA       1950        6       25 KOREAN WA…      8
-10 ICB2     133    314      2 USA       1950        9       30 KOREAN WA…      8
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2      59    128      2 USA       1937       12       12 PANAY IN…
+ 2 ICB2      88    224      2 USA       1941       11       26 PEARL HA…
+ 3 ICB2     104    251      2 USA       1945        5        1 TRIESTE I
+ 4 ICB2     108    259      2 USA       1945        8       23 AZERBAIJ…
+ 5 ICB2     111    265      2 USA       1946        8        7 TURKISH …
+ 6 ICB2     114    271      2 USA       1947        2       21 TRUMAN D…
+ 7 ICB2     123    293      2 USA       1948        6        7 BERLIN B…
+ 8 ICB2     125    295      2 USA       1948        9       23 CHINA CI…
+ 9 ICB2     132    308      2 USA       1950        6       25 KOREAN W…
+10 ICB2     133    314      2 USA       1950        9       30 KOREAN W…
 # ℹ 1,121 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange by start year, then by actor ID within year</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, systrgyr, cracid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2       2      2     93 NIC       1918        5       25 COSTA RIC…      7
- 2 ICB2       2      3     94 COS       1918        5       25 COSTA RIC…      4
- 3 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN C…      9
- 4 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN C…      7
- 5 ICB2       4      5    365 RUS       1918       11       18 BALTIC IN…      6
- 6 ICB2       4      6    366 EST       1918       11       18 BALTIC IN…      9
- 7 ICB2       4      8    367 LAT       1918       11       18 BALTIC IN…      9
- 8 ICB2       4      7    368 LIT       1918       11       18 BALTIC IN…      9
- 9 ICB2       8     18    200 UKG       1919        4       15 THIRD AFG…      7
-10 ICB2      11     24    220 FRN       1919       11       NA CILICIAN …      9
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2       2      2     93 NIC       1918        5       25 COSTA RI…
+ 2 ICB2       2      3     94 COS       1918        5       25 COSTA RI…
+ 3 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN …
+ 4 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN …
+ 5 ICB2       4      5    365 RUS       1918       11       18 BALTIC I…
+ 6 ICB2       4      6    366 EST       1918       11       18 BALTIC I…
+ 7 ICB2       4      8    367 LAT       1918       11       18 BALTIC I…
+ 8 ICB2       4      7    368 LIT       1918       11       18 BALTIC I…
+ 9 ICB2       8     18    200 UKG       1919        4       15 THIRD AF…
+10 ICB2      11     24    220 FRN       1919       11       NA CILICIAN…
 # ℹ 1,121 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>To instead sort in descending order, wrap the variable name in <code>desc()</code>.</p>
@@ -660,25 +666,25 @@ In-class exercise
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, <span class="fu">desc</span>(systrgyr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2     506   1117    615 ALG       2021        1        9 US VISIT …      2
- 2 ICB2     507   1118    710 CHN       2021        1        9 US-TAIWAN…      2
- 3 ICB2     507   1119    713 TAW       2021        1        9 US-TAIWAN…      7
- 4 ICB2     508   1120    652 SYR       2021        1       13 ISRAEL-IR…      9
- 5 ICB2     508   1121    630 IRN       2021        1       13 ISRAEL-IR…      9
- 6 ICB2     509   1122    740 JPN       2021        1       22 CHINA COA…      5
- 7 ICB2     511   1128    703 KYR       2021        4       28 KOK-TASH …      9
- 8 ICB2     511   1129    702 TAJ       2021        4       28 KOK-TASH …      9
- 9 ICB2     512   1130    345 YUG       2021        9       20 KOSOVO LI…      7
-10 ICB2     512   1131    347 KOS       2021        9       20 KOSOVO LI…      7
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2     506   1117    615 ALG       2021        1        9 US VISIT…
+ 2 ICB2     507   1118    710 CHN       2021        1        9 US-TAIWA…
+ 3 ICB2     507   1119    713 TAW       2021        1        9 US-TAIWA…
+ 4 ICB2     508   1120    652 SYR       2021        1       13 ISRAEL-I…
+ 5 ICB2     508   1121    630 IRN       2021        1       13 ISRAEL-I…
+ 6 ICB2     509   1122    740 JPN       2021        1       22 CHINA CO…
+ 7 ICB2     511   1128    703 KYR       2021        4       28 KOK-TASH…
+ 8 ICB2     511   1129    702 TAJ       2021        4       28 KOK-TASH…
+ 9 ICB2     512   1130    345 YUG       2021        9       20 KOSOVO L…
+10 ICB2     512   1131    347 KOS       2021        9       20 KOSOVO L…
 # ℹ 1,121 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 </section>
@@ -893,25 +899,25 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>df_crises[df_crises<span class="sc">$</span>systrgyr <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> df_crises<span class="sc">$</span>systrgyr <span class="sc">&lt;=</span> <span class="dv">1989</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 585 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2     110    263    365 RUS       1946        6       30 COMMUNISM…      4
- 2 ICB2     111    264    640 TUR       1946        8        7 TURKISH S…      2
- 3 ICB2     111    265      2 USA       1946        8        7 TURKISH S…      2
- 4 ICB2     112    266    350 GRC       1946       11       13 GREEK CIV…      6
- 5 ICB2     113    267    365 RUS       1947        2       10 COMMUNISM…      4
- 6 ICB2     113    268    310 HUN       1947        2       10 COMMUNISM…      6
- 7 ICB2     114    269    350 GRC       1947        2       21 TRUMAN DO…      3
- 8 ICB2     114    270    640 TUR       1947        2       21 TRUMAN DO…      3
- 9 ICB2     114    271      2 USA       1947        2       21 TRUMAN DO…      2
-10 ICB2     115    272    365 RUS       1947        7        3 MARSHALL …      2
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2     110    263    365 RUS       1946        6       30 COMMUNIS…
+ 2 ICB2     111    264    640 TUR       1946        8        7 TURKISH …
+ 3 ICB2     111    265      2 USA       1946        8        7 TURKISH …
+ 4 ICB2     112    266    350 GRC       1946       11       13 GREEK CI…
+ 5 ICB2     113    267    365 RUS       1947        2       10 COMMUNIS…
+ 6 ICB2     113    268    310 HUN       1947        2       10 COMMUNIS…
+ 7 ICB2     114    269    350 GRC       1947        2       21 TRUMAN D…
+ 8 ICB2     114    270    640 TUR       1947        2       21 TRUMAN D…
+ 9 ICB2     114    271      2 USA       1947        2       21 TRUMAN D…
+10 ICB2     115    272    365 RUS       1947        7        3 MARSHALL…
 # ℹ 575 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>That works, but it’s a bit ugly and unwieldy. The <code>filter()</code> function gives us an easier way to do the same thing.</p>
@@ -919,25 +925,25 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, systrgyr <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> systrgyr <span class="sc">&lt;=</span> <span class="dv">1989</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 580 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2     110    263    365 RUS       1946        6       30 COMMUNISM…      4
- 2 ICB2     111    264    640 TUR       1946        8        7 TURKISH S…      2
- 3 ICB2     111    265      2 USA       1946        8        7 TURKISH S…      2
- 4 ICB2     112    266    350 GRC       1946       11       13 GREEK CIV…      6
- 5 ICB2     113    267    365 RUS       1947        2       10 COMMUNISM…      4
- 6 ICB2     113    268    310 HUN       1947        2       10 COMMUNISM…      6
- 7 ICB2     114    269    350 GRC       1947        2       21 TRUMAN DO…      3
- 8 ICB2     114    270    640 TUR       1947        2       21 TRUMAN DO…      3
- 9 ICB2     114    271      2 USA       1947        2       21 TRUMAN DO…      2
-10 ICB2     115    272    365 RUS       1947        7        3 MARSHALL …      2
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2     110    263    365 RUS       1946        6       30 COMMUNIS…
+ 2 ICB2     111    264    640 TUR       1946        8        7 TURKISH …
+ 3 ICB2     111    265      2 USA       1946        8        7 TURKISH …
+ 4 ICB2     112    266    350 GRC       1946       11       13 GREEK CI…
+ 5 ICB2     113    267    365 RUS       1947        2       10 COMMUNIS…
+ 6 ICB2     113    268    310 HUN       1947        2       10 COMMUNIS…
+ 7 ICB2     114    269    350 GRC       1947        2       21 TRUMAN D…
+ 8 ICB2     114    270    640 TUR       1947        2       21 TRUMAN D…
+ 9 ICB2     114    271      2 USA       1947        2       21 TRUMAN D…
+10 ICB2     115    272    365 RUS       1947        7        3 MARSHALL…
 # ℹ 570 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>When dealing with character columns, the greater/lesser comparisons no longer make sense, but we can still use the equality and inequality comparisons. Just make sure to use quotation marks around whatever you’re comparing to!</p>
@@ -945,48 +951,48 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">==</span> <span class="st">"USA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 78 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2      59    128      2 USA       1937       12       12 PANAY INC…      9
- 2 ICB2      88    224      2 USA       1941       11       26 PEARL HAR…      9
- 3 ICB2     104    251      2 USA       1945        5        1 TRIESTE I       7
- 4 ICB2     108    259      2 USA       1945        8       23 AZERBAIJAN      7
- 5 ICB2     111    265      2 USA       1946        8        7 TURKISH S…      2
- 6 ICB2     114    271      2 USA       1947        2       21 TRUMAN DO…      2
- 7 ICB2     123    293      2 USA       1948        6        7 BERLIN BL…      3
- 8 ICB2     125    295      2 USA       1948        9       23 CHINA CIV…      8
- 9 ICB2     132    308      2 USA       1950        6       25 KOREAN WA…      8
-10 ICB2     133    314      2 USA       1950        9       30 KOREAN WA…      8
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2      59    128      2 USA       1937       12       12 PANAY IN…
+ 2 ICB2      88    224      2 USA       1941       11       26 PEARL HA…
+ 3 ICB2     104    251      2 USA       1945        5        1 TRIESTE I
+ 4 ICB2     108    259      2 USA       1945        8       23 AZERBAIJ…
+ 5 ICB2     111    265      2 USA       1946        8        7 TURKISH …
+ 6 ICB2     114    271      2 USA       1947        2       21 TRUMAN D…
+ 7 ICB2     123    293      2 USA       1948        6        7 BERLIN B…
+ 8 ICB2     125    295      2 USA       1948        9       23 CHINA CI…
+ 9 ICB2     132    308      2 USA       1950        6       25 KOREAN W…
+10 ICB2     133    314      2 USA       1950        9       30 KOREAN W…
 # ℹ 68 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">!=</span> <span class="st">"RUS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,079 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2       2      2     93 NIC       1918        5       25 COSTA RIC…      7
- 2 ICB2       2      3     94 COS       1918        5       25 COSTA RIC…      4
- 3 ICB2       4      6    366 EST       1918       11       18 BALTIC IN…      9
- 4 ICB2       4      7    368 LIT       1918       11       18 BALTIC IN…      9
- 5 ICB2       4      8    367 LAT       1918       11       18 BALTIC IN…      9
- 6 ICB2       5      9    315 CZE       1919        1       15 TESCHEN         2
- 7 ICB2       5     10    290 POL       1919        1       15 TESCHEN         7
- 8 ICB2       6     11    310 HUN       1919        3       20 HUNGARIAN…      2
- 9 ICB2       6     12    315 CZE       1919        3       20 HUNGARIAN…      9
-10 ICB2       6     13    310 HUN       1919        3       20 HUNGARIAN…      2
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2       2      2     93 NIC       1918        5       25 COSTA RI…
+ 2 ICB2       2      3     94 COS       1918        5       25 COSTA RI…
+ 3 ICB2       4      6    366 EST       1918       11       18 BALTIC I…
+ 4 ICB2       4      7    368 LIT       1918       11       18 BALTIC I…
+ 5 ICB2       4      8    367 LAT       1918       11       18 BALTIC I…
+ 6 ICB2       5      9    315 CZE       1919        1       15 TESCHEN  
+ 7 ICB2       5     10    290 POL       1919        1       15 TESCHEN  
+ 8 ICB2       6     11    310 HUN       1919        3       20 HUNGARIA…
+ 9 ICB2       6     12    315 CZE       1919        3       20 HUNGARIA…
+10 ICB2       6     13    310 HUN       1919        3       20 HUNGARIA…
 # ℹ 1,069 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>What if you wanted to get all of the observations involving the United States (USA), Russia (RUS), or the United Kingdom (UKG)? One kind of tedious way to go about it would be to string many “or” statements together.</p>
@@ -994,25 +1000,25 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">==</span> <span class="st">"USA"</span> <span class="sc">|</span> actor <span class="sc">==</span> <span class="st">"RUS"</span> <span class="sc">|</span> actor <span class="sc">==</span> <span class="st">"UKG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 178 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN C…      9
- 2 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN C…      7
- 3 ICB2       4      5    365 RUS       1918       11       18 BALTIC IN…      6
- 4 ICB2       8     18    200 UKG       1919        4       15 THIRD AFG…      7
- 5 ICB2       9     19    365 RUS       1919        4       20 FINNISH/R…      9
- 6 ICB2      10     21    365 RUS       1919        4       30 BESSARABIA      2
- 7 ICB2      13     27    365 RUS       1920        4       25 POLISH/RU…      9
- 8 ICB2      14     29    365 RUS       1920        5       66 PERSIAN B…      7
- 9 ICB2      26     56    200 UKG       1922        9       23 CHANAK          7
-10 ICB2      31     66    200 UKG       1924        9       29 MOSUL LAN…      2
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN …
+ 2 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN …
+ 3 ICB2       4      5    365 RUS       1918       11       18 BALTIC I…
+ 4 ICB2       8     18    200 UKG       1919        4       15 THIRD AF…
+ 5 ICB2       9     19    365 RUS       1919        4       20 FINNISH/…
+ 6 ICB2      10     21    365 RUS       1919        4       30 BESSARAB…
+ 7 ICB2      13     27    365 RUS       1920        4       25 POLISH/R…
+ 8 ICB2      14     29    365 RUS       1920        5       66 PERSIAN …
+ 9 ICB2      26     56    200 UKG       1922        9       23 CHANAK   
+10 ICB2      31     66    200 UKG       1924        9       29 MOSUL LA…
 # ℹ 168 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>The easier way — especially if you’re matching a large number of values — is to use the <code>%in%</code> operator in R. When you run <code>x %in% y</code>, it gives you a <code>TRUE</code> or <code>FALSE</code> for each entry of <code>x</code>: <code>TRUE</code> if it matches at least one entry of <code>y</code>, and <code>FALSE</code> otherwise.</p>
@@ -1020,25 +1026,25 @@ In-class exercise
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 178 × 95
-   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname   triggr
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN C…      9
- 2 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN C…      7
- 3 ICB2       4      5    365 RUS       1918       11       18 BALTIC IN…      6
- 4 ICB2       8     18    200 UKG       1919        4       15 THIRD AFG…      7
- 5 ICB2       9     19    365 RUS       1919        4       20 FINNISH/R…      9
- 6 ICB2      10     21    365 RUS       1919        4       30 BESSARABIA      2
- 7 ICB2      13     27    365 RUS       1920        4       25 POLISH/RU…      9
- 8 ICB2      14     29    365 RUS       1920        5       66 PERSIAN B…      7
- 9 ICB2      26     56    200 UKG       1922        9       23 CHANAK          7
-10 ICB2      31     66    200 UKG       1924        9       29 MOSUL LAN…      2
+   icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+ 1 ICB2       1      1    365 RUS       1918        5       NA RUSSIAN …
+ 2 ICB2       3      4    365 RUS       1918        6       23 RUSSIAN …
+ 3 ICB2       4      5    365 RUS       1918       11       18 BALTIC I…
+ 4 ICB2       8     18    200 UKG       1919        4       15 THIRD AF…
+ 5 ICB2       9     19    365 RUS       1919        4       20 FINNISH/…
+ 6 ICB2      10     21    365 RUS       1919        4       30 BESSARAB…
+ 7 ICB2      13     27    365 RUS       1920        4       25 POLISH/R…
+ 8 ICB2      14     29    365 RUS       1920        5       66 PERSIAN …
+ 9 ICB2      26     56    200 UKG       1922        9       23 CHANAK   
+10 ICB2      31     66    200 UKG       1924        9       29 MOSUL LA…
 # ℹ 168 more rows
-# ℹ 85 more variables: yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;, datrig &lt;dbl&gt;, trigent &lt;dbl&gt;,
-#   trigloc &lt;dbl&gt;, southv &lt;dbl&gt;, southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;,
-#   comlev &lt;dbl&gt;, majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
-#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;, usinv &lt;dbl&gt;,
-#   usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, gbinv &lt;dbl&gt;, gbfavr &lt;dbl&gt;,
-#   frinv &lt;dbl&gt;, frfavr &lt;dbl&gt;, itinv &lt;dbl&gt;, itfavr &lt;dbl&gt;, grinv &lt;dbl&gt;, …</code></pre>
+# ℹ 86 more variables: triggr &lt;dbl&gt;, yrtrig &lt;dbl&gt;, motrig &lt;dbl&gt;,
+#   datrig &lt;dbl&gt;, trigent &lt;dbl&gt;, trigloc &lt;dbl&gt;, southv &lt;dbl&gt;,
+#   southpow &lt;dbl&gt;, sizedu &lt;dbl&gt;, strcdu &lt;dbl&gt;, comlev &lt;dbl&gt;,
+#   majres &lt;dbl&gt;, yerres &lt;dbl&gt;, monres &lt;dbl&gt;, dayres &lt;dbl&gt;,
+#   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
+#   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
@@ -1205,7 +1211,7 @@ In-class exercise
 <h2 data-number="2.3" class="anchored" data-anchor-id="transforming"><span class="header-section-number">2.3</span> Transforming</h2>
 <section id="changing-variables-and-making-new-ones" class="level3 page-columns page-full" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="changing-variables-and-making-new-ones"><span class="header-section-number">2.3.1</span> Changing variables and making new ones</h3>
-<p>The <code>mutate()</code> function lets you change a column in the dataframe, or create a new column using the values in existing columns. For example, right now the duration of each crisis is measured in days. We can add new columns to measure duration in weeks and years instead. As always, if we want our new columns to persist instead of vanishing into the ether, we need to assign the output to a variable—either overwriting <code>df_crises_cw</code> or creating a new data frame.</p>
+<p>The <code>mutate()</code> function lets you change a column in the dataframe, or create a new column using the values in existing columns. For example, right now the duration of each crisis is measured in days. We can add new columns to measure duration in weeks and years instead. As always, if we want our new columns to persist instead of vanishing into the ether, we need to assign the output to a variable — either overwriting <code>df_crises_cw</code> or creating a new data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -1216,18 +1222,18 @@ In-class exercise
 <span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 8
-   crisis_name         actor_name actor_id  year duration outcome duration_weeks
-   &lt;chr&gt;               &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;
- 1 COMMUNISM IN POLAND RUS             365  1946      204       1          29.1 
- 2 TURKISH STRAITS     USA               2  1946       81       1          11.6 
- 3 COMMUNISM IN HUNGA… RUS             365  1947      112       1          16   
- 4 TRUMAN DOCTRINE     USA               2  1947       91       1          13   
- 5 MARSHALL PLAN       RUS             365  1947        9       1           1.29
- 6 COMMUNISM IN CZECH. RUS             365  1948       13       1           1.86
- 7 BERLIN BLOCKADE     RUS             365  1948      340       4          48.6 
- 8 BERLIN BLOCKADE     UKG             200  1948      323       1          46.1 
- 9 BERLIN BLOCKADE     USA               2  1948      323       1          46.1 
-10 CHINA CIVIL WAR     USA               2  1948       34       4           4.86
+   crisis_name actor_name actor_id  year duration outcome duration_weeks
+   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;
+ 1 COMMUNISM … RUS             365  1946      204       1          29.1 
+ 2 TURKISH ST… USA               2  1946       81       1          11.6 
+ 3 COMMUNISM … RUS             365  1947      112       1          16   
+ 4 TRUMAN DOC… USA               2  1947       91       1          13   
+ 5 MARSHALL P… RUS             365  1947        9       1           1.29
+ 6 COMMUNISM … RUS             365  1948       13       1           1.86
+ 7 BERLIN BLO… RUS             365  1948      340       4          48.6 
+ 8 BERLIN BLO… UKG             200  1948      323       1          46.1 
+ 9 BERLIN BLO… USA               2  1948      323       1          46.1 
+10 CHINA CIVI… USA               2  1948       34       4           4.86
 # ℹ 77 more rows
 # ℹ 1 more variable: duration_years &lt;dbl&gt;</code></pre>
 </div>
@@ -1284,11 +1290,11 @@ In-class exercise
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(actor_name, outcome, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 8
-  actor_name outcome crisis_name     actor_id  year duration duration_weeks
-  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;
-1 RUS              4 BERLIN BLOCKADE      365  1948      340           48.6
-2 UKG              1 BERLIN BLOCKADE      200  1948      323           46.1
-3 USA              1 BERLIN BLOCKADE        2  1948      323           46.1
+  actor_name outcome crisis_name  actor_id  year duration duration_weeks
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;
+1 RUS              4 BERLIN BLOC…      365  1948      340           48.6
+2 UKG              1 BERLIN BLOC…      200  1948      323           46.1
+3 USA              1 BERLIN BLOC…        2  1948      323           46.1
 # ℹ 1 more variable: duration_years &lt;dbl&gt;</code></pre>
 </div>
 </div>
@@ -1308,18 +1314,18 @@ In-class exercise
 <span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 8
-   crisis_name         actor_name actor_id  year duration outcome duration_weeks
-   &lt;chr&gt;               &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
- 1 COMMUNISM IN POLAND RUS             365  1946      204 victory          29.1 
- 2 TURKISH STRAITS     USA               2  1946       81 victory          11.6 
- 3 COMMUNISM IN HUNGA… RUS             365  1947      112 victory          16   
- 4 TRUMAN DOCTRINE     USA               2  1947       91 victory          13   
- 5 MARSHALL PLAN       RUS             365  1947        9 victory           1.29
- 6 COMMUNISM IN CZECH. RUS             365  1948       13 victory           1.86
- 7 BERLIN BLOCKADE     RUS             365  1948      340 defeat           48.6 
- 8 BERLIN BLOCKADE     UKG             200  1948      323 victory          46.1 
- 9 BERLIN BLOCKADE     USA               2  1948      323 victory          46.1 
-10 CHINA CIVIL WAR     USA               2  1948       34 defeat            4.86
+   crisis_name actor_name actor_id  year duration outcome duration_weeks
+   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 COMMUNISM … RUS             365  1946      204 victory          29.1 
+ 2 TURKISH ST… USA               2  1946       81 victory          11.6 
+ 3 COMMUNISM … RUS             365  1947      112 victory          16   
+ 4 TRUMAN DOC… USA               2  1947       91 victory          13   
+ 5 MARSHALL P… RUS             365  1947        9 victory           1.29
+ 6 COMMUNISM … RUS             365  1948       13 victory           1.86
+ 7 BERLIN BLO… RUS             365  1948      340 defeat           48.6 
+ 8 BERLIN BLO… UKG             200  1948      323 victory          46.1 
+ 9 BERLIN BLO… USA               2  1948      323 victory          46.1 
+10 CHINA CIVI… USA               2  1948       34 defeat            4.86
 # ℹ 77 more rows
 # ℹ 1 more variable: duration_years &lt;dbl&gt;</code></pre>
 </div>
@@ -1428,8 +1434,8 @@ In-class exercise
 <span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">longest =</span> <span class="fu">max</span>(duration)</span>
 <span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'actor_name'. You can override using the
-`.groups` argument.</code></pre>
+<pre><code>`summarise()` has grouped output by 'actor_name'. You can override
+using the `.groups` argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13 × 5
@@ -1636,20 +1642,21 @@ In-class exercise
 <span id="cb148-7"><a href="#cb148-7" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 10
-   crisis_name         actor_name actor_id  year duration outcome duration_weeks
-   &lt;chr&gt;               &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
- 1 COMMUNISM IN POLAND RUS             365  1946      204 victory          29.1 
- 2 TURKISH STRAITS     USA               2  1946       81 victory          11.6 
- 3 COMMUNISM IN HUNGA… RUS             365  1947      112 victory          16   
- 4 TRUMAN DOCTRINE     USA               2  1947       91 victory          13   
- 5 MARSHALL PLAN       RUS             365  1947        9 victory           1.29
- 6 COMMUNISM IN CZECH. RUS             365  1948       13 victory           1.86
- 7 BERLIN BLOCKADE     RUS             365  1948      340 defeat           48.6 
- 8 BERLIN BLOCKADE     UKG             200  1948      323 victory          46.1 
- 9 BERLIN BLOCKADE     USA               2  1948      323 victory          46.1 
-10 CHINA CIVIL WAR     USA               2  1948       34 defeat            4.86
+   crisis_name actor_name actor_id  year duration outcome duration_weeks
+   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 COMMUNISM … RUS             365  1946      204 victory          29.1 
+ 2 TURKISH ST… USA               2  1946       81 victory          11.6 
+ 3 COMMUNISM … RUS             365  1947      112 victory          16   
+ 4 TRUMAN DOC… USA               2  1947       91 victory          13   
+ 5 MARSHALL P… RUS             365  1947        9 victory           1.29
+ 6 COMMUNISM … RUS             365  1948       13 victory           1.86
+ 7 BERLIN BLO… RUS             365  1948      340 defeat           48.6 
+ 8 BERLIN BLO… UKG             200  1948      323 victory          46.1 
+ 9 BERLIN BLO… USA               2  1948      323 victory          46.1 
+10 CHINA CIVI… USA               2  1948       34 defeat            4.86
 # ℹ 77 more rows
-# ℹ 3 more variables: duration_years &lt;dbl&gt;, spending &lt;dbl&gt;, personnel &lt;dbl&gt;</code></pre>
+# ℹ 3 more variables: duration_years &lt;dbl&gt;, spending &lt;dbl&gt;,
+#   personnel &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>Now we can use <code>group_by()</code> and <code>summarize()</code> to calculate the average size and spending of the military among crisis winners, crisis losers, and so on.</p>

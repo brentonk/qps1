@@ -2,6 +2,10 @@
 
 These are the course notes for Prof. [Brenton Kenkel](https://bkenkel.com)'s course PSCI 2300 (Quantitative Political Science I: Computing) at Vanderbilt University.
 
+PSCI 2300 is an introductory course on data analysis for political science.
+The course is intended to get students up and running with R programming and simple data analysis techniques, without going too deeply into math or statistics.
+Before using these techniques for high-stakes research, whether in academia or the private sector, you'll want to get deeper coverage from more advanced courses and sources.
+
 These notes are written in [Quarto](https://quarto.org/) and published on [GitHub Pages](https://pages.github.com/).
 You can find the Quarto source files [on GitHub](https://github.com/brentonk/qps1).
 

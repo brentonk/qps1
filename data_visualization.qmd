@@ -7,11 +7,11 @@ Here are the things to think about as you construct a data visualization.
 **Statistical analysis should be question driven.**
 The goal of a data visualization is not to make something pretty and colorful.
 It's to help you and your audience answer some question about the world.
-Before even starting to write code for a data visualization---or any other form of statistical analysis, for that matter---you need to pin down the question you're trying to answer.
+Before even starting to write code for a data visualization --- or any other form of statistical analysis, for that matter --- you need to pin down the question you're trying to answer.
 
 **Your visualization should suggest an answer.**
 When you make a graph, ask yourself "What story is this graph telling?"
-Ideally, the story it's telling---the visual impression it conveys to the audience---should be an answer to the research question you're asking.
+Ideally, the story it's telling --- the visual impression it conveys to the audience --- should be an answer to the research question you're asking.
 If that's not the story your graph is telling, then either you made the wrong graph, or you need to tweak it in some way to convey the point more clearly.
 
 **Accuracy over attractiveness.**
@@ -657,7 +657,7 @@ df_wdi |>
 
 We see here that there is plenty of data in the top-right (above average on both GDP per capita and life expectancy) and bottom-left (below average on both).
 There is also a decent amount of data in the upper-left (below average GDP per capita, but above-average life expectancy).
-However, there is very little data in the bottom-right---every country with an above-average GDP per capita has an above-average life expectancy, except for three that are just slightly below average.
+However, there is very little data in the bottom-right --- every country with an above-average GDP per capita has an above-average life expectancy, except for three that are just slightly below average.
 
 Another way to visualize the correlation is to overlay a **trend line**.
 We can do this by adding the `geom_smooth()` function.
@@ -765,7 +765,7 @@ Just to be clear on what each line of the above code block accomplishes:
 
 *   `map_data("world")` retrieves the data frame of raw mapping data.
 *   `as_tibble()` turns it from a standard R data frame into a tidyverse-style "tibble."
-    I only did this so I could print it in R Markdown without 1000 rows showing up.
+    I only did this so I could print it in Quarto without 1000 rows showing up.
 *   `rename(name = region)` renames the `region` column in the mapping data, which actually stores country names rather than regions, to be more sensibly called `name` instead.
 *   `countryname(name, destination = "iso3c")` takes the `name` column of the mapping data and converts it to the ISO 3-character abbreviation format.
     Hence the line `mutate(iso3c = countryname(...))` takes that output and stores it as a new column called `iso3c`.

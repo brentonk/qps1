@@ -372,7 +372,7 @@ It turns out, however, that we can get an approximate answer using a technique c
 
 The basic idea behind the bootstrap is that we can generate new random samples by sampling *with replacement* from our original data.
 Because we are sampling with replacement, some of our original observations will show up 2, 3, or even more times in any given bootstrap sample, while others won't be included at all.
-In the same fashion as the simulations we ran above, we won't just draw one bootstrap sample---we will draw hundreds or even thousands of new samples, so as to get an idea of how our statistical calculations would vary from sample to sample.
+In the same fashion as the simulations we ran above, we won't just draw one bootstrap sample --- we will draw hundreds or even thousands of new samples, so as to get an idea of how our statistical calculations would vary from sample to sample.
 
 To draw a single bootstrap sample from a data frame, we can use the `slice_sample()` function.
 
@@ -495,7 +495,7 @@ Use the bootstrap to estimate the standard error of the median, as well as a ran
 
 Suppose we want to predict someone's feeling toward Donald Trump if all we know about them is that their feeling toward the police is a 50 on a 100-point scale.
 We know that we can use the regression formula, $$\text{response} \approx \text{intercept} + \text{slope} \times 50,$$ to come up with a prediction.
-What's harder is to gauge the amount of uncertainty in that prediction---i.e., to nail down the range of estimates that are plausible based on the knowledge we have.
+What's harder is to gauge the amount of uncertainty in that prediction --- i.e., to nail down the range of estimates that are plausible based on the knowledge we have.
 In part that's because there are two sources of uncertainty.
 
 1.  The regression line doesn't perfectly fit the data.

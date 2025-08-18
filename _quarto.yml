@@ -19,6 +19,7 @@ book:
     - data_visualization.qmd
     - correlation_regression.qmd
     - simulation_resampling.qmd
+    - text_analysis.qmd
     - references.qmd
   appendices:
     - using_chatgpt.qmd

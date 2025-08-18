@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./text_analysis.html" rel="next">
 <link href="./correlation_regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -214,6 +214,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./simulation_resampling.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulation and Resampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./text_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -701,7 +707,7 @@ In-class exercise
 <section id="resampling-coefficients" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="resampling-coefficients"><span class="header-section-number">6.3.1</span> Resampling coefficients</h3>
 <p>We want to separate the signal from the noise — to figure out what inferences we can reliably draw from the data we have, as opposed to patterns that might have shown up through sheer random chance. Our goal is to gauge “If we could draw a bunch of new random samples of the same size, how much would we expect our regression estimates to vary from sample to sample?” This may seem like an impossible question to answer with a single sample. It turns out, however, that we can get an approximate answer using a technique called <span class="concept">the bootstrap</span>.</p>
-<p>The basic idea behind the bootstrap is that we can generate new random samples by sampling <em>with replacement</em> from our original data. Because we are sampling with replacement, some of our original observations will show up 2, 3, or even more times in any given bootstrap sample, while others won’t be included at all. In the same fashion as the simulations we ran above, we won’t just draw one bootstrap sample—we will draw hundreds or even thousands of new samples, so as to get an idea of how our statistical calculations would vary from sample to sample.</p>
+<p>The basic idea behind the bootstrap is that we can generate new random samples by sampling <em>with replacement</em> from our original data. Because we are sampling with replacement, some of our original observations will show up 2, 3, or even more times in any given bootstrap sample, while others won’t be included at all. In the same fashion as the simulations we ran above, we won’t just draw one bootstrap sample — we will draw hundreds or even thousands of new samples, so as to get an idea of how our statistical calculations would vary from sample to sample.</p>
 <p>To draw a single bootstrap sample from a data frame, we can use the <code>slice_sample()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1789</span>)</span>
@@ -902,7 +908,7 @@ In-class exercise
 </section>
 <section id="resampling-predictions" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="resampling-predictions"><span class="header-section-number">6.3.2</span> Resampling predictions</h3>
-<p>Suppose we want to predict someone’s feeling toward Donald Trump if all we know about them is that their feeling toward the police is a 50 on a 100-point scale. We know that we can use the regression formula, <span class="math display">\[\text{response} \approx \text{intercept} + \text{slope} \times 50,\]</span> to come up with a prediction. What’s harder is to gauge the amount of uncertainty in that prediction—i.e., to nail down the range of estimates that are plausible based on the knowledge we have. In part that’s because there are two sources of uncertainty.</p>
+<p>Suppose we want to predict someone’s feeling toward Donald Trump if all we know about them is that their feeling toward the police is a 50 on a 100-point scale. We know that we can use the regression formula, <span class="math display">\[\text{response} \approx \text{intercept} + \text{slope} \times 50,\]</span> to come up with a prediction. What’s harder is to gauge the amount of uncertainty in that prediction — i.e., to nail down the range of estimates that are plausible based on the knowledge we have. In part that’s because there are two sources of uncertainty.</p>
 <ol type="1">
 <li><p>The regression line doesn’t perfectly fit the data. There’s some spread between the points and the line, summarized by what R calls the residual standard error.</p></li>
 <li><p>The regression line we estimate from our sample might be different than the line we would fit if we had the full population of data. In other words, there’s statistical uncertainty about the values of the slope and the intercept.</p></li>
@@ -1404,8 +1410,8 @@ In-class exercise
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./text_analysis.html" class="pagination-link" aria-label="Text Analysis">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Text Analysis – Quantitative Political Science I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./simulation_resampling.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d19a348d1c3c577774653d463d75021c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text_analysis.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Quantitative Political Science I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./univariate_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Univariate Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlation and Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simulation_resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulation and Resampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./text_analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./using_chatgpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Using ChatGPT</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Data Sources</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-the-federalist-papers" id="toc-data-the-federalist-papers" class="nav-link active" data-scroll-target="#data-the-federalist-papers"><span class="header-section-number">7.1</span> Data: The Federalist Papers</a></li>
+  <li><a href="#cleaning-text-data" id="toc-cleaning-text-data" class="nav-link" data-scroll-target="#cleaning-text-data"><span class="header-section-number">7.2</span> Cleaning text data</a>
+  <ul class="collapse">
+  <li><a href="#from-raw-text-to-tokens" id="toc-from-raw-text-to-tokens" class="nav-link" data-scroll-target="#from-raw-text-to-tokens"><span class="header-section-number">7.2.1</span> From raw text to tokens</a></li>
+  <li><a href="#removing-stop-words" id="toc-removing-stop-words" class="nav-link" data-scroll-target="#removing-stop-words"><span class="header-section-number">7.2.2</span> Removing stop words</a></li>
+  <li><a href="#from-tokens-to-stems" id="toc-from-tokens-to-stems" class="nav-link" data-scroll-target="#from-tokens-to-stems"><span class="header-section-number">7.2.3</span> From tokens to stems</a></li>
+  <li><a href="#creating-document-level-features" id="toc-creating-document-level-features" class="nav-link" data-scroll-target="#creating-document-level-features"><span class="header-section-number">7.2.4</span> Creating document-level features</a></li>
+  </ul></li>
+  <li><a href="#classifying-documents" id="toc-classifying-documents" class="nav-link" data-scroll-target="#classifying-documents"><span class="header-section-number">7.3</span> Classifying documents</a>
+  <ul class="collapse">
+  <li><a href="#sec-feature-selection" id="toc-sec-feature-selection" class="nav-link" data-scroll-target="#sec-feature-selection"><span class="header-section-number">7.3.1</span> Feature selection</a></li>
+  <li><a href="#sec-overfitting-cv" id="toc-sec-overfitting-cv" class="nav-link" data-scroll-target="#sec-overfitting-cv"><span class="header-section-number">7.3.2</span> Overfitting and cross-validation</a></li>
+  <li><a href="#sec-elastic-net" id="toc-sec-elastic-net" class="nav-link" data-scroll-target="#sec-elastic-net"><span class="header-section-number">7.3.3</span> A streamlined approach: The elastic net</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-text-analysis" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Lots of important data about politics comes in the form of text rather than numbers. Just a few examples off the top of my head:</p>
+<ul>
+<li><p>The text of constitutions, legislation, executive speeches, legislative debates, and other official acts.</p></li>
+<li><p>Transcripts of news programs, pre-election debates, and other media events.</p></li>
+<li><p>Free response fields in public opinion surveys, social media posts about politics, and other political text sources produced by ordinary citizens.</p></li>
+<li><p>Historical accounts of diplomatic negotiations, state visits, wars, and other events in international relations.</p></li>
+</ul>
+<p>To analyze text in R, we’ll be using a few new packages we haven’t used before, in addition to the usual tidyverse and broom packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"broom"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidytext"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"SnowballC"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"caret"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"glmnet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To install these, you’ll need to run the following command <em>once</em> from the R console. Don’t try to put it in a Quarto document; installing packages from within the Quarto rendering process is dicey at best. (Plus, you only need to install the package once ever, so it’d be a waste of computing time and power to reinstall it every time you render a Quarto file.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidytext"</span>, <span class="st">"SnowballC"</span>, <span class="st">"caret"</span>, <span class="st">"glmnet"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-the-federalist-papers" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="data-the-federalist-papers"><span class="header-section-number">7.1</span> Data: The Federalist Papers</h2>
+<p>We’ll study text analysis through the lens of <a href="https://en.wikipedia.org/wiki/The_Federalist_Papers">the Federalist Papers</a>, a series of 85 brief essays by Alexander Hamilton, John Jay, and James Madison. These essays, published in 1787 and 1788, make the case for the adoption of the new Constitution to replace the prior <a href="https://en.wikipedia.org/wiki/Articles_of_Confederation">Articles of Confederation</a>, laying out the political philosophy underlying the Constitution.</p>
+<p>The Federalist Papers were originally published anonymously under the pseudonym “Publius”. Decades later, authorship lists from Hamilton and (even later) Madison were circulated, concurring on the authorship on most of the papers while disagreeing on 11 or 12. Both historians and statisticians have kept themselves busy trying to establish the authorship of the disputed papers, as you can tell from <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C43&amp;q=federalist+paper+authorship&amp;oq=">a quick Google Scholar search</a>.</p>
+<p>In our study of text analysis, we will try to replicate some of the statistical approaches to establishing the authorship of the disputed papers. What we do here should just be considered a first cut at a very difficult problem, not the final answer! Most importantly, along the way, you’ll learn about some data analysis techniques that are applicable well beyond the Federalist Papers:</p>
+<ol type="1">
+<li><p>How to <span class="concept">clean text data</span> to make it amenable for statistical analysis. In essence, we’ll answer the question: How do we turn words into (statistically meaningful) numbers?</p></li>
+<li><p>Regression-type statistical models for <span class="concept">classification with many features</span>. There are a few key differences from the regression techniques we worked with before:</p>
+<ul>
+<li><p>The response and the predictions will be categorical instead of numeric.</p></li>
+<li><p>We will be able to make predictions with many, many features — potentially even more features than we have observations in our sample.</p></li>
+<li><p>We will use specialized techniques to avoid <span class="concept">overfitting</span> — treating “noise” in the data as if it were a “signal” — which is especially important when we have very many features.</p></li>
+</ul></li>
+</ol>
+<p>We will work with a slightly cleaned-up version of the Federalist Papers, via the data file <code>fed_papers.csv</code>. This file is available on my website at <a href="https://bkenkel.com/qps1/data/fed_papers.csv" class="uri">https://bkenkel.com/qps1/data/fed_papers.csv</a>. It’s constructed using the raw Federalist Papers text from <a href="https://www.gutenberg.org/files/1404/1404-h/1404-h.htm">Project Gutenberg</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/fed_papers.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_fed_papers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 85 × 3
+   paper_id author   text                                               
+      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;                                              
+ 1        1 hamilton "To the People of the State of New York:\n\nAfter …
+ 2        2 jay      "To the People of the State of New York:\n\nWhen t…
+ 3        3 jay      "To the People of the State of New York:\n\nIt is …
+ 4        4 jay      "To the People of the State of New York:\n\nMy las…
+ 5        5 jay      "To the People of the State of New York:\n\nQueen …
+ 6        6 hamilton "To the People of the State of New York:\n\nThe th…
+ 7        7 hamilton "To the People of the State of New York:\n\nIt is …
+ 8        8 hamilton "To the People of the State of New York:\n\nAssumi…
+ 9        9 hamilton "To the People of the State of New York:\n\nA firm…
+10       10 madison  "To the People of the State of New York:\n\nAmong …
+# ℹ 75 more rows</code></pre>
+</div>
+</div>
+<p>There are just three columns here:</p>
+<ul>
+<li><p><code>paper_id</code> gives the number of the paper, in order of their publication.</p></li>
+<li><p><code>author</code> lists the author of the paper.</p></li>
+<li><p><code>text</code> contains the full text of the paper.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  author               number
+  &lt;chr&gt;                 &lt;int&gt;
+1 hamilton                 51
+2 hamilton and madison      3
+3 hamilton or madison      11
+4 jay                       5
+5 madison                  15</code></pre>
+</div>
+</div>
+<p>We see here that most of the papers were written solely by Hamilton, with a smaller number by Madison and an even smaller number by Jay. The 11 disputed papers are labeled <code>"hamilton or madison"</code>.</p>
+<p>If you’d like to read the full text of one of these papers … well, it’s probably easiest to just Google it. But if for some reason you wanted to read it in R, you can use the <code>cat()</code> function.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(df_fed_papers<span class="sc">$</span>text[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- Putting in the output manually to avoid having a long document in the middle of the notes -->
+<pre class="text"><code>## To the People of the State of New York:
+## 
+## After an unequivocal experience of the inefficacy of the subsisting
+## federal government, you are called upon to deliberate on a new
+## Constitution for the United States of America. The subject speaks its
+## own importance; comprehending in its consequences nothing less than the
+## existence of the UNION, the safety and welfare of the parts of which it
+## is composed, the fate of an empire in many respects the most
+## interesting in the world. It has been frequently remarked that it seems
+## to have been reserved to the people of this country, by their conduct
+## and example, to decide the important question, whether societies of men
+## are really capable or not of establishing good government from [...]</code></pre>
+</section>
+<section id="cleaning-text-data" class="level2 page-columns page-full" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="cleaning-text-data"><span class="header-section-number">7.2</span> Cleaning text data</h2>
+<section id="from-raw-text-to-tokens" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="from-raw-text-to-tokens"><span class="header-section-number">7.2.1</span> From raw text to tokens</h3>
+<p>The first thing we want to do is break up the text of each document into the individual words that comprise it. Data scientists would use the term <span class="concept">tokens</span> rather than words, (1) because we’ll capture some bits of text like numerals that aren’t technically words, and (2) in some applications the unit of analysis is something smaller than words (e.g., syllables) or bigger than words (e.g., full sentences). For our purposes you don’t have to worry about the word/token distinction.</p>
+<p>The <code>unnest_tokens()</code> function takes a vector of document text and turns each document into a “bag of words”, extracting individual words. You use the <code>input</code> argument to tell it where to take the text from, and the <code>output</code> argument to tell it the name of the column to put the words into. I’ll illustrate with a simple example before applying it to the Federalist Papers data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_fake_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="fu">c</span>(<span class="st">"The Muppets ate bananas!!"</span>, <span class="st">"Bananas are what they ate??"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>my_fake_data <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">input =</span> text, <span class="at">output =</span> word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+     id word   
+  &lt;dbl&gt; &lt;chr&gt;  
+1     1 the    
+2     1 muppets
+3     1 ate    
+4     1 bananas
+5     2 bananas
+6     2 are    
+7     2 what   
+8     2 they   
+9     2 ate    </code></pre>
+</div>
+</div>
+<p>By default, <code>unnest_tokens()</code> gets rid of all capitalization and punctuation, leaving us with the raw words. That’s typically what we want for text analysis. We don’t want to treat <code>"bananas"</code> like a different word from <code>"Bananas"</code>, or <code>"ate"</code> different from <code>"ate??"</code>. (Of course, for some purposes you would want to make such distinctions, and then you’d use custom options in tokenization so that these would be treated as separate tokens.)</p>
+<p>When we put the Federalist Papers through the <code>unnest_tokens()</code> function, we end up with many thousands of individual words. We’ll store these in a new data frame called <code>df_fed_tokens</code>, so we don’t overwrite the original raw data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_papers <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">input =</span> text, <span class="at">output =</span> word)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 190,623 × 3
+   paper_id author   word  
+      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; 
+ 1        1 hamilton to    
+ 2        1 hamilton the   
+ 3        1 hamilton people
+ 4        1 hamilton of    
+ 5        1 hamilton the   
+ 6        1 hamilton state 
+ 7        1 hamilton of    
+ 8        1 hamilton new   
+ 9        1 hamilton york  
+10        1 hamilton after 
+# ℹ 190,613 more rows</code></pre>
+</div>
+</div>
+<p>We can use our typical data wrangling functions to see which words appear most commonly in the Federalist Papers data. Are the most common words high-minded things like “politics” and “president” and “constitution”?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,689 × 2
+   word  number
+   &lt;chr&gt;  &lt;int&gt;
+ 1 the    17767
+ 2 of     11812
+ 3 to      7060
+ 4 and     5089
+ 5 in      4450
+ 6 a       3989
+ 7 be      3832
+ 8 that    2789
+ 9 it      2543
+10 is      2190
+# ℹ 8,679 more rows</code></pre>
+</div>
+</div>
+<p>Nope, they’re extremely boring common words that would appear in virtually any English language document. Which brings us to our next task…</p>
+</section>
+<section id="removing-stop-words" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="removing-stop-words"><span class="header-section-number">7.2.2</span> Removing stop words</h3>
+<p>Words that appear commonly and don’t have much topical meaning — e.g., “the”, “an”, “but”, “with” — are called <span class="concept">stop words</span>. We don’t typically expect these words to do much to help us classify documents, so it’s common to remove them before performing text analysis. There are multiple different lists of English stop words out there for different use cases, but we’ll just use the default list included in the <code>stop_words</code> data frame (via the tidytext package).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>stop_words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,149 × 2
+   word        lexicon
+   &lt;chr&gt;       &lt;chr&gt;  
+ 1 a           SMART  
+ 2 a's         SMART  
+ 3 able        SMART  
+ 4 about       SMART  
+ 5 above       SMART  
+ 6 according   SMART  
+ 7 accordingly SMART  
+ 8 across      SMART  
+ 9 actually    SMART  
+10 after       SMART  
+# ℹ 1,139 more rows</code></pre>
+</div>
+</div>
+<p>We want to reduce <code>df_fed_tokens</code>, our “bag of words” data frame, to exclude these words. We can do that using the <code>anti_join()</code> function. Just like <code>left_join()</code>, which we saw back in the Data Wrangling unit, <code>anti_join()</code> takes two data frames and a column name as input. But it works a little bit differently: it returns only the rows of the first data frame that have <u>no</u> match in the second data frame. In this case, we want the rows of <code>df_fed_tokens</code> where the <code>word</code> column has no match in <code>stop_words</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by =</span> <span class="st">"word"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 65,387 × 3
+   paper_id author   word       
+      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      
+ 1        1 hamilton people     
+ 2        1 hamilton york       
+ 3        1 hamilton unequivocal
+ 4        1 hamilton experience 
+ 5        1 hamilton inefficacy 
+ 6        1 hamilton subsisting 
+ 7        1 hamilton federal    
+ 8        1 hamilton government 
+ 9        1 hamilton called     
+10        1 hamilton deliberate 
+# ℹ 65,377 more rows</code></pre>
+</div>
+</div>
+<p>About 2/3 of the words in the raw text were removed once we got rid of the stop words. And now if we look at the most common words, it looks a lot more like what we might intuitively expect from the Federalist Papers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8,173 × 2
+   word         number
+   &lt;chr&gt;         &lt;int&gt;
+ 1 government      829
+ 2 people          612
+ 3 power           606
+ 4 constitution    462
+ 5 union           362
+ 6 national        340
+ 7 federal         324
+ 8 authority       290
+ 9 public          283
+10 powers          255
+# ℹ 8,163 more rows</code></pre>
+</div>
+</div>
+<p>Yet now we see another issue. Do we <em>really</em> want to treat “power” and “powers” as if they’re distinct words? Sometimes we do, but often we’d rather just group these together. That brings us to yet another data cleaning task…</p>
+</section>
+<section id="from-tokens-to-stems" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="from-tokens-to-stems"><span class="header-section-number">7.2.3</span> From tokens to stems</h3>
+<p>Our last word-level processing step will be to <span class="concept">stem</span> the words. This is an algorithm that removes plurals and suffixes, reducing words to their root form. We use the <code>wordStem()</code> function for this. For a simple example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gov_words <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"government"</span>, <span class="st">"govern"</span>, <span class="st">"governed"</span>, <span class="st">"governing"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"governs"</span>, <span class="st">"governor"</span>, <span class="st">"governors"</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wordStem</span>(gov_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "govern"   "govern"   "govern"   "govern"   "govern"   "governor"
+[7] "governor"</code></pre>
+</div>
+</div>
+<p>There’s a tradeoff with stemming words like this. On the plus side, we help ensure that the <em>meanings</em> of words are what drive our statistical analysis. A document that uses the word “govern” many times won’t be treated differently than one that uses “governs” many times. The downside is that we lose some grammatical and syntactical information. That doesn’t matter too much when we’re treating each document like a “bag of words”, but in other applications it would be inappropriate to neglect the differences between “govern” and “governs” and “governing.”</p>
+<p>Going back to the full Federalist Papers data, we can use a simple <code>mutate()</code> to stem the raw tokens.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word_stem =</span> <span class="fu">wordStem</span>(word))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 65,387 × 4
+   paper_id author   word        word_stem 
+      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;     
+ 1        1 hamilton people      peopl     
+ 2        1 hamilton york        york      
+ 3        1 hamilton unequivocal unequivoc 
+ 4        1 hamilton experience  experi    
+ 5        1 hamilton inefficacy  inefficaci
+ 6        1 hamilton subsisting  subsist   
+ 7        1 hamilton federal     feder     
+ 8        1 hamilton government  govern    
+ 9        1 hamilton called      call      
+10        1 hamilton deliberate  deliber   
+# ℹ 65,377 more rows</code></pre>
+</div>
+</div>
+<p>After stemming, we end up with a similar — but not identical — list of most frequent terms across the 85 essays.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word_stem) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,801 × 2
+   word_stem number
+   &lt;chr&gt;      &lt;int&gt;
+ 1 govern      1040
+ 2 power        911
+ 3 constitut    685
+ 4 peopl        612
+ 5 nation       568
+ 6 author       397
+ 7 object       378
+ 8 union        363
+ 9 law          351
+10 execut       347
+# ℹ 4,791 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-document-level-features" class="level3 page-columns page-full" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="creating-document-level-features"><span class="header-section-number">7.2.4</span> Creating document-level features</h3>
+<p>Remember that our ultimate goal here is to discern the true author of the 11 disputed essays. That means our analysis will ultimately take place at the document level. So far we have:</p>
+<ol type="1">
+<li><p>Extracted the individual words from each document.</p></li>
+<li><p>Removed the “stop words” that don’t contribute to the document’s substantive meaning.</p></li>
+<li><p>“Stemmed” the words so that words representing the same concepts are grouped together.</p></li>
+</ol>
+<p>Altogether, we have a list of word stems for each document. We want to use these to calculate a set of features for each document, which we can then use to classify them.</p>
+<p>As a simple start, we will calculate the number of times each stemmed non-stop word appears in each document. At this point let’s make another new data frame, which we’ll call <code>df_fed_tf</code> (where <code>tf</code> stands for “term frequency” — more on that in a moment).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper_id, word_stem) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'paper_id'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 37,834 × 3
+   paper_id word_stem  number
+      &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;
+ 1        1 1               2
+ 2        1 absurd          1
+ 3        1 accid           1
+ 4        1 acknowledg      1
+ 5        1 act             1
+ 6        1 actuat          1
+ 7        1 add             1
+ 8        1 addit           1
+ 9        1 address         1
+10        1 admit           1
+# ℹ 37,824 more rows</code></pre>
+</div>
+</div>
+<p>At this point, we <em>could</em> just take the raw word counts as our document-level features. However, that approach is not ideal for a couple of reasons.</p>
+<ul>
+<li><p>Most simply, some of the essays are longer than others. For example, Federalist #22 includes the stemmed word “law” 10 times, while Federalist #56 includes it 8 times. That might make it sound like “law” plays a larger role in #22 than in #56 — until you observe that Federalist #22 has 1,247 non-stop words, while Federalist #56 has only 479, less than half as many.</p></li>
+<li><p>Raw word counts don’t give us any idea of the <em>distinctiveness</em> of certain words. For example, the stem “govern” appears at least twice in every single essay. Knowing that an essay uses the word “govern” doesn’t really help us discern its topics or nature from other ones. By contrast, the stem “stamp” only appears in 5 of the 85 essays. In this sense, usage of “stamp” gives us a lot more distinct information about the topic — and perhaps even the authorship — of each essay than “govern” does.</p></li>
+</ul>
+<p>A better measure that incorporates document length and word distinctiveness is <span class="concept">tf-idf</span>, which stands for <span class="concept">term frequency–inverse document frequency</span>. I’m going to break down each of these two parts of tf-idf. Apologies in advance: there’s a bit of math ahead.</p>
+<p><span class="concept">Term frequency</span> is measured separately for each word in each document. It is simply the proportion of the words in the document that are the word in question. The term frequency for word <span class="math inline">\(w\)</span> in document <span class="math inline">\(d\)</span> is given by the equation <span class="math display">\[\text{tf}(w, d) = \frac{\text{number of times $w$ appears in $d$}}{\text{total words in $d$}}.\]</span> For example, the term frequency for “law” in Federalist #22 is 10/1247 (0.008), while the term frequency for “law” in Federalist #56 is 8/479 (0.0167).</p>
+<p><span class="concept">Document frequency</span> is measured for each word across documents. It is the proportion of documents that contain the word in quesiton. The document frequency for word <span class="math inline">\(w\)</span> is given by the equation <span class="math display">\[\text{df}(w) = \frac{\text{number of documents that contain $w$ at least once}}{\text{number of documents}}.\]</span> For example, the document frequency of “govern” is 85/85 (1.0), while the document frequency of “stamp” is 5/85 (0.0588).</p>
+<p><span class="concept">Inverse document frequency</span> is — take a deep breath — the natural logarithm of the multiplicative inverse of the document frequency: <span class="math display">\[\begin{align*}
+\text{idf}(w)
+&amp;= \log \frac{1}{\text{df}(w)} \\
+&amp;= \log (\text{number of documents}) - \log (\text{number of documents that contain $w$}).
+\end{align*}\]</span> Don’t worry, you don’t need to remember this exact formula, let alone why it’s defined in this weird way. The important thing is that the greater the percentage of documents that contain <span class="math inline">\(w\)</span>, the lower that idf(<span class="math inline">\(w\)</span>) will be. In the extreme, if every document contains <span class="math inline">\(w\)</span>, then idf(<span class="math inline">\(w\)</span>) will equal 0.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>In case you’re curious: The “inverse” part, where we take 1/df, is just so that idf will get bigger as the percentage of documents containing the word is smaller. The harder part to grok is why we use a logarithm. This essentially means that there are diminishing returns: the difference between being in 1% of documents versus 2% of documents is “greater”, from the perspective of calculating tf-idf, than the difference between being in 50% versus 51%.</p>
+</div></div><p>Finally, <span class="concept">tf-idf</span> is the product of term frequency and inverse document frequency. For word <span class="math inline">\(w\)</span> in document <span class="math inline">\(d\)</span>, <span class="math display">\[\text{tf-idf}(w, d) = \text{tf}(w, d) \times \text{idf}(w).\]</span> Again, you don’t need to worry about the mathematical specifics here. What’s important is to understand tf-idf as a measure of <u>word distinctiveness</u> in a particular document. If tf-idf for word <span class="math inline">\(w\)</span> in document <span class="math inline">\(d\)</span> is high, that means a combination of (1) <span class="math inline">\(w\)</span> appears a lot in <span class="math inline">\(d\)</span>, relative to other words, and (2) not very many other documents contain <span class="math inline">\(w\)</span> at all.</p>
+<p>To calculate tf-idf, we can plug our data frame of word counts by document into the <code>bind_tf_idf()</code> function. We need to supply three arguments to <code>bind_tf_idf()</code>:</p>
+<ul>
+<li><p><code>term</code>: What’s the name of the column containing the words/tokens we want to calculate for?</p></li>
+<li><p><code>document</code>: What’s the name of the column containing the ID of each different document?</p></li>
+<li><p><code>n</code>: What’s the name of the column containing the word/token counts by document?</p></li>
+</ul>
+<p>In this case, our words are in <code>word_stem</code>, our document IDs are in <code>paper_id</code>, and our word counts are in <code>number</code>, so we run:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="ot">&lt;-</span> df_fed_tf <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_tf_idf</span>(<span class="at">term =</span> word_stem, <span class="at">document =</span> paper_id, <span class="at">n =</span> number)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>df_fed_tf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 37,834 × 6
+   paper_id word_stem  number      tf   idf   tf_idf
+      &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1        1 1               2 0.00364 0.832 0.00302 
+ 2        1 absurd          1 0.00182 1.73  0.00315 
+ 3        1 accid           1 0.00182 3.75  0.00682 
+ 4        1 acknowledg      1 0.00182 1.50  0.00272 
+ 5        1 act             1 0.00182 0.400 0.000727
+ 6        1 actuat          1 0.00182 2.14  0.00389 
+ 7        1 add             1 0.00182 1.31  0.00238 
+ 8        1 addit           1 0.00182 0.729 0.00133 
+ 9        1 address         1 0.00182 1.61  0.00293 
+10        1 admit           1 0.00182 0.382 0.000695
+# ℹ 37,824 more rows</code></pre>
+</div>
+</div>
+<p>We’ve now got the term frequencies, inverse document frequencies, and tf-idf for each word-document pairing in our data. Let’s see which word is the most <em>distinctive</em> in each document, by pulling out the word with the highest tf-idf in each document. We can use the <code>slice_max()</code> function to do this, after grouping by document IDs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper_id) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(tf_idf) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 6
+# Groups:   paper_id [85]
+   paper_id word_stem number     tf   idf tf_idf
+      &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1       83 juri          66 0.0342  2.36 0.0808
+ 2       82 court         38 0.0710  1.08 0.0764
+ 3       54 slave         14 0.0222  3.06 0.0678
+ 4       67 vacanc        12 0.0198  3.06 0.0605
+ 5       29 militia       26 0.0330  1.80 0.0595
+ 6       18 macedon       11 0.0131  3.75 0.0492
+ 7       69 governor      25 0.0240  2.04 0.0491
+ 8       19 emperor       13 0.0156  3.06 0.0478
+ 9       81 court         54 0.0410  1.08 0.0441
+10       20 provinc       16 0.0258  1.67 0.0431
+# ℹ 77 more rows</code></pre>
+</div>
+</div>
+<p>The results we get here line up with some basic intuitions. Federalist #82 and #83 are about the judiciary, so it makes sense that “juri” and “court” are particularly distinctive in these essays. Federalist #54 is about the apportionment of House of Representatives seats across states. The major controversy for this issue was whether and how to count enslaved persons towards a state’s population for apportionment purposes, hence the distinctiveness of “slave” for this essay. Federalist #67 is about how the president will fill vacancies, and Federalist #29 is about the maintenance of a militia. At least at a glance, it looks like tf-idf is doing a reasonable job at picking up the distinctive terms from each document.</p>
+<p>The last thing we need to do is transform this into a data frame where each row is an essay, each column is a word, and the entries are the tf-idf of each word in each essay. In this way, the tf-idf of each word will serve as the features we use for categorization and classification, along our way to try and identify the authorship of the 11 disputed papers. To transform the data this way, we can simply use <code>pivot_wider()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_fed_features <span class="ot">&lt;-</span> df_fed_tf <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(paper_id, word_stem, tf_idf) <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> word_stem,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> tf_idf,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>paper_id) <span class="sc">|&gt;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">any</span>(.x <span class="sc">&gt;</span> <span class="dv">0</span>)))</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>df_fed_features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 85 × 4,796
+       `1`  absurd   accid acknowledg      act  actuat     add   addit
+     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 0.00302 0.00315 0.00682    0.00272 0.000727 0.00389 0.00238 0.00133
+ 2 0       0       0          0       0        0       0       0      
+ 3 0       0       0          0.00614 0.000819 0.00439 0.00268 0.00149
+ 4 0       0       0          0       0.000739 0       0       0      
+ 5 0       0       0          0       0.000848 0       0       0      
+ 6 0.00191 0       0          0       0        0       0       0      
+ 7 0.00205 0       0          0       0.000493 0       0       0.00180
+ 8 0.00217 0       0          0       0.000522 0       0       0      
+ 9 0.00233 0       0          0       0        0       0.00183 0      
+10 0       0       0          0       0.00156  0.00417 0.00127 0      
+# ℹ 75 more rows
+# ℹ 4,788 more variables: address &lt;dbl&gt;, admit &lt;dbl&gt;, adopt &lt;dbl&gt;,
+#   advantag &lt;dbl&gt;, adversari &lt;dbl&gt;, advoc &lt;dbl&gt;, affect &lt;dbl&gt;,
+#   afford &lt;dbl&gt;, aggrand &lt;dbl&gt;, aim &lt;dbl&gt;, allow &lt;dbl&gt;, altern &lt;dbl&gt;,
+#   ambigu &lt;dbl&gt;, ambit &lt;dbl&gt;, ambiti &lt;dbl&gt;, america &lt;dbl&gt;, amus &lt;dbl&gt;,
+#   analogi &lt;dbl&gt;, angri &lt;dbl&gt;, animos &lt;dbl&gt;, answer &lt;dbl&gt;,
+#   antagonist &lt;dbl&gt;, appear &lt;dbl&gt;, apt &lt;dbl&gt;, ardent &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>A couple of brief notes on the code above:</p>
+<ul>
+<li><p>The <code>values_fill</code> argument in <code>pivot_wider()</code> ensures that the feature value is 0, rather than <code>NA</code>, when a particular word doesn’t appear in a particular document.</p></li>
+<li><p>The last line of the pipe, <code>select(where(~ any(.x &gt; 0)))</code>, only selects those columns where at least one entry is nonzero. This means it leaves out the small set of terms like “govern” that appear in every single document, as these have an idf (and thus tf-idf) of 0.</p></li>
+</ul>
+</section>
+</section>
+<section id="classifying-documents" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="classifying-documents"><span class="header-section-number">7.3</span> Classifying documents</h2>
+<p>Our goal here is to get a (provisional) answer about who authored the disputed documents. To do that, we’re going to use statistical methods to recognize patterns in the documents whose authorship is known, then use that pattern-matching to sort the unknown documents into “likely Hamilton” versus “likely Madison”.</p>
+<p>As a first step, we’re going to add authorship info to our data frame of word features. We will also split up the data frame into the “known” cases (those where exactly one of Hamilton or Madison is known to be the author) and the “unknown” cases (those with “Hamilton or Madison” as the listed author).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_fed_features <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">paper_author =</span> df_fed_papers<span class="sc">$</span>author,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_hamilton =</span> <span class="fu">if_else</span>(paper_author <span class="sc">==</span> <span class="st">"hamilton"</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(paper_author, is_hamilton, <span class="fu">everything</span>())</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(paper_author <span class="sc">==</span> <span class="st">"hamilton"</span> <span class="sc">|</span> paper_author <span class="sc">==</span> <span class="st">"madison"</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>df_fed_known</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 66 × 4,798
+   paper_author is_hamilton     `1`  absurd   accid acknowledg      act
+   &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+ 1 hamilton               1 0.00302 0.00315 0.00682    0.00272 0.000727
+ 2 hamilton               1 0.00191 0       0          0       0       
+ 3 hamilton               1 0.00205 0       0          0       0.000493
+ 4 hamilton               1 0.00217 0       0          0       0.000522
+ 5 hamilton               1 0.00233 0       0          0       0       
+ 6 madison                0 0       0       0          0       0.00156 
+ 7 hamilton               1 0.00186 0       0          0.00167 0       
+ 8 hamilton               1 0.00206 0       0          0.00186 0       
+ 9 hamilton               1 0       0       0          0       0       
+10 madison                0 0       0       0          0       0.00107 
+# ℹ 56 more rows
+# ℹ 4,791 more variables: actuat &lt;dbl&gt;, add &lt;dbl&gt;, addit &lt;dbl&gt;,
+#   address &lt;dbl&gt;, admit &lt;dbl&gt;, adopt &lt;dbl&gt;, advantag &lt;dbl&gt;,
+#   adversari &lt;dbl&gt;, advoc &lt;dbl&gt;, affect &lt;dbl&gt;, afford &lt;dbl&gt;,
+#   aggrand &lt;dbl&gt;, aim &lt;dbl&gt;, allow &lt;dbl&gt;, altern &lt;dbl&gt;, ambigu &lt;dbl&gt;,
+#   ambit &lt;dbl&gt;, ambiti &lt;dbl&gt;, america &lt;dbl&gt;, amus &lt;dbl&gt;,
+#   analogi &lt;dbl&gt;, angri &lt;dbl&gt;, animos &lt;dbl&gt;, answer &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_fed_unknown <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(paper_author <span class="sc">==</span> <span class="st">"hamilton or madison"</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>df_fed_unknown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 4,798
+   paper_author      is_hamilton     `1` absurd accid acknowledg     act
+   &lt;chr&gt;                   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+ 1 hamilton or madi…           0 0            0     0    0       0      
+ 2 hamilton or madi…           0 0            0     0    0.00393 0      
+ 3 hamilton or madi…           0 0            0     0    0       0      
+ 4 hamilton or madi…           0 0            0     0    0       6.74e-4
+ 5 hamilton or madi…           0 0            0     0    0       1.08e-3
+ 6 hamilton or madi…           0 0            0     0    0       6.33e-4
+ 7 hamilton or madi…           0 0            0     0    0       0      
+ 8 hamilton or madi…           0 0.00347      0     0    0       8.34e-4
+ 9 hamilton or madi…           0 0            0     0    0       0      
+10 hamilton or madi…           0 0            0     0    0.00184 4.91e-4
+11 hamilton or madi…           0 0            0     0    0.00142 1.14e-3
+# ℹ 4,791 more variables: actuat &lt;dbl&gt;, add &lt;dbl&gt;, addit &lt;dbl&gt;,
+#   address &lt;dbl&gt;, admit &lt;dbl&gt;, adopt &lt;dbl&gt;, advantag &lt;dbl&gt;,
+#   adversari &lt;dbl&gt;, advoc &lt;dbl&gt;, affect &lt;dbl&gt;, afford &lt;dbl&gt;,
+#   aggrand &lt;dbl&gt;, aim &lt;dbl&gt;, allow &lt;dbl&gt;, altern &lt;dbl&gt;, ambigu &lt;dbl&gt;,
+#   ambit &lt;dbl&gt;, ambiti &lt;dbl&gt;, america &lt;dbl&gt;, amus &lt;dbl&gt;,
+#   analogi &lt;dbl&gt;, angri &lt;dbl&gt;, animos &lt;dbl&gt;, answer &lt;dbl&gt;,
+#   antagonist &lt;dbl&gt;, appear &lt;dbl&gt;, apt &lt;dbl&gt;, ardent &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<section id="sec-feature-selection" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="sec-feature-selection"><span class="header-section-number">7.3.1</span> Feature selection</h3>
+<p>Say we wanted to use a linear regression to predict the authorship of each document. We immediately run into a problem: we have 4,797 features and only 66 observations. A linear regression won’t even work when there are more features than observations. To even run a regression model in the first place, we need to do some <span class="concept">feature selection</span>, reducing the huge set of possible features down to the ones we want to put in our model.</p>
+<p>As a very rough first cut at feature selection, let’s look for the words whose tf-idf is most strongly correlated with paper authorship. (The correlation coefficient isn’t <em>really</em> meant for use with a binary variable, but this is just a rough cut anyway.) We can do that in a single (admittedly complex!) data pipeline.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the non-numeric paper author column</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>paper_author) <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove words that never appear in the "known" papers</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">any</span>(.x <span class="sc">&gt;</span> <span class="dv">0</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Put data into "long" format and group by word</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>is_hamilton, <span class="at">names_to =</span> <span class="st">"word"</span>, <span class="at">values_to =</span> <span class="st">"tf_idf"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate correlation between authorship and tf-idf for each word</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(is_hamilton, tf_idf)) <span class="sc">|&gt;</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Show the strongest correlations (positive or negative) first</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(cor)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,469 × 2
+   word        cor
+   &lt;chr&gt;     &lt;dbl&gt;
+ 1 whilst   -0.609
+ 2 form     -0.563
+ 3 li       -0.484
+ 4 mix      -0.466
+ 5 stamp    -0.466
+ 6 democrat -0.456
+ 7 dishonor -0.456
+ 8 congress -0.431
+ 9 compass  -0.428
+10 lesser   -0.425
+# ℹ 4,459 more rows</code></pre>
+</div>
+</div>
+<p>The word stems with the strongest correlations are “whilst”, “form”, “li”, “mix”, and “stamp”. Each of these has a negative correlation, meaning a higher frequency of usage is typical of a paper written by Madison rather than Hamilton.</p>
+<p>Let’s build a linear regression model using the tf-idf of the ten most strongly correlated words to predict paper authorship.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fit_authorship <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  is_hamilton <span class="sc">~</span> whilst <span class="sc">+</span> form <span class="sc">+</span> li <span class="sc">+</span> mix <span class="sc">+</span> stamp <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    democrat <span class="sc">+</span> dishonor <span class="sc">+</span> congress <span class="sc">+</span> compass <span class="sc">+</span> lesser,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df_fed_known</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_authorship)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = is_hamilton ~ whilst + form + li + mix + stamp + 
+    democrat + dishonor + congress + compass + lesser, data = df_fed_known)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.91397  0.00138  0.00855  0.02152  0.31624 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    0.99862    0.03651  27.350  &lt; 2e-16 ***
+whilst      -223.72658   29.03297  -7.706 2.63e-10 ***
+form         -19.22100   47.48407  -0.405  0.68720    
+li           -44.43080   38.39546  -1.157  0.25220    
+mix         -264.97776   48.79483  -5.430 1.31e-06 ***
+stamp        -71.60991   47.86305  -1.496  0.14033    
+democrat     -44.34696   48.38707  -0.917  0.36340    
+dishonor    -118.67910   52.12201  -2.277  0.02670 *  
+congress       2.06805   11.95822   0.173  0.86333    
+compass      -28.40312   27.62083  -1.028  0.30830    
+lesser      -109.88549   36.40317  -3.019  0.00384 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1717 on 55 degrees of freedom
+Multiple R-squared:  0.8601,    Adjusted R-squared:  0.8346 
+F-statistic:  33.8 on 10 and 55 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>How accurately does our model predict the authorship of the known papers? To answer this question, we can build a <span class="concept">confusion matrix</span>. A confusion matrix is a table where we put the actual responses in the rows, and the predicted responses in the columns. Ideally, we would like the prediction to match the truth as often as possible, resulting in a confusion matrix with most observations along the “diagonal”.</p>
+<p>To make a confusion matrix, first we need to extract predictions via <code>augment()</code>, then match them up with the true responses. The linear regression doesn’t directly make predictions, but we’ll treat a fitted value above 0.5 (50%) as a Hamilton prediction and a fitted value below 0.5 as a Madison prediction.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_predictions <span class="ot">&lt;-</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(fit_authorship, <span class="at">newdata =</span> df_fed_known) <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">if_else</span>(.fitted <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">"hamilton"</span>, <span class="st">"madison"</span>))</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">actual =</span> df_predictions<span class="sc">$</span>paper_author,</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">predicted =</span> df_predictions<span class="sc">$</span>prediction</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          predicted
+actual     hamilton madison
+  hamilton       51       0
+  madison         1      14</code></pre>
+</div>
+</div>
+<p>Incredible! (Or so it seems.) Our model correctly predicts the author of all but one of the known papers. Its <span class="concept">accuracy</span>, the proportion of observations for which it gives a correct classification, is 65/66 (0.985). So we should put a lot of faith in how it classifies the unknown papers — right?</p>
+<p>To calculate predictions for the unknown papers, we’d again use <code>augment()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_authorship, <span class="at">newdata =</span> df_fed_unknown) <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">if_else</span>(.fitted <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">"hamilton"</span>, <span class="st">"madison"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  prediction     n
+  &lt;chr&gt;      &lt;int&gt;
+1 hamilton       3
+2 madison        8</code></pre>
+</div>
+</div>
+<p>So with 98% accuracy, we can say Madison wrote 8 of the disputed papers and Hamilton wrote the other 3. Case closed?</p>
+</section>
+<section id="sec-overfitting-cv" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-overfitting-cv"><span class="header-section-number">7.3.2</span> Overfitting and cross-validation</h3>
+<p>Not so fast. Here’s what we did so far:</p>
+<ol type="1">
+<li><p>We used the known papers to estimate a regression model to predict authorship.</p></li>
+<li><p>We looked at how well that model predicts ownership of the known papers — the same ones we used to estimate the model — in order to gauge its accuracy.</p></li>
+<li><p>We then used the model to predict the authorship of the unknown papers.</p></li>
+</ol>
+<p>It’s far too optimistic to expect 98% accuracy in that last step. The reason is that a statistical model will generally do a better job of “prediction” with data that it’s seen — data used to train the model in the first place — than on brand new data not used to fit the model.</p>
+<p>Data scientists and statisticians call this phenomenon <span class="concept">overfitting</span>. Statistical models can’t fully separate “signal” (patterns in the training data that generalize more broadly) from “noise” (patterns in the training data that are idiosyncratic, rather than general population features). Overfitting is especially problematic when there are many features and few observations, exactly the situation we are in here.</p>
+<p>Thanks to some combination of Aaron Burr and the ordinary passage of time, Hamilton and Madison aren’t around to write any more Federalist Papers, so we can’t collect new data to gauge the out-of-sample predictive accuracy of our model. Luckily for us, even without new data, we can get a good idea of our model’s out-of-sample accuracy through a process called <span class="concept">cross-validation</span>.</p>
+<ol type="1">
+<li><p>Randomly assign each observation to a group, or “fold” in data science lingo. The number of folds is usually 5 or 10, or sometimes even the same as the total number of observations in the data.</p></li>
+<li><p>For each <span class="math inline">\(k\)</span> from 1 to <span class="math inline">\(K\)</span>, where <span class="math inline">\(K\)</span> is the number of folds:</p>
+<ol type="a">
+<li><p>Estimate the statistical model, using all of the data <em>except</em> the observations in the <span class="math inline">\(k\)</span>’th fold.</p></li>
+<li><p>Use that model to predict the outcome for the observations in the <span class="math inline">\(k\)</span>’th fold. These are “unseen data” from the perspective of that model, as these observations were not used in its estimation.</p></li>
+</ol></li>
+<li><p>Estimate accuracy by creating a confusion matrix of the true outcomes compared to the cross-validation predictions.</p></li>
+</ol>
+<p>Not so coincidentally, cross-validation requires working with our new(ish) friends from <a href="simulation_resampling.html" class="quarto-xref"><span>Chapter 6</span></a>, random number generators and for loops! Let’s use cross-validation to get a better guess at the out-of-sample predictive accuracy of our linear regression model with the top 10 strongest correlated words as features.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Not cross-validating feature selection here">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not cross-validating feature selection here
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we wanted to be entirely rigorous about cross-validation, we would repeat our feature selection process within the cross-validation loop, recalculating the correlations between authorship and tf-idf each time while excluding the data from the <span class="math inline">\(k\)</span>’th fold. I won’t do that here, but the streamlined method discussed in <a href="#sec-elastic-net" class="quarto-xref"><span>Section 7.3.3</span></a> incorporates this automatically.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for replicability</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1789</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly assign observations to folds</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using 11 folds because it divides evenly</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>fold_assignment <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">each =</span> <span class="dv">6</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>fold_assignment <span class="ot">&lt;-</span> <span class="fu">sample</span>(fold_assignment)</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>df_fed_known<span class="sc">$</span>fold <span class="ot">&lt;-</span> fold_assignment</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up storage for loop results</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>outcome_actual <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>outcome_cv_pred <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over number of folds</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>) {</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Split data</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>  df_fit <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_fed_known, fold <span class="sc">!=</span> k)</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>  df_pred <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_fed_known, fold <span class="sc">==</span> k)</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit regression model only using df_fit</span></span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>  fit_cv <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>    is_hamilton <span class="sc">~</span> whilst <span class="sc">+</span> form <span class="sc">+</span> li <span class="sc">+</span> mix <span class="sc">+</span> stamp <span class="sc">+</span></span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>      democrat <span class="sc">+</span> dishonor <span class="sc">+</span> congress <span class="sc">+</span> compass <span class="sc">+</span> lesser,</span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> df_fit</span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate predictions for excluded data</span></span>
+<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>  df_pred <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit_cv, <span class="at">newdata =</span> df_pred) <span class="sc">|&gt;</span></span>
+<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">if_else</span>(.fitted <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">"hamilton"</span>, <span class="st">"madison"</span>))</span>
+<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store results</span></span>
+<span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a>  outcome_actual <span class="ot">&lt;-</span> <span class="fu">c</span>(outcome_actual, df_pred<span class="sc">$</span>paper_author)</span>
+<span id="cb49-33"><a href="#cb49-33" aria-hidden="true" tabindex="-1"></a>  outcome_cv_pred <span class="ot">&lt;-</span> <span class="fu">c</span>(outcome_cv_pred, df_pred<span class="sc">$</span>prediction)</span>
+<span id="cb49-34"><a href="#cb49-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-35"><a href="#cb49-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-36"><a href="#cb49-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Create confusion matrix with cross-validation predictions</span></span>
+<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(outcome_actual, outcome_cv_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              outcome_cv_pred
+outcome_actual hamilton madison
+      hamilton       51       0
+      madison         4      11</code></pre>
+</div>
+</div>
+<p>When looking at out-of-sample predictions via cross-validation, it’s still the case that every predicted Madison paper really is a Madison paper. However, among the 55 Hamilton predictions, 4 are actually Madison papers. The cross-validation estimate of accuracy is now 62/66 (0.939). That’s still very good, but not as ludicrously good as it looked when we used in-sample fit to gauge accuracy.</p>
+</section>
+<section id="sec-elastic-net" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="sec-elastic-net"><span class="header-section-number">7.3.3</span> A streamlined approach: The elastic net</h3>
+<p>Statisticians have developed modified regression models that automatically handle feature selection and overfitting prevention. We won’t go deeply into the underlying mathematical details; we’ll just focus on how to implement this type of model in R. If you want to know more, I strongly recommend the book <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>, which is <a href="https://hastie.su.domains/ElemStatLearn/">available for free on the authors’ website</a>.</p>
+<p>The model we will work with is called the <span class="concept">elastic net</span>, which is implemented in the R package glmnet (and which we’ll access through the easier-to-use <code>train()</code> function from the caret package). Remember that the linear regression formula for a response <span class="math inline">\(y\)</span> and features <span class="math inline">\(x_1, \ldots, x_M\)</span> is <span class="math display">\[\begin{align*}
+y &amp;\approx \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_M x_M \\
+&amp;= \beta_0 + \sum_{m=1}^M \beta_m x_m,
+\end{align*}\]</span> where <span class="math inline">\(\beta_0\)</span> is the intercept and each <span class="math inline">\(\beta_m\)</span> is the coefficient on the <span class="math inline">\(m\)</span>’th feature. Without getting into the mathematical details, the elastic net has two important differences from ordinary regression:</p>
+<ol type="1">
+<li><p>Some of the coefficients — and in fact, usually quite a few of them — are estimated to be exactly zero. In this sense, the elastic net automatically performs “feature selection” for us, without us having to reduce the feature space in advance.</p></li>
+<li><p>The remaining non-zero coefficients are typically estimated to be closer to zero than in an ordinary regression. This “shrinkage” property helps prevent overfitting, making the elastic net better for out-of-sample prediction.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional: Mathematical details on elastic net versus ordinary regression">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional: Mathematical details on elastic net versus ordinary regression
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ordinary least squares, implemented by the <code>lm()</code> function in R, chooses the coefficients to minimize the sum of squared residuals, <span class="math display">\[\min_{\beta_0, \ldots, \beta_M} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{i,1} - \cdots - \beta_M x_{i, M})^2.\]</span> The elastic net chooses the coefficients to minimize a penalized version of the sum of squared residuals, <span class="math display">\[\min_{\beta_0, \ldots, \beta_M} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{i,1} - \cdots - \beta_M x_{i,M})^2 + \frac{\lambda (1 - \alpha)}{2} \sum_{m=1}^M \beta_m^2 + \lambda \alpha \sum_{m=1}^M |\beta_m|.\]</span></p>
+<p>The penalty terms added at the end keep the coefficients (other than the intercept, which is excluded from the penalty) from being too large. The values <span class="math inline">\(\alpha \in [0, 1]\)</span> and <span class="math inline">\(\lambda \geq 0\)</span> are “tuning parameters” typically selected via cross-validation, to find the values that perform best for out-of-sample prediction. If <span class="math inline">\(\lambda = 0\)</span>, then the elastic net is equivalent to ordinary least squares regression. Larger values of <span class="math inline">\(\lambda\)</span> represent more “shrinkage” of the coefficients toward 0.</p>
+</div>
+</div>
+</div>
+<p>We will use the <code>train()</code> function to fit an elastic net. It works similarly to <code>lm()</code>, except with a lot more options. I’ll show you the code first and then explain it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove columns we don't want to use as features</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="ot">&lt;-</span> df_fed_known <span class="sc">|&gt;</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>is_hamilton, <span class="sc">-</span>fold)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>fit_enet <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  paper_author <span class="sc">~</span> .,</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df_fed_known,</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"glmnet"</span>,</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"cv"</span>,</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">11</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"Accuracy"</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s everything that’s going on in this function:</p>
+<ul>
+<li><p><code>paper_author ~ .</code> means “use <code>paper_author</code> as the response and everything else in the data frame as a feature”. This syntax is useful when dealing with data frames with many features, to avoid having to type them all out. One thing to notice here is that we’re using the categorical <code>paper_author</code> instead of the 0/1 <code>is_hamilton</code> as our response. Another is that we took the <code>is_hamilton</code> and <code>fold</code> columns out of the data frame before putting it into <code>train()</code> so that these wouldn’t be treated as features. (It would be pretty easy to maximize our in-sample fit with <code>is_hamilton</code> as a feature, but that would be useless for out-of-sample prediction!)</p></li>
+<li><p><code>method = "glmnet"</code> tells <code>train()</code> to use the elastic net. The <code>train()</code> function is a unified interface for fitting tons of different machine learning models; see the giant list of available models at <a href="https://topepo.github.io/caret/available-models.html" class="uri">https://topepo.github.io/caret/available-models.html</a>.</p></li>
+<li><p><code>family = "binomial"</code> tells the elastic net to perform classification with a categorical response. This results in a slight change to the regression formula under the hood, though we won’t worry about that here.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional: Altered regression formula">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional: Altered regression formula
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The formula is now <span class="math display">\[\Pr(y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_M x_M)}}.\]</span> Unlike a linear regression, this formula ensures that every prediction is between 0% and 100%.</p>
+</div>
+</div>
+</div></li>
+<li><p><code>trControl = trainControl(method = "cv", number = 11)</code> instructs <code>train()</code> to use 11-fold cross-validation to select the <span class="concept">tuning parameters</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>, which govern how aggressively the elastic net zeroes out features and reduces the magnitudes of the remaining features. <code>train()</code> automatically performs the cross-validation process for us. Since the folds are assigned randomly, we set a random seed before running <code>train()</code> to ensure replicability of our results.</p></li>
+<li><p><code>metric = "Accuracy"</code> instructs <code>train()</code> to select the tuning parameters that result in the greatest out-of-fold prediction accuracy. There are other statistics like <code>"Kappa"</code> and <code>"logLoss"</code> that might be preferable measures of out-of-sample fit, but those are beyond the scope of PSCI 2300.</p></li>
+</ul>
+<p>When you print out the result of a model fit with <code>train()</code>, it shows you the values of the tuning parameters that it tested, as well as the estimated out-of-fold accuracy of each one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fit_enet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>glmnet 
+
+  66 samples
+4796 predictors
+   2 classes: 'hamilton', 'madison' 
+
+No pre-processing
+Resampling: Cross-Validated (11 fold) 
+Summary of sample sizes: 61, 59, 61, 60, 59, 60, ... 
+Resampling results across tuning parameters:
+
+  alpha  lambda      Accuracy   Kappa    
+  0.10   0.01614625  0.8047619  0.1443850
+  0.10   0.05105894  0.8047619  0.1443850
+  0.10   0.16146255  0.8047619  0.1443850
+  0.55   0.01614625  0.8683983  0.4171123
+  0.55   0.05105894  0.8683983  0.4171123
+  0.55   0.16146255  0.8402597  0.3246753
+  1.00   0.01614625  0.8554113  0.3636364
+  1.00   0.05105894  0.8554113  0.3636364
+  1.00   0.16146255  0.8251082  0.2337662
+
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were alpha = 0.55 and lambda
+ = 0.05105894.</code></pre>
+</div>
+</div>
+<p>There’s a lot of output here, and it’s different than a linear regression. The important part to extract is that out of the various elastic net specifications tested by the <code>train()</code> function, the highest cross-validation accuracy obtained was about 87%. This might be a bit easier to see by looking at the confusion matrix — which is easy to obtain when we’re working with a model fit by <code>train()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(fit_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cross-Validated (11 fold) Confusion Matrix 
+
+(entries are percentual average cell counts across resamples)
+ 
+          Reference
+Prediction hamilton madison
+  hamilton     77.3    13.6
+  madison       0.0     9.1
+                            
+ Accuracy (average) : 0.8636</code></pre>
+</div>
+</div>
+<p>We can use the <code>varImp()</code> function to extract which features are most important, in terms of having the largest magnitude of coefficients in the elastic net model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(fit_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>glmnet variable importance
+
+  only 20 most important variables shown (out of 4796)
+
+           Overall
+whilst      100.00
+form         88.58
+mix          69.68
+stamp        52.16
+dishonor     49.60
+li           44.99
+lesser       29.10
+democrat     24.81
+alloi        24.08
+sphere       24.04
+sure         19.88
+assum        17.67
+relief       15.39
+overgrown    14.49
+defin        13.42
+indiscreet   13.38
+`function`   11.91
+develop      10.91
+ninth        10.34
+shoot        10.26</code></pre>
+</div>
+</div>
+<p>Here we see some overlap with the list of top-10 features that we extracted manually (with “whilst” still at the top), but also some differences.</p>
+<p>You may be concerned that we did all this work to come up with a model whose out-of-sample predictive power (at least as measured by cross-validation) is worse than that of our linear regression from before. But keep in mind that we gave the elastic net a much harder job. With the linear regression, we pre-selected just 10 features. With the elastic net, we asked it to sort through all 4800ish features to identify the important ones!</p>
+<p>Finally, to make out-of-sample predictions with the elastic net, we can use the <code>predict()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>pred_enet <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_enet, <span class="at">newdata =</span> df_fed_unknown)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>pred_enet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] hamilton hamilton madison  hamilton hamilton madison  hamilton
+ [8] hamilton madison  hamilton madison 
+Levels: hamilton madison</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pred_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>pred_enet
+hamilton  madison 
+       7        4 </code></pre>
+</div>
+</div>
+<p>We see a slight difference here from the model we trained in <a href="#sec-feature-selection" class="quarto-xref"><span>Section 7.3.1</span></a>. That model said Madison wrote 8 of the 11 disputed papers, whereas our elastic net says he wrote 7.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./simulation_resampling.html" class="pagination-link" aria-label="Simulation and Resampling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulation and Resampling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p xmlns:cc="http://creativecommons.org/ns#" class="cc-footer">
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>
+</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

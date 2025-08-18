@@ -241,7 +241,7 @@ df_county_pres |>
 
 You can't calculate a mean for an unordered categorical variable, because you can't add up the values.
 Nor can you calculate a median, because you can't put them in order.
-The only calculation you can make is the mode---the category with the most observations.
+The only calculation you can make is the mode --- the category with the most observations.
 In the example here, the modal region is the South.
 
 I find it more informative to look at the [distribution]{.concept} of values of an unordered categorical variable: what proportion of values fall into each category?

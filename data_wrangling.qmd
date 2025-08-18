@@ -30,7 +30,7 @@ The main data wrangling skills you're going to pick up here are:
 We will work with data from the [International Crisis Behavior Project](https://sites.duke.edu/icbdata/data-collections/) on countries involved in international crises.
 The project's operational definition of an international crisis is a situation in which there is
 
-> ... (1) a change in type and/or an increase in intensity of *disruptive*, that is, hostile verbal or physical *interactions* between two or more states, with a heightened probability of *military hostilities*; that, in turn, (2) destabilizes their relationship and *challenges* the *structure* of an international system---global, dominant, or subsystem.
+> ... (1) a change in type and/or an increase in intensity of *disruptive*, that is, hostile verbal or physical *interactions* between two or more states, with a heightened probability of *military hostilities*; that, in turn, (2) destabilizes their relationship and *challenges* the *structure* of an international system --- global, dominant, or subsystem.
 
 ::: {.aside}
 Quotation from Michael Brecher and Jonathan Wilkenfeld, *A Study of Crisis*, pages 4--5.
@@ -537,7 +537,7 @@ Use the pipe to create a data frame called `df_long_crises` with the following s
 The `mutate()` function lets you change a column in the dataframe, or create a new column using the values in existing columns.
 For example, right now the duration of each crisis is measured in days.
 We can add new columns to measure duration in weeks and years instead.
-As always, if we want our new columns to persist instead of vanishing into the ether, we need to assign the output to a variable---either overwriting `df_crises_cw` or creating a new data frame.
+As always, if we want our new columns to persist instead of vanishing into the ether, we need to assign the output to a variable --- either overwriting `df_crises_cw` or creating a new data frame.
 
 ```{r}
 df_crises_cw <- df_crises_cw |>

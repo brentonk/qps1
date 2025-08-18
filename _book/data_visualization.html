@@ -218,6 +218,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./text_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -295,8 +301,8 @@ window.Quarto = {
 
 
 <p>Visualization is one of the most powerful ways to convey the results of a statistical analysis. With great power comes great responsibility. Here are the things to think about as you construct a data visualization.</p>
-<p><strong>Statistical analysis should be question driven.</strong> The goal of a data visualization is not to make something pretty and colorful. It’s to help you and your audience answer some question about the world. Before even starting to write code for a data visualization—or any other form of statistical analysis, for that matter—you need to pin down the question you’re trying to answer.</p>
-<p><strong>Your visualization should suggest an answer.</strong> When you make a graph, ask yourself “What story is this graph telling?” Ideally, the story it’s telling—the visual impression it conveys to the audience—should be an answer to the research question you’re asking. If that’s not the story your graph is telling, then either you made the wrong graph, or you need to tweak it in some way to convey the point more clearly.</p>
+<p><strong>Statistical analysis should be question driven.</strong> The goal of a data visualization is not to make something pretty and colorful. It’s to help you and your audience answer some question about the world. Before even starting to write code for a data visualization — or any other form of statistical analysis, for that matter — you need to pin down the question you’re trying to answer.</p>
+<p><strong>Your visualization should suggest an answer.</strong> When you make a graph, ask yourself “What story is this graph telling?” Ideally, the story it’s telling — the visual impression it conveys to the audience — should be an answer to the research question you’re asking. If that’s not the story your graph is telling, then either you made the wrong graph, or you need to tweak it in some way to convey the point more clearly.</p>
 <p><strong>Accuracy over attractiveness.</strong> Don’t lie with statistics. The real world is messy, and your data visualizations should reflect that. I’m not saying that you shouldn’t think about aesthetics, or that you should just plot millions of raw data points and leave it to the audience to figure it out. But ultimately what you present must be an honest, accurate, good-faith representation of the data you’re working with, even if it might look “better” if you smoothed some things over. As a simple example, if you remove outliers from your plot to make it easier to see the central portion of the data, you should make it clear in an axis label or caption that you did so.</p>
 <p>One more note on data visualization in R. Sometimes the way a graph looks in the RStudio window is slightly different than how it shows up in your rendered Quarto output. I strongly recommend <u>rendering and checking the PDF output every time you create or alter plotting code</u>. This will help you make sure that your problem set looks the way you expect it to, and to catch problems as early as possible.</p>
 <p>To run all of the code in this chapter, you’ll need to make sure the following packages are installed (in addition to the <code>tidyverse</code> package we’ve been using all along):</p>
@@ -329,18 +335,18 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 215
 Columns: 12
-$ country         &lt;chr&gt; "Afghanistan", "Albania", "Algeria", "American Samoa",…
-$ iso3c           &lt;chr&gt; "AFG", "ALB", "DZA", "ASM", "AND", "AGO", "ATG", "ARG"…
-$ year            &lt;dbl&gt; 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, …
-$ gdp_per_capita  &lt;dbl&gt; 496.6025, 5460.4305, 4468.4534, 12886.1360, 41257.8046…
-$ gdp_growth      &lt;dbl&gt; 3.9116034, 2.0625779, 0.9000000, -0.4878049, 2.0155476…
-$ population      &lt;dbl&gt; 37856121, 2854191, 43294546, 50209, 76474, 32375632, 9…
-$ inflation       &lt;dbl&gt; 2.3023725, 1.4110908, 1.9517682, NA, NA, 17.0809541, 1…
-$ unemployment    &lt;dbl&gt; 11.185, 11.466, 12.259, NA, NA, 16.497, NA, 9.843, 18.…
-$ life_expectancy &lt;dbl&gt; 62.94100, 79.46700, 75.68200, 72.75100, 84.09800, 63.0…
-$ region          &lt;chr&gt; "South Asia", "Europe &amp; Central Asia", "Middle East &amp; …
-$ income          &lt;chr&gt; "1. Low", "3. Upper-middle", "3. Upper-middle", "4. Hi…
-$ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not classifi…</code></pre>
+$ country         &lt;chr&gt; "Afghanistan", "Albania", "Algeria", "American…
+$ iso3c           &lt;chr&gt; "AFG", "ALB", "DZA", "ASM", "AND", "AGO", "ATG…
+$ year            &lt;dbl&gt; 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019…
+$ gdp_per_capita  &lt;dbl&gt; 496.6025, 5460.4305, 4468.4534, 12886.1360, 41…
+$ gdp_growth      &lt;dbl&gt; 3.9116034, 2.0625779, 0.9000000, -0.4878049, 2…
+$ population      &lt;dbl&gt; 37856121, 2854191, 43294546, 50209, 76474, 323…
+$ inflation       &lt;dbl&gt; 2.3023725, 1.4110908, 1.9517682, NA, NA, 17.08…
+$ unemployment    &lt;dbl&gt; 11.185, 11.466, 12.259, NA, NA, 16.497, NA, 9.…
+$ life_expectancy &lt;dbl&gt; 62.94100, 79.46700, 75.68200, 72.75100, 84.098…
+$ region          &lt;chr&gt; "South Asia", "Europe &amp; Central Asia", "Middle…
+$ income          &lt;chr&gt; "1. Low", "3. Upper-middle", "3. Upper-middle"…
+$ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not …</code></pre>
 </div>
 </div>
 <table class="caption-top table">
@@ -446,8 +452,8 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not clas
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> inflation, <span class="at">y =</span> unemployment)) <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -472,8 +478,8 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not clas
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Unemployment rate (percentage points)"</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -502,8 +508,8 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not clas
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Unemployment rate (percentage points)"</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -526,8 +532,8 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not clas
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 46 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1060,8 +1066,8 @@ Removing missing data
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdp_per_capita, <span class="at">y =</span> life_expectancy)) <span class="sc">+</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1092,8 +1098,8 @@ Removing missing data
 <span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> avg_gdp, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
 <span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> avg_life, <span class="at">linetype =</span> <span class="st">"dashed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1103,7 +1109,7 @@ Removing missing data
 </div>
 </div>
 </div>
-<p>We see here that there is plenty of data in the top-right (above average on both GDP per capita and life expectancy) and bottom-left (below average on both). There is also a decent amount of data in the upper-left (below average GDP per capita, but above-average life expectancy). However, there is very little data in the bottom-right—every country with an above-average GDP per capita has an above-average life expectancy, except for three that are just slightly below average.</p>
+<p>We see here that there is plenty of data in the top-right (above average on both GDP per capita and life expectancy) and bottom-left (below average on both). There is also a decent amount of data in the upper-left (below average GDP per capita, but above-average life expectancy). However, there is very little data in the bottom-right — every country with an above-average GDP per capita has an above-average life expectancy, except for three that are just slightly below average.</p>
 <p>Another way to visualize the correlation is to overlay a <strong>trend line</strong>. We can do this by adding the <code>geom_smooth()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df_wdi <span class="sc">|&gt;</span></span>
@@ -1118,8 +1124,8 @@ Removing missing data
 (`stat_smooth()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1136,8 +1142,8 @@ Removing missing data
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdp_per_capita, <span class="at">y =</span> life_expectancy)) <span class="sc">+</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> iso3c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_text()`).</code></pre>
+<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale
+range (`geom_text()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1156,16 +1162,16 @@ Removing missing data
 <span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale
+range (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
-(`geom_text_repel()`).</code></pre>
+<pre><code>Warning: Removed 5 rows containing missing values or values outside the scale
+range (`geom_text_repel()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: ggrepel: 200 unlabeled data points (too many overlaps). Consider
-increasing max.overlaps</code></pre>
+<pre><code>Warning: ggrepel: 200 unlabeled data points (too many overlaps).
+Consider increasing max.overlaps</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1247,28 +1253,28 @@ Caused by warning:
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df_world_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 99,338 × 18
-    long   lat group order name  subregion iso3c country  year gdp_per_capita
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;          &lt;dbl&gt;
- 1 -69.9  12.5     1     1 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 2 -69.9  12.4     1     2 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 3 -69.9  12.4     1     3 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 4 -70.0  12.5     1     4 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 5 -70.1  12.5     1     5 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 6 -70.1  12.6     1     6 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 7 -70.0  12.6     1     7 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 8 -70.0  12.6     1     8 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
- 9 -69.9  12.5     1     9 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
-10 -69.9  12.5     1    10 Aruba &lt;NA&gt;      ABW   Aruba    2019         31096.
+    long   lat group order name  subregion iso3c country  year
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;
+ 1 -69.9  12.5     1     1 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 2 -69.9  12.4     1     2 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 3 -69.9  12.4     1     3 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 4 -70.0  12.5     1     4 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 5 -70.1  12.5     1     5 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 6 -70.1  12.6     1     6 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 7 -70.0  12.6     1     7 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 8 -70.0  12.6     1     8 Aruba &lt;NA&gt;      ABW   Aruba    2019
+ 9 -69.9  12.5     1     9 Aruba &lt;NA&gt;      ABW   Aruba    2019
+10 -69.9  12.5     1    10 Aruba &lt;NA&gt;      ABW   Aruba    2019
 # ℹ 99,328 more rows
-# ℹ 8 more variables: gdp_growth &lt;dbl&gt;, population &lt;dbl&gt;, inflation &lt;dbl&gt;,
-#   unemployment &lt;dbl&gt;, life_expectancy &lt;dbl&gt;, region &lt;chr&gt;, income &lt;chr&gt;,
-#   lending &lt;chr&gt;</code></pre>
+# ℹ 9 more variables: gdp_per_capita &lt;dbl&gt;, gdp_growth &lt;dbl&gt;,
+#   population &lt;dbl&gt;, inflation &lt;dbl&gt;, unemployment &lt;dbl&gt;,
+#   life_expectancy &lt;dbl&gt;, region &lt;chr&gt;, income &lt;chr&gt;, lending &lt;chr&gt;</code></pre>
 </div>
 </div>
 <p>Just to be clear on what each line of the above code block accomplishes:</p>
 <ul>
 <li><code>map_data("world")</code> retrieves the data frame of raw mapping data.</li>
-<li><code>as_tibble()</code> turns it from a standard R data frame into a tidyverse-style “tibble.” I only did this so I could print it in R Markdown without 1000 rows showing up.</li>
+<li><code>as_tibble()</code> turns it from a standard R data frame into a tidyverse-style “tibble.” I only did this so I could print it in Quarto without 1000 rows showing up.</li>
 <li><code>rename(name = region)</code> renames the <code>region</code> column in the mapping data, which actually stores country names rather than regions, to be more sensibly called <code>name</code> instead.</li>
 <li><code>countryname(name, destination = "iso3c")</code> takes the <code>name</code> column of the mapping data and converts it to the ISO 3-character abbreviation format. Hence the line <code>mutate(iso3c = countryname(...))</code> takes that output and stores it as a new column called <code>iso3c</code>.</li>
 <li><code>left_join(df_wdi, by = "iso3c")</code> merges in the variables from the <code>df_wdi</code> data frame, matching observations according to the <code>iso3c</code> column.</li>

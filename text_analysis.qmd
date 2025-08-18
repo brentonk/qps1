@@ -1,0 +1,682 @@
+# Text Analysis {#sec-text-analysis}
+
+Lots of important data about politics comes in the form of text rather than numbers.
+Just a few examples off the top of my head:
+
+- The text of constitutions, legislation, executive speeches, legislative debates, and other official acts.
+
+- Transcripts of news programs, pre-election debates, and other media events.
+
+- Free response fields in public opinion surveys, social media posts about politics, and other political text sources produced by ordinary citizens.
+
+- Historical accounts of diplomatic negotiations, state visits, wars, and other events in international relations.
+
+To analyze text in R, we'll be using a few new packages we haven't used before, in addition to the usual tidyverse and broom packages.
+
+```{r}
+#| message: false
+library("tidyverse")
+library("broom")
+library("tidytext")
+library("SnowballC")
+library("caret")
+library("glmnet")
+```
+
+To install these, you'll need to run the following command *once* from the R console.
+Don't try to put it in a Quarto document; installing packages from within the Quarto rendering process is dicey at best.
+(Plus, you only need to install the package once ever, so it'd be a waste of computing time and power to reinstall it every time you render a Quarto file.)
+
+```{r,eval=FALSE}
+install.packages(c("tidytext", "SnowballC", "caret", "glmnet"))
+```
+
+
+## Data: The Federalist Papers
+
+We'll study text analysis through the lens of [the Federalist Papers](https://en.wikipedia.org/wiki/The_Federalist_Papers), a series of 85 brief essays by Alexander Hamilton, John Jay, and James Madison.
+These essays, published in 1787 and 1788, make the case for the adoption of the new Constitution to replace the prior [Articles of Confederation](https://en.wikipedia.org/wiki/Articles_of_Confederation), laying out the political philosophy underlying the Constitution.
+
+The Federalist Papers were originally published anonymously under the pseudonym "Publius".
+Decades later, authorship lists from Hamilton and (even later) Madison were circulated, concurring on the authorship on most of the papers while disagreeing on 11 or 12.
+Both historians and statisticians have kept themselves busy trying to establish the authorship of the disputed papers, as you can tell from [a quick Google Scholar search](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C43&q=federalist+paper+authorship&oq=).
+
+In our study of text analysis, we will try to replicate some of the statistical approaches to establishing the authorship of the disputed papers.
+What we do here should just be considered a first cut at a very difficult problem, not the final answer!
+Most importantly, along the way, you'll learn about some data analysis techniques that are applicable well beyond the Federalist Papers:
+
+1.  How to [clean text data]{.concept} to make it amenable for statistical analysis.
+    In essence, we'll answer the question: How do we turn words into (statistically meaningful) numbers?
+    
+2.  Regression-type statistical models for [classification with many features]{.concept}.
+    There are a few key differences from the regression techniques we worked with before:
+    
+    *   The response and the predictions will be categorical instead of numeric.
+    
+    *   We will be able to make predictions with many, many features --- potentially even more features than we have observations in our sample.
+    
+    *   We will use specialized techniques to avoid [overfitting]{.concept} --- treating "noise" in the data as if it were a "signal" --- which is especially important when we have very many features.
+
+We will work with a slightly cleaned-up version of the Federalist Papers, via the data file `fed_papers.csv`.
+This file is available on my website at <https://bkenkel.com/qps1/data/fed_papers.csv>.
+It's constructed using the raw Federalist Papers text from [Project Gutenberg](https://www.gutenberg.org/files/1404/1404-h/1404-h.htm).
+
+```{r}
+#| message: false
+df_fed_papers <- read_csv("https://bkenkel.com/qps1/data/fed_papers.csv")
+
+df_fed_papers
+```
+
+There are just three columns here:
+
+*   `paper_id` gives the number of the paper, in order of their publication.
+
+*   `author` lists the author of the paper.
+
+*   `text` contains the full text of the paper.
+
+```{r}
+df_fed_papers |>
+  group_by(author) |>
+  summarize(number = n())
+```
+
+We see here that most of the papers were written solely by Hamilton, with a smaller number by Madison and an even smaller number by Jay.
+The 11 disputed papers are labeled `"hamilton or madison"`.
+
+If you'd like to read the full text of one of these papers ... well, it's probably easiest to just Google it.
+But if for some reason you wanted to read it in R, you can use the `cat()` function.
+
+```{.r}
+cat(df_fed_papers$text[1])
+```
+
+<!-- Putting in the output manually to avoid having a long document in the middle of the notes -->
+
+```{.text}
+## To the People of the State of New York:
+## 
+## After an unequivocal experience of the inefficacy of the subsisting
+## federal government, you are called upon to deliberate on a new
+## Constitution for the United States of America. The subject speaks its
+## own importance; comprehending in its consequences nothing less than the
+## existence of the UNION, the safety and welfare of the parts of which it
+## is composed, the fate of an empire in many respects the most
+## interesting in the world. It has been frequently remarked that it seems
+## to have been reserved to the people of this country, by their conduct
+## and example, to decide the important question, whether societies of men
+## are really capable or not of establishing good government from [...]
+```
+
+## Cleaning text data
+
+### From raw text to tokens
+
+The first thing we want to do is break up the text of each document into the individual words that comprise it.
+Data scientists would use the term [tokens]{.concept} rather than words, (1) because we'll capture some bits of text like numerals that aren't technically words, and (2) in some applications the unit of analysis is something smaller than words (e.g., syllables) or bigger than words (e.g., full sentences).
+For our purposes you don't have to worry about the word/token distinction.
+
+The `unnest_tokens()` function takes a vector of document text and turns each document into a "bag of words", extracting individual words.
+You use the `input` argument to tell it where to take the text from, and the `output` argument to tell it the name of the column to put the words into.
+I'll illustrate with a simple example before applying it to the Federalist Papers data.
+
+```{r}
+my_fake_data <- tibble(
+  id = c(1, 2),
+  text = c("The Muppets ate bananas!!", "Bananas are what they ate??")
+)
+
+my_fake_data |>
+  unnest_tokens(input = text, output = word)
+```
+
+By default, `unnest_tokens()` gets rid of all capitalization and punctuation, leaving us with the raw words.
+That's typically what we want for text analysis.
+We don't want to treat `"bananas"` like a different word from `"Bananas"`, or `"ate"` different from `"ate??"`.
+(Of course, for some purposes you would want to make such distinctions, and then you'd use custom options in tokenization so that these would be treated as separate tokens.)
+
+When we put the Federalist Papers through the `unnest_tokens()` function, we end up with many thousands of individual words.
+We'll store these in a new data frame called `df_fed_tokens`, so we don't overwrite the original raw data.
+
+```{r}
+df_fed_tokens <- df_fed_papers |>
+  unnest_tokens(input = text, output = word)
+
+df_fed_tokens
+```
+
+We can use our typical data wrangling functions to see which words appear most commonly in the Federalist Papers data.
+Are the most common words high-minded things like "politics" and "president" and "constitution"?
+
+```{r}
+df_fed_tokens |>
+  group_by(word) |>
+  summarize(number = n()) |>
+  arrange(desc(number))
+```
+
+Nope, they're extremely boring common words that would appear in virtually any English language document.
+Which brings us to our next task...
+
+### Removing stop words
+
+Words that appear commonly and don't have much topical meaning --- e.g., "the", "an", "but", "with" --- are called [stop words]{.concept}.
+We don't typically expect these words to do much to help us classify documents, so it's common to remove them before performing text analysis.
+There are multiple different lists of English stop words out there for different use cases, but we'll just use the default list included in the `stop_words` data frame (via the tidytext package).
+
+```{r}
+stop_words
+```
+
+We want to reduce `df_fed_tokens`, our "bag of words" data frame, to exclude these words.
+We can do that using the `anti_join()` function.
+Just like `left_join()`, which we saw back in the Data Wrangling unit, `anti_join()` takes two data frames and a column name as input.
+But it works a little bit differently: it returns only the rows of the first data frame that have [no]{.underline} match in the second data frame.
+In this case, we want the rows of `df_fed_tokens` where the `word` column has no match in `stop_words`.
+
+```{r}
+df_fed_tokens <- df_fed_tokens |>
+  anti_join(stop_words, by = "word")
+
+df_fed_tokens
+```
+
+About 2/3 of the words in the raw text were removed once we got rid of the stop words.
+And now if we look at the most common words, it looks a lot more like what we might intuitively expect from the Federalist Papers.
+
+```{r}
+df_fed_tokens |>
+  group_by(word) |>
+  summarize(number = n()) |>
+  arrange(desc(number))
+```
+
+Yet now we see another issue.
+Do we *really* want to treat "power" and "powers" as if they're distinct words?
+Sometimes we do, but often we'd rather just group these together.
+That brings us to yet another data cleaning task...
+
+### From tokens to stems
+
+Our last word-level processing step will be to [stem]{.concept} the words.
+This is an algorithm that removes plurals and suffixes, reducing words to their root form.
+We use the `wordStem()` function for this.
+For a simple example:
+
+```{r}
+gov_words <- c(
+  "government", "govern", "governed", "governing",
+  "governs", "governor", "governors"
+)
+
+wordStem(gov_words)
+```
+
+There's a tradeoff with stemming words like this.
+On the plus side, we help ensure that the *meanings* of words are what drive our statistical analysis.
+A document that uses the word "govern" many times won't be treated differently than one that uses "governs" many times.
+The downside is that we lose some grammatical and syntactical information.
+That doesn't matter too much when we're treating each document like a "bag of words", but in other applications it would be inappropriate to neglect the differences between "govern" and "governs" and "governing."
+
+Going back to the full Federalist Papers data, we can use a simple `mutate()` to stem the raw tokens.
+
+```{r}
+df_fed_tokens <- df_fed_tokens |>
+  mutate(word_stem = wordStem(word))
+
+df_fed_tokens
+```
+
+After stemming, we end up with a similar --- but not identical --- list of most frequent terms across the 85 essays.
+
+```{r}
+df_fed_tokens |>
+  group_by(word_stem) |>
+  summarize(number = n()) |>
+  arrange(desc(number))
+```
+
+### Creating document-level features
+
+Remember that our ultimate goal here is to discern the true author of the 11 disputed essays.
+That means our analysis will ultimately take place at the document level.
+So far we have:
+
+1.  Extracted the individual words from each document.
+
+2.  Removed the "stop words" that don't contribute to the document's substantive meaning.
+
+3.  "Stemmed" the words so that words representing the same concepts are grouped together.
+
+Altogether, we have a list of word stems for each document.
+We want to use these to calculate a set of features for each document, which we can then use to classify them.
+
+As a simple start, we will calculate the number of times each stemmed non-stop word appears in each document.
+At this point let's make another new data frame, which we'll call `df_fed_tf` (where `tf` stands for "term frequency" --- more on that in a moment).
+
+```{r}
+df_fed_tf <- df_fed_tokens |>
+  group_by(paper_id, word_stem) |>
+  summarize(number = n()) |>
+  ungroup()
+
+df_fed_tf
+```
+
+At this point, we *could* just take the raw word counts as our document-level features.
+However, that approach is not ideal for a couple of reasons.
+
+*   Most simply, some of the essays are longer than others.
+    For example, Federalist #22 includes the stemmed word "law" 10 times, while Federalist #56 includes it 8 times.
+    That might make it sound like "law" plays a larger role in #22 than in #56 --- until you observe that Federalist #22 has 1,247 non-stop words, while Federalist #56 has only 479, less than half as many.
+    
+*   Raw word counts don't give us any idea of the *distinctiveness* of certain words.
+    For example, the stem "govern" appears at least twice in every single essay.
+    Knowing that an essay uses the word "govern" doesn't really help us discern its topics or nature from other ones.
+    By contrast, the stem "stamp" only appears in 5 of the 85 essays.
+    In this sense, usage of "stamp" gives us a lot more distinct information about the topic --- and perhaps even the authorship --- of each essay than "govern" does.
+    
+A better measure that incorporates document length and word distinctiveness is [tf-idf]{.concept}, which stands for [term frequency--inverse document frequency]{.concept}.
+I'm going to break down each of these two parts of tf-idf.
+Apologies in advance: there's a bit of math ahead.
+
+[Term frequency]{.concept} is measured separately for each word in each document.
+It is simply the proportion of the words in the document that are the word in question.
+The term frequency for word $w$ in document $d$ is given by the equation $$\text{tf}(w, d) = \frac{\text{number of times $w$ appears in $d$}}{\text{total words in $d$}}.$$
+For example, the term frequency for "law" in Federalist #22 is 10/1247 (`r round(10/1247, 4)`), while the term frequency for "law" in Federalist #56 is 8/479 (`r round(8/479, 4)`).
+
+[Document frequency]{.concept} is measured for each word across documents.
+It is the proportion of documents that contain the word in quesiton.
+The document frequency for word $w$ is given by the equation $$\text{df}(w) = \frac{\text{number of documents that contain $w$ at least once}}{\text{number of documents}}.$$
+For example, the document frequency of "govern" is 85/85 (1.0), while the document frequency of "stamp" is 5/85 (`r round(5/85, 4)`).
+
+[Inverse document frequency]{.concept} is --- take a deep breath --- the natural logarithm of the multiplicative inverse of the document frequency:
+\begin{align*}
+\text{idf}(w)
+&= \log \frac{1}{\text{df}(w)} \\
+&= \log (\text{number of documents}) - \log (\text{number of documents that contain $w$}).
+\end{align*}
+Don't worry, you don't need to remember this exact formula, let alone why it's defined in this weird way.
+The important thing is that the greater the percentage of documents that contain $w$, the lower that idf($w$) will be.
+In the extreme, if every document contains $w$, then idf($w$) will equal 0.
+
+::: {.aside}
+In case you're curious: The "inverse" part, where we take 1/df, is just so that idf will get bigger as the percentage of documents containing the word is smaller.  The harder part to grok is why we use a logarithm.  This essentially means that there are diminishing returns: the difference between being in 1% of documents versus 2% of documents is "greater", from the perspective of calculating tf-idf, than the difference between being in 50% versus 51%.
+:::
+
+Finally, [tf-idf]{.concept} is the product of term frequency and inverse document frequency.
+For word $w$ in document $d$, $$\text{tf-idf}(w, d) = \text{tf}(w, d) \times \text{idf}(w).$$
+Again, you don't need to worry about the mathematical specifics here.
+What's important is to understand tf-idf as a measure of [word distinctiveness]{.underline} in a particular document.
+If tf-idf for word $w$ in document $d$ is high, that means a combination of (1) $w$ appears a lot in $d$, relative to other words, and (2) not very many other documents contain $w$ at all.
+
+To calculate tf-idf, we can plug our data frame of word counts by document into the `bind_tf_idf()` function.
+We need to supply three arguments to `bind_tf_idf()`:
+
+*   `term`: What's the name of the column containing the words/tokens we want to calculate for?
+
+*   `document`: What's the name of the column containing the ID of each different document?
+
+*   `n`: What's the name of the column containing the word/token counts by document?
+
+In this case, our words are in `word_stem`, our document IDs are in `paper_id`, and our word counts are in `number`, so we run:
+
+```{r}
+df_fed_tf <- df_fed_tf |>
+  bind_tf_idf(term = word_stem, document = paper_id, n = number)
+
+df_fed_tf
+```
+
+We've now got the term frequencies, inverse document frequencies, and tf-idf for each word-document pairing in our data.
+Let's see which word is the most *distinctive* in each document, by pulling out the word with the highest tf-idf in each document.
+We can use the `slice_max()` function to do this, after grouping by document IDs.
+
+```{r}
+df_fed_tf |>
+  group_by(paper_id) |>
+  slice_max(tf_idf) |>
+  arrange(desc(tf_idf))
+```
+
+The results we get here line up with some basic intuitions.
+Federalist #82 and #83 are about the judiciary, so it makes sense that "juri" and "court" are particularly distinctive in these essays.
+Federalist #54 is about the apportionment of House of Representatives seats across states.
+The major controversy for this issue was whether and how to count enslaved persons towards a state's population for apportionment purposes, hence the distinctiveness of "slave" for this essay.
+Federalist #67 is about how the president will fill vacancies, and Federalist #29 is about the maintenance of a militia.
+At least at a glance, it looks like tf-idf is doing a reasonable job at picking up the distinctive terms from each document.
+
+The last thing we need to do is transform this into a data frame where each row is an essay, each column is a word, and the entries are the tf-idf of each word in each essay.
+In this way, the tf-idf of each word will serve as the features we use for categorization and classification, along our way to try and identify the authorship of the 11 disputed papers.
+To transform the data this way, we can simply use `pivot_wider()`.
+
+```{r}
+df_fed_features <- df_fed_tf |>
+  select(paper_id, word_stem, tf_idf) |>
+  pivot_wider(names_from = word_stem,
+              values_from = tf_idf,
+              values_fill = 0) |>
+  select(-paper_id) |>
+  select(where(~ any(.x > 0)))
+
+df_fed_features
+```
+
+A couple of brief notes on the code above:
+
+*   The `values_fill` argument in `pivot_wider()` ensures that the feature value is 0, rather than `NA`, when a particular word doesn't appear in a particular document.
+
+*   The last line of the pipe, `select(where(~ any(.x > 0)))`, only selects those columns where at least one entry is nonzero.
+    This means it leaves out the small set of terms like "govern" that appear in every single document, as these have an idf (and thus tf-idf) of 0.
+
+## Classifying documents
+
+Our goal here is to get a (provisional) answer about who authored the disputed documents.
+To do that, we're going to use statistical methods to recognize patterns in the documents whose authorship is known, then use that pattern-matching to sort the unknown documents into "likely Hamilton" versus "likely Madison".
+
+As a first step, we're going to add authorship info to our data frame of word features.
+We will also split up the data frame into the "known" cases (those where exactly one of Hamilton or Madison is known to be the author) and the "unknown" cases (those with "Hamilton or Madison" as the listed author).
+
+```{r}
+df_fed_features <- df_fed_features |>
+  mutate(
+    paper_author = df_fed_papers$author,
+    is_hamilton = if_else(paper_author == "hamilton", 1, 0)
+  ) |>
+  select(paper_author, is_hamilton, everything())
+
+df_fed_known <- df_fed_features |>
+  filter(paper_author == "hamilton" | paper_author == "madison")
+
+df_fed_known
+
+df_fed_unknown <- df_fed_features |>
+  filter(paper_author == "hamilton or madison")
+
+df_fed_unknown
+```
+
+### Feature selection {#sec-feature-selection}
+
+Say we wanted to use a linear regression to predict the authorship of each document.
+We immediately run into a problem: we have 4,797 features and only 66 observations.
+A linear regression won't even work when there are more features than observations.
+To even run a regression model in the first place, we need to do some [feature selection]{.concept}, reducing the huge set of possible features down to the ones we want to put in our model.
+
+As a very rough first cut at feature selection, let's look for the words whose tf-idf is most strongly correlated with paper authorship.
+(The correlation coefficient isn't *really* meant for use with a binary variable, but this is just a rough cut anyway.)
+We can do that in a single (admittedly complex!) data pipeline.
+
+```{r}
+df_fed_known |>
+  # Remove the non-numeric paper author column
+  select(-paper_author) |>
+  # Remove words that never appear in the "known" papers
+  select(where(~ any(.x > 0))) |>
+  # Put data into "long" format and group by word
+  pivot_longer(cols = -is_hamilton, names_to = "word", values_to = "tf_idf") |>
+  group_by(word) |>
+  # Calculate correlation between authorship and tf-idf for each word
+  summarize(cor = cor(is_hamilton, tf_idf)) |>
+  # Show the strongest correlations (positive or negative) first
+  arrange(desc(abs(cor)))
+```
+
+The word stems with the strongest correlations are "whilst", "form", "li", "mix", and "stamp".
+Each of these has a negative correlation, meaning a higher frequency of usage is typical of a paper written by Madison rather than Hamilton.
+
+Let's build a linear regression model using the tf-idf of the ten most strongly correlated words to predict paper authorship.
+
+```{r}
+fit_authorship <- lm(
+  is_hamilton ~ whilst + form + li + mix + stamp +
+    democrat + dishonor + congress + compass + lesser,
+  data = df_fed_known
+)
+
+summary(fit_authorship)
+```
+
+How accurately does our model predict the authorship of the known papers?
+To answer this question, we can build a [confusion matrix]{.concept}.
+A confusion matrix is a table where we put the actual responses in the rows, and the predicted responses in the columns.
+Ideally, we would like the prediction to match the truth as often as possible, resulting in a confusion matrix with most observations along the "diagonal".
+
+To make a confusion matrix, first we need to extract predictions via `augment()`, then match them up with the true responses.
+The linear regression doesn't directly make predictions, but we'll treat a fitted value above 0.5 (50%) as a Hamilton prediction and a fitted value below 0.5 as a Madison prediction.
+
+```{r}
+df_predictions <-
+  augment(fit_authorship, newdata = df_fed_known) |>
+  mutate(prediction = if_else(.fitted >= 0.5, "hamilton", "madison"))
+
+table(
+  actual = df_predictions$paper_author,
+  predicted = df_predictions$prediction
+)
+```
+
+Incredible!
+(Or so it seems.)
+Our model correctly predicts the author of all but one of the known papers.
+Its [accuracy]{.concept}, the proportion of observations for which it gives a correct classification, is 65/66 (`r round(65/66, 3)`).
+So we should put a lot of faith in how it classifies the unknown papers --- right?
+
+To calculate predictions for the unknown papers, we'd again use `augment()`:
+
+```{r}
+augment(fit_authorship, newdata = df_fed_unknown) |>
+  mutate(prediction = if_else(.fitted >= 0.5, "hamilton", "madison")) |>
+  count(prediction)
+```
+
+So with 98% accuracy, we can say Madison wrote 8 of the disputed papers and Hamilton wrote the other 3.
+Case closed?
+
+### Overfitting and cross-validation {#sec-overfitting-cv}
+
+Not so fast.
+Here's what we did so far:
+
+1.  We used the known papers to estimate a regression model to predict authorship.
+
+2.  We looked at how well that model predicts ownership of the known papers --- the same ones we used to estimate the model --- in order to gauge its accuracy.
+
+3.  We then used the model to predict the authorship of the unknown papers.
+
+It's far too optimistic to expect 98% accuracy in that last step.
+The reason is that a statistical model will generally do a better job of "prediction" with data that it's seen --- data used to train the model in the first place --- than on brand new data not used to fit the model.
+
+Data scientists and statisticians call this phenomenon [overfitting]{.concept}.
+Statistical models can't fully separate "signal" (patterns in the training data that generalize more broadly) from "noise" (patterns in the training data that are idiosyncratic, rather than general population features).
+Overfitting is especially problematic when there are many features and few observations, exactly the situation we are in here.
+
+Thanks to some combination of Aaron Burr and the ordinary passage of time, Hamilton and Madison aren't around to write any more Federalist Papers, so we can't collect new data to gauge the out-of-sample predictive accuracy of our model.
+Luckily for us, even without new data, we can get a good idea of our model's out-of-sample accuracy through a process called [cross-validation]{.concept}.
+
+1.  Randomly assign each observation to a group, or "fold" in data science lingo.
+    The number of folds is usually 5 or 10, or sometimes even the same as the total number of observations in the data.
+    
+2.  For each $k$ from 1 to $K$, where $K$ is the number of folds:
+
+    a.  Estimate the statistical model, using all of the data *except* the observations in the $k$'th fold.
+    
+    b.  Use that model to predict the outcome for the observations in the $k$'th fold.
+    These are "unseen data" from the perspective of that model, as these observations were not used in its estimation.
+    
+3.  Estimate accuracy by creating a confusion matrix of the true outcomes compared to the cross-validation predictions.
+
+Not so coincidentally, cross-validation requires working with our new(ish) friends from @sec-simulation-resampling, random number generators and for loops!
+Let's use cross-validation to get a better guess at the out-of-sample predictive accuracy of our linear regression model with the top 10 strongest correlated words as features.
+
+::: {.callout-warning title="Not cross-validating feature selection here"}
+If we wanted to be entirely rigorous about cross-validation, we would repeat our feature selection process within the cross-validation loop, recalculating the correlations between authorship and tf-idf each time while excluding the data from the $k$'th fold.  I won't do that here, but the streamlined method discussed in @sec-elastic-net incorporates this automatically.
+:::
+
+```{r}
+# Set seed for replicability
+set.seed(1789)
+
+# Randomly assign observations to folds
+# Using 11 folds because it divides evenly
+fold_assignment <- rep(1:11, each = 6)
+fold_assignment <- sample(fold_assignment)
+df_fed_known$fold <- fold_assignment
+
+# Set up storage for loop results
+outcome_actual <- NULL
+outcome_cv_pred <- NULL
+
+# Loop over number of folds
+for (k in 1:11) {
+  # Split data
+  df_fit <- filter(df_fed_known, fold != k)
+  df_pred <- filter(df_fed_known, fold == k)
+
+  # Fit regression model only using df_fit
+  fit_cv <- lm(
+    is_hamilton ~ whilst + form + li + mix + stamp +
+      democrat + dishonor + congress + compass + lesser,
+    data = df_fit
+  )
+
+  # Calculate predictions for excluded data
+  df_pred <- augment(fit_cv, newdata = df_pred) |>
+    mutate(prediction = if_else(.fitted >= 0.5, "hamilton", "madison"))
+
+  # Store results
+  outcome_actual <- c(outcome_actual, df_pred$paper_author)
+  outcome_cv_pred <- c(outcome_cv_pred, df_pred$prediction)
+}
+
+# Create confusion matrix with cross-validation predictions
+table(outcome_actual, outcome_cv_pred)
+```
+
+When looking at out-of-sample predictions via cross-validation, it's still the case that every predicted Madison paper really is a Madison paper.
+However, among the 55 Hamilton predictions, 4 are actually Madison papers.
+The cross-validation estimate of accuracy is now 62/66 (`r round(62/66, 3)`).
+That's still very good, but not as ludicrously good as it looked when we used in-sample fit to gauge accuracy.
+
+### A streamlined approach: The elastic net {#sec-elastic-net}
+
+Statisticians have developed modified regression models that automatically handle feature selection and overfitting prevention.
+We won't go deeply into the underlying mathematical details; we'll just focus on how to implement this type of model in R.
+If you want to know more, I strongly recommend the book *The Elements of Statistical Learning: Data Mining, Inference, and Prediction*, which is [available for free on the authors' website](https://hastie.su.domains/ElemStatLearn/).
+
+The model we will work with is called the [elastic net]{.concept}, which is implemented in the R package glmnet (and which we'll access through the easier-to-use `train()` function from the caret package).
+Remember that the linear regression formula for a response $y$ and features $x_1, \ldots, x_M$ is
+\begin{align*}
+y &\approx \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_M x_M \\
+&= \beta_0 + \sum_{m=1}^M \beta_m x_m,
+\end{align*}
+where $\beta_0$ is the intercept and each $\beta_m$ is the coefficient on the $m$'th feature.
+Without getting into the mathematical details, the elastic net has two important differences from ordinary regression:
+
+1.  Some of the coefficients --- and in fact, usually quite a few of them --- are estimated to be exactly zero.
+    In this sense, the elastic net automatically performs "feature selection" for us, without us having to reduce the feature space in advance.
+    
+2.  The remaining non-zero coefficients are typically estimated to be closer to zero than in an ordinary regression.
+    This "shrinkage" property helps prevent overfitting, making the elastic net better for out-of-sample prediction.
+
+::: {.callout-note title="Optional: Mathematical details on elastic net versus ordinary regression" collapse="true"}
+Ordinary least squares, implemented by the `lm()` function in R, chooses the coefficients to minimize the sum of squared residuals, $$\min_{\beta_0, \ldots, \beta_M} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{i,1} - \cdots - \beta_M x_{i, M})^2.$$
+The elastic net chooses the coefficients to minimize a penalized version of the sum of squared residuals, $$\min_{\beta_0, \ldots, \beta_M} \sum_{i=1}^N (y_i - \beta_0 - \beta_1 x_{i,1} - \cdots - \beta_M x_{i,M})^2 + \frac{\lambda (1 - \alpha)}{2} \sum_{m=1}^M \beta_m^2 + \lambda \alpha \sum_{m=1}^M |\beta_m|.$$
+
+The penalty terms added at the end keep the coefficients (other than the intercept, which is excluded from the penalty) from being too large.
+The values $\alpha \in [0, 1]$ and $\lambda \geq 0$ are "tuning parameters" typically selected via cross-validation, to find the values that perform best for out-of-sample prediction.
+If $\lambda = 0$, then the elastic net is equivalent to ordinary least squares regression.
+Larger values of $\lambda$ represent more "shrinkage" of the coefficients toward 0.
+:::
+
+We will use the `train()` function to fit an elastic net.
+It works similarly to `lm()`, except with a lot more options.
+I'll show you the code first and then explain it.
+
+```{r caret_fed}
+#| cache: true
+
+# Remove columns we don't want to use as features
+df_fed_known <- df_fed_known |>
+  select(-is_hamilton, -fold)
+
+set.seed(42)
+fit_enet <- train(
+  paper_author ~ .,
+  data = df_fed_known,
+  method = "glmnet",
+  family = "binomial",
+  trControl = trainControl(
+    method = "cv",
+    number = 11
+  ),
+  metric = "Accuracy"
+)
+```
+
+Here's everything that's going on in this function:
+
+*   `paper_author ~ .` means "use `paper_author` as the response and everything else in the data frame as a feature".
+    This syntax is useful when dealing with data frames with many features, to avoid having to type them all out.
+    One thing to notice here is that we're using the categorical `paper_author` instead of the 0/1 `is_hamilton` as our response.
+    Another is that we took the `is_hamilton` and `fold` columns out of the data frame before putting it into `train()` so that these wouldn't be treated as features.
+    (It would be pretty easy to maximize our in-sample fit with `is_hamilton` as a feature, but that would be useless for out-of-sample prediction!)
+    
+*   `method = "glmnet"` tells `train()` to use the elastic net.
+    The `train()` function is a unified interface for fitting tons of different machine learning models; see the giant list of available models at <https://topepo.github.io/caret/available-models.html>.
+    
+*   `family = "binomial"` tells the elastic net to perform classification with a categorical response.
+    This results in a slight change to the regression formula under the hood, though we won't worry about that here.
+
+    ::: {.callout-note title="Optional: Altered regression formula" collapse="true"}
+    The formula is now $$\Pr(y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_M x_M)}}.$$
+    Unlike a linear regression, this formula ensures that every prediction is between 0% and 100%.
+    :::
+
+*   `trControl = trainControl(method = "cv", number = 11)` instructs `train()` to use 11-fold cross-validation to select the [tuning parameters]{.concept}, $\alpha$ and $\lambda$, which govern how aggressively the elastic net zeroes out features and reduces the magnitudes of the remaining features.
+    `train()` automatically performs the cross-validation process for us.
+    Since the folds are assigned randomly, we set a random seed before running `train()` to ensure replicability of our results.
+    
+*   `metric = "Accuracy"` instructs `train()` to select the tuning parameters that result in the greatest out-of-fold prediction accuracy.
+    There are other statistics like `"Kappa"` and `"logLoss"` that might be preferable measures of out-of-sample fit, but those are beyond the scope of PSCI 2300.
+
+When you print out the result of a model fit with `train()`, it shows you the values of the tuning parameters that it tested, as well as the estimated out-of-fold accuracy of each one.
+
+```{r}
+fit_enet
+```
+
+There's a lot of output here, and it's different than a linear regression.
+The important part to extract is that out of the various elastic net specifications tested by the `train()` function, the highest cross-validation accuracy obtained was about 87%.
+This might be a bit easier to see by looking at the confusion matrix --- which is easy to obtain when we're working with a model fit by `train()`.
+
+```{r}
+confusionMatrix(fit_enet)
+```
+
+We can use the `varImp()` function to extract which features are most important, in terms of having the largest magnitude of coefficients in the elastic net model.
+
+```{r}
+varImp(fit_enet)
+```
+
+Here we see some overlap with the list of top-10 features that we extracted manually (with "whilst" still at the top), but also some differences.
+
+You may be concerned that we did all this work to come up with a model whose out-of-sample predictive power (at least as measured by cross-validation) is worse than that of our linear regression from before.
+But keep in mind that we gave the elastic net a much harder job.
+With the linear regression, we pre-selected just 10 features.
+With the elastic net, we asked it to sort through all 4800ish features to identify the important ones!
+
+Finally, to make out-of-sample predictions with the elastic net, we can use the `predict()` function.
+
+```{r}
+pred_enet <- predict(fit_enet, newdata = df_fed_unknown)
+
+pred_enet
+
+table(pred_enet)
+```
+
+We see a slight difference here from the model we trained in @sec-feature-selection.
+That model said Madison wrote 8 of the 11 disputed papers, whereas our elastic net says he wrote 7.
