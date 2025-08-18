@@ -39,6 +39,7 @@ To run all of the code in this chapter, you'll need to make sure the following p
 To check whether a package is installed, try to load it:
 
 ```{r}
+#| label: check-package-installation
 #| error: true
 library("package_name")
 ```
@@ -61,6 +62,7 @@ We'll be working with a slice of this data, with indicators for each country's d
 To keep things manageable, we'll only be working with a few of the very many variables that are available in the WDI.
 
 ```{r}
+#| label: load-wdi-data
 #| message: false
 library("tidyverse")
 
@@ -124,6 +126,7 @@ If all you did was run `data_frame_name |> ggplot(aes(x = varname, y = other_var
 For example:
 
 ```{r}
+#| label: empty-ggplot-example
 df_wdi |>
   ggplot(aes(x = inflation, y = unemployment))
 ```
@@ -134,6 +137,7 @@ The additional [arguments]{.concept} of `size` and `color`, as in `geom_point(si
 Once we add the `geom_point()` call to our plot, we get something that looks like this:
 
 ```{r}
+#| label: basic-scatter-plot
 df_wdi |>
   ggplot(aes(x = inflation, y = unemployment)) +
   geom_point(size = 4, color = "red")
@@ -148,6 +152,7 @@ If you're planning to present your data visualizations to other people --- inclu
 The `labs()` function accomplishes this.
 
 ```{r}
+#| label: labeled-scatter-plot
 df_wdi |>
   ggplot(aes(x = inflation, y = unemployment)) +
   geom_point(size = 4, color = "red") +
@@ -165,6 +170,7 @@ I prefer the theme provided by the (unfortunately stupidly named) `cowplot` pack
 So before I start making ggplots, I load this package and set its theme as the default.
 
 ```{r}
+#| label: cowplot-theme-setup
 #| message: false
 
 # Load cowplot and default to it
@@ -188,6 +194,7 @@ df_wdi |>
 If I gridlines for readability, I'll add a `background_grid()` specifying which axes I want them on.
 
 ```{r}
+#| label: scatter-plot-with-grid
 df_wdi |>
   ggplot(aes(x = inflation, y = unemployment)) +
   geom_point(size = 4, color = "red") +
@@ -213,6 +220,7 @@ A [histogram]{.concept} lets us look at the distribution of a continuous variabl
 For example, let's take a look at the distribution of GDP growth across countries in 2019.
 
 ```{r}
+#| label: basic-histogram
 df_wdi |>
   ggplot(aes(x = gdp_growth)) +
   geom_histogram()
@@ -225,6 +233,7 @@ The vast majority of the data falls between about -3% growth and +8% growth, wit
 A more full-featured, aesthetically pleasing (at least to me), audience-friendly version of the same histogram might look like this:
 
 ```{r}
+#| label: styled-histogram
 df_wdi |>
   ggplot(aes(x = gdp_growth)) +
   geom_histogram(color = "black", fill = "lightblue", binwidth = 1) +
@@ -262,6 +271,7 @@ Sometimes you will see a [density plot]{.concept} used in place of a histogram.
 To make a density plot, just replace `geom_histogram()` with `geom_density()`.
 
 ```{r}
+#| label: density-plot
 df_wdi |>
   ggplot(aes(x = gdp_growth)) +
   geom_density()
@@ -287,6 +297,7 @@ To create a bar chart for a categorical variable in `ggplot()`, we set the x-axi
 As an example, let's look at the distribution of regions for the countries in our WDI data.
 
 ```{r}
+#| label: basic-bar-chart
 df_wdi |>
   ggplot(aes(x = region)) +
   geom_bar()
@@ -300,6 +311,7 @@ One option would be to modify the data frame to shorten the axis labels, perhaps
 But it would be even easier to reorient the bar chart so the labels are on the y-axis instead of the x-axis.
 
 ```{r}
+#| label: horizontal-bar-chart
 df_wdi |>
   ggplot(aes(y = region)) +
   geom_bar()
@@ -314,6 +326,7 @@ Then we need to edit our code a bit:
 2. Use `geom_col()` in place of `geom_bar()`, being sure to instruct ggplot to put our proportion values on the x-axis.
 
 ```{r}
+#| label: proportion-bar-chart
 df_wdi |>
   group_by(region) |>
   summarize(number = n()) |>
@@ -330,6 +343,7 @@ To see the proportions *and* the raw number in each category, you can use `geom_
 The `hjust = -0.3` argument puts the numbers just after each bar ends (I had to fiddle around with trial and error to get the right value).
 
 ```{r}
+#| label: bar-chart-with-labels
 df_wdi |>
   group_by(region) |>
   summarize(number = n()) |>
@@ -348,6 +362,7 @@ If you want to change the order of labels on the x- or y-axis, use `xlim()` or `
 You can also use these functions if you only want to plot a subset of categories --- just omit the label for any category you don't want to appear.
 
 ```{r}
+#| label: reordered-bar-charts
 # Alphabetical order from top to bottom
 region_labels <- unique(df_wdi$region)  # list of region names
 region_labels <- sort(region_labels)    # put in alphabetical order
@@ -387,6 +402,7 @@ To make a separate plot for each level of a variable, just add `facet_wrap(~ var
 In our case, the variable we want to use is `region`.
 
 ```{r}
+#| label: faceted-bar-charts
 df_wdi |>
   ggplot(aes(y = income)) +
   geom_bar() +
@@ -404,6 +420,7 @@ To make different colors depending on a variable, we need to put `fill` inside `
 In this case, the variable we want to use is `income`.
 
 ```{r}
+#| label: stacked-bar-chart
 df_wdi |>
   ggplot(aes(y = region)) +
   geom_bar(aes(fill = income))
@@ -414,6 +431,7 @@ It's a bit harder to make precise comparisons within each region, or to count th
 If we're more interested in those comparisons, but for some reason don't want to use `facet_wrap()`, we can make a "dodged" bar plot like in the example below.
 
 ```{r}
+#| label: dodged-bar-chart
 df_wdi |>
   ggplot(aes(y = region)) +
   geom_bar(aes(fill = income), position = "dodge")
@@ -426,6 +444,7 @@ Second, the bars have high income at the bottom and go down from there, while th
 The following code, using `position = position_dodge2()`, fixes these issues.
 
 ```{r}
+#| label: improved-dodged-bar-chart
 df_wdi |>
   ggplot(aes(y = region)) +
   geom_bar(
@@ -445,6 +464,7 @@ Above we saw how to visualize the overall distribution of growth using histogram
 One way to analyze region-by-region variation would be to make a separate histogram for each region, using `facet_wrap()` like we did when visualizing the relationship between two categorical variables.
 
 ```{r}
+#| label: faceted-histograms
 df_wdi |>
   ggplot(aes(x = gdp_growth)) +
   geom_histogram(binwidth = 1.0) +
@@ -459,6 +479,7 @@ This would probably be too messy with seven overlapping plots, but it can be use
 For example, let's use overlapping density plots to compare the distribution of growth rates in East Asia to those in South Asia.
 
 ```{r}
+#| label: overlapping-density-plots
 df_wdi |>
   filter(region == "East Asia & Pacific" | region == "South Asia") |>
   ggplot(aes(x = gdp_growth)) +
@@ -477,6 +498,7 @@ There are more compact ways to view how the distribution of a continuous variabl
 One of these is a [box and whiskers plot]{.concept}, also called a box plot.
 
 ```{r}
+#| label: box-plots
 df_wdi |>
   ggplot(aes(x = gdp_growth, y = region)) +
   geom_boxplot() +
@@ -510,6 +532,7 @@ Like the box plot, it puts all of the categories together in one plot, rather th
 But like the histogram (or a density plot), it provides a visualization of the full distribution of the continuous variable across each category level, rather than using a few statistics to summarize the distribution.
     
 ```{r}
+#| label: violin-plots
 df_wdi |>
   ggplot(aes(x = gdp_growth, y = region)) +
   geom_violin() +
@@ -527,6 +550,7 @@ To visualize this kind of summary across groups, first we need to calculate the 
 For example, let's calculate the average growth rate and the standard deviation for each region.
 
 ```{r}
+#| label: calculate-summary-stats
 df_wdi |>
   group_by(region) |>
   summarize(
@@ -540,6 +564,7 @@ Missing data in an R data frame is marked with a special value called `NA`.
 Any kind of mathematical operation with an `NA` value will produce an `NA`.
 
 ```{r}
+#| label: na-examples
 1 + NA
 0 * NA
 mean(c(1, 2, 3, NA, 5, 6))
@@ -554,6 +579,7 @@ Since we're plotting a statistic we computed rather than counting up group membe
 We'll also add the `geom_errorbar()` function to plot $\pm 1$ standard deviation around each mean.
 
 ```{r}
+#| label: bar-chart-with-error-bars
 df_wdi |>
   group_by(region) |>
   summarize(
@@ -579,6 +605,7 @@ A better choice for summary statistics is often a [dot plot]{.concept}, where we
 We can use `geom_point()` to make a simple dot plot without error bars, or `geom_pointrange()` if we want to be a bit fancier.
 
 ```{r}
+#| label: dot-plots
 ## No error bars
 df_wdi |>
   group_by(region) |>
@@ -618,6 +645,7 @@ In general, the best way to visualize a relationship between two continuous vari
 We use `geom_point()` to create scatterplots, as in the following example looking at the relationship between GDP per capita and life expectancy.
 
 ```{r}
+#| label: basic-scatterplot
 df_wdi |>
   ggplot(aes(x = gdp_per_capita, y = life_expectancy)) +
   geom_point()
@@ -645,6 +673,7 @@ In other words, countries with above-average GDP per capita tend to have above-a
 To see this, let's overlay lines indicating the average GDP per capita and life expectancy in the data.
 
 ```{r}
+#| label: scatterplot-with-means
 avg_gdp <- mean(df_wdi$gdp_per_capita, na.rm = TRUE)
 avg_life <- mean(df_wdi$life_expectancy, na.rm = TRUE)
 
@@ -663,6 +692,7 @@ Another way to visualize the correlation is to overlay a **trend line**.
 We can do this by adding the `geom_smooth()` function.
 
 ```{r}
+#| label: scatterplot-with-trendline
 df_wdi |>
   ggplot(aes(x = gdp_per_capita, y = life_expectancy)) +
   geom_point() +
@@ -682,6 +712,7 @@ You'll need to supply the `label` aesthetic to `geom_text()` to tell it where to
 Here, we'll use the `"iso3c"` column with three-character country name abbreviations.
 
 ```{r}
+#| label: scatterplot-with-text-labels
 df_wdi |>
   ggplot(aes(x = gdp_per_capita, y = life_expectancy)) +
   geom_text(aes(label = iso3c))
@@ -691,6 +722,7 @@ But with so many overlapping data points, this plot is tough to make sense of.
 When the `geom_text()` output is hard to read like this, I use the `geom_text_repel()` function from the `ggrepel` package to label the most distinctive points.
 
 ```{r}
+#| label: scatterplot-with-repelled-labels
 library("ggrepel")
 
 df_wdi |>
@@ -703,6 +735,7 @@ The default scatterplot is less useful when one or both variables has a highly s
 Think about population, where China and India are each about triple the size of the next-largest country.
 
 ```{r}
+#| label: population-histogram
 df_wdi |>
   ggplot(aes(x = population)) +
   geom_histogram()
@@ -711,6 +744,7 @@ df_wdi |>
 If we try to make a scatterplot of life expectancy against country population, we end up with something that's very hard to read.
 
 ```{r}
+#| label: population-life-expectancy-scatter
 df_wdi |>
   ggplot(aes(x = population, y = life_expectancy)) +
   geom_point()
@@ -722,6 +756,7 @@ When we use a logarithmic scale, each "tick" instead represents an increase by a
 Specifically, the distance on the $x$-axis between a country with 100,000 residents and one with 1,000,000 residents will be the same as between a country with 10,000,000 residents and one with 100,000,000 residents.
 
 ```{r}
+#| label: log-scale-scatterplot
 df_wdi |>
   ggplot(aes(x = population, y = life_expectancy)) +
   geom_point() +
@@ -740,6 +775,7 @@ Making a map requires a bit more work up front than other data visualizations, s
 Let's start by loading the two additional packages we'll need to make maps and work with mapping data.
 
 ```{r}
+#| label: load-mapping-packages
 #| message: false
 library("maps")
 library("countrycode")
@@ -752,6 +788,7 @@ The annoying part is that the default map data only has full country names, not 
 The following block of code adds those to the map data, then merges in our WDI data.
 
 ```{r}
+#| label: prepare-world-map-data
 df_world_map <- map_data("world") |>
   as_tibble() |>
   rename(name = region) |>
@@ -775,6 +812,7 @@ We're ready to make a map!
 For example, let's color code each country according to the WDI's classification of income groups.
 
 ```{r}
+#| label: income-world-map
 df_world_map |>
   ggplot(aes(x = long, y = lat, group = group)) +
   geom_polygon(aes(fill = income), color = "black", linewidth = 0.1) +
@@ -797,6 +835,7 @@ df_world_map |>
 If you don't like the default choice of colors (and indeed I don't!), you can use `scale_fill_manual()` to explicitly set colors for each category, or `scale_fill_grey()` to do a grayscale spectrum.
 
 ```{r}
+#| label: grayscale-world-map
 df_world_map |>
   ggplot(aes(x = long, y = lat, group = group)) +
   geom_polygon(aes(fill = income), color = "black", linewidth = 0.1) +
@@ -808,6 +847,7 @@ df_world_map |>
 Finally, if you want to color code by a continuous variable, you can use `scale_fill_gradient()` to create a spectrum of colors going from low to high.
 
 ```{r}
+#| label: unemployment-gradient-map
 df_world_map |>
   ggplot(aes(x = long, y = lat, group = group)) +
   geom_polygon(aes(fill = unemployment), color = "black", linewidth = 0.1) +

@@ -43,7 +43,7 @@ We will work with the ICB Project's "actor level" dataset, in which each observa
 For example, in the Cuban Missile Crisis of 1962 (crisis #196 in the ICB data), the United States, Cuba, and the Soviet Union are each separate crisis participants.
 The data is on my website at <https://bkenkel.com/qps1/data/crises.csv>.
 
-```{r}
+```{r load-crises-data}
 #| message: false
 library("tidyverse")
 df_crises <- read_csv("https://bkenkel.com/qps1/data/crises.csv")
@@ -74,7 +74,7 @@ The `select()` function lets us reduce the data frame just to have the columns w
 
 The simplest way to use `select()` is to tell it what data frame you're working with, then list the names of the columns you want to keep from it.
 
-```{r}
+```{r select-basic-example}
 select(df_crises, crisname, actor, systrgyr)
 ```
 
@@ -82,7 +82,7 @@ An important thing to know about how R works:
 Just running a function like this won't change your data frame permanently.
 To see this, after running `select()` like the above, go back and look at the data frame --- nothing has changed:
 
-```{r}
+```{r show-original-unchanged}
 df_crises
 ```
 
@@ -99,7 +99,7 @@ Just as a matter of workflow, I usually try not to overwrite the raw data frame 
 That way, if I decide later on that I want more out of the original data, I don't have to go back and load from the CSV file and clean it up again.
 So in this case, I would typically just create a new data frame with the subsetted data:
 
-```{r}
+```{r create-reduced-dataframe}
 df_crises_reduced <- select(df_crises, crisname, actor, systrgyr)
 
 df_crises_reduced
@@ -110,14 +110,14 @@ df_crises_reduced
 Suppose you wanted everything from the `crisno` column through the `systrgyr` column.
 Instead of typing out each column name explicitly, you can just use a colon (`:`) to tell `select()` to grab this range of variables:
 
-```{r}
+```{r select-column-range}
 select(df_crises, crisno:systrgyr)
 ```
 
 If you want everything *except* a particular variable, you can use the minus sign (`-`) to exclude it.
 Let's see how to get rid of the useless `icb2` column that just marks the dataset version:
 
-```{r}
+```{r exclude-column}
 select(df_crises, -icb2)
 ```
 
@@ -134,7 +134,7 @@ How would you do that without typing out each column name explicitly?
 
 You can use the `starts_with()` subfunction to select all of the columns whose name starts with "sys", for example:
 
-```{r}
+```{r select-sys-columns}
 select(df_crises, starts_with("sys"))
 ```
 
@@ -170,26 +170,26 @@ Look at the `?select` help page to figure out the subfunction you need to do thi
 
 As you select variables, you can rename them by using the syntax `newname = oldname`:
 
-```{r}
+```{r rename-while-selecting}
 select(df_crises, year = systrgyr, name = crisname)
 ```
 
 To rename individual columns without dropping or rearranging the other columns, use the `rename()` function instead of `select()`.
 
-```{r}
+```{r rename-columns}
 rename(df_crises, year = systrgyr, name = crisname)
 ```
 
 If you want certain columns to be placed first, use the `relocate()` function.
 
-```{r}
+```{r relocate-columns}
 relocate(df_crises, crisname, actor)
 ```
 
 To rearrange the rows of the data, you can use the `arrange()` function.
 By default, it sorts the data in ascending order of the column name(s) you feed it.
 
-```{r}
+```{r arrange-data}
 # Arrange in ascending order of actor numeric ID
 arrange(df_crises, cracid)
 
@@ -199,7 +199,7 @@ arrange(df_crises, systrgyr, cracid)
 
 To instead sort in descending order, wrap the variable name in `desc()`.
 
-```{r}
+```{r arrange-descending}
 # Arrange so that the most recent crises come first
 arrange(df_crises, desc(systrgyr))
 ```
@@ -230,13 +230,13 @@ There are six logical comparisons we can make in R:
 
 As an example, let's assign the value 1950 to the variable `x`.
 
-```{r}
+```{r assign-year-variable}
 x <- 1950
 ```
 
 Now let's look at the values of a few logical comparisons.
 
-```{r}
+```{r logical-comparisons-single}
 x == 1950
 x == 1951
 x != 1951
@@ -247,14 +247,14 @@ x <= 1950
 If we use these with a vector of numbers, R calculates the comparison for each individual element of the vector.
 So instead of just looking at 1950, let's look at each number from 1948 to 1952.
 
-```{r}
+```{r create-year-vector}
 x <- 1948:1952
 x
 ```
 
 We've got a vector of five years here, so each of our logical comparisons will now return a vector of five `TRUE`/`FALSE` values.
 
-```{r}
+```{r logical-comparisons-vector}
 x == 1950
 x == 1951
 x != 1951
@@ -264,7 +264,7 @@ x <= 1950
 
 You can combine logical comparisons like this with square brackets to select elements from a vector on the basis of a logical comparison.
 
-```{r}
+```{r subset-with-logical}
 x[x < 1950]
 ```
 
@@ -279,7 +279,7 @@ You can check the length of a vector using the `length()` function, FYI.
 :::
 
 
-```{r}
+```{r vector-comparisons}
 y <- c(1948, 1948, 1950, 1950, 1946)
 y
 
@@ -293,7 +293,7 @@ The exclamation point means "not".
 You can use it to turn `TRUE` into `FALSE` and vice versa.
 Just make sure that you put parentheses around the whole statement that you're trying to negate.
 
-```{r}
+```{r logical-negation}
 !(x >= y)
 ```
 
@@ -313,7 +313,7 @@ There are two ways to combine comparisons.
 | `FALSE` | `TRUE`  | `FALSE`       | `TRUE`       |
 | `FALSE` | `FALSE` | `FALSE`       | `FALSE`      |
 
-```{r}
+```{r logical-and-or}
 # Reminder:
 # x = 1948, 1949, 1950, 1951, 1952
 # y = 1948, 1948, 1950, 1950, 1946
@@ -326,7 +326,7 @@ Be aware that `&` and `|` only operate on `TRUE` and `FALSE` values, not on othe
 There are situations where you might use "and" or "or" in an English sentence, but where `&` and `|` can't just be substituted into your R code.
 For example, think about trying to code up the logical statement "`x` or `y` is less than 100."
 
-```{r}
+```{r logical-operator-gotcha}
 x <- c(75, 100, 125, 150)
 y <- c(100, 90, 150, 99)
 
@@ -352,7 +352,7 @@ The doubled versions only work on a [single]{.underline} `TRUE`/`FALSE` statemen
 This distinction is important in programming situations where you need to make sure you're only working with a single value.
 That won't typically come up in this course, so to make our lives easier we'll just always use the single versions.
 
-```{r}
+```{r single-vs-double-operators}
 #| error: true
 x <- c(1, 2, 3, 4, 5)
 y <- c(1, 1, 4, 4, 8)
@@ -369,21 +369,21 @@ Remember that we can pull a single column from a data frame using the dollar sig
 And we can use square brackets on a data frame to select particular observations from it.
 So we *could* subset to the Cold War observations that way.
 
-```{r}
+```{r subset-with-brackets}
 df_crises[df_crises$systrgyr >= 1946 & df_crises$systrgyr <= 1989, ]
 ```
 
 That works, but it's a bit ugly and unwieldy.
 The `filter()` function gives us an easier way to do the same thing.
 
-```{r}
+```{r filter-cold-war}
 filter(df_crises, systrgyr >= 1946 & systrgyr <= 1989)
 ```
 
 When dealing with character columns, the greater/lesser comparisons no longer make sense, but we can still use the equality and inequality comparisons.
 Just make sure to use quotation marks around whatever you're comparing to!
 
-```{r}
+```{r filter-by-character}
 filter(df_crises, actor == "USA")
 filter(df_crises, actor != "RUS")
 ```
@@ -391,14 +391,14 @@ filter(df_crises, actor != "RUS")
 What if you wanted to get all of the observations involving the United States (USA), Russia (RUS), or the United Kingdom (UKG)?
 One kind of tedious way to go about it would be to string many "or" statements together.
 
-```{r}
+```{r filter-multiple-or}
 filter(df_crises, actor == "USA" | actor == "RUS" | actor == "UKG")
 ```
 
 The easier way --- especially if you're matching a large number of values --- is to use the `%in%` operator in R.
 When you run `x %in% y`, it gives you a `TRUE` or `FALSE` for each entry of `x`: `TRUE` if it matches at least one entry of `y`, and `FALSE` otherwise.
 
-```{r}
+```{r filter-with-in-operator}
 filter(df_crises, actor %in% c("USA", "RUS", "UKG"))
 ```
 
@@ -428,7 +428,7 @@ Along the way we'll rename the variables to be less ugly.
 And furthermore imagine we only want Cold War--era observations, and only for the USA, Russia, and the United Kingdom.
 We could run the following sequence of commands:
 
-```{r}
+```{r sequential-commands}
 df_crises_cw <- select(
   df_crises,
   crisis_name = crisname,
@@ -449,7 +449,7 @@ And that's only with fairly simple subsetting operations.
 The [pipe operator]{.concept} in R lets us chain together commands like this much more succinctly.
 `x |> function_name(...)` is equivalent to `function_name(x, ...)` in R.
 
-```{r}
+```{r pipe-example-simple}
 x <- 1:10
 x
 
@@ -478,7 +478,7 @@ x |>
 
 Let's see the pipe in action in the context of our data cleaning example.
 
-```{r}
+```{r piped-commands}
 df_crises |>
   select(
     crisis_name = crisname,
@@ -496,7 +496,7 @@ It might take a bit getting used to, but I personally find it much easier to use
 One thing to keep in mind, just like when you run these commands the regular way, they won't change your data frame in place.
 You need to explicitly assign the output to a variable name.
 
-```{r}
+```{r assign-piped-result}
 df_crises_cw <- df_crises |>
   select(
     crisis_name = crisname,
@@ -539,7 +539,7 @@ For example, right now the duration of each crisis is measured in days.
 We can add new columns to measure duration in weeks and years instead.
 As always, if we want our new columns to persist instead of vanishing into the ether, we need to assign the output to a variable --- either overwriting `df_crises_cw` or creating a new data frame.
 
-```{r}
+```{r mutate-duration-columns}
 df_crises_cw <- df_crises_cw |>
   mutate(
     duration_weeks = duration / 7,
@@ -556,7 +556,7 @@ You invoke it as `if_else(condition, a, b)`:
 *   `a`: value, or vector of values, to use for entries where `condition` is `TRUE`
 *   `b`: value, or vector of values, to use for entries where `condition` is `FALSE`
 
-```{r}
+```{r if-else-example}
 # Simple if_else example
 x <- c(1, 2, 3, 4)
 y <- c(-100, -200, 300, 400)
@@ -586,7 +586,7 @@ The [ICB codebook](https://duke.box.com/s/l4glcl5jaipmycs7unzraxkp92w1nh3d) expl
 
 So for example, looking at the rows associated with the Berlin Blockade, we see that the USA and United Kingdom experienced victory, while the Soviet Union was defeated.
 
-```{r}
+```{r berlin-blockade-outcomes}
 df_crises_cw |>
   filter(crisis_name == "BERLIN BLOCKADE") |>
   select(actor_name, outcome, everything())
@@ -595,7 +595,7 @@ df_crises_cw |>
 We *could* use a sequence of 5 `if_else()` statements to convert the `outcome` variable in terms of category names instead of (hard to remember) numeric identifiers.
 But it's easier to use `case_when()`:
 
-```{r}
+```{r recode-outcome-variable}
 df_crises_cw <- df_crises_cw |>
   mutate(
     outcome = case_when(
@@ -621,7 +621,7 @@ But `case_when()` is a bit more flexible, so to avoid confusion I'm only going t
 The `summarize()` function lets us calculate summaries of columns in the data.
 For example, let's find the shortest, longest, and average crisis durations among the USA/UK/USSR during the Cold War.
 
-```{r}
+```{r summarize-duration-stats}
 df_crises_cw |>
   summarize(
     shortest = min(duration),
@@ -630,7 +630,7 @@ df_crises_cw |>
   )
 ```
 
-```{r}
+```{r alternative-summary-approach}
 # Seemingly easier way
 min(df_crises_cw$duration)
 max(df_crises_cw$duration)
@@ -641,14 +641,14 @@ The real power of `summarize()` comes in when you combine it with `group_by()` t
 For example, say we wanted to calculate the shortest, longest, and average crisis duration separately for the USA, UK, and USSR.
 That would be tedious to do the "normal" way:
 
-```{r}
+```{r tedious-subsetting-example}
 # one of nine long expressions you'd have to type out
 min(df_crises_cw$duration[df_crises_cw$actor_name == "USA"])
 ```
 
 `group_by |> summarize` makes this *much* easier.
 
-```{r}
+```{r group-by-summarize}
 df_crises_cw |>
   group_by(actor_name) |>
   summarize(
@@ -672,7 +672,7 @@ Use `filter()`, `group_by()`, `summarize()`, and `arrange()` together to figure 
 What if you wanted to count the number of crises involving each country?
 There's a special function called `n()` that counts the number of observations within each group.
 
-```{r}
+```{r count-observations-by-group}
 df_crises_cw |>
   group_by(actor_name) |>
   summarize(number = n())
@@ -681,7 +681,7 @@ df_crises_cw |>
 You can group on multiple variables at once.
 The number of rows in the result will be the number of unique combinations of values across the grouping variables.
 
-```{r}
+```{r multiple-group-by}
 df_crises_cw |>
   group_by(actor_name, outcome) |>
   summarize(
@@ -697,7 +697,7 @@ df_crises_cw |>
 To get practice with reshaping and merging data, we're going to bring in a second dataset.
 `military.csv`, stored at <https://bkenkel.com/qps1/data/military.csv>, contains data on military spending and force sizes by country from 1816 to 2019.
 
-```{r}
+```{r load-military-data}
 #| message: false
 df_military <- read_csv("https://bkenkel.com/qps1/data/military.csv")
 
@@ -712,7 +712,7 @@ As of now the data is "longer" than we want it to be, and we'd like it to be "wi
 Hence we'll use the function `pivot_wider()`.
 Here's how we use it.
 
-```{r}
+```{r pivot-wider-example}
 df_military_wide <- df_military |>
   pivot_wider(names_from = mil_indicator, values_from = amount)
 
@@ -738,7 +738,7 @@ Were there any crises that ended in victory for both the USA and the USSR?
 The opposite of `pivot_wider()` is, naturally enough, `pivot_longer()`.
 For example, imagine your raw data had a single row for each country, then a separate column for its military spending each year.
 
-```{r}
+```{r create-too-wide-data}
 df_too_wide <- tibble(
   ccode = c(2, 200, 365),
   stateabb = c("USA", "UKG", "RUS"),
@@ -752,7 +752,7 @@ df_too_wide
 
 To use `pivot_longer()`, we have to tell it (1) the set of columns whose values we want to collapse into a single column, (2) what we want to name the column that stores the column names from the original data, and (3) what we want to name the column that stores the values.
 
-```{r}
+```{r pivot-longer-example}
 df_too_wide |>
   pivot_longer(
     starts_with("mil"),
@@ -763,7 +763,7 @@ df_too_wide |>
 
 FYI: If you wanted to turn the year column there into a proper year, you could `mutate()` it to remove the "mil" text and then convert it to a number.
 
-```{r}
+```{r clean-year-column}
 df_too_wide |>
   pivot_longer(
     starts_with("mil"),
@@ -797,7 +797,7 @@ Here we are going to match observations by the numerical "country code" and by y
 First we'll edit the military size data so that the country code indicator has the same name as in `df_crises_cw`.
 (We'll also drop the country name variable, since we already have that in the original data.)
 
-```{r}
+```{r prepare-military-data-for-merge}
 df_military_wide <- df_military_wide |>
   rename(actor_id = ccode) |>
   select(-stateabb)
@@ -812,7 +812,7 @@ We need to tell this function three things:
 *   The data frame that we want to merge values in from.
 *   The column names to match observations by.
 
-```{r}
+```{r left-join-datasets}
 df_crisis_and_mil <- left_join(
   df_crises_cw,
   df_military_wide,
@@ -824,7 +824,7 @@ df_crisis_and_mil
 
 Now we can use `group_by()` and `summarize()` to calculate the average size and spending of the military among crisis winners, crisis losers, and so on.
 
-```{r}
+```{r analyze-military-by-outcome}
 df_crisis_and_mil |>
   group_by(outcome) |>
   summarize(avg_spending = mean(spending),

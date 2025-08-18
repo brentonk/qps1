@@ -13,7 +13,7 @@ Just a few examples off the top of my head:
 
 To analyze text in R, we'll be using a few new packages we haven't used before, in addition to the usual tidyverse and broom packages.
 
-```{r}
+```{r load-text-analysis-packages}
 #| message: false
 library("tidyverse")
 library("broom")
@@ -27,7 +27,8 @@ To install these, you'll need to run the following command *once* from the R con
 Don't try to put it in a Quarto document; installing packages from within the Quarto rendering process is dicey at best.
 (Plus, you only need to install the package once ever, so it'd be a waste of computing time and power to reinstall it every time you render a Quarto file.)
 
-```{r,eval=FALSE}
+```{r install-packages}
+#| eval: false
 install.packages(c("tidytext", "SnowballC", "caret", "glmnet"))
 ```
 
@@ -61,7 +62,7 @@ We will work with a slightly cleaned-up version of the Federalist Papers, via th
 This file is available on my website at <https://bkenkel.com/qps1/data/fed_papers.csv>.
 It's constructed using the raw Federalist Papers text from [Project Gutenberg](https://www.gutenberg.org/files/1404/1404-h/1404-h.htm).
 
-```{r}
+```{r load-federalist-papers}
 #| message: false
 df_fed_papers <- read_csv("https://bkenkel.com/qps1/data/fed_papers.csv")
 
@@ -76,7 +77,7 @@ There are just three columns here:
 
 *   `text` contains the full text of the paper.
 
-```{r}
+```{r count-papers-by-author}
 df_fed_papers |>
   group_by(author) |>
   summarize(number = n())
@@ -121,7 +122,7 @@ The `unnest_tokens()` function takes a vector of document text and turns each do
 You use the `input` argument to tell it where to take the text from, and the `output` argument to tell it the name of the column to put the words into.
 I'll illustrate with a simple example before applying it to the Federalist Papers data.
 
-```{r}
+```{r tokenization-example}
 my_fake_data <- tibble(
   id = c(1, 2),
   text = c("The Muppets ate bananas!!", "Bananas are what they ate??")
@@ -139,7 +140,7 @@ We don't want to treat `"bananas"` like a different word from `"Bananas"`, or `"
 When we put the Federalist Papers through the `unnest_tokens()` function, we end up with many thousands of individual words.
 We'll store these in a new data frame called `df_fed_tokens`, so we don't overwrite the original raw data.
 
-```{r}
+```{r tokenize-federalist-papers}
 df_fed_tokens <- df_fed_papers |>
   unnest_tokens(input = text, output = word)
 
@@ -149,7 +150,7 @@ df_fed_tokens
 We can use our typical data wrangling functions to see which words appear most commonly in the Federalist Papers data.
 Are the most common words high-minded things like "politics" and "president" and "constitution"?
 
-```{r}
+```{r count-common-words}
 df_fed_tokens |>
   group_by(word) |>
   summarize(number = n()) |>
@@ -165,7 +166,7 @@ Words that appear commonly and don't have much topical meaning --- e.g., "the", 
 We don't typically expect these words to do much to help us classify documents, so it's common to remove them before performing text analysis.
 There are multiple different lists of English stop words out there for different use cases, but we'll just use the default list included in the `stop_words` data frame (via the tidytext package).
 
-```{r}
+```{r examine-stop-words}
 stop_words
 ```
 
@@ -175,7 +176,7 @@ Just like `left_join()`, which we saw back in the Data Wrangling unit, `anti_joi
 But it works a little bit differently: it returns only the rows of the first data frame that have [no]{.underline} match in the second data frame.
 In this case, we want the rows of `df_fed_tokens` where the `word` column has no match in `stop_words`.
 
-```{r}
+```{r remove-stop-words}
 df_fed_tokens <- df_fed_tokens |>
   anti_join(stop_words, by = "word")
 
@@ -185,7 +186,7 @@ df_fed_tokens
 About 2/3 of the words in the raw text were removed once we got rid of the stop words.
 And now if we look at the most common words, it looks a lot more like what we might intuitively expect from the Federalist Papers.
 
-```{r}
+```{r count-words-after-stop-word-removal}
 df_fed_tokens |>
   group_by(word) |>
   summarize(number = n()) |>
@@ -204,7 +205,7 @@ This is an algorithm that removes plurals and suffixes, reducing words to their 
 We use the `wordStem()` function for this.
 For a simple example:
 
-```{r}
+```{r stemming-example}
 gov_words <- c(
   "government", "govern", "governed", "governing",
   "governs", "governor", "governors"
@@ -221,7 +222,7 @@ That doesn't matter too much when we're treating each document like a "bag of wo
 
 Going back to the full Federalist Papers data, we can use a simple `mutate()` to stem the raw tokens.
 
-```{r}
+```{r apply-stemming}
 df_fed_tokens <- df_fed_tokens |>
   mutate(word_stem = wordStem(word))
 
@@ -230,7 +231,7 @@ df_fed_tokens
 
 After stemming, we end up with a similar --- but not identical --- list of most frequent terms across the 85 essays.
 
-```{r}
+```{r count-stems}
 df_fed_tokens |>
   group_by(word_stem) |>
   summarize(number = n()) |>
@@ -255,7 +256,7 @@ We want to use these to calculate a set of features for each document, which we 
 As a simple start, we will calculate the number of times each stemmed non-stop word appears in each document.
 At this point let's make another new data frame, which we'll call `df_fed_tf` (where `tf` stands for "term frequency" --- more on that in a moment).
 
-```{r}
+```{r create-term-frequency-data}
 df_fed_tf <- df_fed_tokens |>
   group_by(paper_id, word_stem) |>
   summarize(number = n()) |>
@@ -322,7 +323,7 @@ We need to supply three arguments to `bind_tf_idf()`:
 
 In this case, our words are in `word_stem`, our document IDs are in `paper_id`, and our word counts are in `number`, so we run:
 
-```{r}
+```{r calculate-tf-idf}
 df_fed_tf <- df_fed_tf |>
   bind_tf_idf(term = word_stem, document = paper_id, n = number)
 
@@ -333,7 +334,7 @@ We've now got the term frequencies, inverse document frequencies, and tf-idf for
 Let's see which word is the most *distinctive* in each document, by pulling out the word with the highest tf-idf in each document.
 We can use the `slice_max()` function to do this, after grouping by document IDs.
 
-```{r}
+```{r find-distinctive-words}
 df_fed_tf |>
   group_by(paper_id) |>
   slice_max(tf_idf) |>
@@ -351,7 +352,7 @@ The last thing we need to do is transform this into a data frame where each row 
 In this way, the tf-idf of each word will serve as the features we use for categorization and classification, along our way to try and identify the authorship of the 11 disputed papers.
 To transform the data this way, we can simply use `pivot_wider()`.
 
-```{r}
+```{r create-feature-matrix}
 df_fed_features <- df_fed_tf |>
   select(paper_id, word_stem, tf_idf) |>
   pivot_wider(names_from = word_stem,
@@ -378,7 +379,7 @@ To do that, we're going to use statistical methods to recognize patterns in the 
 As a first step, we're going to add authorship info to our data frame of word features.
 We will also split up the data frame into the "known" cases (those where exactly one of Hamilton or Madison is known to be the author) and the "unknown" cases (those with "Hamilton or Madison" as the listed author).
 
-```{r}
+```{r prepare-classification-data}
 df_fed_features <- df_fed_features |>
   mutate(
     paper_author = df_fed_papers$author,
@@ -408,7 +409,7 @@ As a very rough first cut at feature selection, let's look for the words whose t
 (The correlation coefficient isn't *really* meant for use with a binary variable, but this is just a rough cut anyway.)
 We can do that in a single (admittedly complex!) data pipeline.
 
-```{r}
+```{r find-most-correlated-words}
 df_fed_known |>
   # Remove the non-numeric paper author column
   select(-paper_author) |>
@@ -428,7 +429,7 @@ Each of these has a negative correlation, meaning a higher frequency of usage is
 
 Let's build a linear regression model using the tf-idf of the ten most strongly correlated words to predict paper authorship.
 
-```{r}
+```{r fit-authorship-model}
 fit_authorship <- lm(
   is_hamilton ~ whilst + form + li + mix + stamp +
     democrat + dishonor + congress + compass + lesser,
@@ -446,7 +447,7 @@ Ideally, we would like the prediction to match the truth as often as possible, r
 To make a confusion matrix, first we need to extract predictions via `augment()`, then match them up with the true responses.
 The linear regression doesn't directly make predictions, but we'll treat a fitted value above 0.5 (50%) as a Hamilton prediction and a fitted value below 0.5 as a Madison prediction.
 
-```{r}
+```{r create-confusion-matrix}
 df_predictions <-
   augment(fit_authorship, newdata = df_fed_known) |>
   mutate(prediction = if_else(.fitted >= 0.5, "hamilton", "madison"))
@@ -465,7 +466,7 @@ So we should put a lot of faith in how it classifies the unknown papers --- righ
 
 To calculate predictions for the unknown papers, we'd again use `augment()`:
 
-```{r}
+```{r predict-unknown-papers}
 augment(fit_authorship, newdata = df_fed_unknown) |>
   mutate(prediction = if_else(.fitted >= 0.5, "hamilton", "madison")) |>
   count(prediction)
@@ -514,7 +515,7 @@ Let's use cross-validation to get a better guess at the out-of-sample predictive
 If we wanted to be entirely rigorous about cross-validation, we would repeat our feature selection process within the cross-validation loop, recalculating the correlations between authorship and tf-idf each time while excluding the data from the $k$'th fold.  I won't do that here, but the streamlined method discussed in @sec-elastic-net incorporates this automatically.
 :::
 
-```{r}
+```{r cross-validation-loop}
 # Set seed for replicability
 set.seed(1789)
 
@@ -594,7 +595,7 @@ We will use the `train()` function to fit an elastic net.
 It works similarly to `lm()`, except with a lot more options.
 I'll show you the code first and then explain it.
 
-```{r caret_fed}
+```{r train-elastic-net-model}
 #| cache: true
 
 # Remove columns we don't want to use as features
@@ -643,7 +644,7 @@ Here's everything that's going on in this function:
 
 When you print out the result of a model fit with `train()`, it shows you the values of the tuning parameters that it tested, as well as the estimated out-of-fold accuracy of each one.
 
-```{r}
+```{r examine-elastic-net-model}
 fit_enet
 ```
 
@@ -651,13 +652,13 @@ There's a lot of output here, and it's different than a linear regression.
 The important part to extract is that out of the various elastic net specifications tested by the `train()` function, the highest cross-validation accuracy obtained was about 87%.
 This might be a bit easier to see by looking at the confusion matrix --- which is easy to obtain when we're working with a model fit by `train()`.
 
-```{r}
+```{r elastic-net-confusion-matrix}
 confusionMatrix(fit_enet)
 ```
 
 We can use the `varImp()` function to extract which features are most important, in terms of having the largest magnitude of coefficients in the elastic net model.
 
-```{r}
+```{r elastic-net-variable-importance}
 varImp(fit_enet)
 ```
 
@@ -670,7 +671,7 @@ With the elastic net, we asked it to sort through all 4800ish features to identi
 
 Finally, to make out-of-sample predictions with the elastic net, we can use the `predict()` function.
 
-```{r}
+```{r elastic-net-predictions}
 pred_enet <- predict(fit_enet, newdata = df_fed_unknown)
 
 pred_enet

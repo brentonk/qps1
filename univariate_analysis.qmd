@@ -20,7 +20,7 @@ The major concepts we will hit are:
 
 We will work with the data file `county_pres.csv`, stored online at <https://bkenkel.com/qps1/data/county_pres.csv>, which records county-by-county results of US presidential elections from 2000 to 2020.
 
-```{r}
+```{r load-county-election-data}
 #| message: false
 library("tidyverse")
 
@@ -111,7 +111,7 @@ If there are $N$ observations of a continuous variable, say $x_1, x_2, \ldots, x
 As you saw a bit in our section on data wrangling, we can use the `mean()` function in R to calculate the mean.
 For example, let's calculate the average number of votes in a county across the 2000--2020 presidential elections.
 
-```{r}
+```{r calculate-mean-votes}
 mean(df_county_pres$total_votes)
 ```
 
@@ -159,7 +159,7 @@ If the median of some variable is $m$, that means half of the observations are l
 We calculate the median in R with the `median()` function.
 For example, let's look at the median number of votes cast across the counties in our data frame.
 
-```{r}
+```{r calculate-median-votes}
 median(df_county_pres$total_votes)
 ```
 
@@ -201,7 +201,7 @@ Are they getting more or less competitive?
 Let's take a few different calculations.
 Which one do you think best captures the competitiveness of each election?
 
-```{r}
+```{r analyze-competitiveness-by-year}
 df_county_pres |>
   group_by(year) |>
   summarize(
@@ -217,7 +217,7 @@ For example, in our total votes variable, there are 16,941 distinct values obser
 The most common is 3,930, as there just happen to be eight counties where this was the exact total of votes.
 Just because we get this exact total in eight out of 22,000+ observations doesn't make it "typical" in any meaningful sense.
 
-```{r}
+```{r find-mode-total-votes}
 df_county_pres |>
   group_by(total_votes) |>
   summarize(number = n()) |>
@@ -233,7 +233,7 @@ We say a categorical variable is [unordered]{.concept} when none of the categori
 For example, the `region` variable in our county-level election data has four categories: Midwest, Northeast, South, and West.
 Because no region is "more" or "less" than the others, this variable is unordered.
 
-```{r}
+```{r count-by-region}
 df_county_pres |>
   group_by(region) |>
   summarize(number = n())
@@ -270,7 +270,7 @@ For example, every election cycle the [Cook Political Report](https://www.cookpo
 Our county-level presidential elections data here contains an analogue of the Cook ratings in the `Competitiveness` column.
 It's a 7-point scale where the lowest values most strongly favor Republicans, while the highest values most strongly favor Democrats.
 
-```{r}
+```{r analyze-competitiveness-categories}
 df_county_pres |>
   group_by(competitiveness) |>
   summarize(
@@ -284,7 +284,7 @@ With an ordered categorical variable, we can look at the mode and the distributi
 We still can't calculate a mean, because we can't sensibly add and subtract values of a non-continuous variable.
 However, unlike with an unordered categorical variable, here it is also sensible to calculate the median.
 
-```{r}
+```{r median-competitiveness}
 median(df_county_pres$competitiveness)
 ```
 
@@ -301,7 +301,7 @@ Binary variables are special because we can essentially treat them as if they we
 
 In our county-level presidential data, the indicator for whether the Democrat won the state is a binary variable, already coded in 0/1 format.
 
-```{r}
+```{r count-dem-state-wins}
 df_county_pres |>
   group_by(dem_win_state) |>
   summarize(number = n())
@@ -309,7 +309,7 @@ df_county_pres |>
 
 With a binary variable coded in 0/1 format, the mean tells us the proportion of observations that are a 1.
 
-```{r}
+```{r mean-dem-state-wins}
 mean(df_county_pres$dem_win_state)
 ```
 
@@ -345,7 +345,7 @@ Then they must be pretty politically similar --- right?
 Not necessarily.
 One way to end up with a mean and median of 2% is for every county to be slightly left of center, as in our hypothetical State A.
 
-```{r}
+```{r state-a-example}
 margins_state_a <- c(0.01, 0.01, 0.01, 0.01, 0.02, 0.03, 0.03, 0.03, 0.03)
 mean(margins_state_a)
 median(margins_state_a)
@@ -353,7 +353,7 @@ median(margins_state_a)
 
 But you could also end up with these same numbers if the state is wildly polarized between heavily Democratic and heavily Republican counties, as in our hypothetical State B.
 
-```{r}
+```{r state-b-example}
 margins_state_b <- c(-0.40, -0.30, -0.25, -0.20, 0.02, 0.20, 0.30, 0.36, 0.45)
 mean(margins_state_b)
 median(margins_state_b)
@@ -390,7 +390,7 @@ Very loosely, I think of the standard deviation as telling us "What's a normal d
 We can calculate the standard deviation in R using the `sd()` function.
 Let's look at variation in total votes by county.
 
-```{r}
+```{r calculate-vote-spread}
 mean(df_county_pres$total_votes)
 sd(df_county_pres$total_votes)
 ```
@@ -460,7 +460,7 @@ Here's what's going on:
 The standard deviation shares some of the same problems as the mean, namely a sensitivity to outliers.
 One single observation can make a huge difference to the standard deviation.
 
-```{r}
+```{r demonstrate-outlier-effect}
 # Create a vector of evenly-spaced hypothetical data points
 x <- seq(from = 1, to = 2, length.out = 20)
 x
@@ -486,14 +486,14 @@ We calculate it by going through the following steps:
 We can calculate the median absolute deviation in R using the `mad()` function.
 There's a kind of annoying default scaling option to try to make the MAD more similar to the standard deviation; I don't like that, so I add the argument `constant = 1` to turn that off.
 
-```{r}
+```{r calculate-mad}
 median(df_county_pres$total_votes)
 mad(df_county_pres$total_votes, constant = 1)
 ```
 
 This means half of the counties in the data have between 3,378 and 18,902 votes (median of 11,140, plus or minus the MAD of 7,762 votes).
 
-```{r}
+```{r categorize-by-mad}
 median_votes <- median(df_county_pres$total_votes)
 mad_votes <- mad(df_county_pres$total_votes, constant = 1)
 
@@ -539,7 +539,7 @@ We can calculate quartiles using the `quantile()` function in R.
 Yes, they're called quartiles with an "r", yet we use `quantile()` with an "n".
 (Typing `quartile()` for `quantile()` is one of my most frequent R mistakes.)
 
-```{r}
+```{r calculate-quartiles}
 quantile(df_county_pres$total_votes)
 ```
 
@@ -565,7 +565,7 @@ The difference between the third and first quartiles is called the [interquartil
 You can calculate it in R with the `IQR()` function.
 Some people find this value useful, though frankly I don't.
 
-```{r}
+```{r calculate-iqr}
 IQR(df_county_pres$total_votes)
 ```
 
@@ -575,7 +575,7 @@ To calculate a percentile, we can again use the `quantile()` function.
 For example, let's find the 95th percentile, separating the smallest 95% of counties from the largest 5%.
 Note that we have to specify the argument to `quantile()` in terms of a proportion (between 0 and 1) rather than a percentage (between 0 and 100).
 
-```{r}
+```{r calculate-95th-percentile}
 quantile(df_county_pres$total_votes, 0.95)
 ```
 

@@ -41,7 +41,7 @@ glimpse(df_turnout_raw)
 
 Cleaning up into the data file used for class:
 
-```{r}
+```{r turnout-cleaning}
 df_turnout <- df_turnout_raw |>
   # Only want national level data
   filter(STATE == "United States") |>
@@ -93,7 +93,7 @@ glimpse(df_turnout)
 
 Double check that the manually calculated voting eligible calculation lines up with the one reported in the data frame:
 
-```{r}
+```{r turnout-validation}
 df_turnout |>
   mutate(
     vep_manual = voting_age_pop - ineligible_felons -
@@ -106,7 +106,7 @@ df_turnout |>
 
 Save cleaned data to `turnout.csv`:
 
-```{r}
+```{r turnout-save}
 write_csv(df_turnout, "data/turnout.csv")
 ```
 
@@ -131,7 +131,7 @@ glimpse(df_crises_raw)
 
 Save to `crises.csv`:
 
-```{r}
+```{r crises-save}
 write_csv(df_crises_raw, "data/crises.csv")
 ```
 
@@ -165,7 +165,7 @@ glimpse(df_military_raw)
 ```
 Convert to "long" format containing only spending and personnel, for pedagogical purposes:
 
-```{r}
+```{r military-cleaning}
 df_military <- df_military_raw |>
   select(ccode, stateabb, year, spending = milex, personnel = milper) |>
   pivot_longer(
@@ -179,7 +179,7 @@ glimpse(df_military)
 
 Save to `military.csv`:
 
-```{r}
+```{r military-save}
 write_csv(df_military, "data/military.csv")
 ```
 
@@ -212,7 +212,7 @@ glimpse(df_county_pres_raw)
 
 Clean data to have one row per county-year:
 
-```{r}
+```{r county-pres-cleaning}
 df_county_pres <- df_county_pres_raw |>
   filter(!is.na(party), totalvotes > 0) |>
   rename(county = county_name) |>
@@ -270,7 +270,7 @@ df_county_pres <- df_county_pres_raw |>
 
 Save to `county_pres.csv`:
 
-```{r}
+```{r county-pres-save}
 write_csv(df_county_pres, "data/county_pres.csv")
 ```
 
@@ -310,7 +310,7 @@ glimpse(df_wdi_raw)
 
 Minor cleaning to remove unwanted rows and columns:
 
-```{r}
+```{r wdi-cleaning}
 df_wdi <- df_wdi_raw |>
   as_tibble() |>
   select(-iso2c, -status, -lastupdated, -capital, -longitude, -latitude) |>
@@ -330,7 +330,7 @@ glimpse(df_wdi)
 
 Save to `wdi.csv`:
 
-```{r}
+```{r wdi-save}
 write_csv(df_wdi, "data/wdi.csv")
 ```
 
@@ -355,7 +355,7 @@ df_anes_raw <- read_csv(anes_file)
 
 Extract the few columns we care about and convert numeric codes to understandable values:
 
-```{r}
+```{r anes-cleaning}
 df_anes <- df_anes_raw |>
   mutate(
     id = row_number(),
@@ -507,7 +507,7 @@ glimpse(df_anes)
 
 Save to `anes_2020.csv`:
 
-```{r}
+```{r anes-save}
 write_csv(df_anes, "data/anes_2020.csv")
 ```
 
@@ -533,7 +533,7 @@ fed_papers_raw <- readLines(fed_papers_file)
 
 Parse text and assemble into data frame:
 
-```{r}
+```{r fed-papers-cleaning}
 ## Eliminate table of contents and other non-text content
 fed_papers <- fed_papers_raw |>
   tail(-98) |>
@@ -576,6 +576,6 @@ glimpse(df_fed_papers)
 
 Save to `fed_papers.csv`:
 
-```{r}
+```{r fed-papers-save}
 write_csv(df_fed_papers, "data/fed_papers.csv")
 ```

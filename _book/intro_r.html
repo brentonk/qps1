@@ -429,13 +429,13 @@ Even small typos lead to failure
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+<pre><code>── Attaching core tidyverse packages ──────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 ✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+── Conflicts ────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
@@ -556,7 +556,7 @@ This file's header is a bit different than the example given here because it's p
 </section>
 <section id="code-blocks" class="level3" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="code-blocks"><span class="header-section-number">1.3.3</span> Code blocks</h3>
-<p>The special thing about Quarto is that you can include blocks of R code. (Or Python, if you’re into snakes.) When you render the document, the code you put into each block will be run in R, and the output will be included in the document.</p>
+<p>The special thing about Quarto is that you can include blocks of R code. (Or Python, if you’re into snakes.) When you render the document, the code you put into each <span class="concept">code chunk</span> will be run in R, and the output will be included in the document.</p>
 <p>As a quick example, we can have R do some basic arithmetic for us.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">*</span> <span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,15 +565,15 @@ This file's header is a bit different than the example given here because it's p
 </div>
 </div>
 <p>To create the above, all I entered in my Quarto source file was the following:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r simple-arithmetic}</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="sc">*</span> <span class="dv">6</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--
 The quadruple-backtick/double-brackets syntax above is a hack so that the output in the rendered document will look like a regular Quarto code block.
 See https://quarto.org/docs/computations/execution-options.html#fenced-echo for details.
 -->
-<p>The triple backticks tell Quarto: “Everything after this is code, until the next set of triple backticks.” The <code>{r}</code> then tells Quarto: “Not only is this code, but this is R code that you should run.”</p>
-<p>If you don’t want to remember this goofy syntax yourself, you can run <code>Code -&gt; Insert Chunk</code> from the RStudio menu. Or even better, for the efficiency aficionados, hit <code>Ctrl-Alt-I</code> (Windows) or <code>Command-Option-I</code> (Mac).</p>
+<p>The triple backticks tell Quarto: “Everything after this is code, until the next set of triple backticks.” The <code>{r}</code> then tells Quarto: “Not only is this code, but this is R code that you should run.” <code>simple-arithmetic</code> is the label that I chose for this code block. Chunk labels aren’t necessary — you can just write <code>{r}</code> instead of <code>{r code-chunk-label}</code> at the start of the chunk — but they can make it easier to debug if your Quarto file isn’t rendering correctly.</p>
+<p>If you don’t want to remember this goofy syntax yourself, you can run <code>Code -&gt; Insert Chunk</code> from the RStudio menu. Or even better, for the efficiency aficionados, hit <code>Ctrl-Alt-I</code> (Windows) or <code>Command-Option-I</code> (Mac) to insert a code chunk directly into your Quarto file.</p>
 <p>You usually won’t need to use anything other than the default code chunk. But sometimes you will want to customize. For example, as we saw when running <code>library("tidyverse")</code> at the end of <a href="#sec-install-tidyverse" class="quarto-xref"><span>Section 1.1.3</span></a>, loading the tidyverse package spits out a bunch of annoying messages that I usually don’t want cluttering up my Quarto output. To keep these out, I can use the <code>message: false</code> option for the code block where I load tidyverse:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
@@ -735,17 +735,20 @@ Reading data from a file on your computer
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"                   "_freeze"                
- [3] "_quarto.yml"             "_raw"                   
- [5] "cover.png"               "data"                   
- [7] "data_sources_cache"      "data_sources.qmd"       
- [9] "data_visualization.qmd"  "data_wrangling.qmd"     
-[11] "img"                     "index.html"             
-[13] "index.qmd"               "intro_r.qmd"            
-[15] "intro_r.rmarkdown"       "qps1.scss"              
-[17] "references.bib"          "references.qmd"         
-[19] "site_libs"               "univariate_analysis.qmd"
-[21] "using_chatgpt.qmd"      </code></pre>
+<pre><code> [1] "_book"                       "_freeze"                    
+ [3] "_quarto.yml"                 "_raw"                       
+ [5] "correlation_regression.qmd"  "cover.png"                  
+ [7] "data"                        "data_sources_cache"         
+ [9] "data_sources.qmd"            "data_visualization.qmd"     
+[11] "data_wrangling.qmd"          "img"                        
+[13] "index.html"                  "index.qmd"                  
+[15] "intro_r_files"               "intro_r.qmd"                
+[17] "intro_r.rmarkdown"           "qps1.scss"                  
+[19] "references.bib"              "references.qmd"             
+[21] "simulation_resampling_cache" "simulation_resampling_files"
+[23] "simulation_resampling.qmd"   "site_libs"                  
+[25] "text_analysis_cache"         "text_analysis.qmd"          
+[27] "univariate_analysis.qmd"     "using_chatgpt.qmd"          </code></pre>
 </div>
 </div>
 <p>Finally, once you’ve confirmed that the data file you want to analyze shows up here, you can load it into R by plugging the filename into <code>read_csv()</code>. As always, the filename will need go inside quotation marks. For example, if the file is called <code>pre_election_polls.csv</code>, you would run:</p>
@@ -762,20 +765,21 @@ Reading data from a file on your computer
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_turnout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 22 × 7
-    year votes_counted voting_age_pop voting_eligible_pop ineligible_felons
-   &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;             &lt;dbl&gt;
- 1  1980          86.5           164.                160.             0.802
- 2  1982          67.6           166.                160.             0.960
- 3  1984          92.7           174.                168.             1.17 
- 4  1986          65.0           178.                170.             1.37 
- 5  1988          91.6           182.                174.             1.59 
- 6  1990          67.9           186.                177.             1.90 
- 7  1992         104.            191.                180.             2.18 
- 8  1994          75.1           195.                183.             2.44 
- 9  1996          96.3           200.                186.             2.59 
-10  1998          74.8           205.                190.             2.92 
+    year votes_counted voting_age_pop voting_eligible_pop
+   &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;
+ 1  1980          86.5           164.                160.
+ 2  1982          67.6           166.                160.
+ 3  1984          92.7           174.                168.
+ 4  1986          65.0           178.                170.
+ 5  1988          91.6           182.                174.
+ 6  1990          67.9           186.                177.
+ 7  1992         104.            191.                180.
+ 8  1994          75.1           195.                183.
+ 9  1996          96.3           200.                186.
+10  1998          74.8           205.                190.
 # ℹ 12 more rows
-# ℹ 2 more variables: ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
+# ℹ 3 more variables: ineligible_felons &lt;dbl&gt;,
+#   ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>“tibble” is just tidyverse’s cutesy name for data frames. I will use “tibble” and “data frame” interchangeably, though I’ll usually say “data frame” because “tibble” sounds more like a name for a stray cat. The <code>&lt;dbl&gt;</code> under each variable name indicates the type of variable. <code>&lt;dbl&gt;</code> just means the variable is a number (it comes from “double precision”, which is a particular way numbers are stored in computers). The other most common categorization you’ll see is <code>&lt;chr&gt;</code>, for variables that are “characters” rather than numbers.</p>
@@ -785,13 +789,13 @@ Reading data from a file on your computer
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 22
 Columns: 7
-$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 1992, 1994,…
-$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113, 91.5946…
-$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223, 181.955…
-$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089, 173.609…
-$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117, 1.59397…
-$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350, 9.27973…
-$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.52737…</code></pre>
+$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 199…
+$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113,…
+$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223,…
+$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089,…
+$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117,…
+$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350,…
+$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…</code></pre>
 </div>
 </div>
 <p>You can extract an individual row from a data frame using square brackets:</p>
@@ -799,10 +803,11 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.5
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_turnout[<span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 7
-   year votes_counted voting_age_pop voting_eligible_pop ineligible_felons
-  &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;             &lt;dbl&gt;
-1  1984          92.7           174.                168.              1.17
-# ℹ 2 more variables: ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
+   year votes_counted voting_age_pop voting_eligible_pop
+  &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;
+1  1984          92.7           174.                168.
+# ℹ 3 more variables: ineligible_felons &lt;dbl&gt;,
+#   ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>To retrieve a consecutive sequence of rows, use a colon:</p>
@@ -810,13 +815,14 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.5
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_turnout[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
-   year votes_counted voting_age_pop voting_eligible_pop ineligible_felons
-  &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;             &lt;dbl&gt;
-1  1984          92.7           174.                168.              1.17
-2  1986          65.0           178.                170.              1.37
-3  1988          91.6           182.                174.              1.59
-4  1990          67.9           186.                177.              1.90
-# ℹ 2 more variables: ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
+   year votes_counted voting_age_pop voting_eligible_pop
+  &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;
+1  1984          92.7           174.                168.
+2  1986          65.0           178.                170.
+3  1988          91.6           182.                174.
+4  1990          67.9           186.                177.
+# ℹ 3 more variables: ineligible_felons &lt;dbl&gt;,
+#   ineligible_noncitizens &lt;dbl&gt;, eligible_overseas &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>You can retrieve a column by numeric index within brackets…</p>
@@ -863,9 +869,10 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.5
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_turnout<span class="sc">$</span>voting_eligible_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 159.6909 160.4088 167.7085 170.4089 173.6091 176.6783 179.5657 182.5494
- [9] 186.3277 190.3424 194.2597 198.3647 202.9729 207.1481 213.3062 221.7765
-[17] 222.4375 227.1371 230.7808 236.9181 242.0778 242.9077</code></pre>
+<pre><code> [1] 159.6909 160.4088 167.7085 170.4089 173.6091 176.6783 179.5657
+ [8] 182.5494 186.3277 190.3424 194.2597 198.3647 202.9729 207.1481
+[15] 213.3062 221.7765 222.4375 227.1371 230.7808 236.9181 242.0778
+[22] 242.9077</code></pre>
 </div>
 </div>
 <p>What do you think the following code does?</p>
@@ -935,14 +942,14 @@ Selecting a column from a data frame
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 22
 Columns: 8
-$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 1992, 1994,…
-$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113, 91.5946…
-$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223, 181.955…
-$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089, 173.609…
-$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117, 1.59397…
-$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350, 9.27973…
-$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053, 2.52737…
-$ turnout_pct            &lt;dbl&gt; 54.17667, 42.15204, 55.24628, 38.13834, 52.7591…</code></pre>
+$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 199…
+$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113,…
+$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223,…
+$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089,…
+$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117,…
+$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350,…
+$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…
+$ turnout_pct            &lt;dbl&gt; 54.17667, 42.15204, 55.24628, 38.13834,…</code></pre>
 </div>
 </div>
 <p>Now let’s make a <em>very</em> rough graph of how turnout has changed over time. Quarto will helpfully display the graph in the output once we render it!</p>
@@ -952,7 +959,7 @@ $ turnout_pct            &lt;dbl&gt; 54.17667, 42.15204, 55.24628, 38.13834, 52.
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="intro_r_files/figure-html/unnamed-chunk-20-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="intro_r_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="intro_r_files/figure-html/turnout-over-time-plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="intro_r_files/figure-html/turnout-over-time-plot-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>

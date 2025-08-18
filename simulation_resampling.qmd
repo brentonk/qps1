@@ -2,7 +2,7 @@
 
 <!-- See notes below for what the set.seed() function does -->
 
-```{r}
+```{r set-random-seed}
 #| echo: false
 set.seed(37)
 ```
@@ -33,7 +33,7 @@ There are tons available, but we will use just a few in this course:
 
 If we want to tell R "randomly pick a number from 1 to 10", we can use the `sample()` function.
 
-```{r}
+```{r sample-single-number}
 sample(x = 1:10, size = 1)
 ```
 
@@ -41,7 +41,7 @@ The `x` argument gives the function the set of values to choose from, and the `s
 When your `size` is greater than 1, you may also want to set `replace = TRUE` to allow for sampling with replacement, where the same value can be chosen more than once.
 (The default is to sample without replacement.)
 
-```{r}
+```{r sample-multiple-examples}
 sample(x = 1:10, size = 5)  # no repeats possible
 sample(x = 1:10, size = 5, replace = TRUE)  # repeats possible
 sample(x = c("bear", "moose", "pizza"), size = 2)  # sampling non-numeric values
@@ -51,7 +51,7 @@ Every time you use a random number function like `sample()`, you will get differ
 That can be annoying when you're writing a Quarto document --- every time you render it, the numbers change!
 To prevent this, you can set a [random seed]{.concept} with the `set.seed()` function.
 
-```{r}
+```{r demonstrate-random-seed}
 set.seed(14)
 sample(x = 1:10, size = 5, replace = TRUE)
 
@@ -66,14 +66,14 @@ I often use the jersey numbers of athletes I like and the years of memorable his
 Another useful function is `runif()`, which samples from the [uniform distribution]{.concept} between two points.
 Use the `min` and `max` arguments to specify these points.
 
-```{r}
+```{r uniform-distribution-examples}
 runif(n = 5)  # between 0 and 1 by default
 runif(n = 5, min = 10, max = 100)
 ```
 
 Use `runif()` when you want a flat histogram.
 
-```{r}
+```{r plot-uniform-distribution}
 #| message: false
 library("tidyverse")
 library("cowplot")
@@ -90,14 +90,14 @@ The last random number generator we'll look at is `rnorm()`, which samples from 
 The normal distribution is a bell-curve-shaped probability distribution.
 Use the `mean` and `sd` arguments to specify the mean and standard deviation.
 
-```{r}
+```{r normal-distribution-examples}
 rnorm(n = 5)  # mean 0, sd 1 by default
 rnorm(n = 5, mean = 100, sd = 10)
 ```
 
 The histogram of normally distributed values has the familiar bell curve shape.
 
-```{r}
+```{r plot-normal-distribution}
 df_fake_normal <- tibble(fake_x = rnorm(10000, mean = 50, sd = 20))
 
 df_fake_normal |>
@@ -107,7 +107,7 @@ df_fake_normal |>
 
 The heuristic I mentioned in @sec-standard-deviation, that 95% of the data falls within 2 standard deviations of the mean, is exact in the case of a normal distribution.
 
-```{r}
+```{r verify-two-sigma-rule}
 df_fake_normal |>
   mutate(within2 = if_else(fake_x >= 10 & fake_x <= 90, "within", "outside")) |>
   count(within2) |>
@@ -136,7 +136,7 @@ Let's simulate data that follows a linear regression model: $$y \approx 10 + 0.5
 To make it a bit more fun than just calling the variables "x" and "y" --- with no effect on the simulation results, as this is fake data --- let's assume the feature represents someone's feeling thermometer score toward Chancellor Diermeier, and the response is their feeling toward Elon Musk.
 We'll set it up so that we have a residual standard deviation of 5.
 
-```{r}
+```{r simulate-regression-data}
 set.seed(1873)  # crescere aude!
 df_simulation <- tibble(
   x_diermeier = runif(
@@ -220,7 +220,7 @@ for (i in values) {
 Before getting into a more complicated situation, let's look at a couple of simple examples of for loops.
 Here's one where we repeat the following process ten times: Sample five random numbers from a normal distribution with mean 100 and standard deviation 10, and calculate their mean.
 
-```{r}
+```{r simple-for-loop-example}
 set.seed(97)
 for (i in 1:10) {
   x <- rnorm(5, mean = 100, sd = 10)
@@ -235,7 +235,7 @@ If you want to save the results to work with later (e.g., to plot them), you nee
 **Nerd note:** In the code here, I just set up a null variable to hold the results, and then in each iteration of the loop I append the current iteration's results to that variable.  If you're ever doing high-end computational work in R, this way will run more slowly than if you set up the full vector to store the results first.  For example, in this case I could have done `sim_results <- rep(NA, 10)` before the loop, and then did `sim_results[i] <- mean(x)` inside the loop.  For our purposes in this class I'm going to stick with the easier way, but you should be aware in case you ever find yourself doing more advanced computational work.
 :::
 
-```{r}
+```{r for-loop-saving-results}
 set.seed(97)
 sim_results <- NULL  # variable that will hold the results
 for (i in 1:10) {
@@ -257,7 +257,7 @@ We will repeat the following process 100 times:
 
 Our goal is to see how much our estimates of the slope and intercept vary from sample to sample.
 
-```{r}
+```{r simulate-regression-coefficients}
 library("broom")
 
 # Set random seed as described above
@@ -292,7 +292,7 @@ So to get an idea of how much the intercept and slope vary from sample to sample
 The number that R spits out as the "standard error" with regression results (the `"std.error"` column of `tidy()` output) is actually an *estimate* of the true standard error.
 We'll also take the average of these standard error estimates to see how they compare to the true variability of the coefficients from sample to sample.
 
-```{r}
+```{r analyze-sampling-distribution}
 df_regression_sim |>
   group_by(term) |>
   summarize(
@@ -317,7 +317,7 @@ To illustrate that final point, there's another question we can use our simulati
 Let's use the formula $$\text{estimate} \pm 2 \times \text{std error}$$ to determine a range of plausible values for the coefficient.
 If we do this with each of the samples in our simulation, how often does the range of plausible values include the *true* value of 0.5?
 
-```{r}
+```{r plot-confidence-intervals}
 df_regression_sim |>
   filter(term == "x_diermeier") |>
   arrange(estimate) |>
@@ -356,7 +356,7 @@ In how many of your iterations is the slope "statistically significant", in term
 The basic idea behind these simulations can also be applied to estimate uncertainty in real data problems.
 To see this principle in action, we will work with the same survey data as in @sec-correlation-regression.
 
-```{r}
+```{r load-anes-data}
 #| message: false
 df_anes <- read_csv("https://bkenkel.com/qps1/data/anes_2020.csv")
 
@@ -376,7 +376,7 @@ In the same fashion as the simulations we ran above, we won't just draw one boot
 
 To draw a single bootstrap sample from a data frame, we can use the `slice_sample()` function.
 
-```{r}
+```{r create-bootstrap-sample}
 set.seed(1789)
 
 df_boot <- df_anes |>
@@ -392,7 +392,7 @@ Without this argument, we would just end up with our original data but with the 
 
 If we look at the relationship between feelings toward the police and feelings toward Donald Trump, we see similar --- but not exactly the same --- estimates in the original sample and in our singular (so far) bootstrap resample.
 
-```{r}
+```{r compare-original-to-bootstrap}
 fit_main <- lm(therm_trump ~ therm_police, data = df_anes)
 fit_boot <- lm(therm_trump ~ therm_police, data = df_boot)
 
@@ -432,7 +432,7 @@ df_coef_boot
 
 Using the results of the bootstrap resampling, we can directly look at the distribution of regression coefficients across samples.
 
-```{r}
+```{r plot-bootstrap-distribution}
 df_coef_boot |>
   ggplot(aes(x = estimate)) +
   geom_histogram() +
@@ -448,7 +448,7 @@ The estimated intercept tends to be between -15 and -10, while the estimated slo
 
 We can gauge the standard error by taking the standard deviation of the bootstrap distribution, and we can also calculate a range of plausible values by using the percentiles.
 
-```{r}
+```{r bootstrap-standard-errors}
 df_coef_boot |>
   group_by(term) |>
   summarize(
@@ -460,7 +460,7 @@ df_coef_boot |>
 
 These are pretty close to the standard error from the original analysis, as well as the range of coefficients we would estimate with the "$\pm$ 2 standard errors" rule.
 
-```{r}
+```{r compare-to-original-standard-errors}
 tidy(fit_main) |>
   select(term, estimate, std.error) |>
   mutate(
@@ -549,7 +549,7 @@ for (i in 1:1000) {
 
 We can take a look at the distribution of predictions:
 
-```{r}
+```{r plot-prediction-distribution}
 tibble(pred_at_50) |>
   ggplot(aes(x = pred_at_50)) +
   geom_histogram()
@@ -559,7 +559,7 @@ The main takeaway here is that there's a *ton* of uncertainty in this prediction
 A sizable percentage of the simulated predictions are below 0, and a few are even above 100.
 Let's look at the average and standard deviation.
 
-```{r}
+```{r prediction-summary-stats}
 length(pred_at_50)
 mean(pred_at_50)
 sd(pred_at_50)

@@ -31,7 +31,7 @@ Each row in the dataset is a different American survey respondent who was random
 The columns record a variety of demographic and political information about each respondent.
 There are *many* more variables available in the raw data --- we are only scratching the surface here.
 
-```{r}
+```{r load-data}
 #| message: false
 library("tidyverse")
 
@@ -83,7 +83,7 @@ For now, we will quantify support using the feeling thermometer scores from the 
 Scores from 0--49 represent cold feelings, 50 is neutral, and 51--100 is warm.
 Just to orient ourselves here, let's calculate the average feeling toward the police and toward Trump in this data.
 
-```{r}
+```{r average-thermometer-scores}
 mean(df_anes$therm_trump, na.rm = TRUE)
 mean(df_anes$therm_police, na.rm = TRUE)
 ```
@@ -91,7 +91,7 @@ mean(df_anes$therm_police, na.rm = TRUE)
 In our previous unit on Data Visualization, we saw how to use scatterplots to get an idea of the correlation between two variables.
 So let's make a scatterplot of feelings towards the police versus feelings toward Trump.
 
-```{r}
+```{r police-trump-scatterplot}
 # Change ggplot theme to cowplot
 library("cowplot")
 theme_set(
@@ -171,7 +171,7 @@ Annoyingly, unlike the vast majority of statistical functions in R, `cor()` does
 Instead, we have to write `use = "complete"` (as in: only use the rows with complete data).
 :::
 
-```{r}
+```{r police-trump-correlation}
 cor(df_anes$therm_police, df_anes$therm_trump, use = "complete")
 ```
 
@@ -285,7 +285,7 @@ I think it'll be easier to wrap our heads around regression once we see it in pr
 We calculate linear regressions in R using the `lm()` command, where `lm` stands for "linear model".
 The basic syntax of `lm()` is `lm(response ~ feature, data = df)`, where `response` and `feature` are names of columns in `df`.
 
-```{r}
+```{r fit-trump-police-regression}
 #   response   ~  feature(s)  
 lm(therm_trump ~ therm_police, data = df_anes)
 ```
@@ -303,7 +303,7 @@ Our estimate of the intercept is roughly -13, and our estimate of the slope is r
 
 You can visualize the regression line in ggplot using `geom_smooth(method = "lm")`:
 
-```{r}
+```{r plot-trump-police-regression-line}
 df_anes |>
   ggplot(aes(x = therm_police, y = therm_trump)) +
   geom_point(alpha = 0.1, position = "jitter") +
@@ -351,7 +351,7 @@ When you run a regression in R, it calculates a lot more useful information than
 To access this, you will want to save the regression as a variable.
 This lets you run additional functions with the regression and extract additional information from it.
 
-```{r}
+```{r save-trump-police-model}
 fit_trump_police <- lm(therm_trump ~ therm_police, data = df_anes)
 
 fit_trump_police
@@ -359,7 +359,7 @@ fit_trump_police
 
 Running `summary()` on a regression model object gives you a bunch of additional info about the model:
 
-```{r}
+```{r trump-police-model-summary}
 summary(fit_trump_police)
 ```
 
@@ -402,19 +402,19 @@ Here's what each component of the output means:
 If you want to extract information about the regression for further calculations or visualization, the easiest way is using the `broom` package.
 This is yet another overly cutely named R package, intended to "sweep up" the results of statistical models in R.
 
-```{r}
+```{r load-broom}
 library("broom")
 ```
 
 The `tidy()` function extracts a data frame containing the coefficients, standard errors, and related information.
 
-```{r}
+```{r tidy-trump-police-model}
 tidy(fit_trump_police)
 ```
 
 The `glance()` function extracts a data frame containing the R-squared and other model-level information.
 
-```{r}
+```{r glance-trump-police-model}
 glance(fit_trump_police)
 ```
 
@@ -422,7 +422,7 @@ The values we most care about are `"r.squared"`, `"sigma"` (the residual standar
 
 The `augment()` function "augments" the data used to fit the model with regression predictions.
 
-```{r}
+```{r augment-trump-police-model}
 augment(fit_trump_police)
 ```
 
@@ -431,7 +431,7 @@ The `".fitted"` column contains the fitted values, and `".resid"` contains the r
 We can also use the `augment()` function to calculate predictions for new data that wasn't used to estimate the regression.
 For example, let's look at the subset of ANES respondents who answered the question about their feelings towards the police but didn't say how they felt about Trump.
 
-```{r}
+```{r create-notrump-subset}
 df_anes_notrump <- df_anes |>
   filter(is.na(therm_trump)) |>
   filter(!is.na(therm_police)) |>
@@ -442,13 +442,13 @@ df_anes_notrump
 
 By using the `newdata` argument of `augment()`, we can predict how these respondents feel about Trump based on their feelings toward the police.
 
-```{r}
+```{r predict-notrump-subset}
 augment(fit_trump_police, newdata = df_anes_notrump)
 ```
 
 Using the `interval` argument, we can get a rough estimate of how precise these predictions are.
 
-```{r}
+```{r predict-with-intervals}
 augment(
   fit_trump_police,
   newdata = df_anes_notrump,
@@ -467,7 +467,7 @@ For example, suppose we wanted to plot our prediction + the uncertainty around i
 First we'd create a data frame with the values of the police thermometer we care about.
 I'll use the `seq()` function to generate an evenly spaced sequence of numbers.
 
-```{r}
+```{r create-police-sequence}
 df_police_spaced <- tibble(
   therm_police = seq(from = 0, to = 100, by = 5)
 )
@@ -477,7 +477,7 @@ df_police_spaced
 
 Now we can calculate predictions with `augment()` and plot them.
 
-```{r}
+```{r plot-prediction-intervals}
 fit_trump_police |>
   augment(
     newdata = df_police_spaced,
@@ -496,7 +496,7 @@ Having worked through regression, we can be much more precise about what that me
 
 Remember that the correlation between police feeling thermometer and Trump feeling thermometer is roughly 0.47, so its square is roughly `r round(0.47^2, 2)`.
 
-```{r}
+```{r calculate-correlation-and-rsquared}
 cor_trump_police <- cor(
   df_anes$therm_trump,
   df_anes$therm_police,
@@ -509,7 +509,7 @@ cor_trump_police^2
 
 This lines up exactly with the R-squared value from our regression model.
 
-```{r}
+```{r extract-model-rsquared}
 glance(fit_trump_police)$r.squared
 ```
 
@@ -523,7 +523,7 @@ What I want to show you is that the second value is about 78% as large as the fi
 Why 78%?
 Because $1 - R^2 = 1 - 0.22 = 0.78$.
 
-```{r}
+```{r compare-variance-explained}
 # Calculate the two squared differences
 augment(fit_trump_police) |>
   mutate(dist_from_mean = therm_trump - mean(therm_trump)) |>
@@ -547,7 +547,7 @@ The R commands stay pretty much the same --- all that changes is the way we inte
 As an example of a binary feature, let's think about modeling each survey respondent's opinion toward Trump as a function of their gender identity.
 Remember that gender identity is represented by the `female` column of our data frame, with 0 representing men and 1 representing women.
 
-```{r}
+```{r count-by-gender}
 df_anes |>
   group_by(female) |>
   summarize(number = n())
@@ -555,7 +555,7 @@ df_anes |>
 
 We use the same `lm(response ~ feature, data = df)` syntax to run a regression when the feature is a binary variable.
 
-```{r}
+```{r fit-trump-gender-model}
 fit_trump_gender <- lm(therm_trump ~ female, data = df_anes)
 
 summary(fit_trump_gender)
@@ -567,7 +567,7 @@ We have female = 0 for male respondents, so the formula predicts a Trump thermom
 We have female = 1 for female respondents, so the formula predicts a Trump thermometer of 38 for women.
 These values line up exactly with the averages we see for each group in the raw data:
 
-```{r}
+```{r trump-means-by-gender}
 df_anes |>
   group_by(female) |>
   summarize(avg_therm_trump = mean(therm_trump, na.rm = TRUE))
@@ -582,7 +582,7 @@ In general, when we run a regression on a single binary feature:
 Now let's move on to more general categorical features, with potentially multiple categories.
 For example, we might want to predict someone's opinion toward Trump as a function of their educational attainment, represented by the `education` column in our dataset.
 
-```{r}
+```{r count-by-education}
 df_anes |>
   group_by(education) |>
   summarize(number = n())
@@ -591,7 +591,7 @@ df_anes |>
 Once again, the syntax for running a regression is exactly the same.
 All that changes is how we interpret the results.
 
-```{r}
+```{r fit-trump-education-model}
 fit_trump_educ <- lm(therm_trump ~ education, data = df_anes)
 
 summary(fit_trump_educ)
@@ -618,7 +618,7 @@ Some college
 
 ... R would translate it into this set of binary variables before running the regression:
 
-```{r}
+```{r create-education-binary-example}
 #| echo: false
 df_fake_educ <- tibble(
   `Bachelor's degree` = c(1, rep(0, 9)),
@@ -654,7 +654,7 @@ In this case:
 
 Once again, these predictions line up exactly with the raw averages in the data.
 
-```{r}
+```{r trump-means-by-education}
 df_anes |>
   group_by(education) |>
   summarize(avg_therm_trump = mean(therm_trump, na.rm = TRUE))
@@ -665,7 +665,7 @@ Sometimes you might find it easier to interpret the results by omitting a differ
 Say we wanted the coefficients to reflect comparisons to those whose highest educational attainment is a high school diploma.
 You can use the `fct_relevel()` function to tell R which category to put first, thereby making it the omitted category.
 
-```{r}
+```{r relevel-education-baseline}
 df_anes <- df_anes |>
   mutate(education = fct_relevel(education, "High school"))
 
@@ -695,7 +695,7 @@ When we put a binary response in our regression model, we are essentially modeli
 
 *   Slope: predicted increase (if positive) or decrease (if negative) in the probability of response = 1 due to a 1-unit increase in feature.
 
-```{r}
+```{r fit-vote-police-model}
 fit_vote_police <- lm(voted_for_trump ~ therm_police, data = df_anes)
 
 summary(fit_vote_police)
@@ -711,7 +711,7 @@ This kind of nonsense prediction is one of the downsides of using a linear model
 If you find yourself in a real-world setting where you absolutely need your predictions to be between 0% and 100%, you can use an alternative model like [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression).
 For now, just know that these types of predictions are a natural consequence of the geometry of linear regression.
 
-```{r}
+```{r plot-binary-response-regression}
 df_anes |>
   ggplot(aes(x = therm_police, y = voted_for_trump)) +
   geom_point(
@@ -754,7 +754,7 @@ It's easy to include multiple features in a regression model in R.
 Just use `lm(response ~ feature1 + feature2 + ...)`.
 For example, to control for race when analyzing the relationship between police opinion and Trump opinion:
 
-```{r}
+```{r fit-trump-police-race-model}
 fit_trump_police_race <- lm(
   therm_trump ~ therm_police + race,
   data = df_anes
@@ -778,7 +778,7 @@ Even with a pretty deep survey like the one the ANES fields, it's pretty unlikel
 Comparing the regressions with and without the race control, we also see that the predictive accuracy is higher with the control.
 The residual standard deviation is lower, and the $R^2$ is higher.
 
-```{r}
+```{r compare-model-fit}
 # w/o race control
 glance(fit_trump_police) |>
   select(sigma, r.squared)
@@ -843,7 +843,7 @@ Finally, we can divide and do a bit more rearranging to end up with our formula 
 
 To confirm that this formula works, let's try it out with the feeling thermometer data, checking that it gives us the same answers as `lm()` does.
 
-```{r}
+```{r manual-regression-calculation}
 ## Make sure to use same observations as used in the regression
 df_anes_no_na <- df_anes |>
   filter(!is.na(therm_trump)) |>

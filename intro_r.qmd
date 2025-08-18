@@ -139,7 +139,7 @@ The problem is that a "smarter" program would also be a more unpredictable one, 
 Once you've installed a package, you don't need to install it again unless you upgrade the version of R on your computer.
 To use a package that you've installed, call it with the `library()` command:
 
-```{r}
+```{r load-tidyverse}
 library("tidyverse")
 ```
 
@@ -150,7 +150,7 @@ This is truly specific to tinytex --- as far as I know, none of the other packag
 
 To install tinytex, run these two commands in the R console:
 
-```{r}
+```{r install-tinytex}
 #| eval: false
 install.packages("tinytex")
 tinytex::install_tinytex()
@@ -191,7 +191,7 @@ R will do exactly what you ask, no more, no less.
 By default, R looks for files in the [working directory]{.concept}.
 You can run the `getwd()` command (as in: `get` the `w`orking `d`irectory) in the R console to see what your current working directory is.
 
-```{r}
+```{r check-working-directory}
 getwd()
 ```
 
@@ -327,18 +327,18 @@ Finally, you can include images:
 
 The special thing about Quarto is that you can include blocks of R code.
 (Or Python, if you're into snakes.)
-When you render the document, the code you put into each block will be run in R, and the output will be included in the document.
+When you render the document, the code you put into each [code chunk]{.concept} will be run in R, and the output will be included in the document.
 
 As a quick example, we can have R do some basic arithmetic for us.
 
-```{r}
+```{r simple-arithmetic}
 7 * 6
 ```
 
 To create the above, all I entered in my Quarto source file was the following:
 
 ````
-```{{r}}
+```{{r simple-arithmetic}}
 7 * 6
 ```
 ````
@@ -350,9 +350,11 @@ See https://quarto.org/docs/computations/execution-options.html#fenced-echo for 
 
 The triple backticks tell Quarto: "Everything after this is code, until the next set of triple backticks."
 The `{r}` then tells Quarto: "Not only is this code, but this is R code that you should run."
+`simple-arithmetic` is the label that I chose for this code block.
+Chunk labels aren't necessary --- you can just write `{r}` instead of `{r code-chunk-label}` at the start of the chunk --- but they can make it easier to debug if your Quarto file isn't rendering correctly.
 
 If you don't want to remember this goofy syntax yourself, you can run `Code -> Insert Chunk` from the RStudio menu.
-Or even better, for the efficiency aficionados, hit `Ctrl-Alt-I` (Windows) or `Command-Option-I` (Mac).
+Or even better, for the efficiency aficionados, hit `Ctrl-Alt-I` (Windows) or `Command-Option-I` (Mac) to insert a code chunk directly into your Quarto file.
 
 You usually won't need to use anything other than the default code chunk.
 But sometimes you will want to customize.
@@ -416,7 +418,7 @@ The hashtag character `#` begins a [comment]{.concept} in R.
 Once you put `#` in a line of R code, the R console will ignore everything after it until the end of the line.
 So both of these lines of code are the same, as far as R is concerned:
 
-```{r}
+```{r comments-demo}
 3 + 8
 3 + 8 # + 1000 * 92 - infinity
 ```
@@ -467,7 +469,7 @@ We need to load this into R as a [data frame]{.concept}, which is kind of like t
 To that end, we'll plug the URL into the `read_csv()` function.
 (Make sure you type the URL exactly right --- it's probably easiest to just copy-paste the following line.)
 
-```{r}
+```{r load-turnout-data}
 #| message: false
 df_turnout <- read_csv("https://bkenkel.com/qps1/data/turnout.csv")
 ```
@@ -506,7 +508,7 @@ You want R's working directory to match the location of the downloaded file, whi
 1. Before downloading the file, run `getwd()` in R to see where its working directory is.
    When you download the file, make sure to save it to that directory.
 
-   ```{r}
+   ```{r show-working-directory}
    getwd()
    ```
 
@@ -517,7 +519,7 @@ You want R's working directory to match the location of the downloaded file, whi
 
 After following either of these methods, you can use the `dir()` command to look at the list of files that R "sees" in the current working directory.
 
-```{r}
+```{r list-files}
 dir()
 ```
 
@@ -540,7 +542,7 @@ View(df_turnout)
 
 Or you can see info in the R console by typing the variable name into the prompt and hitting enter:
 
-```{r}
+```{r show-data}
 df_turnout
 ```
 
@@ -553,37 +555,37 @@ The other most common categorization you'll see is `<chr>`, for variables that a
 Unless your data frame has unusually few columns, this view will wind up with some of them being cut off.
 To see the first few entries of every single column, use `glimpse()`:
 
-```{r}
+```{r glimpse-data}
 glimpse(df_turnout)
 ```
 
 You can extract an individual row from a data frame using square brackets:
 
-```{r}
+```{r select-row}
 df_turnout[3, ]
 ```
 
 To retrieve a consecutive sequence of rows, use a colon:
 
-```{r}
+```{r select-row-range}
 df_turnout[3:6, ]
 ```
 
 You can retrieve a column by numeric index within brackets...
 
-```{r}
+```{r select-column-by-index}
 df_turnout[, 4]
 ```
 
 ...or by name (quoted) within brackets...
 
-```{r}
+```{r select-column-by-name}
 df_turnout[, "voting_eligible_pop"]
 ```
 
 ...or, the option I most prefer, by name (not quoted) with a dollar sign.
 
-```{r}
+```{r select-column-dollar-sign}
 df_turnout$voting_eligible_pop
 ```
 
@@ -610,7 +612,7 @@ How has it varied over time?
 To answer these questions, first we need to actually calculate turnout as a percentage: $$\text{turnout \%} = \frac{\text{votes cast}}{\text{eligible voters}} \times 100.$$
 Let's implement this formula in R, storing the result in a variable called `turnout_pct`.
 
-```{r}
+```{r calculate-turnout-percentage}
 turnout_pct <- df_turnout$votes_counted / df_turnout$voting_eligible_pop
 turnout_pct <- 100 * turnout_pct
 ```
@@ -624,7 +626,7 @@ I often break up complex calculations into multiple lines this way, just to make
 
 We can now calculate the lowest, highest, average, and median turnout.
 
-```{r}
+```{r turnout-statistics}
 min(turnout_pct)
 max(turnout_pct)
 mean(turnout_pct)
@@ -633,7 +635,7 @@ median(turnout_pct)
 
 The `summary()` command does all this at once, and more:
 
-```{r}
+```{r turnout-summary}
 summary(turnout_pct)
 ```
 
@@ -648,7 +650,7 @@ You'll get used to it over time, and we'll talk about it in much more detail in 
 
 The first thing we need to do is put our turnout percentage calculation into our data frame as a column.
 
-```{r}
+```{r add-turnout-to-dataframe}
 df_turnout$turnout_pct <- turnout_pct
 
 glimpse(df_turnout)  # now includes an 8th column containing turnout
@@ -657,7 +659,7 @@ glimpse(df_turnout)  # now includes an 8th column containing turnout
 Now let's make a *very* rough graph of how turnout has changed over time.
 Quarto will helpfully display the graph in the output once we render it!
 
-```{r}
+```{r turnout-over-time-plot}
 ggplot(df_turnout, aes(x = year, y = turnout_pct)) +
   geom_line()
 ```
