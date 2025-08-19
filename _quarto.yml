@@ -2,7 +2,9 @@ project:
   type: book
   resources:
     - img/*
-  post-render: cp -R data _book
+  post-render:
+    - cp -R data _book
+    - make_student_versions.py
 
 execute:
   freeze: auto
