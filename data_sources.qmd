@@ -435,6 +435,10 @@ df_gss <- df_gss_raw |>
     repub_rating = raterepp,
     maga_rating = ratemaga,
     .keep = "none"
+  ) |>
+  select(
+    id, region, age, educ, female, race, hispanic,
+    polviews, trump_rating, repub_rating, maga_rating
   )
 
 glimpse(df_gss)
