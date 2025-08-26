@@ -8,6 +8,7 @@ library("tidyverse")
 library("archive")
 library("assertr")
 library("dataverse")
+library("gssr")
 library("WDI")
 
 # Create '_raw' subdirectory to store downloads, and 'data' for final cleaned files
@@ -17,324 +18,7 @@ if (!dir.exists("data"))
   dir.create("data")
 ```
 
-## US voter turnout 1980--2022: `turnout.csv`
-
-This file uses data from the [University of Florida Election Lab](https://election.lab.ufl.edu/), specifically version 1.2 of the [General Election Turnout Rates](https://election.lab.ufl.edu/dataset/1980-2022-general-election-turnout-rates-v1-2/) dataset.
-
-Obtain the raw data:
-
-```{r turnout_download}
-#| cache: true
-#| message: false
-
-# Download raw data
-turnout_url <- "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv"
-turnout_file <- "_raw/Turnout_1980_2022_v1.2.csv"
-if (!file.exists(turnout_file))
-  download.file(url = turnout_url, destfile = turnout_file)
-
-# Read in raw data
-df_turnout_raw <- read_csv(turnout_file)
-
-glimpse(df_turnout_raw)
-```
-
-Cleaning up into the data file used for class:
-
-```{r turnout-cleaning}
-df_turnout <- df_turnout_raw |>
-  # Only want national level data
-  filter(STATE == "United States") |>
-  # Grab and rename the columns we want
-  mutate(
-    year = YEAR,
-    voting_age_pop = VAP,
-    voting_eligible_pop = VEP,
-    ballots_counted = TOTAL_BALLOTS_COUNTED,
-    highest_office = VOTE_FOR_HIGHEST_OFFICE,
-    noncitizen_pct = NONCITIZEN_PCT,
-    ineligible_felons = INELIGIBLE_FELONS_TOTAL,
-    eligible_overseas = ELIGIBLE_OVERSEAS,
-    .keep = "none",
-  ) |>
-  # Clean up highest_office and noncitizen_pct columns to be numeric
-  mutate(
-    noncitizen_pct = str_replace(noncitizen_pct, "\\%", ""),
-    noncitizen_pct = as.numeric(noncitizen_pct) / 100,
-    highest_office = str_replace_all(highest_office, ",", ""),
-    highest_office = as.numeric(highest_office),
-  ) |>
-  # Calculate number of noncitizens
-  mutate(
-    ineligible_noncitizens = noncitizen_pct * voting_age_pop,
-  ) |>
-  select(-noncitizen_pct) |>
-  # For vote total, use ballots counted where available, otherwise just use
-  # votes for highest office
-  mutate(
-    votes_counted = if_else(
-      !is.na(ballots_counted),
-      ballots_counted,
-      highest_office
-    )
-  ) |>
-  # Convert population counts to millions
-  mutate(across(-year, \(x) x / 1e6)) |>
-  # Remove columns no longer needed
-  select(
-    year, votes_counted, voting_age_pop, voting_eligible_pop,
-    ineligible_felons, ineligible_noncitizens, eligible_overseas
-  ) |>
-  # Order from earliest to latest
-  arrange(year)
-
-glimpse(df_turnout)
-```
-
-Double check that the manually calculated voting eligible calculation lines up with the one reported in the data frame:
-
-```{r turnout-validation}
-df_turnout |>
-  mutate(
-    vep_manual = voting_age_pop - ineligible_felons -
-      ineligible_noncitizens + eligible_overseas,
-    vep_difference = abs(voting_eligible_pop - vep_manual) / voting_eligible_pop,
-  ) |>
-  select(year, voting_eligible_pop, vep_manual, vep_difference) |>
-  print(n = Inf)
-```
-
-Save cleaned data to `turnout.csv`:
-
-```{r turnout-save}
-write_csv(df_turnout, "data/turnout.csv")
-```
-
-## International crises: `crises.csv`
-
-This file contains the [International Crisis Behavior](https://sites.duke.edu/icbdata/data-collections/) actor-level data, version 16.
-There's purposely no additional cleaning since it's used in the data wrangling lecture.
-
-The raw data is stored via a Box link that doesn't work with `download.file()`, and my efforts to get ChatGPT to help me get to the underlying data were unsuccessful.
-
-```{r crises_download}
-#| message: false
-
-# Read in raw data
-crises_file <- "_raw/icb2v16.csv"
-if (!file.exists(crises_file))
-  stop("Need to download data manually from ICB website")
-df_crises_raw <- read_csv(crises_file)
-
-glimpse(df_crises_raw)
-```
-
-Save to `crises.csv`:
-
-```{r crises-save}
-write_csv(df_crises_raw, "data/crises.csv")
-```
-
-## Military spending and personnel: `military.csv`
-
-This file contains data from the [Correlates of War](https://correlatesofwar.org/) project's dataset on [National Material Capabilities](https://correlatesofwar.org/data-sets/national-material-capabilities/), version 6.0.
-
-Obtain the raw data by extracting from the zip on the COW website:
-
-```{r military_download}
-#| message: false
-#| cache: true
-
-# Download zip file containing raw data
-#
-# This is convoluted because the csv is inside a zip within the zip
-military_url <- "https://correlatesofwar.org/wp-content/uploads/NMC_Documentation-6.0.zip"
-military_file <- "_raw/NMC-60-abridged.csv"
-if (!file.exists(military_file)) {
-  military_zip_outer <- tempfile(fileext = ".zip")
-  download.file(url = military_url, destfile = military_zip_outer)
-  military_zip_inner <- archive_read(military_zip_outer, "NMC-60-abridged.zip")
-  military_csv <- read_csv(archive_read(military_zip_inner, "NMC-60-abridged.csv"))
-  write_csv(military_csv, military_file)
-}
-
-# Read in raw data
-df_military_raw <- read_csv(military_file)
-
-glimpse(df_military_raw)
-```
-Convert to "long" format containing only spending and personnel, for pedagogical purposes:
-
-```{r military-cleaning}
-df_military <- df_military_raw |>
-  select(ccode, stateabb, year, spending = milex, personnel = milper) |>
-  pivot_longer(
-    cols = c(spending, personnel),
-    names_to = "mil_indicator",
-    values_to = "amount"
-  )
-
-glimpse(df_military)
-```
-
-Save to `military.csv`:
-
-```{r military-save}
-write_csv(df_military, "data/military.csv")
-```
-
-## County-level presidential election returns, 2000--2024: `county_pres.csv`
-
-This file contains data from the [MIT Election Lab](https://electionlab.mit.edu/) dataset on [County Presidential Election returns](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ).
-
-Obtain raw data from Harvard Dataverse:
-
-```{r county_pres_download}
-#| cache: true
-#| message: false
-
-# Download raw data from Harvard Dataverse repository
-county_pres_file <- "_raw/countypres_2000-2024.csv"
-if (!file.exists(county_pres_file)) {
-  df_county_pres_dataverse <- get_dataframe_by_name(
-    filename = "countypres_2000-2024.tab",
-    dataset = "10.7910/DVN/VOQCHQ",
-    server = "dataverse.harvard.edu",
-    version = "15.0"
-  )
-  write_csv(df_county_pres_dataverse, county_pres_file)
-}
-
-df_county_pres_raw <- read_csv(county_pres_file)
-
-glimpse(df_county_pres_raw)
-```
-
-Clean data to have one row per county-year:
-
-```{r county-pres-cleaning}
-df_county_pres <- df_county_pres_raw |>
-  filter(!is.na(party), totalvotes > 0) |>
-  rename(county = county_name) |>
-  group_by(year, state, county) |>
-  summarize(
-    county_fips = first(county_fips),
-    total_votes = first(totalvotes),
-    dem_votes = sum(candidatevotes[party == "DEMOCRAT"]),
-    rep_votes = sum(candidatevotes[party == "REPUBLICAN"]),
-    .groups = "drop"
-  ) |>
-  mutate(
-    region = fct_collapse(
-      state,
-      Northeast = c(
-        "CONNECTICUT", "MAINE", "MASSACHUSETTS", "NEW HAMPSHIRE", "RHODE ISLAND",
-        "VERMONT", "NEW JERSEY", "NEW YORK", "PENNSYLVANIA"
-      ),
-      Midwest = c(
-        "ILLINOIS", "INDIANA", "MICHIGAN", "OHIO", "WISCONSIN", "IOWA", "KANSAS",
-        "MINNESOTA", "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "SOUTH DAKOTA"
-      ),
-      South = c(
-        "DELAWARE", "DISTRICT OF COLUMBIA", "FLORIDA", "GEORGIA", "MARYLAND",
-        "NORTH CAROLINA", "SOUTH CAROLINA", "VIRGINIA", "WEST VIRGINIA", "ALABAMA",
-        "KENTUCKY", "MISSISSIPPI", "TENNESSEE", "ARKANSAS", "LOUISIANA", "OKLAHOMA",
-        "TEXAS"
-      ),
-      West = c(
-        "ARIZONA", "COLORADO", "IDAHO", "MONTANA", "NEVADA", "NEW MEXICO", "UTAH",
-        "WYOMING", "ALASKA", "CALIFORNIA", "HAWAII", "OREGON", "WASHINGTON"
-      ),
-      other_level = "Unknown"
-    ),
-    margin = dem_votes - rep_votes,
-    pct_margin = margin / total_votes,
-    competitiveness = case_when(
-      pct_margin < -0.2 ~ -3,
-      pct_margin < -0.1 ~ -2,
-      pct_margin < -0.04 ~ -1,
-      pct_margin < 0.04 ~ 0,
-      pct_margin < 0.1 ~ 1,
-      pct_margin < 0.2 ~ 2,
-      TRUE ~ 3
-    ),
-  ) |>
-  group_by(state) |>
-  mutate(
-    dem_win_state = as.numeric(sum(dem_votes) > sum(rep_votes)),
-  ) |>
-  ungroup() |>
-  assert(not_na, everything()) |>
-  select(year, state, region, everything())
-```
-
-Save to `county_pres.csv`:
-
-```{r county-pres-save}
-write_csv(df_county_pres, "data/county_pres.csv")
-```
-
-## World Development Indicators, 2019: `wdi.csv`
-
-This file contains data from the World Bank's [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators) dataset.
-
-Obtain raw data using the WDI package:
-
-```{r wdi_download}
-#| cache: true
-#| message: false
-
-# Download raw data via WDI package
-wdi_file <- "_raw/wdi_2019.csv"
-if (!file.exists(wdi_file)) {
-  df_wdi_pkg <- WDI(
-    country = "all",
-    indicator = c(
-      "gdp_per_capita" = "NY.GDP.PCAP.CD",
-      "gdp_growth" = "NY.GDP.MKTP.KD.ZG",
-      "population" = "SP.POP.TOTL",
-      "inflation" = "FP.CPI.TOTL.ZG",
-      "unemployment" = "SL.UEM.TOTL.ZS",
-      "life_expectancy" = "SP.DYN.LE00.IN"
-    ),
-    start = 2019, end = 2019,
-    extra = TRUE
-  )
-  write_csv(df_wdi_pkg, wdi_file)
-}
-
-df_wdi_raw <- read_csv(wdi_file)
-
-glimpse(df_wdi_raw)
-```
-
-Minor cleaning to remove unwanted rows and columns:
-
-```{r wdi-cleaning}
-df_wdi <- df_wdi_raw |>
-  as_tibble() |>
-  select(-iso2c, -status, -lastupdated, -capital, -longitude, -latitude) |>
-  filter(region != "Aggregates") |>
-  filter(income != "Not classified") |>
-  mutate(income = case_match(
-    income,
-    "Low income" ~ "1. Low",
-    "Lower middle income" ~ "2. Lower-middle",
-    "Upper middle income" ~ "3. Upper-middle",
-    "High income" ~ "4. High"
-  ))
-
-
-glimpse(df_wdi)
-```
-
-Save to `wdi.csv`:
-
-```{r wdi-save}
-write_csv(df_wdi, "data/wdi.csv")
-```
-
-## Subset of 2020 ANES survey: `anes_2020.csv`
+## `anes_2020.csv`: Subset of 2020 ANES survey
 
 This file contains a small number of variables from the 2020 wave of the [American National Election Studies](https://electionstudies.org/data-center/) Time Series Study.
 
@@ -511,7 +195,124 @@ Save to `anes_2020.csv`:
 write_csv(df_anes, "data/anes_2020.csv")
 ```
 
-## Federalist Papers corpus: `fed_papers.csv`
+
+## `county_pres.csv`: County-level presidential election returns, 2000--2024
+
+This file contains data from the [MIT Election Lab](https://electionlab.mit.edu/) dataset on [County Presidential Election returns](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ).
+
+Obtain raw data from Harvard Dataverse:
+
+```{r county_pres_download}
+#| cache: true
+#| message: false
+
+# Download raw data from Harvard Dataverse repository
+county_pres_file <- "_raw/countypres_2000-2024.csv"
+if (!file.exists(county_pres_file)) {
+  df_county_pres_dataverse <- get_dataframe_by_name(
+    filename = "countypres_2000-2024.tab",
+    dataset = "10.7910/DVN/VOQCHQ",
+    server = "dataverse.harvard.edu",
+    version = "15.0"
+  )
+  write_csv(df_county_pres_dataverse, county_pres_file)
+}
+
+df_county_pres_raw <- read_csv(county_pres_file)
+
+glimpse(df_county_pres_raw)
+```
+
+Clean data to have one row per county-year:
+
+```{r county-pres-cleaning}
+df_county_pres <- df_county_pres_raw |>
+  filter(!is.na(party), totalvotes > 0) |>
+  rename(county = county_name) |>
+  group_by(year, state, county) |>
+  summarize(
+    county_fips = first(county_fips),
+    total_votes = first(totalvotes),
+    dem_votes = sum(candidatevotes[party == "DEMOCRAT"]),
+    rep_votes = sum(candidatevotes[party == "REPUBLICAN"]),
+    .groups = "drop"
+  ) |>
+  mutate(
+    region = fct_collapse(
+      state,
+      Northeast = c(
+        "CONNECTICUT", "MAINE", "MASSACHUSETTS", "NEW HAMPSHIRE", "RHODE ISLAND",
+        "VERMONT", "NEW JERSEY", "NEW YORK", "PENNSYLVANIA"
+      ),
+      Midwest = c(
+        "ILLINOIS", "INDIANA", "MICHIGAN", "OHIO", "WISCONSIN", "IOWA", "KANSAS",
+        "MINNESOTA", "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "SOUTH DAKOTA"
+      ),
+      South = c(
+        "DELAWARE", "DISTRICT OF COLUMBIA", "FLORIDA", "GEORGIA", "MARYLAND",
+        "NORTH CAROLINA", "SOUTH CAROLINA", "VIRGINIA", "WEST VIRGINIA", "ALABAMA",
+        "KENTUCKY", "MISSISSIPPI", "TENNESSEE", "ARKANSAS", "LOUISIANA", "OKLAHOMA",
+        "TEXAS"
+      ),
+      West = c(
+        "ARIZONA", "COLORADO", "IDAHO", "MONTANA", "NEVADA", "NEW MEXICO", "UTAH",
+        "WYOMING", "ALASKA", "CALIFORNIA", "HAWAII", "OREGON", "WASHINGTON"
+      ),
+      other_level = "Unknown"
+    ),
+    margin = dem_votes - rep_votes,
+    pct_margin = margin / total_votes,
+    competitiveness = case_when(
+      pct_margin < -0.2 ~ -3,
+      pct_margin < -0.1 ~ -2,
+      pct_margin < -0.04 ~ -1,
+      pct_margin < 0.04 ~ 0,
+      pct_margin < 0.1 ~ 1,
+      pct_margin < 0.2 ~ 2,
+      TRUE ~ 3
+    ),
+  ) |>
+  group_by(state) |>
+  mutate(
+    dem_win_state = as.numeric(sum(dem_votes) > sum(rep_votes)),
+  ) |>
+  ungroup() |>
+  assert(not_na, everything()) |>
+  select(year, state, region, everything())
+```
+
+Save to `county_pres.csv`:
+
+```{r county-pres-save}
+write_csv(df_county_pres, "data/county_pres.csv")
+```
+
+## `crises.csv`: International crises
+
+This file contains the [International Crisis Behavior](https://sites.duke.edu/icbdata/data-collections/) actor-level data, version 16.
+There's purposely no additional cleaning since it's used in the data wrangling lecture.
+
+The raw data is stored via a Box link that doesn't work with `download.file()`, and my efforts to get ChatGPT to help me get to the underlying data were unsuccessful.
+
+```{r crises_download}
+#| message: false
+
+# Read in raw data
+crises_file <- "_raw/icb2v16.csv"
+if (!file.exists(crises_file))
+  stop("Need to download data manually from ICB website")
+df_crises_raw <- read_csv(crises_file)
+
+glimpse(df_crises_raw)
+```
+
+Save to `crises.csv`:
+
+```{r crises-save}
+write_csv(df_crises_raw, "data/crises.csv")
+```
+
+## `fed_papers.csv`: Federalist Papers corpus
 
 This file contains the full text of each of the [Federalist Papers](https://en.wikipedia.org/wiki/The_Federalist_Papers), per the public domain text archived by [Project Gutenberg](https://www.gutenberg.org/).
 
@@ -578,4 +379,270 @@ Save to `fed_papers.csv`:
 
 ```{r fed-papers-save}
 write_csv(df_fed_papers, "data/fed_papers.csv")
+```
+
+## `gss_2024.csv`: Subset of 2024 General Social Survey
+
+This file contains a small number of variables from the 2024 wave of the [General Social Survey](https://gss.norc.org/).
+
+Using Kieran Healy's `gssr` package to download the data:
+
+```{r gss-download}
+#| cache: true
+#| message: false
+gss_file <- "_raw/gss_2024.csv"
+if (!file.exists(gss_file)) {
+  df_gss_pkg <- gss_get_yr(2024)
+  write_csv(df_gss_pkg, gss_file)
+}
+
+df_gss_raw <- read_csv(gss_file)
+
+df_gss_raw
+```
+
+Extract the few columns we care about and do some mild cleaning:
+
+```{r}
+df_gss <- df_gss_raw |>
+  mutate(
+    id = id,
+    region = case_match(
+      region,
+      1 ~ "New England",
+      2 ~ "Middle Atlantic",
+      c(3, 4) ~ "North Central",
+      5 ~ "South Atlantic",
+      c(6, 7) ~ "South Central",
+      8 ~ "Mountain",
+      9 ~ "Pacific"
+    ),
+    age = age,
+    educ = educ,
+    female = if_else(sex == 2, 1, 0),
+    race = case_match(
+      racecen1,
+      1 ~ "White",
+      2 ~ "Black",
+      3 ~ "American Indian",
+      4 ~ "Asian",
+      5 ~ "Pacific Islander",
+      6 ~ "Other"
+    ),
+    hispanic = if_else(hispanic == 1, 0, 1),
+    polviews = polviews,
+    trump_rating = ratechall124,
+    repub_rating = raterepp,
+    maga_rating = ratemaga,
+    .keep = "none"
+  )
+
+glimpse(df_gss)
+```
+
+Save to `gss_2024.csv`:
+
+```{r}
+write_csv(df_gss, "data/gss_2024.csv")
+```
+
+## `military.csv`: Military spending and personnel
+
+This file contains data from the [Correlates of War](https://correlatesofwar.org/) project's dataset on [National Material Capabilities](https://correlatesofwar.org/data-sets/national-material-capabilities/), version 6.0.
+
+Obtain the raw data by extracting from the zip on the COW website:
+
+```{r military_download}
+#| message: false
+#| cache: true
+
+# Download zip file containing raw data
+#
+# This is convoluted because the csv is inside a zip within the zip
+military_url <- "https://correlatesofwar.org/wp-content/uploads/NMC_Documentation-6.0.zip"
+military_file <- "_raw/NMC-60-abridged.csv"
+if (!file.exists(military_file)) {
+  military_zip_outer <- tempfile(fileext = ".zip")
+  download.file(url = military_url, destfile = military_zip_outer)
+  military_zip_inner <- archive_read(military_zip_outer, "NMC-60-abridged.zip")
+  military_csv <- read_csv(archive_read(military_zip_inner, "NMC-60-abridged.csv"))
+  write_csv(military_csv, military_file)
+}
+
+# Read in raw data
+df_military_raw <- read_csv(military_file)
+
+glimpse(df_military_raw)
+```
+Convert to "long" format containing only spending and personnel, for pedagogical purposes:
+
+```{r military-cleaning}
+df_military <- df_military_raw |>
+  select(ccode, stateabb, year, spending = milex, personnel = milper) |>
+  pivot_longer(
+    cols = c(spending, personnel),
+    names_to = "mil_indicator",
+    values_to = "amount"
+  )
+
+glimpse(df_military)
+```
+
+Save to `military.csv`:
+
+```{r military-save}
+write_csv(df_military, "data/military.csv")
+```
+
+## `turnout.csv`: US voter turnout, 2000--2022
+
+This file uses data from the [University of Florida Election Lab](https://election.lab.ufl.edu/), specifically version 1.2 of the [General Election Turnout Rates](https://election.lab.ufl.edu/dataset/1980-2022-general-election-turnout-rates-v1-2/) dataset.
+
+Obtain the raw data:
+
+```{r turnout_download}
+#| cache: true
+#| message: false
+
+# Download raw data
+turnout_url <- "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv"
+turnout_file <- "_raw/Turnout_1980_2022_v1.2.csv"
+if (!file.exists(turnout_file))
+  download.file(url = turnout_url, destfile = turnout_file)
+
+# Read in raw data
+df_turnout_raw <- read_csv(turnout_file)
+
+glimpse(df_turnout_raw)
+```
+
+Cleaning up into the data file used for class:
+
+```{r turnout-cleaning}
+df_turnout <- df_turnout_raw |>
+  # Only want national level data
+  filter(STATE == "United States") |>
+  # Grab and rename the columns we want
+  mutate(
+    year = YEAR,
+    voting_age_pop = VAP,
+    voting_eligible_pop = VEP,
+    ballots_counted = TOTAL_BALLOTS_COUNTED,
+    highest_office = VOTE_FOR_HIGHEST_OFFICE,
+    noncitizen_pct = NONCITIZEN_PCT,
+    ineligible_felons = INELIGIBLE_FELONS_TOTAL,
+    eligible_overseas = ELIGIBLE_OVERSEAS,
+    .keep = "none",
+  ) |>
+  # Clean up highest_office and noncitizen_pct columns to be numeric
+  mutate(
+    noncitizen_pct = str_replace(noncitizen_pct, "\\%", ""),
+    noncitizen_pct = as.numeric(noncitizen_pct) / 100,
+    highest_office = str_replace_all(highest_office, ",", ""),
+    highest_office = as.numeric(highest_office),
+  ) |>
+  # Calculate number of noncitizens
+  mutate(
+    ineligible_noncitizens = noncitizen_pct * voting_age_pop,
+  ) |>
+  select(-noncitizen_pct) |>
+  # For vote total, use ballots counted where available, otherwise just use
+  # votes for highest office
+  mutate(
+    votes_counted = if_else(
+      !is.na(ballots_counted),
+      ballots_counted,
+      highest_office
+    )
+  ) |>
+  # Convert population counts to millions
+  mutate(across(-year, \(x) x / 1e6)) |>
+  # Remove columns no longer needed
+  select(
+    year, votes_counted, voting_age_pop, voting_eligible_pop,
+    ineligible_felons, ineligible_noncitizens, eligible_overseas
+  ) |>
+  # Order from earliest to latest
+  arrange(year)
+
+glimpse(df_turnout)
+```
+
+Double check that the manually calculated voting eligible calculation lines up with the one reported in the data frame:
+
+```{r turnout-validation}
+df_turnout |>
+  mutate(
+    vep_manual = voting_age_pop - ineligible_felons -
+      ineligible_noncitizens + eligible_overseas,
+    vep_difference = abs(voting_eligible_pop - vep_manual) / voting_eligible_pop,
+  ) |>
+  select(year, voting_eligible_pop, vep_manual, vep_difference) |>
+  print(n = Inf)
+```
+
+Save cleaned data to `turnout.csv`:
+
+```{r turnout-save}
+write_csv(df_turnout, "data/turnout.csv")
+```
+
+## `wdi.csv`: World Development Indicators, 2019
+
+This file contains data from the World Bank's [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators) dataset.
+
+Obtain raw data using the WDI package:
+
+```{r wdi_download}
+#| cache: true
+#| message: false
+
+# Download raw data via WDI package
+wdi_file <- "_raw/wdi_2019.csv"
+if (!file.exists(wdi_file)) {
+  df_wdi_pkg <- WDI(
+    country = "all",
+    indicator = c(
+      "gdp_per_capita" = "NY.GDP.PCAP.CD",
+      "gdp_growth" = "NY.GDP.MKTP.KD.ZG",
+      "population" = "SP.POP.TOTL",
+      "inflation" = "FP.CPI.TOTL.ZG",
+      "unemployment" = "SL.UEM.TOTL.ZS",
+      "life_expectancy" = "SP.DYN.LE00.IN"
+    ),
+    start = 2019, end = 2019,
+    extra = TRUE
+  )
+  write_csv(df_wdi_pkg, wdi_file)
+}
+
+df_wdi_raw <- read_csv(wdi_file)
+
+glimpse(df_wdi_raw)
+```
+
+Minor cleaning to remove unwanted rows and columns:
+
+```{r wdi-cleaning}
+df_wdi <- df_wdi_raw |>
+  as_tibble() |>
+  select(-iso2c, -status, -lastupdated, -capital, -longitude, -latitude) |>
+  filter(region != "Aggregates") |>
+  filter(income != "Not classified") |>
+  mutate(income = case_match(
+    income,
+    "Low income" ~ "1. Low",
+    "Lower middle income" ~ "2. Lower-middle",
+    "Upper middle income" ~ "3. Upper-middle",
+    "High income" ~ "4. High"
+  ))
+
+
+glimpse(df_wdi)
+```
+
+Save to `wdi.csv`:
+
+```{r wdi-save}
+write_csv(df_wdi, "data/wdi.csv")
 ```

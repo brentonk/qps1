@@ -228,13 +228,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#us-voter-turnout-19802022-turnout.csv" id="toc-us-voter-turnout-19802022-turnout.csv" class="nav-link active" data-scroll-target="#us-voter-turnout-19802022-turnout.csv"><span class="header-section-number">B.1</span> US voter turnout 1980–2022: <code>turnout.csv</code></a></li>
-  <li><a href="#international-crises-crises.csv" id="toc-international-crises-crises.csv" class="nav-link" data-scroll-target="#international-crises-crises.csv"><span class="header-section-number">B.2</span> International crises: <code>crises.csv</code></a></li>
-  <li><a href="#military-spending-and-personnel-military.csv" id="toc-military-spending-and-personnel-military.csv" class="nav-link" data-scroll-target="#military-spending-and-personnel-military.csv"><span class="header-section-number">B.3</span> Military spending and personnel: <code>military.csv</code></a></li>
-  <li><a href="#county-level-presidential-election-returns-20002024-county_pres.csv" id="toc-county-level-presidential-election-returns-20002024-county_pres.csv" class="nav-link" data-scroll-target="#county-level-presidential-election-returns-20002024-county_pres.csv"><span class="header-section-number">B.4</span> County-level presidential election returns, 2000–2024: <code>county_pres.csv</code></a></li>
-  <li><a href="#world-development-indicators-2019-wdi.csv" id="toc-world-development-indicators-2019-wdi.csv" class="nav-link" data-scroll-target="#world-development-indicators-2019-wdi.csv"><span class="header-section-number">B.5</span> World Development Indicators, 2019: <code>wdi.csv</code></a></li>
-  <li><a href="#subset-of-2020-anes-survey-anes_2020.csv" id="toc-subset-of-2020-anes-survey-anes_2020.csv" class="nav-link" data-scroll-target="#subset-of-2020-anes-survey-anes_2020.csv"><span class="header-section-number">B.6</span> Subset of 2020 ANES survey: <code>anes_2020.csv</code></a></li>
-  <li><a href="#federalist-papers-corpus-fed_papers.csv" id="toc-federalist-papers-corpus-fed_papers.csv" class="nav-link" data-scroll-target="#federalist-papers-corpus-fed_papers.csv"><span class="header-section-number">B.7</span> Federalist Papers corpus: <code>fed_papers.csv</code></a></li>
+  <li><a href="#anes_2020.csv-subset-of-2020-anes-survey" id="toc-anes_2020.csv-subset-of-2020-anes-survey" class="nav-link active" data-scroll-target="#anes_2020.csv-subset-of-2020-anes-survey"><span class="header-section-number">B.1</span> <code>anes_2020.csv</code>: Subset of 2020 ANES survey</a></li>
+  <li><a href="#county_pres.csv-county-level-presidential-election-returns-20002024" id="toc-county_pres.csv-county-level-presidential-election-returns-20002024" class="nav-link" data-scroll-target="#county_pres.csv-county-level-presidential-election-returns-20002024"><span class="header-section-number">B.2</span> <code>county_pres.csv</code>: County-level presidential election returns, 2000–2024</a></li>
+  <li><a href="#crises.csv-international-crises" id="toc-crises.csv-international-crises" class="nav-link" data-scroll-target="#crises.csv-international-crises"><span class="header-section-number">B.3</span> <code>crises.csv</code>: International crises</a></li>
+  <li><a href="#fed_papers.csv-federalist-papers-corpus" id="toc-fed_papers.csv-federalist-papers-corpus" class="nav-link" data-scroll-target="#fed_papers.csv-federalist-papers-corpus"><span class="header-section-number">B.4</span> <code>fed_papers.csv</code>: Federalist Papers corpus</a></li>
+  <li><a href="#gss_2024.csv-subset-of-2024-general-social-survey" id="toc-gss_2024.csv-subset-of-2024-general-social-survey" class="nav-link" data-scroll-target="#gss_2024.csv-subset-of-2024-general-social-survey"><span class="header-section-number">B.5</span> <code>gss_2024.csv</code>: Subset of 2024 General Social Survey</a></li>
+  <li><a href="#military.csv-military-spending-and-personnel" id="toc-military.csv-military-spending-and-personnel" class="nav-link" data-scroll-target="#military.csv-military-spending-and-personnel"><span class="header-section-number">B.6</span> <code>military.csv</code>: Military spending and personnel</a></li>
+  <li><a href="#turnout.csv-us-voter-turnout-20002022" id="toc-turnout.csv-us-voter-turnout-20002022" class="nav-link" data-scroll-target="#turnout.csv-us-voter-turnout-20002022"><span class="header-section-number">B.7</span> <code>turnout.csv</code>: US voter turnout, 2000–2022</a></li>
+  <li><a href="#wdi.csv-world-development-indicators-2019" id="toc-wdi.csv-world-development-indicators-2019" class="nav-link" data-scroll-target="#wdi.csv-world-development-indicators-2019"><span class="header-section-number">B.8</span> <code>wdi.csv</code>: World Development Indicators, 2019</a></li>
   </ul>
 </nav>
     </div>
@@ -266,165 +267,326 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"archive"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"assertr"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dataverse"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"WDI"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create '_raw' subdirectory to store downloads, and 'data' for final cleaned files</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"_raw"</span>))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"_raw"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"data"</span>))</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"gssr"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"WDI"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create '_raw' subdirectory to store downloads, and 'data' for final cleaned files</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"_raw"</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"_raw"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"data"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="us-voter-turnout-19802022-turnout.csv" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="us-voter-turnout-19802022-turnout.csv"><span class="header-section-number">B.1</span> US voter turnout 1980–2022: <code>turnout.csv</code></h2>
-<p>This file uses data from the <a href="https://election.lab.ufl.edu/">University of Florida Election Lab</a>, specifically version 1.2 of the <a href="https://election.lab.ufl.edu/dataset/1980-2022-general-election-turnout-rates-v1-2/">General Election Turnout Rates</a> dataset.</p>
-<p>Obtain the raw data:</p>
+<section id="anes_2020.csv-subset-of-2020-anes-survey" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="anes_2020.csv-subset-of-2020-anes-survey"><span class="header-section-number">B.1</span> <code>anes_2020.csv</code>: Subset of 2020 ANES survey</h2>
+<p>This file contains a small number of variables from the 2020 wave of the <a href="https://electionstudies.org/data-center/">American National Election Studies</a> Time Series Study.</p>
+<p>Despite the direct download link on ANES’s website, they’ve got it locked down to prevent programmatic access from utilities like <code>download.file()</code>. (Not running <code>glimpse()</code> this time because the data has 1700+ columns.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>turnout_url <span class="ot">&lt;-</span> <span class="st">"https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>turnout_file <span class="ot">&lt;-</span> <span class="st">"_raw/Turnout_1980_2022_v1.2.csv"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(turnout_file))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> turnout_url, <span class="at">destfile =</span> turnout_file)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df_turnout_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(turnout_file)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anes_file <span class="ot">&lt;-</span> <span class="st">"_raw/anes_timeseries_2020_csv_20220210.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(anes_file))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Need to download data manually from ANES website"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_anes_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(anes_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Extract the few columns we care about and convert numeric codes to understandable values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes_raw <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">state =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      V201014b,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Alabama"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Alaska"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Arizona"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Arkansas"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="dv">6</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="dv">8</span> <span class="sc">~</span> <span class="st">"Colorado"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="dv">9</span> <span class="sc">~</span> <span class="st">"Connecticut"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10</span> <span class="sc">~</span> <span class="st">"Delaware"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="dv">11</span> <span class="sc">~</span> <span class="st">"District of Columbia"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="dv">12</span> <span class="sc">~</span> <span class="st">"Florida"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="dv">13</span> <span class="sc">~</span> <span class="st">"Georgia"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="dv">15</span> <span class="sc">~</span> <span class="st">"Hawaii"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="dv">16</span> <span class="sc">~</span> <span class="st">"Idaho"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="dv">17</span> <span class="sc">~</span> <span class="st">"Illinois"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="dv">18</span> <span class="sc">~</span> <span class="st">"Indiana"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="dv">19</span> <span class="sc">~</span> <span class="st">"Iowa"</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      <span class="dv">20</span> <span class="sc">~</span> <span class="st">"Kansas"</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>      <span class="dv">21</span> <span class="sc">~</span> <span class="st">"Kentucky"</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="dv">22</span> <span class="sc">~</span> <span class="st">"Louisiana"</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="dv">23</span> <span class="sc">~</span> <span class="st">"Maine"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="dv">24</span> <span class="sc">~</span> <span class="st">"Maryland"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Massachusetts"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="dv">26</span> <span class="sc">~</span> <span class="st">"Michigan"</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="dv">27</span> <span class="sc">~</span> <span class="st">"Minnesota"</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="dv">28</span> <span class="sc">~</span> <span class="st">"Mississippi"</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="dv">29</span> <span class="sc">~</span> <span class="st">"Missouri"</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="dv">30</span> <span class="sc">~</span> <span class="st">"Montana"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="dv">31</span> <span class="sc">~</span> <span class="st">"Nebraska"</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      <span class="dv">32</span> <span class="sc">~</span> <span class="st">"Nevada"</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      <span class="dv">33</span> <span class="sc">~</span> <span class="st">"New Hampshire"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>      <span class="dv">34</span> <span class="sc">~</span> <span class="st">"New Jersey"</span>,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>      <span class="dv">35</span> <span class="sc">~</span> <span class="st">"New Mexico"</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="dv">36</span> <span class="sc">~</span> <span class="st">"New York"</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>      <span class="dv">37</span> <span class="sc">~</span> <span class="st">"North Carolina"</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>      <span class="dv">38</span> <span class="sc">~</span> <span class="st">"North Dakota"</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="dv">39</span> <span class="sc">~</span> <span class="st">"Ohio"</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      <span class="dv">40</span> <span class="sc">~</span> <span class="st">"Oklahoma"</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      <span class="dv">41</span> <span class="sc">~</span> <span class="st">"Oregon"</span>,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="dv">42</span> <span class="sc">~</span> <span class="st">"Pennsylvania"</span>,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="dv">44</span> <span class="sc">~</span> <span class="st">"Rhode Island"</span>,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      <span class="dv">45</span> <span class="sc">~</span> <span class="st">"South Carolina"</span>,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>      <span class="dv">46</span> <span class="sc">~</span> <span class="st">"South Dakota"</span>,</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>      <span class="dv">47</span> <span class="sc">~</span> <span class="st">"Tennessee"</span>,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>      <span class="dv">48</span> <span class="sc">~</span> <span class="st">"Texas"</span>,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>      <span class="dv">49</span> <span class="sc">~</span> <span class="st">"Utah"</span>,</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>      <span class="dv">50</span> <span class="sc">~</span> <span class="st">"Vermont"</span>,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>      <span class="dv">51</span> <span class="sc">~</span> <span class="st">"Virginia"</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>      <span class="dv">53</span> <span class="sc">~</span> <span class="st">"Washington"</span>,</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>      <span class="dv">54</span> <span class="sc">~</span> <span class="st">"West Virginia"</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>      <span class="dv">55</span> <span class="sc">~</span> <span class="st">"Wisconsin"</span>,</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>      <span class="dv">56</span> <span class="sc">~</span> <span class="st">"Wyoming"</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>      V201600,</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">lgbt =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>      V201601,</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">race =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>      V201549x,</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"White"</span>,</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Black"</span>,</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Hispanic"</span>,</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Asian"</span>,</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Native American"</span>,</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>      <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Multiracial"</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">if_else</span>(V201507x <span class="sc">&gt;</span> <span class="dv">0</span>, V201507x, <span class="cn">NA</span>),</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">education =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>      V201511x,</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Less than high school"</span>,</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"High school"</span>,</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Some college"</span>,</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Bachelor's degree"</span>,</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Graduate degree"</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">employed =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>      V201517,</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours_worked =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>      V201527 <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>      V201527 <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> V201527,</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">watch_tucker =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>      V201630c,</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">watch_maddow =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>      V201630d,</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_biden =</span> <span class="fu">if_else</span>(V201151 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201151, <span class="cn">NA</span>),</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_trump =</span> <span class="fu">if_else</span>(V201152 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201152, <span class="cn">NA</span>),</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_harris =</span> <span class="fu">if_else</span>(V201153 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201153, <span class="cn">NA</span>),</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_pence =</span> <span class="fu">if_else</span>(V201154 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201154, <span class="cn">NA</span>),</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_obama =</span> <span class="fu">if_else</span>(V201155 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201155, <span class="cn">NA</span>),</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_dem_party =</span> <span class="fu">if_else</span>(V201156 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201156, <span class="cn">NA</span>),</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_rep_party =</span> <span class="fu">if_else</span>(V201157 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201157, <span class="cn">NA</span>),</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_feminists =</span> <span class="fu">if_else</span>(V202160 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202160, <span class="cn">NA</span>),</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_liberals =</span> <span class="fu">if_else</span>(V202161 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202161, <span class="cn">NA</span>),</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_labor_unions =</span> <span class="fu">if_else</span>(V202162 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202162, <span class="cn">NA</span>),</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_big_business =</span> <span class="fu">if_else</span>(V202163 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202163, <span class="cn">NA</span>),</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_conservatives =</span> <span class="fu">if_else</span>(V202164 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202164, <span class="cn">NA</span>),</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_supreme_court =</span> <span class="fu">if_else</span>(V202165 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202165, <span class="cn">NA</span>),</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_congress =</span> <span class="fu">if_else</span>(V202167 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202167, <span class="cn">NA</span>),</span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_police =</span> <span class="fu">if_else</span>(V202171 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202171, <span class="cn">NA</span>),</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_scientists =</span> <span class="fu">if_else</span>(V202173 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202173, <span class="cn">NA</span>),</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">contributed_to_party =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>      V202019,</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>      V202068x,</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>      <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_biden =</span> <span class="fu">if_else</span>(V202073 <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="cn">NA</span>, V202073),</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_biden =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>      voted_for_biden,</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_trump =</span> <span class="fu">if_else</span>(V202073 <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="cn">NA</span>, V202073),</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_trump =</span> <span class="fu">case_match</span>(</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>      voted_for_trump,</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">~</span> <span class="dv">0</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">.keep =</span> <span class="st">"none"</span></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,144
-Columns: 15
-$ YEAR                    &lt;dbl&gt; 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022…
-$ STATE                   &lt;chr&gt; "United States", "Alabama", "Alaska", "Arizona…
-$ STATE_ABV               &lt;chr&gt; NA, "AL", "AK", "AZ", "AR", "CA", "CO", "CT", …
-$ TOTAL_BALLOTS_COUNTED   &lt;dbl&gt; 112030874, 1424087, 267047, 2592313, 914227, 1…
-$ VOTE_FOR_HIGHEST_OFFICE &lt;chr&gt; NA, "https://www.eac.gov/sites/default/files/2…
-$ VAP                     &lt;dbl&gt; 260725069, 3956111, 556592, 5796801, 2347291, …
-$ NONCITIZEN_PCT          &lt;chr&gt; "7.50%", "2.54%", "3.56%", "7.78%", "3.76%", "…
-$ INELIGIBLE_PRISON       &lt;dbl&gt; 1175823, 25403, 4778, 31441, 17331, 97608, 163…
-$ INELIGIBLE_PROBATION    &lt;dbl&gt; 1074600, 27469, 1872, 47515, 28009, 0, 0, 0, 7…
-$ INELIGIBLE_PAROLE       &lt;dbl&gt; 412595, 7815, 865, 7022, 23829, 0, 0, 0, 344, …
-$ INELIGIBLE_FELONS_TOTAL &lt;dbl&gt; 2663018, 60687, 7515, 85978, 69169, 97608, 163…
-$ ELIGIBLE_OVERSEAS       &lt;dbl&gt; 4400000, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ VEP                     &lt;dbl&gt; 242907672, 3794939, 529263, 5259832, 2189865, …
-$ VEP_TURNOUT_RATE        &lt;chr&gt; "46.12%", "37.53%", "50.46%", "49.29%", "41.75…
-$ VAP_TURNOUT_RATE        &lt;chr&gt; "42.97%", "36.00%", "47.98%", "44.72%", "38.95…</code></pre>
+<pre><code>Rows: 8,280
+Columns: 31
+$ id                   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13…
+$ state                &lt;chr&gt; "Oklahoma", "Idaho", "Virginia", "Califor…
+$ female               &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,…
+$ lgbt                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ race                 &lt;chr&gt; "Hispanic", "Asian", "White", "Asian", "N…
+$ age                  &lt;dbl&gt; 46, 37, 40, 41, 72, 71, 37, 45, 70, 43, 3…
+$ education            &lt;chr&gt; "Bachelor's degree", "Some college", "Hig…
+$ employed             &lt;dbl&gt; 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0,…
+$ hours_worked         &lt;dbl&gt; 40, 40, 0, 40, 0, 0, 30, 40, 0, 30, 25, 5…
+$ watch_tucker         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ watch_maddow         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ therm_biden          &lt;dbl&gt; 0, 0, 65, 70, 15, 85, 50, 50, 85, 85, 100…
+$ therm_trump          &lt;dbl&gt; 100, 0, 0, 15, 85, 0, 75, 100, 0, 0, 0, 0…
+$ therm_harris         &lt;dbl&gt; 0, 0, 65, 85, 15, 85, 15, 50, 85, 50, 100…
+$ therm_pence          &lt;dbl&gt; 85, 0, 0, 15, 90, 0, 75, 50, 0, 50, 0, 50…
+$ therm_obama          &lt;dbl&gt; 0, 50, 90, 85, 10, 60, 15, 50, 60, 100, 1…
+$ therm_dem_party      &lt;dbl&gt; 0, 0, 60, 50, 20, 85, 15, 50, NA, 60, 100…
+$ therm_rep_party      &lt;dbl&gt; 85, 50, 0, 70, 70, 15, 75, 100, NA, 50, 0…
+$ therm_feminists      &lt;dbl&gt; 65, 100, 75, 70, 30, 60, 60, 100, 50, 50,…
+$ therm_liberals       &lt;dbl&gt; 30, 0, 75, 70, 10, 70, 0, NA, 30, 50, 50,…
+$ therm_labor_unions   &lt;dbl&gt; 30, 70, 75, 70, 50, 50, 50, 0, 30, 50, 50…
+$ therm_big_business   &lt;dbl&gt; 70, 50, 0, 85, 0, 40, 50, 0, 50, 15, 50, …
+$ therm_conservatives  &lt;dbl&gt; 85, 15, 0, 70, 60, 40, 60, NA, 50, 50, 50…
+$ therm_supreme_court  &lt;dbl&gt; 100, 50, 25, 85, 60, 60, 70, 50, 50, 50, …
+$ therm_congress       &lt;dbl&gt; 40, 15, 0, 100, 10, 85, 50, 50, 50, 40, 5…
+$ therm_police         &lt;dbl&gt; 85, 90, 40, 100, 70, 70, 60, 100, 60, 70,…
+$ therm_scientists     &lt;dbl&gt; 100, 70, 100, 85, 60, 85, 85, NA, 60, 50,…
+$ contributed_to_party &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ voted                &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,…
+$ voted_for_biden      &lt;dbl&gt; NA, 0, 1, 1, 0, 1, 0, NA, NA, 1, 1, 1, 0,…
+$ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1,…</code></pre>
 </div>
 </div>
-<p>Cleaning up into the data file used for class:</p>
+<p>Save to <code>anes_2020.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="ot">&lt;-</span> df_turnout_raw <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only want national level data</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(STATE <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Grab and rename the columns we want</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> YEAR,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">voting_age_pop =</span> VAP,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">voting_eligible_pop =</span> VEP,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ballots_counted =</span> TOTAL_BALLOTS_COUNTED,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">highest_office =</span> VOTE_FOR_HIGHEST_OFFICE,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">noncitizen_pct =</span> NONCITIZEN_PCT,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ineligible_felons =</span> INELIGIBLE_FELONS_TOTAL,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">eligible_overseas =</span> ELIGIBLE_OVERSEAS,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">.keep =</span> <span class="st">"none"</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clean up highest_office and noncitizen_pct columns to be numeric</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">noncitizen_pct =</span> <span class="fu">str_replace</span>(noncitizen_pct, <span class="st">"</span><span class="sc">\\</span><span class="st">%"</span>, <span class="st">""</span>),</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">noncitizen_pct =</span> <span class="fu">as.numeric</span>(noncitizen_pct) <span class="sc">/</span> <span class="dv">100</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">highest_office =</span> <span class="fu">str_replace_all</span>(highest_office, <span class="st">","</span>, <span class="st">""</span>),</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">highest_office =</span> <span class="fu">as.numeric</span>(highest_office),</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate number of noncitizens</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">ineligible_noncitizens =</span> noncitizen_pct <span class="sc">*</span> voting_age_pop,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>noncitizen_pct) <span class="sc">|&gt;</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For vote total, use ballots counted where available, otherwise just use</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># votes for highest office</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">votes_counted =</span> <span class="fu">if_else</span>(</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(ballots_counted),</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      ballots_counted,</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      highest_office</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert population counts to millions</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span>year, \(x) x <span class="sc">/</span> <span class="fl">1e6</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove columns no longer needed</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    year, votes_counted, voting_age_pop, voting_eligible_pop,</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    ineligible_felons, ineligible_noncitizens, eligible_overseas</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Order from earliest to latest</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 22
-Columns: 7
-$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 199…
-$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113,…
-$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223,…
-$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089,…
-$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117,…
-$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350,…
-$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…</code></pre>
-</div>
-</div>
-<p>Double check that the manually calculated voting eligible calculation lines up with the one reported in the data frame:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">vep_manual =</span> voting_age_pop <span class="sc">-</span> ineligible_felons <span class="sc">-</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      ineligible_noncitizens <span class="sc">+</span> eligible_overseas,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">vep_difference =</span> <span class="fu">abs</span>(voting_eligible_pop <span class="sc">-</span> vep_manual) <span class="sc">/</span> voting_eligible_pop,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, voting_eligible_pop, vep_manual, vep_difference) <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 22 × 4
-    year voting_eligible_pop vep_manual vep_difference
-   &lt;dbl&gt;               &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;
- 1  1980                160.       160.       2.35e- 9
- 2  1982                160.       160.       1.99e- 9
- 3  1984                168.       168.       1.37e- 9
- 4  1986                170.       170.       2.88e- 9
- 5  1988                174.       174.       1.82e- 9
- 6  1990                177.       177.       1.44e- 9
- 7  1992                180.       180.       2.12e- 9
- 8  1994                183.       183.       2.19e- 9
- 9  1996                186.       186.       1.91e- 9
-10  1998                190.       190.       1.50e- 9
-11  2000                194.       194.       2.14e- 9
-12  2002                198.       198.       4.03e-10
-13  2004                203.       203.       2.18e- 9
-14  2006                207.       207.       1.52e- 9
-15  2008                213.       213.       2.25e- 9
-16  2010                222.       222.       1.94e- 4
-17  2012                222.       222.       2.66e- 9
-18  2014                227.       227.       7.00e-10
-19  2016                231.       231.       7.06e-10
-20  2018                237.       237.       4.22e-10
-21  2020                242.       242.       6.20e-10
-22  2022                243.       243.       4.84e- 9</code></pre>
-</div>
-</div>
-<p>Save cleaned data to <code>turnout.csv</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_turnout, <span class="st">"data/turnout.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_anes, <span class="st">"data/anes_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="international-crises-crises.csv" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="international-crises-crises.csv"><span class="header-section-number">B.2</span> International crises: <code>crises.csv</code></h2>
+<section id="county_pres.csv-county-level-presidential-election-returns-20002024" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="county_pres.csv-county-level-presidential-election-returns-20002024"><span class="header-section-number">B.2</span> <code>county_pres.csv</code>: County-level presidential election returns, 2000–2024</h2>
+<p>This file contains data from the <a href="https://electionlab.mit.edu/">MIT Election Lab</a> dataset on <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ">County Presidential Election returns</a>.</p>
+<p>Obtain raw data from Harvard Dataverse:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data from Harvard Dataverse repository</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>county_pres_file <span class="ot">&lt;-</span> <span class="st">"_raw/countypres_2000-2024.csv"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(county_pres_file)) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  df_county_pres_dataverse <span class="ot">&lt;-</span> <span class="fu">get_dataframe_by_name</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">filename =</span> <span class="st">"countypres_2000-2024.tab"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset =</span> <span class="st">"10.7910/DVN/VOQCHQ"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">server =</span> <span class="st">"dataverse.harvard.edu"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">version =</span> <span class="st">"15.0"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(df_county_pres_dataverse, county_pres_file)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>df_county_pres_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(county_pres_file)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_county_pres_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 94,409
+Columns: 12
+$ year           &lt;dbl&gt; 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2…
+$ state          &lt;chr&gt; "ALABAMA", "ALABAMA", "ALABAMA", "ALABAMA", "ALABAMA", …
+$ state_po       &lt;chr&gt; "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL", "…
+$ county_name    &lt;chr&gt; "AUTAUGA", "AUTAUGA", "AUTAUGA", "AUTAUGA", "BALDWIN", …
+$ county_fips    &lt;chr&gt; "01001", "01001", "01001", "01001", "01003", "01003", "…
+$ office         &lt;chr&gt; "US PRESIDENT", "US PRESIDENT", "US PRESIDENT", "US PRE…
+$ candidate      &lt;chr&gt; "AL GORE", "GEORGE W. BUSH", "OTHER", "RALPH NADER", "A…
+$ party          &lt;chr&gt; "DEMOCRAT", "REPUBLICAN", "OTHER", "GREEN", "DEMOCRAT",…
+$ candidatevotes &lt;dbl&gt; 4942, 11993, 113, 160, 13997, 40872, 578, 1033, 5188, 5…
+$ totalvotes     &lt;dbl&gt; 17208, 17208, 17208, 17208, 56480, 56480, 56480, 56480,…
+$ version        &lt;dbl&gt; 20250712, 20250712, 20250712, 20250712, 20250712, 20250…
+$ mode           &lt;chr&gt; "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "…</code></pre>
+</div>
+</div>
+<p>Clean data to have one row per county-year:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_county_pres <span class="ot">&lt;-</span> df_county_pres_raw <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(party), totalvotes <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">county =</span> county_name) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state, county) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">county_fips =</span> <span class="fu">first</span>(county_fips),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votes =</span> <span class="fu">first</span>(totalvotes),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_votes =</span> <span class="fu">sum</span>(candidatevotes[party <span class="sc">==</span> <span class="st">"DEMOCRAT"</span>]),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rep_votes =</span> <span class="fu">sum</span>(candidatevotes[party <span class="sc">==</span> <span class="st">"REPUBLICAN"</span>]),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">fct_collapse</span>(</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>      state,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">Northeast =</span> <span class="fu">c</span>(</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"CONNECTICUT"</span>, <span class="st">"MAINE"</span>, <span class="st">"MASSACHUSETTS"</span>, <span class="st">"NEW HAMPSHIRE"</span>, <span class="st">"RHODE ISLAND"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"VERMONT"</span>, <span class="st">"NEW JERSEY"</span>, <span class="st">"NEW YORK"</span>, <span class="st">"PENNSYLVANIA"</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">Midwest =</span> <span class="fu">c</span>(</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ILLINOIS"</span>, <span class="st">"INDIANA"</span>, <span class="st">"MICHIGAN"</span>, <span class="st">"OHIO"</span>, <span class="st">"WISCONSIN"</span>, <span class="st">"IOWA"</span>, <span class="st">"KANSAS"</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MINNESOTA"</span>, <span class="st">"MISSOURI"</span>, <span class="st">"NEBRASKA"</span>, <span class="st">"NORTH DAKOTA"</span>, <span class="st">"SOUTH DAKOTA"</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">South =</span> <span class="fu">c</span>(</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"DELAWARE"</span>, <span class="st">"DISTRICT OF COLUMBIA"</span>, <span class="st">"FLORIDA"</span>, <span class="st">"GEORGIA"</span>, <span class="st">"MARYLAND"</span>,</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NORTH CAROLINA"</span>, <span class="st">"SOUTH CAROLINA"</span>, <span class="st">"VIRGINIA"</span>, <span class="st">"WEST VIRGINIA"</span>, <span class="st">"ALABAMA"</span>,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"KENTUCKY"</span>, <span class="st">"MISSISSIPPI"</span>, <span class="st">"TENNESSEE"</span>, <span class="st">"ARKANSAS"</span>, <span class="st">"LOUISIANA"</span>, <span class="st">"OKLAHOMA"</span>,</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TEXAS"</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">West =</span> <span class="fu">c</span>(</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ARIZONA"</span>, <span class="st">"COLORADO"</span>, <span class="st">"IDAHO"</span>, <span class="st">"MONTANA"</span>, <span class="st">"NEVADA"</span>, <span class="st">"NEW MEXICO"</span>, <span class="st">"UTAH"</span>,</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">"WYOMING"</span>, <span class="st">"ALASKA"</span>, <span class="st">"CALIFORNIA"</span>, <span class="st">"HAWAII"</span>, <span class="st">"OREGON"</span>, <span class="st">"WASHINGTON"</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">other_level =</span> <span class="st">"Unknown"</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> dem_votes <span class="sc">-</span> rep_votes,</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_margin =</span> margin <span class="sc">/</span> total_votes,</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">competitiveness =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.2</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">3</span>,</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.1</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">2</span>,</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.04</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="fl">0.04</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="fl">0.1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="fl">0.2</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">3</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_win_state =</span> <span class="fu">as.numeric</span>(<span class="fu">sum</span>(dem_votes) <span class="sc">&gt;</span> <span class="fu">sum</span>(rep_votes)),</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert</span>(not_na, <span class="fu">everything</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, state, region, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Save to <code>county_pres.csv</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_county_pres, <span class="st">"data/county_pres.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="crises.csv-international-crises" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="crises.csv-international-crises"><span class="header-section-number">B.3</span> <code>crises.csv</code>: International crises</h2>
 <p>This file contains the <a href="https://sites.duke.edu/icbdata/data-collections/">International Crisis Behavior</a> actor-level data, version 16. There’s purposely no additional cleaning since it’s used in the data wrangling lecture.</p>
 <p>The raw data is stored via a Box link that doesn’t work with <code>download.file()</code>, and my efforts to get ChatGPT to help me get to the underlying data were unsuccessful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>crises_file <span class="ot">&lt;-</span> <span class="st">"_raw/icb2v16.csv"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(crises_file))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Need to download data manually from ICB website"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df_crises_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(crises_file)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_crises_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>crises_file <span class="ot">&lt;-</span> <span class="st">"_raw/icb2v16.csv"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(crises_file))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Need to download data manually from ICB website"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df_crises_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(crises_file)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_crises_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,131
 Columns: 95
@@ -527,31 +689,191 @@ $ sourdt   &lt;dbl&gt; 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, NA, 3, 1, 1…<
 </div>
 <p>Save to <code>crises.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_crises_raw, <span class="st">"data/crises.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_crises_raw, <span class="st">"data/crises.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="military-spending-and-personnel-military.csv" class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="military-spending-and-personnel-military.csv"><span class="header-section-number">B.3</span> Military spending and personnel: <code>military.csv</code></h2>
+<section id="fed_papers.csv-federalist-papers-corpus" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="fed_papers.csv-federalist-papers-corpus"><span class="header-section-number">B.4</span> <code>fed_papers.csv</code>: Federalist Papers corpus</h2>
+<p>This file contains the full text of each of the <a href="https://en.wikipedia.org/wiki/The_Federalist_Papers">Federalist Papers</a>, per the public domain text archived by <a href="https://www.gutenberg.org/">Project Gutenberg</a>.</p>
+<p>Obtain the raw text from Project Gutenberg:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fed_papers_url <span class="ot">&lt;-</span> <span class="st">"https://www.gutenberg.org/files/18/18-0.txt"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fed_papers_file <span class="ot">&lt;-</span> <span class="st">"_raw/fed_papers.txt"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(fed_papers_file))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> fed_papers_url, <span class="at">destfile =</span> fed_papers_file)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fed_papers_raw <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fed_papers_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Parse text and assemble into data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Eliminate table of contents and other non-text content</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers_raw <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="sc">-</span><span class="dv">98</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Combine into single string</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> <span class="fu">str_c</span>(fed_papers, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Split into individual papers</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers <span class="sc">|&gt;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">"THE FEDERALIST.</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Eliminate the empty first entry, as well as the duplicate of #70</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers[<span class="sc">-</span><span class="dv">70</span>]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Extract author(s) of each paper</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>author_id_regex <span class="ot">&lt;-</span> <span class="st">"</span><span class="sc">\\</span><span class="st">n</span><span class="sc">\\</span><span class="st">n(HAMILTON|JAY|MADISON|HAMILTON AND MADISON|HAMILTON OR MADISON)</span><span class="sc">\\</span><span class="st">n</span><span class="sc">\\</span><span class="st">n</span><span class="sc">\\</span><span class="st">n"</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>paper_author <span class="ot">&lt;-</span> fed_papers <span class="sc">|&gt;</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract</span>(author_id_regex) <span class="sc">|&gt;</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">n"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_to_lower</span>()</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Start each paper text after author identifier</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="do">## This will keep our classifiers from "peeking" by directly using author info</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>paper_text <span class="ot">&lt;-</span> fed_papers <span class="sc">|&gt;</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split_i</span>(author_id_regex, <span class="at">i =</span> <span class="dv">2</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Combine into a data frame</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">paper_id =</span> <span class="fu">seq_along</span>(fed_papers),</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">author =</span> paper_author,</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> paper_text</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_fed_papers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 85
+Columns: 3
+$ paper_id &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
+$ author   &lt;chr&gt; "hamilton", "jay", "jay", "jay", "jay", "hamilton", "…
+$ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …</code></pre>
+</div>
+</div>
+<p>Save to <code>fed_papers.csv</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_fed_papers, <span class="st">"data/fed_papers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gss_2024.csv-subset-of-2024-general-social-survey" class="level2" data-number="B.5">
+<h2 data-number="B.5" class="anchored" data-anchor-id="gss_2024.csv-subset-of-2024-general-social-survey"><span class="header-section-number">B.5</span> <code>gss_2024.csv</code>: Subset of 2024 General Social Survey</h2>
+<p>This file contains a small number of variables from the 2024 wave of the <a href="https://gss.norc.org/">General Social Survey</a>.</p>
+<p>Using Kieran Healy’s <code>gssr</code> package to download the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gss_file <span class="ot">&lt;-</span> <span class="st">"_raw/gss_2024.csv"</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(gss_file)) {</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  df_gss_pkg <span class="ot">&lt;-</span> <span class="fu">gss_get_yr</span>(<span class="dv">2024</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(df_gss_pkg, gss_file)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df_gss_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(gss_file)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df_gss_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,309 × 639
+    year    id wrkstat  hrs1  hrs2 evwork marital martype divorce
+   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1  2024     1       1    43    NA     NA       5      NA      NA
+ 2  2024     2       5    NA    NA      1       5      NA      NA
+ 3  2024     3       5    NA    NA      1       1       1       2
+ 4  2024     4       2    20    NA     NA       5      NA      NA
+ 5  2024     5       5    NA    NA      1       3      NA      NA
+ 6  2024     6       4    NA    NA     NA       1       1       2
+ 7  2024     7       1    80    NA     NA       1       1       1
+ 8  2024     8       6    NA    NA      1       3      NA      NA
+ 9  2024     9       1    50    NA     NA       1      NA      NA
+10  2024    10       4    NA    NA     NA       5      NA      NA
+# ℹ 3,299 more rows
+# ℹ 630 more variables: widowed &lt;dbl&gt;, spwrksta &lt;dbl&gt;, sphrs1 &lt;dbl&gt;,
+#   sphrs2 &lt;dbl&gt;, spevwork &lt;dbl&gt;, cowrksta &lt;dbl&gt;, coevwork &lt;dbl&gt;,
+#   cohrs1 &lt;dbl&gt;, cohrs2 &lt;dbl&gt;, sibs &lt;dbl&gt;, childs &lt;dbl&gt;, age &lt;dbl&gt;,
+#   educ &lt;dbl&gt;, speduc &lt;dbl&gt;, coeduc &lt;dbl&gt;, codeg &lt;dbl&gt;, degree &lt;dbl&gt;,
+#   padeg &lt;dbl&gt;, madeg &lt;dbl&gt;, spdeg &lt;dbl&gt;, sex &lt;dbl&gt;, race &lt;dbl&gt;,
+#   res16 &lt;dbl&gt;, reg16 &lt;dbl&gt;, mobile16 &lt;dbl&gt;, family16 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>Extract the few columns we care about and do some mild cleaning:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_gss <span class="ot">&lt;-</span> df_gss_raw <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> id,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      region,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"New England"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Middle Atlantic"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>) <span class="sc">~</span> <span class="st">"North Central"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"South Atlantic"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>) <span class="sc">~</span> <span class="st">"South Central"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>      <span class="dv">8</span> <span class="sc">~</span> <span class="st">"Mountain"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>      <span class="dv">9</span> <span class="sc">~</span> <span class="st">"Pacific"</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> age,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">educ =</span> educ,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">if_else</span>(sex <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">race =</span> <span class="fu">case_match</span>(</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>      racecen1,</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"White"</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Black"</span>,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span> <span class="sc">~</span> <span class="st">"American Indian"</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Asian"</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Pacific Islander"</span>,</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>      <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Other"</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">hispanic =</span> <span class="fu">if_else</span>(hispanic <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">polviews =</span> polviews,</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">trump_rating =</span> ratechall124,</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">repub_rating =</span> raterepp,</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">maga_rating =</span> ratemaga,</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">.keep =</span> <span class="st">"none"</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_gss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,309
+Columns: 11
+$ id           &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15…
+$ age          &lt;dbl&gt; 33, 64, 69, 19, 70, 53, 48, 30, 60, 25, 23, 68, 4…
+$ educ         &lt;dbl&gt; 16, 16, 14, 12, 13, 14, 13, 14, 14, 12, 18, 5, 14…
+$ race         &lt;chr&gt; "Black", "White", "White", "Other", "White", "Oth…
+$ region       &lt;chr&gt; "New England", "New England", "New England", "New…
+$ polviews     &lt;dbl&gt; 4, 3, 1, NA, 4, NA, 2, 4, 4, 4, 2, 1, NA, 1, 4, 3…
+$ hispanic     &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0…
+$ female       &lt;dbl&gt; 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0…
+$ trump_rating &lt;dbl&gt; 0, NA, 0, 50, 60, NA, 0, 30, 0, 50, 0, 0, NA, 0, …
+$ repub_rating &lt;dbl&gt; 6, NA, 0, 50, 60, NA, 15, 50, 30, 50, 0, 15, NA, …
+$ maga_rating  &lt;dbl&gt; 0, NA, 0, 50, 60, NA, 0, 40, 0, 50, 0, 15, NA, 0,…</code></pre>
+</div>
+</div>
+<p>Save to <code>gss_2024.csv</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_gss, <span class="st">"data/gss_2024.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="military.csv-military-spending-and-personnel" class="level2" data-number="B.6">
+<h2 data-number="B.6" class="anchored" data-anchor-id="military.csv-military-spending-and-personnel"><span class="header-section-number">B.6</span> <code>military.csv</code>: Military spending and personnel</h2>
 <p>This file contains data from the <a href="https://correlatesofwar.org/">Correlates of War</a> project’s dataset on <a href="https://correlatesofwar.org/data-sets/national-material-capabilities/">National Material Capabilities</a>, version 6.0.</p>
 <p>Obtain the raw data by extracting from the zip on the COW website:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download zip file containing raw data</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is convoluted because the csv is inside a zip within the zip</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>military_url <span class="ot">&lt;-</span> <span class="st">"https://correlatesofwar.org/wp-content/uploads/NMC_Documentation-6.0.zip"</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>military_file <span class="ot">&lt;-</span> <span class="st">"_raw/NMC-60-abridged.csv"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(military_file)) {</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  military_zip_outer <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".zip"</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> military_url, <span class="at">destfile =</span> military_zip_outer)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  military_zip_inner <span class="ot">&lt;-</span> <span class="fu">archive_read</span>(military_zip_outer, <span class="st">"NMC-60-abridged.zip"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  military_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">archive_read</span>(military_zip_inner, <span class="st">"NMC-60-abridged.csv"</span>))</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(military_csv, military_file)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>df_military_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(military_file)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download zip file containing raw data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is convoluted because the csv is inside a zip within the zip</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>military_url <span class="ot">&lt;-</span> <span class="st">"https://correlatesofwar.org/wp-content/uploads/NMC_Documentation-6.0.zip"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>military_file <span class="ot">&lt;-</span> <span class="st">"_raw/NMC-60-abridged.csv"</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(military_file)) {</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  military_zip_outer <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".zip"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> military_url, <span class="at">destfile =</span> military_zip_outer)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  military_zip_inner <span class="ot">&lt;-</span> <span class="fu">archive_read</span>(military_zip_outer, <span class="st">"NMC-60-abridged.zip"</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  military_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">archive_read</span>(military_zip_inner, <span class="st">"NMC-60-abridged.csv"</span>))</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(military_csv, military_file)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>df_military_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(military_file)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 15,951
 Columns: 11
@@ -570,15 +892,15 @@ $ version  &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 202
 </div>
 <p>Convert to “long” format containing only spending and personnel, for pedagogical purposes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_military <span class="ot">&lt;-</span> df_military_raw <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ccode, stateabb, year, <span class="at">spending =</span> milex, <span class="at">personnel =</span> milper) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(spending, personnel),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"mil_indicator"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"amount"</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_military <span class="ot">&lt;-</span> df_military_raw <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ccode, stateabb, year, <span class="at">spending =</span> milex, <span class="at">personnel =</span> milper) <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(spending, personnel),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"mil_indicator"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"amount"</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31,902
 Columns: 5
@@ -591,134 +913,175 @@ $ amount        &lt;dbl&gt; 3823, 17, 2466, 15, 1910, 14, 2301, 13, 1556, 15…<
 </div>
 <p>Save to <code>military.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_military, <span class="st">"data/military.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_military, <span class="st">"data/military.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="county-level-presidential-election-returns-20002024-county_pres.csv" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="county-level-presidential-election-returns-20002024-county_pres.csv"><span class="header-section-number">B.4</span> County-level presidential election returns, 2000–2024: <code>county_pres.csv</code></h2>
-<p>This file contains data from the <a href="https://electionlab.mit.edu/">MIT Election Lab</a> dataset on <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ">County Presidential Election returns</a>.</p>
-<p>Obtain raw data from Harvard Dataverse:</p>
+<section id="turnout.csv-us-voter-turnout-20002022" class="level2" data-number="B.7">
+<h2 data-number="B.7" class="anchored" data-anchor-id="turnout.csv-us-voter-turnout-20002022"><span class="header-section-number">B.7</span> <code>turnout.csv</code>: US voter turnout, 2000–2022</h2>
+<p>This file uses data from the <a href="https://election.lab.ufl.edu/">University of Florida Election Lab</a>, specifically version 1.2 of the <a href="https://election.lab.ufl.edu/dataset/1980-2022-general-election-turnout-rates-v1-2/">General Election Turnout Rates</a> dataset.</p>
+<p>Obtain the raw data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data from Harvard Dataverse repository</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>county_pres_file <span class="ot">&lt;-</span> <span class="st">"_raw/countypres_2000-2024.csv"</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(county_pres_file)) {</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  df_county_pres_dataverse <span class="ot">&lt;-</span> <span class="fu">get_dataframe_by_name</span>(</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">filename =</span> <span class="st">"countypres_2000-2024.tab"</span>,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset =</span> <span class="st">"10.7910/DVN/VOQCHQ"</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">server =</span> <span class="st">"dataverse.harvard.edu"</span>,</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">version =</span> <span class="st">"15.0"</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(df_county_pres_dataverse, county_pres_file)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>df_county_pres_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(county_pres_file)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_county_pres_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>turnout_url <span class="ot">&lt;-</span> <span class="st">"https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv"</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>turnout_file <span class="ot">&lt;-</span> <span class="st">"_raw/Turnout_1980_2022_v1.2.csv"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(turnout_file))</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> turnout_url, <span class="at">destfile =</span> turnout_file)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>df_turnout_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(turnout_file)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 94,409
-Columns: 12
-$ year           &lt;dbl&gt; 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2…
-$ state          &lt;chr&gt; "ALABAMA", "ALABAMA", "ALABAMA", "ALABAMA", "ALABAMA", …
-$ state_po       &lt;chr&gt; "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL", "AL", "…
-$ county_name    &lt;chr&gt; "AUTAUGA", "AUTAUGA", "AUTAUGA", "AUTAUGA", "BALDWIN", …
-$ county_fips    &lt;chr&gt; "01001", "01001", "01001", "01001", "01003", "01003", "…
-$ office         &lt;chr&gt; "US PRESIDENT", "US PRESIDENT", "US PRESIDENT", "US PRE…
-$ candidate      &lt;chr&gt; "AL GORE", "GEORGE W. BUSH", "OTHER", "RALPH NADER", "A…
-$ party          &lt;chr&gt; "DEMOCRAT", "REPUBLICAN", "OTHER", "GREEN", "DEMOCRAT",…
-$ candidatevotes &lt;dbl&gt; 4942, 11993, 113, 160, 13997, 40872, 578, 1033, 5188, 5…
-$ totalvotes     &lt;dbl&gt; 17208, 17208, 17208, 17208, 56480, 56480, 56480, 56480,…
-$ version        &lt;dbl&gt; 20250712, 20250712, 20250712, 20250712, 20250712, 20250…
-$ mode           &lt;chr&gt; "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "…</code></pre>
+<pre><code>Rows: 1,144
+Columns: 15
+$ YEAR                    &lt;dbl&gt; 2022, 2022, 2022, 2022, 2022, 2022, 2022, 2022…
+$ STATE                   &lt;chr&gt; "United States", "Alabama", "Alaska", "Arizona…
+$ STATE_ABV               &lt;chr&gt; NA, "AL", "AK", "AZ", "AR", "CA", "CO", "CT", …
+$ TOTAL_BALLOTS_COUNTED   &lt;dbl&gt; 112030874, 1424087, 267047, 2592313, 914227, 1…
+$ VOTE_FOR_HIGHEST_OFFICE &lt;chr&gt; NA, "https://www.eac.gov/sites/default/files/2…
+$ VAP                     &lt;dbl&gt; 260725069, 3956111, 556592, 5796801, 2347291, …
+$ NONCITIZEN_PCT          &lt;chr&gt; "7.50%", "2.54%", "3.56%", "7.78%", "3.76%", "…
+$ INELIGIBLE_PRISON       &lt;dbl&gt; 1175823, 25403, 4778, 31441, 17331, 97608, 163…
+$ INELIGIBLE_PROBATION    &lt;dbl&gt; 1074600, 27469, 1872, 47515, 28009, 0, 0, 0, 7…
+$ INELIGIBLE_PAROLE       &lt;dbl&gt; 412595, 7815, 865, 7022, 23829, 0, 0, 0, 344, …
+$ INELIGIBLE_FELONS_TOTAL &lt;dbl&gt; 2663018, 60687, 7515, 85978, 69169, 97608, 163…
+$ ELIGIBLE_OVERSEAS       &lt;dbl&gt; 4400000, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ VEP                     &lt;dbl&gt; 242907672, 3794939, 529263, 5259832, 2189865, …
+$ VEP_TURNOUT_RATE        &lt;chr&gt; "46.12%", "37.53%", "50.46%", "49.29%", "41.75…
+$ VAP_TURNOUT_RATE        &lt;chr&gt; "42.97%", "36.00%", "47.98%", "44.72%", "38.95…</code></pre>
 </div>
 </div>
-<p>Clean data to have one row per county-year:</p>
+<p>Cleaning up into the data file used for class:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_county_pres <span class="ot">&lt;-</span> df_county_pres_raw <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(party), totalvotes <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">county =</span> county_name) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state, county) <span class="sc">|&gt;</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">county_fips =</span> <span class="fu">first</span>(county_fips),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_votes =</span> <span class="fu">first</span>(totalvotes),</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_votes =</span> <span class="fu">sum</span>(candidatevotes[party <span class="sc">==</span> <span class="st">"DEMOCRAT"</span>]),</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rep_votes =</span> <span class="fu">sum</span>(candidatevotes[party <span class="sc">==</span> <span class="st">"REPUBLICAN"</span>]),</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">fct_collapse</span>(</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>      state,</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">Northeast =</span> <span class="fu">c</span>(</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"CONNECTICUT"</span>, <span class="st">"MAINE"</span>, <span class="st">"MASSACHUSETTS"</span>, <span class="st">"NEW HAMPSHIRE"</span>, <span class="st">"RHODE ISLAND"</span>,</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"VERMONT"</span>, <span class="st">"NEW JERSEY"</span>, <span class="st">"NEW YORK"</span>, <span class="st">"PENNSYLVANIA"</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">Midwest =</span> <span class="fu">c</span>(</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ILLINOIS"</span>, <span class="st">"INDIANA"</span>, <span class="st">"MICHIGAN"</span>, <span class="st">"OHIO"</span>, <span class="st">"WISCONSIN"</span>, <span class="st">"IOWA"</span>, <span class="st">"KANSAS"</span>,</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"MINNESOTA"</span>, <span class="st">"MISSOURI"</span>, <span class="st">"NEBRASKA"</span>, <span class="st">"NORTH DAKOTA"</span>, <span class="st">"SOUTH DAKOTA"</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">South =</span> <span class="fu">c</span>(</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"DELAWARE"</span>, <span class="st">"DISTRICT OF COLUMBIA"</span>, <span class="st">"FLORIDA"</span>, <span class="st">"GEORGIA"</span>, <span class="st">"MARYLAND"</span>,</span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NORTH CAROLINA"</span>, <span class="st">"SOUTH CAROLINA"</span>, <span class="st">"VIRGINIA"</span>, <span class="st">"WEST VIRGINIA"</span>, <span class="st">"ALABAMA"</span>,</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"KENTUCKY"</span>, <span class="st">"MISSISSIPPI"</span>, <span class="st">"TENNESSEE"</span>, <span class="st">"ARKANSAS"</span>, <span class="st">"LOUISIANA"</span>, <span class="st">"OKLAHOMA"</span>,</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TEXAS"</span></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">West =</span> <span class="fu">c</span>(</span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ARIZONA"</span>, <span class="st">"COLORADO"</span>, <span class="st">"IDAHO"</span>, <span class="st">"MONTANA"</span>, <span class="st">"NEVADA"</span>, <span class="st">"NEW MEXICO"</span>, <span class="st">"UTAH"</span>,</span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">"WYOMING"</span>, <span class="st">"ALASKA"</span>, <span class="st">"CALIFORNIA"</span>, <span class="st">"HAWAII"</span>, <span class="st">"OREGON"</span>, <span class="st">"WASHINGTON"</span></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">other_level =</span> <span class="st">"Unknown"</span></span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> dem_votes <span class="sc">-</span> rep_votes,</span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_margin =</span> margin <span class="sc">/</span> total_votes,</span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">competitiveness =</span> <span class="fu">case_when</span>(</span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.2</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">3</span>,</span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.1</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">2</span>,</span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="sc">-</span><span class="fl">0.04</span> <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="fl">0.04</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="fl">0.1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>      pct_margin <span class="sc">&lt;</span> <span class="fl">0.2</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">3</span></span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span></span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">dem_win_state =</span> <span class="fu">as.numeric</span>(<span class="fu">sum</span>(dem_votes) <span class="sc">&gt;</span> <span class="fu">sum</span>(rep_votes)),</span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert</span>(not_na, <span class="fu">everything</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, state, region, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="ot">&lt;-</span> df_turnout_raw <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only want national level data</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(STATE <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Grab and rename the columns we want</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> YEAR,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">voting_age_pop =</span> VAP,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">voting_eligible_pop =</span> VEP,</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ballots_counted =</span> TOTAL_BALLOTS_COUNTED,</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">highest_office =</span> VOTE_FOR_HIGHEST_OFFICE,</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">noncitizen_pct =</span> NONCITIZEN_PCT,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ineligible_felons =</span> INELIGIBLE_FELONS_TOTAL,</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">eligible_overseas =</span> ELIGIBLE_OVERSEAS,</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">.keep =</span> <span class="st">"none"</span>,</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clean up highest_office and noncitizen_pct columns to be numeric</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">noncitizen_pct =</span> <span class="fu">str_replace</span>(noncitizen_pct, <span class="st">"</span><span class="sc">\\</span><span class="st">%"</span>, <span class="st">""</span>),</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">noncitizen_pct =</span> <span class="fu">as.numeric</span>(noncitizen_pct) <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">highest_office =</span> <span class="fu">str_replace_all</span>(highest_office, <span class="st">","</span>, <span class="st">""</span>),</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">highest_office =</span> <span class="fu">as.numeric</span>(highest_office),</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate number of noncitizens</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">ineligible_noncitizens =</span> noncitizen_pct <span class="sc">*</span> voting_age_pop,</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>noncitizen_pct) <span class="sc">|&gt;</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For vote total, use ballots counted where available, otherwise just use</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># votes for highest office</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">votes_counted =</span> <span class="fu">if_else</span>(</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(ballots_counted),</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>      ballots_counted,</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>      highest_office</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert population counts to millions</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span>year, \(x) x <span class="sc">/</span> <span class="fl">1e6</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove columns no longer needed</span></span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>    year, votes_counted, voting_age_pop, voting_eligible_pop,</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>    ineligible_felons, ineligible_noncitizens, eligible_overseas</span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Order from earliest to latest</span></span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 22
+Columns: 7
+$ year                   &lt;dbl&gt; 1980, 1982, 1984, 1986, 1988, 1990, 199…
+$ votes_counted          &lt;dbl&gt; 86.51522, 67.61558, 92.65268, 64.99113,…
+$ voting_age_pop         &lt;dbl&gt; 164.4455, 166.0276, 173.9946, 177.9223,…
+$ voting_eligible_pop    &lt;dbl&gt; 159.6909, 160.4088, 167.7085, 170.4089,…
+$ ineligible_felons      &lt;dbl&gt; 0.801977, 0.959637, 1.165246, 1.367117,…
+$ ineligible_noncitizens &lt;dbl&gt; 5.755592, 6.641105, 7.481768, 8.362350,…
+$ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…</code></pre>
 </div>
-<p>Save to <code>county_pres.csv</code>:</p>
+</div>
+<p>Double check that the manually calculated voting eligible calculation lines up with the one reported in the data frame:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_county_pres, <span class="st">"data/county_pres.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">vep_manual =</span> voting_age_pop <span class="sc">-</span> ineligible_felons <span class="sc">-</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>      ineligible_noncitizens <span class="sc">+</span> eligible_overseas,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">vep_difference =</span> <span class="fu">abs</span>(voting_eligible_pop <span class="sc">-</span> vep_manual) <span class="sc">/</span> voting_eligible_pop,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, voting_eligible_pop, vep_manual, vep_difference) <span class="sc">|&gt;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 4
+    year voting_eligible_pop vep_manual vep_difference
+   &lt;dbl&gt;               &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;
+ 1  1980                160.       160.       2.35e- 9
+ 2  1982                160.       160.       1.99e- 9
+ 3  1984                168.       168.       1.37e- 9
+ 4  1986                170.       170.       2.88e- 9
+ 5  1988                174.       174.       1.82e- 9
+ 6  1990                177.       177.       1.44e- 9
+ 7  1992                180.       180.       2.12e- 9
+ 8  1994                183.       183.       2.19e- 9
+ 9  1996                186.       186.       1.91e- 9
+10  1998                190.       190.       1.50e- 9
+11  2000                194.       194.       2.14e- 9
+12  2002                198.       198.       4.03e-10
+13  2004                203.       203.       2.18e- 9
+14  2006                207.       207.       1.52e- 9
+15  2008                213.       213.       2.25e- 9
+16  2010                222.       222.       1.94e- 4
+17  2012                222.       222.       2.66e- 9
+18  2014                227.       227.       7.00e-10
+19  2016                231.       231.       7.06e-10
+20  2018                237.       237.       4.22e-10
+21  2020                242.       242.       6.20e-10
+22  2022                243.       243.       4.84e- 9</code></pre>
+</div>
+</div>
+<p>Save cleaned data to <code>turnout.csv</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_turnout, <span class="st">"data/turnout.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="world-development-indicators-2019-wdi.csv" class="level2" data-number="B.5">
-<h2 data-number="B.5" class="anchored" data-anchor-id="world-development-indicators-2019-wdi.csv"><span class="header-section-number">B.5</span> World Development Indicators, 2019: <code>wdi.csv</code></h2>
+<section id="wdi.csv-world-development-indicators-2019" class="level2" data-number="B.8">
+<h2 data-number="B.8" class="anchored" data-anchor-id="wdi.csv-world-development-indicators-2019"><span class="header-section-number">B.8</span> <code>wdi.csv</code>: World Development Indicators, 2019</h2>
 <p>This file contains data from the World Bank’s <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a> dataset.</p>
 <p>Obtain raw data using the WDI package:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data via WDI package</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>wdi_file <span class="ot">&lt;-</span> <span class="st">"_raw/wdi_2019.csv"</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(wdi_file)) {</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  df_wdi_pkg <span class="ot">&lt;-</span> <span class="fu">WDI</span>(</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">"all"</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">indicator =</span> <span class="fu">c</span>(</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"gdp_per_capita"</span> <span class="ot">=</span> <span class="st">"NY.GDP.PCAP.CD"</span>,</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"gdp_growth"</span> <span class="ot">=</span> <span class="st">"NY.GDP.MKTP.KD.ZG"</span>,</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"population"</span> <span class="ot">=</span> <span class="st">"SP.POP.TOTL"</span>,</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"inflation"</span> <span class="ot">=</span> <span class="st">"FP.CPI.TOTL.ZG"</span>,</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"unemployment"</span> <span class="ot">=</span> <span class="st">"SL.UEM.TOTL.ZS"</span>,</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"life_expectancy"</span> <span class="ot">=</span> <span class="st">"SP.DYN.LE00.IN"</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="dv">2019</span>, <span class="at">end =</span> <span class="dv">2019</span>,</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">extra =</span> <span class="cn">TRUE</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(df_wdi_pkg, wdi_file)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>df_wdi_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(wdi_file)</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data via WDI package</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>wdi_file <span class="ot">&lt;-</span> <span class="st">"_raw/wdi_2019.csv"</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(wdi_file)) {</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  df_wdi_pkg <span class="ot">&lt;-</span> <span class="fu">WDI</span>(</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">"all"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">indicator =</span> <span class="fu">c</span>(</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"gdp_per_capita"</span> <span class="ot">=</span> <span class="st">"NY.GDP.PCAP.CD"</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"gdp_growth"</span> <span class="ot">=</span> <span class="st">"NY.GDP.MKTP.KD.ZG"</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"population"</span> <span class="ot">=</span> <span class="st">"SP.POP.TOTL"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"inflation"</span> <span class="ot">=</span> <span class="st">"FP.CPI.TOTL.ZG"</span>,</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"unemployment"</span> <span class="ot">=</span> <span class="st">"SL.UEM.TOTL.ZS"</span>,</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"life_expectancy"</span> <span class="ot">=</span> <span class="st">"SP.DYN.LE00.IN"</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="dv">2019</span>, <span class="at">end =</span> <span class="dv">2019</span>,</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">extra =</span> <span class="cn">TRUE</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(df_wdi_pkg, wdi_file)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>df_wdi_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(wdi_file)</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 266
 Columns: 18
@@ -744,21 +1107,21 @@ $ lending         &lt;chr&gt; "IDA", "Aggregates", "Aggregates", "IBRD", "IBRD",
 </div>
 <p>Minor cleaning to remove unwanted rows and columns:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_wdi <span class="ot">&lt;-</span> df_wdi_raw <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>iso2c, <span class="sc">-</span>status, <span class="sc">-</span>lastupdated, <span class="sc">-</span>capital, <span class="sc">-</span>longitude, <span class="sc">-</span>latitude) <span class="sc">|&gt;</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">"Aggregates"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(income <span class="sc">!=</span> <span class="st">"Not classified"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> <span class="fu">case_match</span>(</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    income,</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Low income"</span> <span class="sc">~</span> <span class="st">"1. Low"</span>,</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Lower middle income"</span> <span class="sc">~</span> <span class="st">"2. Lower-middle"</span>,</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Upper middle income"</span> <span class="sc">~</span> <span class="st">"3. Upper-middle"</span>,</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"High income"</span> <span class="sc">~</span> <span class="st">"4. High"</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_wdi <span class="ot">&lt;-</span> df_wdi_raw <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>iso2c, <span class="sc">-</span>status, <span class="sc">-</span>lastupdated, <span class="sc">-</span>capital, <span class="sc">-</span>longitude, <span class="sc">-</span>latitude) <span class="sc">|&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">"Aggregates"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(income <span class="sc">!=</span> <span class="st">"Not classified"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> <span class="fu">case_match</span>(</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    income,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Low income"</span> <span class="sc">~</span> <span class="st">"1. Low"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Lower middle income"</span> <span class="sc">~</span> <span class="st">"2. Lower-middle"</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Upper middle income"</span> <span class="sc">~</span> <span class="st">"3. Upper-middle"</span>,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"High income"</span> <span class="sc">~</span> <span class="st">"4. High"</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 215
 Columns: 12
@@ -778,274 +1141,7 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not …<
 </div>
 <p>Save to <code>wdi.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_wdi, <span class="st">"data/wdi.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="subset-of-2020-anes-survey-anes_2020.csv" class="level2" data-number="B.6">
-<h2 data-number="B.6" class="anchored" data-anchor-id="subset-of-2020-anes-survey-anes_2020.csv"><span class="header-section-number">B.6</span> Subset of 2020 ANES survey: <code>anes_2020.csv</code></h2>
-<p>This file contains a small number of variables from the 2020 wave of the <a href="https://electionstudies.org/data-center/">American National Election Studies</a> Time Series Study.</p>
-<p>Despite the direct download link on ANES’s website, they’ve got it locked down to prevent programmatic access from utilities like <code>download.file()</code>. (Not running <code>glimpse()</code> this time because the data has 1700+ columns.)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>anes_file <span class="ot">&lt;-</span> <span class="st">"_raw/anes_timeseries_2020_csv_20220210.csv"</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(anes_file))</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Need to download data manually from ANES website"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>df_anes_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(anes_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Extract the few columns we care about and convert numeric codes to understandable values:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes_raw <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">row_number</span>(),</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">state =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      V201014b,</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Alabama"</span>,</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Alaska"</span>,</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Arizona"</span>,</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Arkansas"</span>,</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>      <span class="dv">6</span> <span class="sc">~</span> <span class="st">"California"</span>,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>      <span class="dv">8</span> <span class="sc">~</span> <span class="st">"Colorado"</span>,</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>      <span class="dv">9</span> <span class="sc">~</span> <span class="st">"Connecticut"</span>,</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>      <span class="dv">10</span> <span class="sc">~</span> <span class="st">"Delaware"</span>,</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>      <span class="dv">11</span> <span class="sc">~</span> <span class="st">"District of Columbia"</span>,</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>      <span class="dv">12</span> <span class="sc">~</span> <span class="st">"Florida"</span>,</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>      <span class="dv">13</span> <span class="sc">~</span> <span class="st">"Georgia"</span>,</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>      <span class="dv">15</span> <span class="sc">~</span> <span class="st">"Hawaii"</span>,</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>      <span class="dv">16</span> <span class="sc">~</span> <span class="st">"Idaho"</span>,</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>      <span class="dv">17</span> <span class="sc">~</span> <span class="st">"Illinois"</span>,</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>      <span class="dv">18</span> <span class="sc">~</span> <span class="st">"Indiana"</span>,</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>      <span class="dv">19</span> <span class="sc">~</span> <span class="st">"Iowa"</span>,</span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>      <span class="dv">20</span> <span class="sc">~</span> <span class="st">"Kansas"</span>,</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>      <span class="dv">21</span> <span class="sc">~</span> <span class="st">"Kentucky"</span>,</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>      <span class="dv">22</span> <span class="sc">~</span> <span class="st">"Louisiana"</span>,</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>      <span class="dv">23</span> <span class="sc">~</span> <span class="st">"Maine"</span>,</span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>      <span class="dv">24</span> <span class="sc">~</span> <span class="st">"Maryland"</span>,</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>      <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Massachusetts"</span>,</span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>      <span class="dv">26</span> <span class="sc">~</span> <span class="st">"Michigan"</span>,</span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>      <span class="dv">27</span> <span class="sc">~</span> <span class="st">"Minnesota"</span>,</span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>      <span class="dv">28</span> <span class="sc">~</span> <span class="st">"Mississippi"</span>,</span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>      <span class="dv">29</span> <span class="sc">~</span> <span class="st">"Missouri"</span>,</span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>      <span class="dv">30</span> <span class="sc">~</span> <span class="st">"Montana"</span>,</span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>      <span class="dv">31</span> <span class="sc">~</span> <span class="st">"Nebraska"</span>,</span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>      <span class="dv">32</span> <span class="sc">~</span> <span class="st">"Nevada"</span>,</span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>      <span class="dv">33</span> <span class="sc">~</span> <span class="st">"New Hampshire"</span>,</span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>      <span class="dv">34</span> <span class="sc">~</span> <span class="st">"New Jersey"</span>,</span>
-<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>      <span class="dv">35</span> <span class="sc">~</span> <span class="st">"New Mexico"</span>,</span>
-<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>      <span class="dv">36</span> <span class="sc">~</span> <span class="st">"New York"</span>,</span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>      <span class="dv">37</span> <span class="sc">~</span> <span class="st">"North Carolina"</span>,</span>
-<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>      <span class="dv">38</span> <span class="sc">~</span> <span class="st">"North Dakota"</span>,</span>
-<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>      <span class="dv">39</span> <span class="sc">~</span> <span class="st">"Ohio"</span>,</span>
-<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>      <span class="dv">40</span> <span class="sc">~</span> <span class="st">"Oklahoma"</span>,</span>
-<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>      <span class="dv">41</span> <span class="sc">~</span> <span class="st">"Oregon"</span>,</span>
-<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>      <span class="dv">42</span> <span class="sc">~</span> <span class="st">"Pennsylvania"</span>,</span>
-<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>      <span class="dv">44</span> <span class="sc">~</span> <span class="st">"Rhode Island"</span>,</span>
-<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>      <span class="dv">45</span> <span class="sc">~</span> <span class="st">"South Carolina"</span>,</span>
-<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>      <span class="dv">46</span> <span class="sc">~</span> <span class="st">"South Dakota"</span>,</span>
-<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a>      <span class="dv">47</span> <span class="sc">~</span> <span class="st">"Tennessee"</span>,</span>
-<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a>      <span class="dv">48</span> <span class="sc">~</span> <span class="st">"Texas"</span>,</span>
-<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>      <span class="dv">49</span> <span class="sc">~</span> <span class="st">"Utah"</span>,</span>
-<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a>      <span class="dv">50</span> <span class="sc">~</span> <span class="st">"Vermont"</span>,</span>
-<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a>      <span class="dv">51</span> <span class="sc">~</span> <span class="st">"Virginia"</span>,</span>
-<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>      <span class="dv">53</span> <span class="sc">~</span> <span class="st">"Washington"</span>,</span>
-<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>      <span class="dv">54</span> <span class="sc">~</span> <span class="st">"West Virginia"</span>,</span>
-<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a>      <span class="dv">55</span> <span class="sc">~</span> <span class="st">"Wisconsin"</span>,</span>
-<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a>      <span class="dv">56</span> <span class="sc">~</span> <span class="st">"Wyoming"</span></span>
-<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">female =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a>      V201600,</span>
-<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">lgbt =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a>      V201601,</span>
-<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb27-66"><a href="#cb27-66" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb27-67"><a href="#cb27-67" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">race =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-69"><a href="#cb27-69" aria-hidden="true" tabindex="-1"></a>      V201549x,</span>
-<span id="cb27-70"><a href="#cb27-70" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"White"</span>,</span>
-<span id="cb27-71"><a href="#cb27-71" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Black"</span>,</span>
-<span id="cb27-72"><a href="#cb27-72" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Hispanic"</span>,</span>
-<span id="cb27-73"><a href="#cb27-73" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Asian"</span>,</span>
-<span id="cb27-74"><a href="#cb27-74" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Native American"</span>,</span>
-<span id="cb27-75"><a href="#cb27-75" aria-hidden="true" tabindex="-1"></a>      <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Multiracial"</span></span>
-<span id="cb27-76"><a href="#cb27-76" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-77"><a href="#cb27-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">if_else</span>(V201507x <span class="sc">&gt;</span> <span class="dv">0</span>, V201507x, <span class="cn">NA</span>),</span>
-<span id="cb27-78"><a href="#cb27-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">education =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-79"><a href="#cb27-79" aria-hidden="true" tabindex="-1"></a>      V201511x,</span>
-<span id="cb27-80"><a href="#cb27-80" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Less than high school"</span>,</span>
-<span id="cb27-81"><a href="#cb27-81" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="st">"High school"</span>,</span>
-<span id="cb27-82"><a href="#cb27-82" aria-hidden="true" tabindex="-1"></a>      <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Some college"</span>,</span>
-<span id="cb27-83"><a href="#cb27-83" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Bachelor's degree"</span>,</span>
-<span id="cb27-84"><a href="#cb27-84" aria-hidden="true" tabindex="-1"></a>      <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Graduate degree"</span></span>
-<span id="cb27-85"><a href="#cb27-85" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-86"><a href="#cb27-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">employed =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-87"><a href="#cb27-87" aria-hidden="true" tabindex="-1"></a>      V201517,</span>
-<span id="cb27-88"><a href="#cb27-88" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb27-89"><a href="#cb27-89" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span></span>
-<span id="cb27-90"><a href="#cb27-90" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-91"><a href="#cb27-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours_worked =</span> <span class="fu">case_when</span>(</span>
-<span id="cb27-92"><a href="#cb27-92" aria-hidden="true" tabindex="-1"></a>      V201527 <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb27-93"><a href="#cb27-93" aria-hidden="true" tabindex="-1"></a>      V201527 <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> V201527,</span>
-<span id="cb27-94"><a href="#cb27-94" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
-<span id="cb27-95"><a href="#cb27-95" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-96"><a href="#cb27-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">watch_tucker =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-97"><a href="#cb27-97" aria-hidden="true" tabindex="-1"></a>      V201630c,</span>
-<span id="cb27-98"><a href="#cb27-98" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb27-99"><a href="#cb27-99" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb27-100"><a href="#cb27-100" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-101"><a href="#cb27-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">watch_maddow =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-102"><a href="#cb27-102" aria-hidden="true" tabindex="-1"></a>      V201630d,</span>
-<span id="cb27-103"><a href="#cb27-103" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>) <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb27-104"><a href="#cb27-104" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb27-105"><a href="#cb27-105" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-106"><a href="#cb27-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_biden =</span> <span class="fu">if_else</span>(V201151 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201151, <span class="cn">NA</span>),</span>
-<span id="cb27-107"><a href="#cb27-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_trump =</span> <span class="fu">if_else</span>(V201152 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201152, <span class="cn">NA</span>),</span>
-<span id="cb27-108"><a href="#cb27-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_harris =</span> <span class="fu">if_else</span>(V201153 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201153, <span class="cn">NA</span>),</span>
-<span id="cb27-109"><a href="#cb27-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_pence =</span> <span class="fu">if_else</span>(V201154 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201154, <span class="cn">NA</span>),</span>
-<span id="cb27-110"><a href="#cb27-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_obama =</span> <span class="fu">if_else</span>(V201155 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201155, <span class="cn">NA</span>),</span>
-<span id="cb27-111"><a href="#cb27-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_dem_party =</span> <span class="fu">if_else</span>(V201156 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201156, <span class="cn">NA</span>),</span>
-<span id="cb27-112"><a href="#cb27-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_rep_party =</span> <span class="fu">if_else</span>(V201157 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V201157, <span class="cn">NA</span>),</span>
-<span id="cb27-113"><a href="#cb27-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_feminists =</span> <span class="fu">if_else</span>(V202160 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202160, <span class="cn">NA</span>),</span>
-<span id="cb27-114"><a href="#cb27-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_liberals =</span> <span class="fu">if_else</span>(V202161 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202161, <span class="cn">NA</span>),</span>
-<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_labor_unions =</span> <span class="fu">if_else</span>(V202162 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202162, <span class="cn">NA</span>),</span>
-<span id="cb27-116"><a href="#cb27-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_big_business =</span> <span class="fu">if_else</span>(V202163 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202163, <span class="cn">NA</span>),</span>
-<span id="cb27-117"><a href="#cb27-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_conservatives =</span> <span class="fu">if_else</span>(V202164 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202164, <span class="cn">NA</span>),</span>
-<span id="cb27-118"><a href="#cb27-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_supreme_court =</span> <span class="fu">if_else</span>(V202165 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202165, <span class="cn">NA</span>),</span>
-<span id="cb27-119"><a href="#cb27-119" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_congress =</span> <span class="fu">if_else</span>(V202167 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202167, <span class="cn">NA</span>),</span>
-<span id="cb27-120"><a href="#cb27-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_police =</span> <span class="fu">if_else</span>(V202171 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202171, <span class="cn">NA</span>),</span>
-<span id="cb27-121"><a href="#cb27-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">therm_scientists =</span> <span class="fu">if_else</span>(V202173 <span class="sc">%in%</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, V202173, <span class="cn">NA</span>),</span>
-<span id="cb27-122"><a href="#cb27-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">contributed_to_party =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-123"><a href="#cb27-123" aria-hidden="true" tabindex="-1"></a>      V202019,</span>
-<span id="cb27-124"><a href="#cb27-124" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb27-125"><a href="#cb27-125" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span></span>
-<span id="cb27-126"><a href="#cb27-126" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-127"><a href="#cb27-127" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-128"><a href="#cb27-128" aria-hidden="true" tabindex="-1"></a>      V202068x,</span>
-<span id="cb27-129"><a href="#cb27-129" aria-hidden="true" tabindex="-1"></a>      <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb27-130"><a href="#cb27-130" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb27-131"><a href="#cb27-131" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-132"><a href="#cb27-132" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_biden =</span> <span class="fu">if_else</span>(V202073 <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="cn">NA</span>, V202073),</span>
-<span id="cb27-133"><a href="#cb27-133" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_biden =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-134"><a href="#cb27-134" aria-hidden="true" tabindex="-1"></a>      voted_for_biden,</span>
-<span id="cb27-135"><a href="#cb27-135" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb27-136"><a href="#cb27-136" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span><span class="sc">:</span><span class="dv">8</span> <span class="sc">~</span> <span class="dv">0</span></span>
-<span id="cb27-137"><a href="#cb27-137" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-138"><a href="#cb27-138" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_trump =</span> <span class="fu">if_else</span>(V202073 <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="cn">NA</span>, V202073),</span>
-<span id="cb27-139"><a href="#cb27-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">voted_for_trump =</span> <span class="fu">case_match</span>(</span>
-<span id="cb27-140"><a href="#cb27-140" aria-hidden="true" tabindex="-1"></a>      voted_for_trump,</span>
-<span id="cb27-141"><a href="#cb27-141" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb27-142"><a href="#cb27-142" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">~</span> <span class="dv">0</span></span>
-<span id="cb27-143"><a href="#cb27-143" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-144"><a href="#cb27-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">.keep =</span> <span class="st">"none"</span></span>
-<span id="cb27-145"><a href="#cb27-145" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb27-146"><a href="#cb27-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-147"><a href="#cb27-147" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 8,280
-Columns: 31
-$ id                   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13…
-$ state                &lt;chr&gt; "Oklahoma", "Idaho", "Virginia", "Califor…
-$ female               &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,…
-$ lgbt                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ race                 &lt;chr&gt; "Hispanic", "Asian", "White", "Asian", "N…
-$ age                  &lt;dbl&gt; 46, 37, 40, 41, 72, 71, 37, 45, 70, 43, 3…
-$ education            &lt;chr&gt; "Bachelor's degree", "Some college", "Hig…
-$ employed             &lt;dbl&gt; 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0,…
-$ hours_worked         &lt;dbl&gt; 40, 40, 0, 40, 0, 0, 30, 40, 0, 30, 25, 5…
-$ watch_tucker         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ watch_maddow         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ therm_biden          &lt;dbl&gt; 0, 0, 65, 70, 15, 85, 50, 50, 85, 85, 100…
-$ therm_trump          &lt;dbl&gt; 100, 0, 0, 15, 85, 0, 75, 100, 0, 0, 0, 0…
-$ therm_harris         &lt;dbl&gt; 0, 0, 65, 85, 15, 85, 15, 50, 85, 50, 100…
-$ therm_pence          &lt;dbl&gt; 85, 0, 0, 15, 90, 0, 75, 50, 0, 50, 0, 50…
-$ therm_obama          &lt;dbl&gt; 0, 50, 90, 85, 10, 60, 15, 50, 60, 100, 1…
-$ therm_dem_party      &lt;dbl&gt; 0, 0, 60, 50, 20, 85, 15, 50, NA, 60, 100…
-$ therm_rep_party      &lt;dbl&gt; 85, 50, 0, 70, 70, 15, 75, 100, NA, 50, 0…
-$ therm_feminists      &lt;dbl&gt; 65, 100, 75, 70, 30, 60, 60, 100, 50, 50,…
-$ therm_liberals       &lt;dbl&gt; 30, 0, 75, 70, 10, 70, 0, NA, 30, 50, 50,…
-$ therm_labor_unions   &lt;dbl&gt; 30, 70, 75, 70, 50, 50, 50, 0, 30, 50, 50…
-$ therm_big_business   &lt;dbl&gt; 70, 50, 0, 85, 0, 40, 50, 0, 50, 15, 50, …
-$ therm_conservatives  &lt;dbl&gt; 85, 15, 0, 70, 60, 40, 60, NA, 50, 50, 50…
-$ therm_supreme_court  &lt;dbl&gt; 100, 50, 25, 85, 60, 60, 70, 50, 50, 50, …
-$ therm_congress       &lt;dbl&gt; 40, 15, 0, 100, 10, 85, 50, 50, 50, 40, 5…
-$ therm_police         &lt;dbl&gt; 85, 90, 40, 100, 70, 70, 60, 100, 60, 70,…
-$ therm_scientists     &lt;dbl&gt; 100, 70, 100, 85, 60, 85, 85, NA, 60, 50,…
-$ contributed_to_party &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ voted                &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,…
-$ voted_for_biden      &lt;dbl&gt; NA, 0, 1, 1, 0, 1, 0, NA, NA, 1, 1, 1, 0,…
-$ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1,…</code></pre>
-</div>
-</div>
-<p>Save to <code>anes_2020.csv</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_anes, <span class="st">"data/anes_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="federalist-papers-corpus-fed_papers.csv" class="level2" data-number="B.7">
-<h2 data-number="B.7" class="anchored" data-anchor-id="federalist-papers-corpus-fed_papers.csv"><span class="header-section-number">B.7</span> Federalist Papers corpus: <code>fed_papers.csv</code></h2>
-<p>This file contains the full text of each of the <a href="https://en.wikipedia.org/wiki/The_Federalist_Papers">Federalist Papers</a>, per the public domain text archived by <a href="https://www.gutenberg.org/">Project Gutenberg</a>.</p>
-<p>Obtain the raw text from Project Gutenberg:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fed_papers_url <span class="ot">&lt;-</span> <span class="st">"https://www.gutenberg.org/files/18/18-0.txt"</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>fed_papers_file <span class="ot">&lt;-</span> <span class="st">"_raw/fed_papers.txt"</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(fed_papers_file))</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> fed_papers_url, <span class="at">destfile =</span> fed_papers_file)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>fed_papers_raw <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fed_papers_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Parse text and assemble into data frame:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Eliminate table of contents and other non-text content</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers_raw <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="sc">-</span><span class="dv">98</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="sc">-</span><span class="dv">2</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Combine into single string</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> <span class="fu">str_c</span>(fed_papers, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Split into individual papers</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers <span class="sc">|&gt;</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">"THE FEDERALIST.</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Eliminate the empty first entry, as well as the duplicate of #70</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers[<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers[<span class="sc">-</span><span class="dv">70</span>]</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Extract author(s) of each paper</span></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>author_id_regex <span class="ot">&lt;-</span> <span class="st">"</span><span class="sc">\\</span><span class="st">n</span><span class="sc">\\</span><span class="st">n(HAMILTON|JAY|MADISON|HAMILTON AND MADISON|HAMILTON OR MADISON)</span><span class="sc">\\</span><span class="st">n</span><span class="sc">\\</span><span class="st">n</span><span class="sc">\\</span><span class="st">n"</span></span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>paper_author <span class="ot">&lt;-</span> fed_papers <span class="sc">|&gt;</span></span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract</span>(author_id_regex) <span class="sc">|&gt;</span></span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">n"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_to_lower</span>()</span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Start each paper text after author identifier</span></span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="do">## This will keep our classifiers from "peeking" by directly using author info</span></span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>paper_text <span class="ot">&lt;-</span> fed_papers <span class="sc">|&gt;</span></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split_i</span>(author_id_regex, <span class="at">i =</span> <span class="dv">2</span>)</span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Combine into a data frame</span></span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">paper_id =</span> <span class="fu">seq_along</span>(fed_papers),</span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">author =</span> paper_author,</span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> paper_text</span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_fed_papers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 85
-Columns: 3
-$ paper_id &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
-$ author   &lt;chr&gt; "hamilton", "jay", "jay", "jay", "jay", "hamilton", "…
-$ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …</code></pre>
-</div>
-</div>
-<p>Save to <code>fed_papers.csv</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_fed_papers, <span class="st">"data/fed_papers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_wdi, <span class="st">"data/wdi.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
