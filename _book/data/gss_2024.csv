@@ -1,22 +1,17 @@
 id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_rating
 1,New England,33,16,0,Black,0,4,0,6,0
-2,New England,64,16,0,White,0,3,NA,NA,NA
 3,New England,69,14,1,White,0,1,0,0,0
-4,New England,19,12,0,Other,0,NA,50,50,50
 5,New England,70,13,1,White,0,4,60,60,60
-6,New England,53,14,0,Other,1,NA,NA,NA,NA
 7,New England,48,13,1,White,0,2,0,15,0
 8,New England,30,14,1,White,0,4,30,50,40
 9,New England,60,14,1,Black,0,4,0,30,0
 10,New England,25,12,0,Black,0,4,50,50,50
 11,New England,23,18,1,White,1,2,0,0,0
 12,New England,68,5,1,White,0,1,0,15,15
-13,New England,43,14,1,White,0,NA,NA,NA,NA
 14,New England,37,12,1,White,0,1,0,0,0
 15,New England,63,12,1,White,0,4,0,50,0
 16,New England,31,19,1,White,0,3,0,20,0
 17,New England,64,16,0,White,0,4,75,0,0
-18,New England,NA,13,NA,White,NA,4,70,NA,NA
 19,New England,63,11,1,White,0,5,80,70,60
 20,New England,41,8,1,White,1,4,70,70,70
 21,Middle Atlantic,75,13,1,White,0,4,15,50,50
@@ -28,13 +23,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 27,Middle Atlantic,73,16,1,White,0,4,0,20,0
 28,Middle Atlantic,74,14,1,White,0,4,0,0,0
 29,Middle Atlantic,56,14,1,White,0,6,100,100,100
-30,Middle Atlantic,40,14,0,Asian,NA,3,50,50,50
 31,Middle Atlantic,55,13,1,White,0,5,85,85,85
-32,Middle Atlantic,55,18,1,White,0,4,NA,NA,NA
-33,Middle Atlantic,31,12,0,Other,1,NA,100,65,50
 34,Middle Atlantic,61,18,1,White,0,1,0,15,0
 35,Middle Atlantic,71,12,1,White,0,3,60,70,50
-36,Middle Atlantic,70,16,1,White,0,5,85,NA,NA
 37,Middle Atlantic,60,16,1,White,0,6,75,50,80
 38,Middle Atlantic,57,11,1,American Indian,0,5,50,25,25
 39,Middle Atlantic,37,16,1,Other,1,7,80,80,100
@@ -47,21 +38,17 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 46,Middle Atlantic,79,17,0,White,0,4,0,15,0
 47,Middle Atlantic,83,16,1,White,0,4,65,50,52
 48,Middle Atlantic,57,16,0,White,0,4,0,0,0
-49,Middle Atlantic,NA,16,0,White,0,3,2,25,10
-50,Middle Atlantic,65,11,0,White,0,6,100,NA,NA
 51,Middle Atlantic,74,16,1,White,0,4,0,0,0
 52,Middle Atlantic,61,18,1,White,0,5,35,65,40
 53,Middle Atlantic,24,16,1,White,0,3,10,50,35
 54,Middle Atlantic,61,6,0,Black,0,1,0,85,60
 55,Middle Atlantic,56,16,1,Asian,0,3,0,30,0
 56,Middle Atlantic,72,16,1,White,0,3,0,0,0
-57,Middle Atlantic,NA,12,1,White,0,NA,15,30,30
 58,Middle Atlantic,49,18,1,White,0,2,0,0,0
 59,Middle Atlantic,78,13,0,White,0,4,0,30,0
 60,Middle Atlantic,63,13,1,Other,1,2,0,70,0
 61,Middle Atlantic,57,18,1,White,0,2,0,0,0
 62,Middle Atlantic,26,16,0,Asian,0,3,10,30,0
-63,Middle Atlantic,89,12,1,White,0,6,NA,25,NA
 64,Middle Atlantic,79,15,0,White,0,7,85,85,70
 65,Middle Atlantic,22,16,1,White,0,2,0,15,0
 66,Middle Atlantic,49,17,1,Other,1,4,50,50,40
@@ -72,38 +59,24 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 71,Middle Atlantic,41,17,1,Other,1,4,50,50,50
 72,Middle Atlantic,37,16,0,Asian,0,5,0,16,0
 73,Middle Atlantic,32,16,0,White,0,6,75,0,0
-74,Middle Atlantic,32,16,0,Asian,0,2,70,70,NA
 75,Middle Atlantic,54,12,0,Black,0,4,65,70,50
 76,Middle Atlantic,56,13,0,Black,0,1,0,0,0
 77,Middle Atlantic,28,16,1,White,0,5,40,35,10
 78,Middle Atlantic,46,16,1,White,0,2,0,20,0
 79,Middle Atlantic,20,14,1,Other,1,6,50,50,0
 80,Middle Atlantic,31,16,0,White,0,2,0,15,0
-81,Middle Atlantic,49,12,0,NA,1,4,90,100,80
 82,Middle Atlantic,59,16,1,Black,1,6,100,100,100
-83,Middle Atlantic,65,NA,0,White,0,2,15,50,50
 84,Middle Atlantic,74,3,1,Black,1,4,50,50,50
-85,Middle Atlantic,47,17,1,NA,1,4,50,NA,NA
-86,Middle Atlantic,62,14,1,Other,NA,4,50,0,0
-87,Middle Atlantic,37,13,1,Other,1,5,70,NA,80
-88,Middle Atlantic,50,12,1,NA,1,2,40,40,0
-89,Middle Atlantic,34,14,1,NA,1,5,0,NA,NA
 90,Middle Atlantic,36,16,0,Asian,0,1,90,88,88
 91,Middle Atlantic,75,14,1,Black,0,3,0,0,0
-92,Middle Atlantic,41,13,1,NA,1,6,100,70,100
 93,Middle Atlantic,36,7,1,Asian,0,4,0,0,0
-94,Middle Atlantic,41,17,0,Asian,0,NA,50,0,50
 95,Middle Atlantic,79,12,0,White,0,2,0,30,0
 96,Middle Atlantic,26,13,0,Black,0,4,60,20,30
-97,Middle Atlantic,55,12,1,Black,0,NA,NA,60,50
-98,Middle Atlantic,34,12,0,NA,1,3,80,90,70
 99,Middle Atlantic,54,12,0,Black,0,5,0,0,0
 100,Middle Atlantic,61,15,1,Black,0,3,0,20,0
 101,Middle Atlantic,72,14,1,Black,0,3,0,50,0
 102,Middle Atlantic,54,16,1,Black,0,1,0,0,0
 103,Middle Atlantic,57,20,1,Black,1,2,0,10,0
-104,Middle Atlantic,60,18,0,Other,1,5,100,70,NA
-105,Middle Atlantic,86,16,1,NA,0,2,0,10,0
 106,Middle Atlantic,66,12,0,White,0,7,100,100,85
 107,Middle Atlantic,55,12,1,Other,1,3,45,52,50
 108,Middle Atlantic,48,12,0,Black,0,4,75,60,50
@@ -111,25 +84,16 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 110,Middle Atlantic,32,16,1,Other,1,1,100,100,0
 111,Middle Atlantic,68,15,1,American Indian,0,6,9,22,75
 112,Middle Atlantic,35,12,1,Black,0,3,0,40,0
-113,Middle Atlantic,44,12,1,White,1,NA,NA,NA,NA
 114,Middle Atlantic,48,12,0,Black,0,4,75,50,75
-115,Middle Atlantic,43,14,0,NA,1,6,51,0,0
 116,Middle Atlantic,43,13,1,Black,1,4,50,50,50
-117,Middle Atlantic,45,12,1,White,1,NA,50,0,0
-118,Middle Atlantic,63,13,1,NA,1,2,0,0,0
-119,Middle Atlantic,27,12,0,NA,1,NA,100,50,50
-120,Middle Atlantic,37,16,1,Other,1,NA,30,30,20
 121,Middle Atlantic,60,12,1,Black,0,4,0,0,0
-122,Middle Atlantic,22,NA,0,Black,0,1,0,0,0
 123,Middle Atlantic,44,10,0,Black,0,4,90,0,0
 124,Middle Atlantic,24,12,0,Asian,0,1,100,100,100
-125,Middle Atlantic,51,13,0,Black,NA,4,15,0,0
 126,Middle Atlantic,39,14,1,Black,0,2,35,50,45
 127,Middle Atlantic,55,20,0,Black,0,2,15,50,50
 128,Middle Atlantic,48,11,1,White,1,6,0,0,0
 129,Middle Atlantic,60,16,0,White,0,2,0,0,0
 130,Middle Atlantic,60,16,1,White,0,5,85,85,60
-131,Middle Atlantic,70,17,1,Other,1,6,NA,50,NA
 132,Middle Atlantic,65,18,0,White,0,4,40,50,60
 133,Middle Atlantic,54,13,0,Black,0,3,0,0,0
 134,Middle Atlantic,45,11,1,Black,1,2,50,30,30
@@ -169,9 +133,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 168,Middle Atlantic,28,18,1,Black,0,4,50,50,50
 169,Middle Atlantic,41,16,1,Black,0,2,0,0,0
 170,Middle Atlantic,23,17,1,White,0,3,15,40,30
-171,Middle Atlantic,27,17,1,Black,NA,4,0,15,15
 172,Middle Atlantic,55,16,0,Other,1,4,50,15,30
-173,Middle Atlantic,69,4,1,White,0,NA,50,NA,NA
 174,Middle Atlantic,65,12,1,White,0,2,0,0,0
 175,Middle Atlantic,38,14,1,Black,0,6,0,0,0
 176,Middle Atlantic,37,12,0,White,0,6,90,85,80
@@ -182,31 +144,24 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 181,Middle Atlantic,60,16,1,White,1,3,0,0,0
 182,Middle Atlantic,42,13,1,Black,0,4,0,0,0
 183,Middle Atlantic,27,16,0,Black,0,2,35,25,30
-184,Middle Atlantic,NA,20,1,Black,0,4,NA,NA,NA
 185,Middle Atlantic,66,18,0,White,0,2,0,8,0
 186,Middle Atlantic,58,16,1,Black,0,4,0,0,0
 187,Middle Atlantic,69,16,0,White,0,2,0,0,0
 188,Middle Atlantic,37,16,1,Asian,0,2,0,0,0
 189,Middle Atlantic,49,16,1,White,0,5,10,35,15
 190,Middle Atlantic,72,19,0,White,0,2,0,10,15
-191,Middle Atlantic,22,16,1,White,0,NA,100,NA,100
 192,Middle Atlantic,80,20,0,White,0,2,5,20,10
 193,Middle Atlantic,57,18,0,White,0,4,0,38,0
 194,Middle Atlantic,75,15,1,White,0,6,95,70,95
 195,Middle Atlantic,32,16,0,White,0,1,0,0,0
-196,Pacific,34,14,1,Asian,1,4,80,NA,50
 197,Pacific,34,12,0,Other,1,4,10,15,0
 198,Pacific,34,12,0,Other,1,3,0,0,50
 199,Pacific,64,14,0,White,0,4,50,50,0
 200,Pacific,71,9,0,American Indian,1,2,0,0,0
 201,Pacific,21,12,0,Other,1,6,60,70,70
-202,Pacific,29,20,NA,White,0,NA,0,NA,NA
 203,Pacific,62,15,1,White,1,3,60,40,80
 204,Pacific,73,13,1,Asian,0,5,85,70,60
 205,Pacific,62,15,0,White,0,7,85,70,70
-206,Pacific,NA,1,0,Other,1,4,50,80,60
-207,Pacific,74,14,1,White,0,4,0,15,NA
-208,Pacific,26,6,1,NA,1,3,100,0,100
 209,Pacific,58,17,1,Asian,0,3,0,0,0
 210,Pacific,18,12,1,Other,1,3,34,20,20
 211,Pacific,22,12,0,White,1,3,75,70,60
@@ -214,7 +169,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 213,Pacific,39,16,0,Other,1,6,50,50,50
 214,Pacific,19,13,0,Other,1,4,40,50,20
 215,Pacific,41,12,1,Black,0,4,50,50,50
-216,Pacific,38,11,1,Other,1,4,NA,NA,NA
 217,Pacific,24,18,1,American Indian,0,1,0,0,0
 218,Pacific,66,14,0,White,0,3,0,15,0
 219,Pacific,33,12,0,White,0,1,0,0,0
@@ -222,12 +176,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 221,Pacific,21,15,1,Other,1,1,0,0,0
 222,Pacific,28,11,0,Other,1,5,65,50,50
 223,Pacific,28,12,0,Other,1,4,100,0,0
-224,Pacific,29,12,1,Other,1,6,50,NA,NA
-225,Pacific,18,11,0,Other,1,NA,100,50,50
 226,Pacific,40,14,0,Other,1,4,50,50,50
 227,Pacific,62,17,0,White,0,6,55,55,65
 228,Pacific,39,12,0,White,0,4,60,60,50
-229,Pacific,NA,12,1,Other,1,4,0,0,0
 230,Pacific,53,18,1,White,1,2,0,0,0
 231,Pacific,41,18,1,White,1,3,0,0,0
 232,Pacific,72,14,0,Asian,0,2,0,0,0
@@ -241,24 +192,18 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 240,Pacific,73,17,0,White,0,4,1,50,1
 241,Pacific,49,12,1,White,0,1,0,0,0
 242,Pacific,55,12,1,Pacific Islander,0,6,0,0,50
-243,Pacific,37,12,1,Other,1,2,NA,50,NA
-244,Pacific,44,12,1,NA,1,NA,50,70,50
 245,Pacific,47,11,0,Other,1,2,0,50,0
 246,Pacific,37,13,0,Other,1,4,50,50,50
-247,Pacific,NA,17,1,Black,0,2,30,15,15
 248,Pacific,48,10,0,White,1,4,50,50,50
 249,Pacific,54,13,1,Other,1,4,50,30,50
 250,Pacific,28,14,0,White,1,3,60,60,60
 251,Pacific,42,13,1,Other,1,4,15,0,0
 252,Pacific,64,16,1,White,1,4,0,0,0
-253,Pacific,89,0,1,Other,1,7,50,NA,NA
 254,Pacific,82,6,1,Other,1,2,15,70,70
 255,Pacific,37,16,1,White,1,4,0,0,0
-256,Pacific,80,6,1,White,1,4,NA,NA,NA
 257,Pacific,19,13,0,Other,1,4,0,30,0
 258,Pacific,69,14,1,Other,1,4,0,60,60
 259,Pacific,51,12,1,White,1,6,60,15,30
-260,Pacific,68,12,1,White,1,NA,0,0,0
 261,Pacific,58,14,0,Other,1,4,15,15,15
 262,Pacific,59,16,1,Other,1,5,0,15,0
 263,Pacific,66,16,0,White,0,6,0,30,15
@@ -269,14 +214,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 268,Pacific,61,14,1,Pacific Islander,0,4,0,15,50
 269,Pacific,64,17,0,White,1,3,85,60,15
 270,Pacific,42,14,0,White,1,4,100,50,0
-271,Pacific,37,NA,0,Other,0,6,100,70,60
-272,Pacific,19,10,1,Other,1,4,NA,NA,NA
 273,Pacific,37,17,1,White,0,4,0,10,0
 274,Pacific,70,18,1,White,0,2,0,5,0
 275,Pacific,50,12,1,White,1,2,0,0,0
-276,Pacific,39,10,1,Other,1,3,80,NA,NA
-277,Pacific,66,2,1,Other,1,NA,NA,NA,NA
-278,Pacific,46,10,1,White,1,1,15,NA,15
 279,Pacific,41,6,1,Other,1,2,80,50,70
 280,Pacific,48,18,0,Asian,0,3,0,0,0
 281,Pacific,82,15,1,White,0,4,0,50,0
@@ -284,15 +224,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 283,Pacific,69,18,1,Asian,0,4,0,10,0
 284,Pacific,89,16,1,White,0,2,0,30,0
 285,Pacific,62,16,0,White,0,5,15,50,50
-286,Pacific,82,18,1,Other,0,NA,0,0,0
 287,Pacific,60,16,0,White,0,3,0,15,0
 288,Pacific,18,13,1,White,1,2,0,0,0
 289,Pacific,64,18,0,White,0,6,90,75,90
 290,Pacific,79,20,0,White,0,7,90,75,95
-291,Pacific,60,18,1,White,0,4,0,NA,0
-292,Pacific,38,18,0,White,0,4,NA,NA,NA
 293,Pacific,39,16,0,White,0,3,1,10,5
-294,Pacific,NA,14,1,Other,1,3,10,30,0
 295,Pacific,35,15,1,White,0,1,10,10,0
 296,Pacific,61,16,0,White,0,2,5,30,0
 297,Pacific,36,16,0,White,0,2,0,0,0
@@ -305,9 +241,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 304,Pacific,54,16,1,White,0,2,0,0,0
 305,Pacific,65,16,1,Asian,0,5,70,70,70
 306,Pacific,51,14,0,White,0,5,15,5,5
-307,Pacific,69,4,NA,Other,NA,NA,99,NA,NA
 308,Pacific,36,15,0,Other,1,2,0,0,0
-309,Pacific,NA,16,1,NA,0,4,100,20,NA
 310,Pacific,27,13,1,Black,1,1,0,0,0
 311,Pacific,61,16,0,White,1,5,0,0,0
 312,Pacific,31,16,0,Other,1,2,0,10,5
@@ -326,11 +260,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 325,Pacific,33,16,1,White,1,4,25,25,0
 326,Pacific,39,16,1,White,0,3,3,65,0
 327,Pacific,69,18,1,White,0,3,0,0,0
-328,Pacific,NA,18,1,White,0,2,0,5,0
 329,North Central,32,12,1,Black,0,4,0,0,0
 330,North Central,57,12,0,Black,0,2,0,0,0
 331,North Central,40,12,0,Black,0,1,8,1,1
-332,North Central,27,12,1,White,0,4,NA,NA,NA
 333,North Central,54,12,0,White,0,4,50,20,20
 334,North Central,44,18,1,Black,0,5,70,100,100
 335,North Central,32,12,1,White,1,2,0,0,0
@@ -338,15 +270,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 337,North Central,73,15,1,White,0,4,20,50,50
 338,North Central,32,14,0,Other,1,4,50,50,50
 339,North Central,61,16,0,Black,0,4,10,0,100
-340,North Central,NA,12,1,Black,0,6,0,NA,NA
-341,North Central,67,12,1,White,0,4,50,NA,NA
 342,North Central,55,12,0,White,0,4,0,50,50
 343,North Central,33,16,0,White,0,4,0,5,0
-344,North Central,NA,19,1,Black,0,6,50,12,12
 345,North Central,31,0,1,White,1,7,100,50,50
 346,North Central,31,12,0,White,0,4,0,50,10
 347,North Central,38,20,0,White,0,7,100,100,100
-348,North Central,38,15,1,Other,1,4,NA,60,NA
 349,North Central,67,12,0,White,0,6,100,70,100
 350,North Central,31,20,1,White,0,4,40,40,30
 351,North Central,39,16,0,White,0,4,0,15,0
@@ -374,38 +302,30 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 373,North Central,28,12,0,White,0,4,15,0,0
 374,North Central,58,16,0,White,0,2,0,0,0
 375,North Central,76,14,1,White,0,4,0,15,0
-376,North Central,NA,14,1,White,0,4,100,75,80
 377,North Central,60,14,1,White,0,1,0,0,0
 378,North Central,26,16,0,White,0,1,0,0,15
 379,North Central,47,12,1,Other,1,6,80,30,85
 380,North Central,52,14,1,Black,0,4,60,30,30
 381,North Central,46,12,1,Black,0,1,70,85,70
-382,North Central,80,13,1,Black,0,5,NA,NA,NA
 383,North Central,45,14,0,Black,0,4,100,100,100
 384,North Central,35,13,0,Other,1,4,70,85,85
 385,North Central,35,16,0,Black,0,4,50,60,50
 386,North Central,66,13,0,Black,0,4,0,40,0
 387,North Central,46,16,1,Black,0,4,0,0,0
 388,North Central,78,11,1,Black,0,1,70,85,40
-389,North Central,74,12,1,Black,0,3,60,NA,NA
 390,North Central,51,12,0,Black,0,4,35,45,40
-391,North Central,59,12,0,Black,0,NA,NA,NA,NA
 392,North Central,36,13,1,Black,0,7,50,50,50
 393,North Central,52,17,1,Black,0,4,0,40,30
 394,North Central,63,16,1,Black,0,2,0,0,0
 395,North Central,78,14,0,Black,0,2,0,0,0
 396,North Central,42,13,1,Black,0,1,0,0,50
 397,North Central,77,19,0,Black,0,4,15,10,10
-398,North Central,39,13,1,Black,0,4,40,60,NA
 399,North Central,83,9,1,White,0,2,0,0,0
 400,North Central,60,16,0,White,0,2,0,0,0
 401,North Central,26,16,0,Asian,0,1,0,0,0
 402,North Central,45,16,0,White,0,1,0,0,0
-403,North Central,23,14,1,White,1,4,50,NA,NA
 404,North Central,56,12,1,Black,0,1,0,0,0
 405,North Central,54,20,1,White,0,1,0,0,0
-406,North Central,85,8,1,Black,0,4,50,NA,NA
-407,North Central,NA,17,1,White,0,2,0,10,0
 408,North Central,69,16,1,White,0,1,0,0,0
 409,North Central,30,17,0,White,0,2,15,30,15
 410,North Central,37,19,0,White,0,4,10,20,20
@@ -415,7 +335,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 414,North Central,71,18,0,White,0,2,0,20,0
 415,North Central,60,14,0,White,0,3,0,5,0
 416,North Central,74,16,0,Asian,0,4,50,50,50
-417,North Central,61,12,0,White,0,6,60,70,NA
 418,North Central,43,17,1,White,0,6,20,15,15
 419,North Central,59,16,0,White,1,6,70,70,60
 420,North Central,53,16,1,White,0,3,15,15,0
@@ -426,10 +345,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 425,North Central,77,12,0,White,0,2,0,15,0
 426,North Central,67,13,0,White,0,5,85,70,100
 427,North Central,45,17,0,White,0,6,40,45,40
-428,North Central,47,12,0,NA,1,4,40,50,40
 429,North Central,43,9,0,White,1,4,70,50,50
 430,North Central,46,17,1,White,0,5,40,50,50
-431,North Central,53,14,1,White,0,4,40,75,NA
 432,South Atlantic,65,16,1,White,0,4,15,50,30
 433,South Atlantic,58,13,1,White,0,4,70,60,0
 434,South Atlantic,47,16,0,White,0,4,40,50,50
@@ -475,7 +392,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 474,South Atlantic,20,12,1,White,0,6,85,85,85
 475,South Atlantic,34,14,0,White,0,5,0,20,10
 476,South Atlantic,58,16,0,White,0,5,60,60,50
-477,South Atlantic,NA,12,1,Asian,0,2,50,40,0
 478,South Atlantic,68,20,0,White,0,1,0,15,0
 479,South Atlantic,36,15,0,Black,0,5,50,40,0
 480,South Atlantic,29,16,1,White,0,1,0,0,0
@@ -485,7 +401,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 484,South Atlantic,47,16,0,White,0,3,0,15,0
 485,South Atlantic,23,12,0,White,0,4,50,50,50
 486,South Atlantic,38,17,1,Asian,0,5,70,70,60
-487,South Atlantic,NA,16,0,NA,NA,3,15,0,0
 488,South Atlantic,41,16,0,White,0,2,0,0,0
 489,South Atlantic,30,16,1,White,0,4,15,30,15
 490,South Atlantic,34,18,1,White,0,2,10,40,40
@@ -502,17 +417,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 501,South Atlantic,32,11,1,White,0,6,90,90,95
 502,South Atlantic,74,16,0,White,0,3,0,0,0
 503,South Atlantic,30,10,1,White,0,4,100,50,50
-504,South Atlantic,43,13,1,Black,0,4,60,85,NA
 505,South Atlantic,66,13,1,White,0,4,0,15,0
-506,South Atlantic,27,13,0,Black,0,4,NA,NA,NA
 507,South Atlantic,68,13,1,White,0,3,0,15,15
-508,South Atlantic,26,15,1,Other,1,NA,50,50,50
-509,South Atlantic,NA,13,0,NA,0,6,100,50,100
 510,South Atlantic,50,16,0,White,0,1,0,0,0
 511,South Atlantic,59,12,0,Black,0,4,15,15,0
-512,South Atlantic,NA,18,0,Other,0,4,50,50,50
 513,South Atlantic,49,16,1,Asian,0,3,0,0,0
-514,Pacific,67,16,0,White,0,1,0,30,NA
 515,Pacific,52,13,0,Black,0,7,100,60,15
 516,Pacific,33,16,1,White,0,2,0,0,0
 517,Pacific,71,16,0,White,0,2,0,0,0
@@ -520,37 +429,27 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 519,Pacific,41,16,1,Asian,0,4,15,15,0
 520,Pacific,33,16,0,Asian,0,4,50,50,50
 521,Pacific,33,18,1,Asian,0,2,50,50,50
-522,Pacific,NA,18,0,Black,0,4,10,50,0
-523,Pacific,NA,NA,1,Asian,NA,NA,NA,NA,NA
 524,Pacific,42,17,0,White,0,3,0,10,0
 525,Pacific,40,12,0,Other,0,5,0,70,60
-526,Pacific,NA,20,0,White,1,2,0,0,0
 527,Pacific,60,16,1,White,1,4,65,75,50
 528,Pacific,56,16,0,Asian,0,6,60,70,50
-529,Pacific,53,14,1,Asian,0,6,NA,NA,NA
-530,Pacific,52,12,1,White,NA,6,60,NA,50
 531,Pacific,75,12,0,White,0,4,0,60,0
 532,Pacific,32,17,0,White,1,4,50,50,50
 533,Pacific,44,16,1,Asian,0,4,50,50,50
 534,Pacific,33,15,1,Asian,0,4,30,50,50
 535,Pacific,37,12,1,Black,0,3,2,30,15
 536,Pacific,24,16,0,White,1,2,0,0,0
-537,Pacific,NA,12,1,Other,1,NA,0,0,0
 538,Pacific,30,16,1,Other,1,2,0,0,0
 539,Pacific,63,13,0,Asian,0,6,100,85,85
 540,Pacific,42,16,0,Asian,0,4,50,50,50
 541,Pacific,28,16,0,Asian,0,3,60,45,25
 542,Pacific,37,16,1,Asian,0,4,10,60,40
-543,Pacific,47,18,0,White,0,5,80,50,NA
-544,Pacific,NA,19,0,Asian,0,3,15,30,0
 545,Pacific,60,16,1,White,0,2,0,0,0
 546,Pacific,36,16,1,Asian,0,5,5,50,40
-547,Pacific,29,16,1,Asian,0,4,NA,NA,NA
 548,Pacific,43,19,0,White,0,3,20,25,30
 549,Pacific,56,16,0,Asian,0,3,25,50,25
 550,Pacific,66,14,1,White,0,6,87,90,90
 551,Pacific,66,12,1,White,0,3,0,0,0
-552,Pacific,NA,16,0,Asian,0,4,50,50,30
 553,Pacific,59,16,1,Other,1,6,90,70,80
 554,Pacific,42,16,0,Asian,0,4,50,60,50
 555,Pacific,45,16,1,White,1,1,0,10,0
@@ -565,19 +464,14 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 564,Pacific,74,17,1,White,0,2,0,30,0
 565,Pacific,59,16,1,Pacific Islander,0,1,0,0,0
 566,Pacific,21,13,1,Black,0,4,0,0,0
-567,Pacific,25,13,1,Other,1,7,0,NA,NA
-568,Pacific,39,12,1,Other,1,4,80,50,NA
 569,Pacific,18,12,0,Other,1,3,25,60,45
 570,Pacific,30,7,1,American Indian,1,3,0,0,0
 571,Pacific,58,9,1,White,1,4,85,70,70
 572,Pacific,21,12,0,Other,1,6,100,0,0
 573,Pacific,41,16,1,White,0,4,0,40,0
-574,Pacific,38,13,1,NA,1,4,0,0,0
 575,Pacific,52,17,0,White,0,4,0,25,0
-576,Pacific,33,14,1,NA,1,3,0,0,0
 577,Pacific,64,12,1,White,0,4,60,60,30
 578,New England,42,15,1,White,0,6,90,90,90
-579,New England,61,12,1,White,0,NA,100,75,75
 580,New England,39,13,0,White,0,5,60,60,15
 581,New England,49,13,1,White,0,6,2,2,0
 582,New England,24,12,0,White,0,3,1,10,15
@@ -585,7 +479,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 584,New England,37,13,1,White,1,3,50,50,70
 585,New England,45,16,1,White,0,4,15,40,0
 586,New England,42,14,0,White,0,4,0,0,0
-587,New England,64,5,1,NA,1,NA,NA,NA,NA
 588,New England,76,14,0,White,0,7,0,15,30
 589,New England,32,13,1,Other,0,3,15,50,0
 590,New England,45,14,1,White,0,6,70,85,70
@@ -594,14 +487,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 593,New England,42,9,1,Other,1,7,2,8,5
 594,New England,59,16,0,White,0,7,95,65,100
 595,New England,77,8,0,White,0,3,10,10,10
-596,New England,74,10,1,White,0,NA,50,50,50
 597,New England,68,16,0,White,0,4,0,0,0
-598,New England,68,10,1,NA,1,5,1,2,2
 599,New England,64,20,0,Other,1,2,75,85,50
-600,New England,73,9,1,NA,1,7,0,0,0
 601,New England,56,11,0,White,0,5,50,45,60
 602,New England,42,14,1,White,0,3,0,40,0
-603,New England,56,14,1,White,0,2,70,50,NA
 604,New England,53,12,0,White,0,4,0,45,0
 605,New England,65,16,0,White,0,2,0,25,0
 606,New England,74,8,1,Asian,0,5,85,90,85
@@ -625,18 +514,15 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 624,New England,49,16,1,White,0,1,0,0,0
 625,New England,64,16,1,White,0,2,0,15,0
 626,New England,30,12,1,White,0,3,0,5,0
-627,New England,NA,20,1,White,0,4,NA,NA,NA
 628,New England,43,12,0,White,0,1,0,0,0
 629,New England,27,16,0,Asian,0,3,0,0,0
 630,New England,86,16,1,White,0,4,0,50,30
 631,New England,31,16,0,White,0,1,0,10,0
 632,New England,41,16,1,White,0,2,0,15,0
-633,New England,30,19,1,NA,0,3,0,15,0
 634,New England,73,18,0,White,0,5,0,30,15
 635,New England,55,13,1,White,0,6,85,85,85
 636,New England,26,16,1,White,1,2,15,0,0
 637,New England,64,18,1,White,0,2,0,30,0
-638,New England,47,18,1,White,0,3,NA,NA,NA
 639,New England,71,13,1,White,0,5,50,50,50
 640,New England,39,16,1,White,0,4,10,10,0
 641,New England,55,12,0,White,0,4,0,50,0
@@ -645,25 +531,18 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 644,New England,39,17,1,White,0,4,60,40,50
 645,South Central,49,16,1,White,0,3,0,20,1
 646,South Central,44,16,1,White,0,4,100,55,100
-647,South Central,33,10,1,White,1,NA,NA,NA,NA
-648,South Central,NA,NA,1,Other,1,4,0,0,0
 649,South Central,46,12,1,White,0,6,60,60,40
 650,South Central,37,12,1,White,0,1,0,0,0
 651,South Central,24,12,1,White,0,6,85,70,60
-652,South Central,49,12,1,White,1,NA,0,NA,NA
-653,South Central,75,2,0,NA,1,4,15,NA,NA
-654,South Central,NA,12,0,White,NA,2,0,0,0
 655,South Central,36,16,1,White,0,4,15,25,30
 656,South Central,56,14,1,White,0,5,30,30,0
 657,South Central,60,16,1,White,0,4,0,40,0
 658,South Central,53,16,1,Black,0,3,0,15,0
 659,South Central,36,18,0,Other,1,4,70,60,30
 660,South Central,53,18,1,White,0,6,30,60,15
-661,South Central,35,18,0,NA,NA,5,89,89,NA
 662,South Central,66,12,0,Black,0,7,50,0,0
 663,South Central,30,13,1,White,0,4,0,25,10
 664,South Central,50,16,0,White,0,6,40,70,60
-665,South Central,66,14,1,White,0,6,70,70,NA
 666,South Central,42,18,1,White,0,4,50,50,50
 667,South Central,57,18,1,White,0,6,80,60,80
 668,South Central,59,16,1,White,0,4,0,10,0
@@ -671,26 +550,19 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 670,South Central,54,18,1,White,0,7,90,100,80
 671,South Central,60,16,0,White,0,5,50,50,50
 672,South Central,56,15,1,White,0,6,50,40,50
-673,South Central,46,15,1,Asian,0,NA,40,NA,NA
-674,South Central,NA,NA,0,Black,0,4,100,70,100
 675,South Central,75,14,1,White,0,5,70,70,60
 676,South Central,67,16,0,White,0,2,0,0,0
 677,South Central,40,20,1,White,0,6,50,50,50
 678,South Central,39,13,1,Black,0,4,50,15,30
 679,South Central,58,16,1,White,0,6,60,60,40
-680,South Central,72,12,1,White,0,6,100,100,NA
 681,South Central,44,16,1,White,1,2,10,10,10
-682,South Central,39,16,0,Black,0,6,70,70,NA
 683,South Central,41,17,0,Black,0,7,100,100,70
 684,South Central,32,10,0,Other,1,2,7,25,20
-685,South Central,30,16,0,White,0,4,15,50,NA
 686,South Central,25,14,0,White,0,2,0,0,0
 687,South Central,30,10,1,White,0,5,50,50,50
 688,South Central,34,14,0,White,1,4,85,60,0
-689,South Central,NA,17,0,White,0,6,15,30,40
 690,South Central,37,18,0,Black,0,5,60,30,15
 691,South Central,24,16,1,White,1,4,30,70,40
-692,South Central,25,13,1,Other,1,4,40,NA,NA
 693,South Central,70,14,1,White,0,4,0,0,0
 694,South Central,37,12,0,Black,1,4,85,50,50
 695,South Central,24,14,0,White,1,2,85,60,85
@@ -698,28 +570,21 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 697,South Central,33,18,1,Black,0,4,60,0,15
 698,South Central,64,12,0,White,1,4,50,40,50
 699,South Central,72,15,1,Black,0,4,50,48,50
-700,South Central,NA,12,1,Other,NA,4,30,15,0
 701,South Central,32,17,1,White,1,3,15,30,0
-702,South Central,51,11,0,NA,NA,1,1,1,1
 703,South Central,38,15,1,Black,0,4,15,30,0
 704,South Central,23,12,1,White,1,4,60,56,32
-705,South Central,24,NA,NA,White,1,NA,NA,NA,NA
 706,South Central,34,16,0,Other,1,3,25,50,25
-707,South Central,37,14,1,White,1,4,80,75,NA
-708,South Central,77,14,1,NA,NA,4,0,0,0
 709,South Central,36,18,0,Black,0,4,50,10,0
 710,South Central,44,12,0,White,1,1,0,0,0
 711,South Central,29,13,0,Black,0,2,30,35,0
 712,South Central,55,12,0,Black,0,3,0,15,0
 713,South Central,23,15,1,Black,0,4,5,10,0
-714,South Central,NA,16,0,White,0,5,15,35,15
 715,South Central,33,13,1,Black,0,4,48,10,0
 716,South Central,37,16,0,White,0,4,30,30,15
 717,South Central,45,14,1,White,0,4,0,0,0
 718,South Central,33,12,1,Black,0,3,100,85,70
 719,South Central,28,13,0,Black,0,4,0,50,50
 720,South Central,57,15,1,Asian,0,2,0,15,0
-721,South Central,30,13,0,NA,1,3,0,40,0
 722,South Central,40,12,1,Asian,0,4,85,85,70
 723,South Central,23,14,1,Black,0,4,85,30,40
 724,South Central,20,14,1,Asian,0,3,70,60,60
@@ -731,7 +596,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 730,South Central,41,13,1,Black,0,4,0,0,0
 731,South Central,81,13,1,Black,0,6,0,0,0
 732,South Central,59,16,1,White,0,4,0,0,0
-733,South Central,NA,14,1,Asian,0,NA,NA,NA,NA
 734,South Central,86,10,0,White,0,7,90,90,90
 735,South Central,24,14,0,White,0,4,85,80,75
 736,South Central,52,16,1,White,0,5,70,70,50
@@ -755,13 +619,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 754,Middle Atlantic,34,16,0,White,0,1,5,10,5
 755,Middle Atlantic,47,12,1,Black,0,6,50,50,50
 756,Middle Atlantic,55,12,1,Asian,0,2,0,0,0
-757,Middle Atlantic,65,13,0,NA,NA,4,10,50,50
 758,Middle Atlantic,33,20,1,Black,0,5,60,50,30
 759,Middle Atlantic,29,16,0,White,0,2,0,35,0
 760,Middle Atlantic,47,12,1,White,0,5,100,50,0
 761,Middle Atlantic,62,12,0,White,1,4,0,50,50
 762,Middle Atlantic,40,11,0,Black,0,5,100,0,100
-763,Middle Atlantic,19,13,0,White,0,NA,50,1,1
 764,Middle Atlantic,60,20,1,White,0,3,0,10,0
 765,Middle Atlantic,89,12,1,Black,0,2,0,25,0
 766,Middle Atlantic,55,18,1,White,0,6,65,65,50
@@ -777,11 +639,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 776,Middle Atlantic,19,13,0,Black,0,4,50,50,50
 777,Middle Atlantic,41,12,1,Black,0,7,85,85,85
 778,Middle Atlantic,32,14,1,Black,0,4,50,30,50
-779,Middle Atlantic,37,16,1,Black,0,4,0,40,NA
 780,Middle Atlantic,44,12,1,Black,0,4,15,50,50
 781,Middle Atlantic,52,13,1,Black,0,4,0,0,0
 782,Middle Atlantic,31,12,0,Other,1,4,50,50,50
-783,Middle Atlantic,NA,16,1,Black,0,4,50,45,42
 784,Middle Atlantic,23,16,1,White,0,1,0,10,0
 785,Middle Atlantic,20,14,1,White,0,1,15,40,15
 786,Middle Atlantic,63,10,0,White,0,4,100,50,50
@@ -791,9 +651,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 790,Middle Atlantic,51,16,1,White,0,7,100,100,100
 791,Middle Atlantic,38,18,0,Asian,0,3,50,50,50
 792,Middle Atlantic,47,12,0,Black,0,5,60,50,50
-793,Middle Atlantic,32,12,1,White,1,6,70,50,NA
 794,Middle Atlantic,66,12,0,Other,1,6,100,100,100
-795,Middle Atlantic,32,16,1,White,0,3,70,50,NA
 796,Middle Atlantic,31,12,0,Black,0,4,40,50,0
 797,Middle Atlantic,69,14,0,White,0,3,0,0,0
 798,Middle Atlantic,57,11,0,Black,0,7,50,100,50
@@ -805,54 +663,33 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 804,Middle Atlantic,67,18,1,White,0,3,0,15,0
 805,Middle Atlantic,34,16,1,White,0,3,0,40,0
 806,Middle Atlantic,78,14,1,White,0,6,85,75,80
-807,South Central,37,14,0,American Indian,1,3,25,NA,NA
-808,South Central,70,0,1,White,1,NA,NA,NA,NA
 809,South Central,32,13,1,Black,0,5,0,0,0
 810,South Central,37,13,0,Black,0,5,49,48,2
 811,South Central,61,18,0,White,0,7,60,30,85
-812,South Central,51,12,1,White,1,NA,NA,NA,NA
 813,South Central,65,3,0,Other,1,4,100,50,100
-814,South Central,NA,16,1,White,1,7,100,100,100
 815,South Central,64,16,0,White,0,7,85,70,70
 816,South Central,59,12,1,Black,0,7,100,50,50
 817,South Central,22,12,1,White,1,4,40,30,15
 818,South Central,19,12,1,White,0,3,60,50,30
 819,South Central,55,13,0,White,0,6,70,70,50
-820,South Central,18,12,1,Black,0,5,0,50,NA
 821,South Central,41,16,1,Black,0,2,0,0,0
 822,South Central,58,16,1,White,0,6,15,60,15
 823,South Central,79,13,0,White,0,7,85,100,100
-824,South Central,21,9,1,White,1,4,NA,NA,NA
-825,South Central,76,9,0,White,0,4,0,50,NA
 826,South Central,32,12,0,White,1,7,20,0,0
 827,South Central,29,13,1,White,0,6,50,100,100
 828,South Central,28,13,1,Black,0,3,0,15,0
-829,South Central,26,15,1,NA,1,4,50,50,50
-830,South Central,59,3,1,White,1,4,50,50,NA
-831,South Central,18,14,1,NA,1,3,50,50,15
-832,South Central,52,12,1,White,1,NA,NA,NA,NA
-833,South Central,28,15,1,Black,0,4,55,NA,NA
-834,South Central,50,10,1,Black,0,NA,NA,NA,NA
-835,South Central,42,17,1,Black,0,4,NA,NA,NA
 836,South Central,54,12,1,Black,0,4,86,40,60
-837,South Central,64,12,0,Black,0,2,50,50,NA
-838,South Central,20,14,0,NA,1,4,NA,NA,NA
-839,South Central,20,13,0,Other,1,4,50,50,NA
 840,South Central,60,14,1,White,0,4,30,50,50
 841,South Central,45,12,0,White,1,4,50,50,50
 842,South Central,61,13,1,Black,0,4,0,0,0
 843,South Central,22,14,1,White,1,2,0,15,0
-844,South Central,39,14,0,NA,0,7,85,70,NA
 845,South Central,77,20,0,White,0,5,20,50,20
 846,South Central,32,17,1,Asian,0,6,100,100,100
 847,South Central,35,12,0,Black,0,4,50,0,0
-848,South Central,66,16,1,White,0,4,75,80,NA
 849,South Central,36,13,1,White,0,2,100,100,100
-850,South Central,54,20,1,White,1,4,10,50,NA
 851,South Central,48,13,0,Other,1,6,60,50,60
 852,South Central,40,16,0,Asian,0,5,70,70,60
 853,South Central,46,12,1,White,1,4,80,70,70
-854,South Central,59,12,1,White,0,NA,NA,NA,NA
 855,South Central,24,12,0,Black,1,4,50,40,15
 856,South Central,70,6,1,White,1,5,0,50,30
 857,South Central,27,18,0,White,1,2,0,0,0
@@ -869,9 +706,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 868,South Central,43,16,1,White,1,6,60,50,50
 869,South Central,30,12,0,Black,0,2,0,0,0
 870,South Atlantic,19,12,1,White,0,4,50,50,50
-871,South Atlantic,61,12,1,Black,1,NA,50,50,50
 872,South Atlantic,76,14,1,White,0,4,0,0,0
-873,South Atlantic,NA,19,1,Black,0,5,0,0,15
 874,South Atlantic,44,12,0,Other,1,2,50,50,50
 875,South Atlantic,26,16,1,White,0,3,0,25,0
 876,South Atlantic,37,20,1,Black,0,4,50,50,50
@@ -880,11 +715,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 879,South Atlantic,25,12,1,Black,0,4,0,0,0
 880,South Atlantic,25,12,0,Black,0,4,50,0,0
 881,South Atlantic,26,16,0,White,0,4,10,95,0
-882,South Atlantic,27,12,1,White,1,NA,NA,NA,NA
 883,South Atlantic,36,17,1,White,0,1,0,15,0
 884,South Atlantic,26,15,1,Black,0,4,50,0,0
-885,South Atlantic,51,18,1,Black,0,3,75,66,NA
-886,South Atlantic,34,18,1,Asian,0,4,NA,NA,NA
 887,South Atlantic,31,17,0,White,0,2,0,0,0
 888,South Atlantic,54,14,1,Black,0,2,0,0,0
 889,South Atlantic,63,16,0,White,0,1,0,0,0
@@ -893,13 +725,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 892,South Atlantic,74,0,0,White,1,4,70,50,40
 893,South Atlantic,24,16,1,Black,0,4,0,15,0
 894,South Atlantic,67,13,1,Black,0,4,50,50,50
-895,South Atlantic,79,18,0,White,0,2,5,60,NA
 896,South Atlantic,77,13,1,White,0,6,85,85,85
 897,South Atlantic,30,13,1,Other,1,7,100,0,0
-898,South Atlantic,71,14,1,Black,0,3,0,30,NA
 899,South Atlantic,75,17,0,White,0,6,100,80,100
 900,South Atlantic,65,14,1,Black,0,5,0,15,0
-901,South Atlantic,20,9,1,Black,0,4,NA,NA,NA
 902,South Atlantic,35,13,0,Black,0,4,100,50,50
 903,South Atlantic,49,18,1,Black,0,4,0,15,0
 904,South Atlantic,69,15,1,White,0,5,40,60,70
@@ -909,7 +738,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 908,South Atlantic,71,12,0,White,0,6,70,40,50
 909,South Atlantic,42,18,1,White,0,4,15,25,5
 910,South Atlantic,37,12,0,White,1,6,50,50,50
-911,South Atlantic,53,15,1,White,1,7,50,50,NA
 912,South Atlantic,47,19,0,White,0,2,0,15,0
 913,South Atlantic,29,14,0,White,0,6,70,60,65
 914,South Atlantic,25,13,0,White,0,3,70,40,40
@@ -929,13 +757,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 928,South Atlantic,77,18,1,White,0,6,88,30,40
 929,South Atlantic,69,20,0,White,0,2,0,0,0
 930,South Atlantic,66,16,0,White,0,1,0,0,0
-931,South Atlantic,62,12,0,Black,0,6,1,1,NA
 932,South Atlantic,26,16,0,Black,0,4,10,50,0
 933,South Atlantic,40,13,1,Black,0,2,0,0,0
 934,South Atlantic,81,12,0,Black,0,4,0,10,0
-935,South Atlantic,NA,14,1,Other,0,4,NA,NA,NA
 936,South Atlantic,36,20,1,White,0,4,0,60,0
-937,South Atlantic,62,14,1,Black,0,NA,0,10,0
 938,South Atlantic,20,14,1,Black,0,1,0,0,0
 939,South Atlantic,20,15,0,White,0,6,60,80,60
 940,South Atlantic,23,19,1,White,0,6,99,100,75
@@ -953,10 +778,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 952,South Atlantic,50,20,1,White,1,4,15,30,15
 953,South Atlantic,36,16,0,Black,0,2,0,15,0
 954,South Atlantic,65,12,0,White,1,6,80,80,80
-955,South Atlantic,63,16,0,Black,0,NA,0,0,0
 956,South Atlantic,61,18,0,White,0,4,70,40,40
 957,South Atlantic,55,12,1,Black,0,7,80,50,30
-958,South Atlantic,24,11,1,White,0,4,100,NA,NA
 959,South Atlantic,54,16,1,Other,0,3,0,15,0
 960,South Atlantic,41,20,0,White,0,2,0,0,0
 961,South Atlantic,25,14,1,Other,1,4,30,50,40
@@ -973,30 +796,23 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 972,South Atlantic,48,13,1,White,1,4,50,80,40
 973,South Atlantic,66,14,1,White,1,4,0,60,0
 974,South Atlantic,37,13,1,White,1,3,60,50,50
-975,South Atlantic,18,12,1,White,1,NA,70,50,60
 976,South Atlantic,53,18,0,White,0,4,0,30,0
 977,South Atlantic,20,12,1,White,1,1,40,40,40
 978,South Atlantic,36,17,1,White,1,7,0,0,0
-979,South Atlantic,61,12,0,Black,1,NA,60,NA,NA
 980,South Atlantic,69,12,0,Black,0,4,85,85,95
 981,South Atlantic,89,16,1,White,0,2,0,0,0
-982,South Atlantic,89,10,0,White,0,7,40,20,NA
 983,South Atlantic,82,12,1,White,0,6,100,60,70
 984,South Atlantic,80,16,1,White,0,7,100,100,100
 985,South Atlantic,70,18,1,White,0,3,0,30,0
-986,South Atlantic,40,16,1,White,0,5,NA,NA,NA
-987,South Atlantic,35,12,0,White,1,4,NA,20,0
 988,South Atlantic,39,12,0,White,1,4,85,100,30
 989,South Atlantic,64,13,0,Other,1,5,75,60,50
 990,South Atlantic,75,20,1,White,0,4,0,30,0
 991,South Atlantic,69,17,1,White,0,4,90,90,90
 992,South Atlantic,31,16,0,Asian,0,4,60,50,50
-993,South Atlantic,36,16,1,Black,0,4,50,NA,50
 994,South Atlantic,36,12,0,White,1,4,100,70,80
 995,South Atlantic,33,20,1,White,0,2,10,25,15
 996,South Atlantic,43,18,1,White,0,2,0,0,0
 997,South Atlantic,22,16,1,White,0,2,0,25,0
-998,South Atlantic,NA,12,NA,White,0,4,NA,NA,NA
 999,South Atlantic,78,14,0,White,0,4,50,60,50
 1000,South Atlantic,46,18,0,White,0,6,100,25,100
 1001,South Atlantic,80,16,0,White,0,4,15,60,30
@@ -1014,7 +830,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1013,North Central,74,14,0,White,0,4,0,0,50
 1014,North Central,43,14,0,Black,0,3,15,15,0
 1015,North Central,50,13,0,Other,1,4,85,70,60
-1016,North Central,52,14,0,NA,1,NA,50,30,40
 1017,North Central,28,16,0,White,1,4,50,50,50
 1018,North Central,26,16,0,White,0,5,0,0,0
 1019,North Central,34,14,0,Black,0,3,50,50,50
@@ -1031,7 +846,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1030,North Central,38,13,1,White,0,4,15,50,15
 1031,North Central,66,20,0,Asian,0,7,80,50,90
 1032,North Central,41,20,1,White,0,2,0,40,0
-1033,North Central,49,17,1,White,1,4,50,50,NA
 1034,North Central,76,18,1,White,0,6,50,40,50
 1035,North Central,28,17,1,White,0,4,70,70,85
 1036,North Central,37,18,1,White,0,2,0,40,30
@@ -1051,7 +865,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1050,North Central,69,12,1,White,0,1,0,0,0
 1051,Pacific,63,16,1,White,0,6,85,70,85
 1052,Pacific,32,14,1,White,0,3,0,0,0
-1053,Pacific,67,18,0,Other,1,4,5,10,NA
 1054,Pacific,53,12,1,White,0,1,100,100,100
 1055,Pacific,76,13,1,White,0,4,0,0,0
 1056,Pacific,46,9,0,American Indian,0,6,100,100,85
@@ -1060,40 +873,31 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1059,Pacific,22,18,1,Asian,0,2,15,20,0
 1060,Pacific,19,14,1,White,0,1,0,2,0
 1061,Pacific,36,19,0,Asian,0,3,40,45,5
-1062,Pacific,NA,16,0,Asian,0,3,0,0,0
 1063,Pacific,33,13,1,White,0,7,100,100,100
 1064,Pacific,21,16,0,Asian,0,6,70,70,51
-1065,Pacific,NA,12,1,White,0,4,10,50,NA
 1066,Pacific,38,18,0,White,0,2,0,0,0
 1067,Pacific,65,16,1,White,0,2,0,8,0
 1068,Pacific,19,12,0,White,0,2,0,0,0
 1069,Pacific,33,16,0,White,0,4,30,30,15
 1070,Pacific,37,20,0,White,0,2,0,5,0
 1071,Pacific,75,16,0,White,0,2,0,0,0
-1072,Pacific,73,14,1,White,0,6,60,85,NA
 1073,Pacific,54,12,0,White,0,4,50,50,50
 1074,Pacific,68,13,1,White,0,3,0,40,15
 1075,Pacific,19,13,0,White,0,5,40,60,30
 1076,Pacific,37,16,0,White,0,7,85,60,90
 1077,Pacific,36,9,1,American Indian,0,4,30,50,50
-1078,Pacific,67,9,1,American Indian,0,5,0,0,NA
 1079,Pacific,58,14,0,White,0,6,30,30,15
-1080,Pacific,88,12,1,White,0,4,NA,NA,NA
-1081,Pacific,46,14,1,White,0,3,15,30,NA
 1082,Pacific,35,18,0,White,0,4,50,50,0
-1083,Pacific,46,14,1,White,0,3,35,30,NA
 1084,Pacific,61,16,1,White,0,3,0,15,0
 1085,Pacific,43,12,1,Asian,0,4,50,50,50
 1086,Pacific,62,13,1,White,0,3,70,85,85
 1087,Pacific,49,16,1,White,0,2,0,10,10
 1088,Pacific,20,12,0,White,1,4,0,10,10
-1089,Pacific,NA,12,0,Black,0,4,0,20,0
 1090,Pacific,27,17,0,White,0,5,75,45,65
 1091,Pacific,46,18,1,Asian,0,4,0,40,0
 1092,Mountain,25,10,0,White,1,2,20,30,20
 1093,Mountain,63,16,1,White,0,2,2,55,2
 1094,Mountain,60,16,0,Asian,0,5,60,60,60
-1095,Mountain,74,16,0,White,0,NA,NA,NA,NA
 1096,Mountain,50,8,0,Asian,1,5,90,75,80
 1097,Mountain,18,14,1,Asian,0,1,0,20,5
 1098,Mountain,42,14,1,Other,0,5,50,100,20
@@ -1101,31 +905,25 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1100,Mountain,30,17,1,White,0,5,90,70,85
 1101,Mountain,44,12,0,White,0,4,50,50,50
 1102,Mountain,59,16,0,White,0,4,0,20,0
-1103,Mountain,41,15,1,Black,0,4,NA,NA,NA
 1104,Mountain,48,15,1,Asian,0,2,5,40,20
 1105,Mountain,46,16,0,White,0,2,0,0,0
 1106,Mountain,43,13,0,White,1,4,50,50,50
 1107,Mountain,26,12,0,White,0,4,0,0,0
 1108,Mountain,65,12,0,White,0,5,85,70,60
 1109,Mountain,77,15,0,White,0,6,70,70,85
-1110,Mountain,59,12,1,White,0,2,NA,NA,NA
 1111,Mountain,54,0,0,White,0,2,100,100,15
 1112,Mountain,54,0,1,White,0,1,60,100,65
 1113,Mountain,63,13,0,White,0,7,100,100,100
 1114,Mountain,61,13,0,White,0,4,0,20,0
 1115,Mountain,46,16,1,White,0,6,100,95,90
-1116,Mountain,NA,16,1,White,0,NA,NA,NA,NA
 1117,Mountain,31,16,1,White,0,6,85,60,50
 1118,Mountain,36,14,0,Other,1,4,85,60,50
 1119,Mountain,42,16,1,White,0,2,0,40,0
-1120,Mountain,NA,20,0,Black,0,3,0,0,0
-1121,Mountain,29,13,0,White,1,NA,40,50,50
 1122,Mountain,29,13,1,White,0,5,100,85,70
 1123,Mountain,38,16,1,White,0,5,100,70,70
 1124,Mountain,47,16,1,Black,0,2,15,0,0
 1125,Mountain,74,12,1,White,0,4,90,90,90
 1126,Mountain,41,14,0,White,0,4,80,80,80
-1127,Mountain,48,14,0,White,0,6,NA,NA,NA
 1128,Mountain,48,15,1,White,0,3,15,50,10
 1129,Mountain,48,18,1,White,0,6,60,70,100
 1130,Mountain,62,16,0,White,0,4,0,15,0
@@ -1136,36 +934,28 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1135,Mountain,59,14,1,White,0,4,70,70,50
 1136,Mountain,36,14,0,White,0,6,75,40,50
 1137,Mountain,73,18,0,Other,0,7,80,80,80
-1138,Mountain,47,20,0,Black,0,NA,0,0,0
 1139,Mountain,42,16,1,White,1,5,100,100,100
 1140,Mountain,61,20,1,White,0,6,0,30,0
-1141,Mountain,52,12,0,Other,1,NA,80,80,60
 1142,Mountain,28,8,0,White,1,2,85,50,50
 1143,Mountain,30,12,0,White,0,6,51,65,50
 1144,South Atlantic,31,14,1,White,0,4,20,20,20
 1145,South Atlantic,68,16,0,White,0,2,0,0,0
 1146,South Atlantic,67,13,1,White,0,4,0,0,0
 1147,South Atlantic,74,16,0,White,0,6,90,60,85
-1148,South Atlantic,NA,16,1,Black,0,5,75,75,80
 1149,South Atlantic,51,14,1,White,0,6,100,85,99
 1150,South Atlantic,34,14,1,Black,0,7,0,0,0
 1151,South Atlantic,36,15,0,White,0,6,80,55,75
 1152,South Atlantic,32,17,1,White,0,4,0,0,0
 1153,South Atlantic,63,15,1,White,0,4,15,40,15
-1154,South Atlantic,31,15,0,American Indian,0,4,NA,60,40
 1155,South Atlantic,42,20,1,Black,0,3,0,50,0
-1156,South Atlantic,34,NA,1,White,1,4,0,50,50
 1157,South Atlantic,27,8,1,Black,0,2,0,0,50
 1158,South Atlantic,73,13,0,White,0,6,100,70,100
 1159,South Atlantic,46,14,1,Other,1,6,100,50,70
-1160,South Atlantic,NA,NA,1,Black,0,4,0,0,0
 1161,South Atlantic,44,14,0,Other,1,4,0,0,0
-1162,South Atlantic,40,16,1,Black,0,4,50,20,NA
 1163,South Atlantic,34,17,1,White,0,6,35,60,50
 1164,South Atlantic,32,13,1,White,0,6,75,75,75
 1165,South Atlantic,25,15,0,White,0,6,100,70,100
 1166,South Atlantic,50,16,1,White,0,2,0,25,0
-1167,South Atlantic,58,16,1,White,0,4,4,5,NA
 1168,South Atlantic,24,18,1,White,0,4,0,0,0
 1169,South Atlantic,59,16,1,Other,1,4,90,30,90
 1170,South Atlantic,36,18,1,White,0,2,0,0,0
@@ -1177,15 +967,12 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1176,South Atlantic,46,13,1,White,0,6,70,85,40
 1177,South Atlantic,19,14,1,White,1,4,85,85,70
 1178,South Atlantic,33,15,0,White,0,6,99,95,95
-1179,North Central,49,13,1,White,0,4,NA,NA,NA
 1180,North Central,66,20,0,White,0,4,0,30,15
 1181,North Central,64,12,0,White,0,5,25,35,35
 1182,North Central,38,16,1,White,0,4,30,50,30
 1183,North Central,41,20,0,White,0,6,90,90,90
-1184,North Central,37,14,1,White,0,6,NA,NA,NA
 1185,North Central,42,18,0,White,0,6,90,65,35
 1186,North Central,83,12,0,White,0,4,0,0,10
-1187,North Central,NA,16,NA,Asian,0,4,NA,NA,NA
 1188,North Central,66,14,0,White,0,3,0,50,30
 1189,North Central,55,19,1,White,0,4,0,50,0
 1190,North Central,39,17,0,White,0,3,0,30,15
@@ -1194,7 +981,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1193,North Central,56,16,1,White,0,6,75,75,70
 1194,North Central,38,14,1,White,0,4,50,50,50
 1195,North Central,53,19,0,Asian,0,4,10,10,20
-1196,North Central,60,16,0,White,0,4,75,NA,NA
 1197,North Central,36,16,1,White,0,2,0,5,0
 1198,North Central,53,13,0,White,0,4,10,10,10
 1199,North Central,56,16,0,White,0,2,0,20,0
@@ -1205,7 +991,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1204,North Central,51,12,0,White,0,3,0,30,15
 1205,North Central,53,15,0,White,0,3,0,0,0
 1206,North Central,51,15,0,White,0,4,25,45,25
-1207,North Central,NA,16,0,White,0,5,60,60,50
 1208,North Central,44,14,1,White,0,2,0,0,0
 1209,North Central,38,16,1,White,0,4,30,60,15
 1210,North Central,18,12,1,White,0,6,70,80,90
@@ -1219,7 +1004,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1218,North Central,31,16,0,White,0,3,0,10,0
 1219,North Central,55,16,1,White,0,6,95,95,95
 1220,North Central,39,10,0,White,0,1,0,0,25
-1221,North Central,70,12,0,White,0,NA,100,NA,NA
 1222,North Central,33,16,1,White,0,5,70,60,50
 1223,North Central,43,18,1,White,0,4,50,50,40
 1224,North Central,73,14,0,White,0,6,4,5,1
@@ -1269,19 +1053,13 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1268,Mountain,38,15,1,Other,1,4,60,0,0
 1269,Mountain,61,12,0,Black,0,3,0,30,30
 1270,Mountain,39,17,0,Black,0,4,0,0,0
-1271,Mountain,20,12,0,White,NA,3,100,70,50
-1272,Mountain,NA,NA,NA,Black,0,2,NA,50,50
-1273,Mountain,31,12,1,Black,1,4,10,NA,NA
 1274,Mountain,20,8,1,American Indian,1,5,70,50,40
-1275,Mountain,33,11,1,Other,1,NA,0,NA,NA
 1276,Mountain,39,12,1,Other,1,2,15,50,30
 1277,Mountain,48,18,1,White,0,4,0,5,0
 1278,Mountain,67,19,1,White,0,4,0,30,0
 1279,Mountain,45,12,0,Other,1,5,60,50,0
 1280,Mountain,33,16,1,Asian,0,3,0,20,0
 1281,Mountain,32,15,0,White,0,3,10,10,1
-1282,Mountain,31,9,1,Other,1,5,2,25,NA
-1283,Mountain,71,4,1,Other,1,NA,0,NA,NA
 1284,Mountain,59,16,1,White,0,4,0,15,0
 1285,Mountain,36,17,0,White,0,1,0,0,0
 1286,Mountain,30,16,1,White,0,1,0,20,0
@@ -1289,19 +1067,14 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1288,Mountain,21,14,0,White,1,3,82,85,41
 1289,Mountain,37,16,1,White,0,2,0,30,0
 1290,Mountain,44,20,0,White,0,2,1,15,5
-1291,Mountain,NA,13,0,White,0,2,0,5,0
 1292,Mountain,33,16,1,White,0,2,0,0,0
 1293,Mountain,77,18,1,White,0,6,85,70,100
-1294,Mountain,NA,14,1,White,0,6,NA,NA,NA
 1295,Mountain,75,17,1,White,0,2,0,30,0
 1296,Mountain,51,6,0,White,1,5,30,30,15
 1297,Pacific,53,14,1,White,0,4,60,60,50
 1298,Pacific,37,17,0,White,0,7,75,79,88
-1299,Pacific,73,15,0,White,0,5,80,20,NA
 1300,Pacific,31,16,1,White,1,7,100,100,75
 1301,Pacific,35,17,0,Other,1,5,15,60,50
-1302,Pacific,NA,19,0,Asian,0,2,20,10,10
-1303,Pacific,NA,16,0,NA,NA,4,85,50,85
 1304,Pacific,20,15,1,Asian,0,3,0,0,0
 1305,Pacific,44,20,1,White,0,3,10,20,10
 1306,Pacific,30,20,0,Asian,0,3,50,50,35
@@ -1311,9 +1084,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1310,Pacific,46,16,0,Asian,0,5,30,20,20
 1311,Pacific,72,16,1,White,0,2,0,15,0
 1312,Pacific,50,12,1,White,0,1,0,50,0
-1313,Pacific,71,12,1,White,1,6,0,0,NA
 1314,Pacific,85,14,0,White,0,2,0,3,0
-1315,Pacific,45,16,1,White,0,3,0,30,NA
 1316,Pacific,70,16,1,White,0,3,0,10,0
 1317,Pacific,82,12,1,White,0,5,0,30,0
 1318,Pacific,60,16,0,White,0,4,15,66,0
@@ -1329,7 +1100,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1328,Pacific,58,18,1,White,0,2,0,15,0
 1329,Pacific,68,13,1,White,0,4,15,15,0
 1330,Pacific,80,17,1,White,0,2,0,0,0
-1331,Pacific,77,12,1,White,0,4,0,NA,NA
 1332,Pacific,32,17,1,Other,1,2,0,0,0
 1333,Pacific,39,18,0,White,0,3,0,30,0
 1334,Pacific,37,18,1,White,0,3,0,0,0
@@ -1353,12 +1123,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1352,Pacific,47,16,1,Asian,0,1,0,0,0
 1353,Pacific,36,14,1,White,0,6,100,100,85
 1354,Pacific,35,16,1,White,0,4,5,50,50
-1355,Pacific,42,16,1,NA,NA,NA,NA,NA,0
 1356,South Atlantic,72,14,0,White,0,2,0,30,0
 1357,South Atlantic,45,10,1,White,0,4,0,15,0
 1358,South Atlantic,70,16,0,White,0,5,85,80,85
 1359,South Atlantic,27,14,0,White,0,4,30,30,0
-1360,South Atlantic,25,15,0,White,0,6,NA,NA,NA
 1361,South Atlantic,53,18,1,White,0,5,80,80,70
 1362,South Atlantic,52,19,1,White,0,4,60,70,30
 1363,South Atlantic,32,16,0,White,0,2,0,40,40
@@ -1371,11 +1139,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1370,South Atlantic,89,12,1,White,0,3,0,30,0
 1371,South Atlantic,50,18,1,White,0,2,0,50,0
 1372,South Atlantic,45,13,1,White,0,4,60,50,50
-1373,South Atlantic,42,16,0,White,NA,4,50,0,0
 1374,South Atlantic,58,14,1,White,0,2,0,15,0
 1375,South Atlantic,41,14,1,White,0,6,95,90,90
 1376,South Atlantic,33,14,1,White,0,4,50,50,75
-1377,South Atlantic,63,12,1,White,0,NA,95,100,75
 1378,South Atlantic,68,12,0,White,1,3,0,40,0
 1379,South Atlantic,60,13,0,White,0,6,50,70,70
 1380,South Atlantic,54,12,0,White,0,4,70,70,60
@@ -1389,9 +1155,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1388,South Atlantic,55,2,0,American Indian,1,6,50,80,100
 1389,South Atlantic,48,5,0,White,1,6,50,50,60
 1390,South Atlantic,37,18,0,White,0,4,10,50,0
-1391,South Atlantic,59,14,1,White,0,NA,20,10,20
 1392,North Central,80,14,1,White,0,4,0,2,0
-1393,North Central,55,12,1,White,0,4,1,50,NA
 1394,North Central,24,12,0,Black,0,4,70,50,50
 1395,North Central,59,14,1,White,0,1,0,0,0
 1396,North Central,38,12,0,White,0,5,70,70,65
@@ -1403,28 +1167,18 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1402,North Central,60,14,1,Other,1,6,50,50,75
 1403,North Central,35,12,0,White,0,5,100,100,100
 1404,North Central,43,14,1,Black,0,6,0,0,0
-1405,North Central,49,15,1,Black,0,1,0,NA,NA
-1406,North Central,79,14,1,Black,0,6,0,25,NA
 1407,North Central,64,12,1,Black,0,4,0,15,15
 1408,North Central,69,13,1,Black,0,4,30,50,50
 1409,North Central,48,13,1,Black,0,3,60,50,50
 1410,North Central,21,12,0,Black,0,3,50,50,25
 1411,North Central,44,12,1,Black,0,4,15,30,15
-1412,North Central,40,11,1,Black,0,NA,NA,NA,NA
-1413,North Central,28,8,1,White,1,4,0,3,NA
 1414,North Central,41,12,0,White,0,4,40,50,30
-1415,North Central,78,15,0,Black,NA,2,0,0,NA
-1416,North Central,NA,11,1,Black,0,4,0,15,0
-1417,North Central,89,10,1,Black,0,4,NA,NA,NA
-1418,North Central,56,15,0,Black,0,NA,50,50,50
 1419,North Central,45,16,1,Black,0,4,0,25,0
 1420,North Central,55,6,1,Black,0,1,15,40,15
 1421,North Central,64,14,1,Black,0,6,0,0,0
 1422,North Central,66,7,0,Black,0,7,30,100,50
 1423,North Central,32,12,1,Black,0,7,0,0,0
-1424,North Central,41,11,0,Black,0,7,NA,NA,NA
 1425,North Central,56,10,1,Black,0,5,0,0,0
-1426,North Central,57,15,0,Black,0,4,50,50,NA
 1427,South Atlantic,39,16,1,Asian,0,4,30,40,10
 1428,South Atlantic,64,16,1,White,0,5,70,70,70
 1429,South Atlantic,18,12,1,White,1,4,0,50,0
@@ -1439,7 +1193,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1438,South Atlantic,66,12,1,White,0,4,100,100,100
 1439,South Atlantic,25,12,0,White,0,4,50,50,55
 1440,South Atlantic,50,12,0,White,0,4,100,100,70
-1441,South Atlantic,20,12,0,Other,1,3,60,50,NA
 1442,South Atlantic,89,12,1,White,0,6,70,70,50
 1443,South Atlantic,60,12,1,White,0,6,40,50,40
 1444,South Atlantic,59,15,0,White,0,6,85,60,60
@@ -1449,17 +1202,13 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1448,South Atlantic,37,18,0,Black,1,3,15,40,0
 1449,South Atlantic,85,12,0,Black,0,2,0,0,0
 1450,South Atlantic,68,16,1,White,1,6,50,50,50
-1451,South Atlantic,NA,17,1,Black,0,4,50,50,49
 1452,South Atlantic,61,16,1,Black,0,4,15,15,0
 1453,South Atlantic,37,18,1,Black,0,5,40,40,0
 1454,South Atlantic,69,12,1,Black,0,6,60,60,60
 1455,South Atlantic,74,12,1,White,0,4,70,85,70
-1456,South Atlantic,31,10,1,NA,NA,4,NA,NA,NA
 1457,South Atlantic,74,12,1,White,0,4,85,85,100
-1458,South Atlantic,22,15,1,Black,0,3,0,15,NA
 1459,South Atlantic,49,12,1,Black,0,4,75,75,75
 1460,Mountain,35,19,1,White,0,2,0,0,0
-1461,Mountain,NA,19,0,White,0,2,0,15,0
 1462,Mountain,33,16,1,White,0,4,0,40,20
 1463,Mountain,69,16,1,White,0,2,0,15,0
 1464,Mountain,75,18,0,White,0,4,0,40,5
@@ -1470,9 +1219,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1469,Mountain,60,17,0,White,0,5,0,0,0
 1470,Mountain,47,16,1,White,0,4,0,30,5
 1471,Mountain,49,16,1,White,0,2,0,15,0
-1472,Mountain,71,11,0,White,0,4,NA,50,50
 1473,Mountain,50,16,0,White,0,2,0,0,0
-1474,Mountain,69,12,1,White,0,NA,100,NA,NA
 1475,Mountain,43,10,0,White,0,4,0,0,0
 1476,Mountain,64,12,1,White,1,4,0,0,0
 1477,Mountain,72,11,0,White,0,4,0,0,0
@@ -1482,12 +1229,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1481,Mountain,45,12,1,Other,1,4,100,85,70
 1482,Mountain,21,12,1,Black,1,3,100,100,100
 1483,Mountain,31,16,0,White,0,5,50,50,30
-1484,Mountain,NA,NA,NA,Asian,1,NA,60,NA,NA
 1485,Mountain,70,18,0,White,0,6,86,70,86
 1486,Mountain,39,20,0,White,0,5,40,40,10
 1487,Mountain,80,17,0,White,0,6,49,60,0
-1488,Mountain,31,11,1,Other,1,4,50,50,NA
-1489,Mountain,61,14,0,American Indian,1,3,50,50,NA
 1490,Mountain,45,12,1,Other,1,2,0,0,0
 1491,Mountain,34,18,0,White,0,4,15,50,50
 1492,Mountain,32,16,1,White,0,6,100,100,100
@@ -1501,20 +1245,13 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1500,North Central,34,20,0,White,0,6,65,65,75
 1501,North Central,55,18,1,White,0,4,0,50,0
 1502,North Central,41,15,1,Black,0,4,50,50,40
-1503,North Central,42,12,0,NA,0,4,100,50,50
-1504,North Central,26,12,1,White,0,4,50,NA,NA
 1505,North Central,63,11,1,White,0,2,90,90,90
-1506,North Central,52,12,0,NA,0,7,100,100,100
 1507,North Central,45,14,1,White,0,4,0,0,0
 1508,North Central,67,16,0,White,0,7,100,30,100
 1509,North Central,22,9,1,American Indian,0,4,30,50,30
-1510,North Central,26,13,1,Black,0,4,0,49,NA
 1511,Middle Atlantic,56,15,0,White,0,5,85,60,75
-1512,Middle Atlantic,65,14,1,White,0,3,NA,15,0
 1513,Middle Atlantic,47,12,1,White,0,4,0,30,0
-1514,Middle Atlantic,21,11,1,Black,0,4,25,45,NA
 1515,Middle Atlantic,72,10,0,White,0,6,100,100,100
-1516,Middle Atlantic,NA,20,1,White,0,4,10,NA,NA
 1517,Middle Atlantic,39,15,1,White,0,2,0,10,0
 1518,Middle Atlantic,47,20,1,White,0,1,0,0,0
 1519,Middle Atlantic,33,16,1,White,0,5,70,30,30
@@ -1527,7 +1264,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1526,Middle Atlantic,42,18,0,White,0,4,0,35,0
 1527,Middle Atlantic,69,17,1,White,0,5,30,30,0
 1528,South Central,66,16,1,White,0,3,0,15,0
-1529,South Central,64,14,1,NA,0,6,100,65,80
 1530,South Central,54,20,1,White,0,4,50,50,50
 1531,South Central,61,16,1,White,0,2,0,0,0
 1532,South Central,77,18,0,White,0,6,60,50,85
@@ -1538,36 +1274,27 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1537,South Central,52,16,0,White,1,4,10,45,20
 1538,South Central,59,15,1,White,1,5,0,30,0
 1539,South Central,32,12,1,White,0,4,40,50,30
-1540,South Central,80,7,0,White,1,3,20,75,NA
-1541,South Central,39,14,0,Black,0,NA,75,75,75
 1542,South Central,63,12,0,White,1,5,0,0,0
 1543,South Central,71,15,1,White,0,6,100,70,60
-1544,South Central,55,17,1,Other,1,NA,0,50,50
 1545,South Central,49,18,0,White,1,6,5,40,0
 1546,South Central,21,12,1,White,1,4,30,50,50
 1547,South Central,56,16,0,White,0,6,100,70,90
 1548,South Central,73,18,0,White,0,6,75,75,70
 1549,South Central,74,14,1,White,1,6,70,50,70
 1550,South Central,62,13,1,White,0,4,85,85,70
-1551,South Central,67,12,0,White,1,5,100,NA,NA
 1552,South Central,42,18,1,Black,0,4,0,35,0
 1553,South Central,39,20,1,White,0,5,20,20,25
-1554,North Central,25,13,0,Black,0,NA,60,NA,NA
 1555,North Central,31,14,0,Black,0,4,50,50,50
 1556,North Central,26,12,1,White,0,7,100,100,100
 1557,North Central,45,13,1,Black,0,7,0,0,0
-1558,North Central,34,11,NA,Asian,NA,7,100,100,100
 1559,North Central,47,15,0,Asian,0,4,50,15,15
 1560,North Central,30,12,0,White,0,5,100,85,60
 1561,North Central,26,12,0,Other,1,2,100,100,50
 1562,North Central,28,17,0,Other,1,4,40,50,15
 1563,North Central,23,13,0,Black,0,6,100,60,60
 1564,North Central,24,13,1,Black,1,2,40,40,15
-1565,North Central,27,15,1,NA,0,4,85,70,40
 1566,North Central,49,17,0,Black,0,4,50,50,30
-1567,North Central,43,12,0,Asian,0,3,NA,100,100
 1568,North Central,63,12,0,White,0,4,50,50,50
-1569,North Central,62,12,1,White,0,3,NA,NA,NA
 1570,North Central,44,12,1,White,0,4,0,50,0
 1571,North Central,27,12,0,White,0,6,100,75,100
 1572,North Central,43,12,1,White,0,4,10,10,10
@@ -1575,14 +1302,12 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1574,North Central,77,14,0,White,0,4,0,0,0
 1575,North Central,63,11,0,White,0,4,0,0,0
 1576,North Central,77,17,1,White,0,3,10,20,15
-1577,North Central,39,12,1,White,0,NA,25,50,NA
 1578,North Central,23,13,1,White,0,1,70,70,0
 1579,North Central,68,15,0,White,0,5,100,90,100
 1580,North Central,36,13,1,White,0,5,70,70,50
 1581,North Central,87,10,1,White,0,4,75,10,0
 1582,North Central,69,14,1,White,0,4,0,0,0
 1583,North Central,52,16,1,White,0,2,0,0,0
-1584,North Central,25,12,NA,NA,0,5,80,80,80
 1585,North Central,68,18,1,White,0,3,0,30,0
 1586,North Central,49,18,0,White,0,5,75,70,40
 1587,North Central,48,16,1,White,0,4,0,50,0
@@ -1599,24 +1324,20 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1598,North Central,36,14,1,Black,0,4,50,50,50
 1599,North Central,24,15,0,White,0,2,0,0,0
 1600,North Central,24,14,0,White,0,6,85,100,86
-1601,North Central,49,14,0,White,0,5,40,15,NA
 1602,North Central,46,16,1,White,0,4,15,30,5
 1603,North Central,43,14,1,White,0,4,0,50,0
 1604,North Central,69,17,0,White,0,7,100,70,70
 1605,North Central,44,14,0,White,0,6,100,80,100
 1606,North Central,50,12,1,White,0,6,100,90,90
-1607,North Central,56,12,0,White,0,NA,70,50,50
 1608,North Central,50,12,0,White,0,6,70,60,70
 1609,North Central,23,13,1,White,0,2,0,0,0
 1610,North Central,48,14,1,White,0,4,0,0,0
-1611,North Central,45,15,1,White,0,4,0,0,NA
 1612,North Central,21,11,1,White,0,5,50,50,50
 1613,North Central,59,18,0,White,1,3,0,0,0
 1614,North Central,40,16,1,White,0,1,0,0,0
 1615,North Central,57,20,1,White,0,2,0,0,0
 1616,North Central,79,19,0,White,0,4,0,0,0
 1617,North Central,28,17,0,Asian,0,4,40,50,50
-1618,North Central,NA,16,0,Black,0,4,50,50,50
 1619,North Central,40,15,1,Asian,0,4,85,50,50
 1620,North Central,71,16,1,White,0,7,70,60,70
 1621,North Central,18,12,0,White,0,2,0,0,0
@@ -1624,7 +1345,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1623,North Central,67,16,0,White,0,1,0,0,0
 1624,North Central,39,20,0,White,0,3,0,25,0
 1625,North Central,43,17,0,White,0,4,100,50,50
-1626,North Central,40,15,0,Black,1,NA,30,30,30
 1627,North Central,58,14,0,Black,0,4,0,15,0
 1628,North Central,38,14,0,Black,0,4,50,40,40
 1629,North Central,40,18,1,White,0,4,0,40,0
@@ -1640,7 +1360,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1639,North Central,45,17,1,White,0,6,100,85,85
 1640,North Central,53,12,1,Black,0,4,0,30,5
 1641,North Central,21,15,1,Black,0,6,0,15,15
-1642,North Central,48,NA,NA,White,0,4,0,0,0
 1643,North Central,27,12,0,White,0,4,60,50,85
 1644,North Central,46,12,1,White,0,4,70,60,70
 1645,North Central,46,15,0,White,0,5,30,50,50
@@ -1651,7 +1370,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1650,North Central,22,12,0,White,0,6,15,0,10
 1651,North Central,57,12,1,White,0,4,0,50,50
 1652,North Central,45,12,0,White,0,5,70,80,50
-1653,North Central,80,11,1,White,0,NA,0,50,50
 1654,North Central,69,12,0,White,0,5,50,15,30
 1655,North Central,52,18,1,White,0,4,0,50,15
 1656,North Central,30,16,1,White,0,4,40,55,25
@@ -1682,11 +1400,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1681,Mountain,40,14,0,Black,0,2,50,50,0
 1682,Mountain,48,12,0,White,1,1,50,50,50
 1683,Mountain,71,13,0,Other,1,4,90,90,90
-1684,Mountain,43,12,1,Black,1,2,50,NA,NA
 1685,Mountain,45,13,1,White,1,4,100,90,100
 1686,Mountain,74,16,0,White,0,2,0,0,0
 1687,South Central,39,13,0,White,0,6,100,100,100
-1688,South Central,86,8,1,Black,0,6,50,NA,NA
 1689,South Central,33,13,0,White,0,4,85,15,60
 1690,South Central,60,16,1,White,0,5,70,60,50
 1691,South Central,51,12,0,White,0,3,70,70,70
@@ -1704,7 +1420,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1703,South Central,26,16,0,White,0,5,70,60,30
 1704,South Central,69,20,0,White,0,3,0,10,10
 1705,South Central,54,18,1,White,0,4,0,0,0
-1706,South Central,NA,17,0,White,0,4,NA,NA,NA
 1707,South Central,51,20,0,White,0,4,10,40,0
 1708,South Central,62,14,1,Black,0,4,0,30,50
 1709,South Central,23,15,1,White,0,2,30,30,0
@@ -1712,20 +1427,16 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1711,South Central,42,10,0,Other,1,4,60,85,85
 1712,South Central,43,10,1,White,0,4,80,50,50
 1713,South Central,56,12,0,White,1,7,100,100,100
-1714,South Central,42,3,1,Black,0,7,22,NA,NA
 1715,South Atlantic,37,12,1,Other,1,4,60,70,35
 1716,South Atlantic,64,12,1,Black,0,4,30,50,50
 1717,South Atlantic,33,15,1,Black,0,5,30,0,0
 1718,South Atlantic,70,12,0,Black,0,4,0,15,15
-1719,South Atlantic,71,12,1,Black,0,NA,0,0,0
 1720,South Atlantic,31,12,0,White,0,4,51,51,10
 1721,South Atlantic,47,14,0,White,0,6,85,75,65
 1722,South Atlantic,73,12,0,White,0,3,70,70,40
 1723,South Atlantic,51,14,1,White,0,6,75,75,50
-1724,South Atlantic,48,16,1,NA,0,2,0,0,0
 1725,South Atlantic,40,11,0,Black,0,5,0,0,0
 1726,South Atlantic,83,20,1,White,0,1,0,0,0
-1727,South Atlantic,NA,NA,0,White,0,4,50,50,50
 1728,South Atlantic,83,12,1,Black,0,4,0,0,0
 1729,South Atlantic,60,12,1,White,0,3,0,0,0
 1730,South Atlantic,26,16,1,White,0,4,50,40,30
@@ -1743,7 +1454,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1742,South Atlantic,75,14,0,White,0,5,70,60,80
 1743,South Atlantic,74,16,0,White,0,6,40,40,80
 1744,South Atlantic,57,12,1,White,0,3,0,0,0
-1745,South Atlantic,72,16,1,NA,0,4,40,50,50
 1746,South Atlantic,42,18,1,Black,1,4,50,40,30
 1747,South Atlantic,44,16,0,White,0,5,30,15,0
 1748,South Atlantic,39,18,1,White,0,4,2,80,70
@@ -1754,40 +1464,27 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1753,South Atlantic,47,12,0,Asian,0,5,40,50,50
 1754,South Atlantic,22,12,1,White,1,4,70,60,50
 1755,South Atlantic,34,15,1,Asian,0,4,10,10,0
-1756,South Atlantic,19,12,1,White,1,4,10,NA,10
-1757,South Atlantic,60,14,1,White,0,4,NA,0,NA
 1758,South Atlantic,21,12,0,Other,1,6,0,40,15
 1759,South Atlantic,26,12,1,White,0,4,50,50,50
-1760,South Atlantic,34,11,1,Black,0,NA,NA,NA,NA
-1761,South Atlantic,42,17,1,Black,0,4,NA,NA,NA
 1762,South Atlantic,60,16,0,Black,0,2,40,50,40
 1763,South Atlantic,23,12,1,Black,0,3,70,70,70
-1764,South Atlantic,41,18,1,Black,0,NA,0,20,0
 1765,South Atlantic,48,13,0,White,0,4,15,50,0
 1766,South Atlantic,27,12,0,White,0,4,60,50,40
 1767,South Atlantic,64,15,1,Other,0,4,0,15,0
 1768,South Atlantic,43,8,1,Black,0,7,0,0,0
 1769,South Atlantic,62,12,1,White,0,2,0,10,0
 1770,South Atlantic,65,12,1,White,0,1,0,30,0
-1771,South Atlantic,30,12,1,Black,0,NA,50,50,15
 1772,South Atlantic,73,9,0,Black,0,5,40,40,40
 1773,South Atlantic,42,12,0,Black,0,4,50,15,15
-1774,South Atlantic,43,13,1,Black,0,4,50,NA,NA
 1775,South Atlantic,64,16,0,Black,0,4,0,0,0
-1776,South Atlantic,26,13,0,Black,0,NA,0,0,0
 1777,South Atlantic,34,12,1,Black,0,4,60,0,0
 1778,South Atlantic,37,16,0,Black,0,4,0,30,0
-1779,South Atlantic,56,12,1,Black,0,5,0,0,NA
 1780,South Atlantic,66,12,1,White,0,4,0,15,50
 1781,South Atlantic,57,15,1,Black,0,4,50,50,50
 1782,South Atlantic,67,11,1,Black,0,4,0,0,0
-1783,South Atlantic,50,12,1,White,0,NA,90,NA,NA
 1784,South Atlantic,33,15,0,American Indian,0,3,40,30,30
-1785,South Atlantic,55,14,0,Black,0,NA,0,25,25
-1786,South Atlantic,73,19,0,NA,0,6,90,72,80
 1787,South Atlantic,20,14,0,White,0,6,100,100,100
 1788,South Atlantic,46,14,1,Black,0,4,0,0,0
-1789,South Atlantic,89,10,0,White,0,4,0,0,NA
 1790,South Atlantic,53,12,1,White,0,6,70,70,70
 1791,South Atlantic,49,14,0,White,0,4,75,50,25
 1792,South Atlantic,44,16,1,White,1,2,0,0,0
@@ -1799,17 +1496,14 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1798,South Atlantic,73,12,0,White,0,4,0,50,0
 1799,South Atlantic,68,14,0,White,0,4,40,50,15
 1800,South Atlantic,88,12,0,White,0,5,10,40,15
-1801,South Atlantic,28,12,0,Black,1,NA,60,50,50
 1802,South Atlantic,70,14,0,White,0,2,0,0,0
 1803,South Central,25,16,1,White,1,4,0,0,0
 1804,South Central,37,17,1,White,0,4,40,60,30
 1805,South Central,42,16,1,White,0,4,50,50,30
 1806,South Central,41,14,1,White,0,4,0,15,0
 1807,South Central,67,15,1,White,0,4,50,45,40
-1808,South Central,24,NA,NA,White,0,7,100,0,0
 1809,South Central,30,12,1,Black,0,4,0,0,0
 1810,South Central,39,12,0,White,1,4,50,50,50
-1811,South Central,24,12,1,Other,1,NA,50,NA,NA
 1812,South Central,58,13,1,White,0,6,75,80,90
 1813,South Central,42,16,1,White,0,4,55,55,45
 1814,South Central,74,12,1,White,0,5,0,0,0
@@ -1819,9 +1513,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1818,South Central,72,16,1,Black,0,2,0,0,0
 1819,South Central,77,12,0,White,0,6,85,70,85
 1820,South Central,19,14,0,White,1,4,50,50,50
-1821,South Central,29,18,1,Other,1,4,100,NA,NA
 1822,South Central,45,16,0,Black,0,4,50,50,50
-1823,South Central,50,12,1,White,0,NA,0,NA,0
 1824,South Central,58,8,1,White,0,2,0,0,0
 1825,South Central,26,12,1,White,0,4,100,50,50
 1826,South Central,49,11,1,White,0,4,50,50,50
@@ -1837,12 +1529,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1836,South Central,50,12,1,Other,1,7,0,50,50
 1837,South Central,71,14,1,Black,0,6,0,0,40
 1838,South Central,44,15,1,White,0,4,70,50,0
-1839,South Central,NA,16,0,White,0,6,65,70,65
 1840,South Central,57,16,1,White,0,6,40,10,60
-1841,South Central,NA,16,0,White,0,6,70,70,70
 1842,South Central,48,16,1,White,0,5,90,70,100
-1843,South Central,79,0,NA,White,1,4,1,0,1
-1844,South Central,NA,17,1,White,0,4,50,70,50
 1845,South Central,61,16,1,White,0,6,85,85,90
 1846,South Central,57,14,0,American Indian,0,6,100,40,100
 1847,South Central,85,16,1,White,0,7,70,70,75
@@ -1860,19 +1548,14 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1859,South Central,87,19,0,White,0,5,50,50,70
 1860,South Central,77,12,1,White,0,6,90,70,100
 1861,South Central,27,13,1,White,0,3,0,20,0
-1862,South Central,23,15,NA,White,1,NA,NA,NA,NA
 1863,South Central,25,14,0,White,0,4,75,70,50
-1864,South Central,45,17,1,NA,1,4,0,50,15
 1865,North Central,19,12,0,White,0,4,40,50,30
 1866,North Central,53,16,0,White,0,4,40,15,35
 1867,North Central,67,14,1,White,0,5,0,40,0
-1868,North Central,20,12,0,White,0,NA,70,85,100
 1869,North Central,44,13,0,White,0,4,50,50,50
 1870,North Central,83,13,0,White,0,6,1,1,0
 1871,North Central,76,17,0,American Indian,0,2,0,0,0
-1872,North Central,80,12,1,White,0,6,95,85,NA
 1873,North Central,75,18,0,White,0,6,85,85,100
-1874,North Central,32,6,NA,White,1,4,NA,NA,NA
 1875,North Central,26,15,0,Other,1,3,85,50,40
 1876,North Central,68,13,1,White,0,4,0,0,0
 1877,North Central,38,12,1,White,0,4,60,0,0
@@ -1880,7 +1563,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1879,North Central,40,14,0,White,0,3,60,30,60
 1880,North Central,71,12,0,White,0,3,2,40,1
 1881,North Central,61,12,1,White,0,4,15,30,30
-1882,North Central,39,12,1,White,0,2,0,0,NA
 1883,North Central,25,17,1,White,0,4,0,5,0
 1884,North Central,37,16,0,White,0,3,0,15,0
 1885,North Central,34,16,1,White,0,3,0,60,15
@@ -1895,24 +1577,18 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1894,North Central,25,13,1,White,0,4,70,50,50
 1895,North Central,38,11,1,White,1,4,0,60,0
 1896,North Central,43,10,0,White,0,6,70,70,70
-1897,North Central,53,16,0,White,0,4,50,60,NA
 1898,South Central,27,18,1,Other,0,2,10,50,30
 1899,South Central,24,16,1,Asian,0,2,10,15,0
 1900,South Central,64,14,1,Black,0,4,50,50,50
 1901,South Central,28,18,1,White,0,6,50,60,0
-1902,South Central,23,18,0,Asian,0,NA,50,NA,NA
 1903,South Central,22,16,1,White,0,2,0,25,0
 1904,South Central,21,16,1,White,0,2,0,0,0
 1905,South Central,37,17,0,White,0,5,90,70,70
-1906,South Central,47,15,1,Black,0,4,NA,15,0
-1907,South Central,NA,16,1,Black,0,2,50,50,0
 1908,South Central,26,16,1,Black,0,3,0,25,0
-1909,South Central,36,20,1,White,1,2,10,10,NA
 1910,South Central,24,16,1,Asian,0,3,40,50,30
 1911,South Central,34,7,1,White,1,3,50,50,60
 1912,South Central,28,15,0,White,1,1,0,0,0
 1913,South Central,80,12,1,White,0,6,60,75,60
-1914,South Central,66,12,0,White,0,3,75,NA,100
 1915,South Central,61,14,0,White,0,6,100,100,50
 1916,South Central,55,14,0,White,0,7,85,15,85
 1917,South Central,41,16,1,White,0,6,100,95,100
@@ -1920,10 +1596,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1919,South Central,74,12,0,White,0,6,85,85,85
 1920,South Central,34,9,0,White,0,4,85,50,50
 1921,South Central,74,12,0,White,0,6,50,30,40
-1922,South Central,69,16,1,White,0,7,70,70,NA
 1923,South Central,26,12,0,White,0,4,0,0,0
 1924,South Central,75,12,1,White,0,6,85,70,50
-1925,South Central,76,19,0,White,0,4,60,60,NA
 1926,South Central,23,16,0,White,0,6,85,40,60
 1927,South Central,69,12,1,White,0,7,98,85,60
 1928,South Central,74,15,0,White,0,6,85,85,70
@@ -1933,7 +1607,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1932,South Central,36,12,1,White,0,4,75,5,5
 1933,South Central,41,14,1,White,0,6,50,50,50
 1934,Middle Atlantic,41,20,1,White,1,4,0,50,0
-1935,Middle Atlantic,39,12,1,White,0,NA,100,100,100
 1936,Middle Atlantic,49,14,1,White,0,6,70,70,60
 1937,Middle Atlantic,71,18,1,White,0,2,0,15,0
 1938,Middle Atlantic,52,14,1,White,0,6,85,85,50
@@ -1943,7 +1616,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1942,Middle Atlantic,57,10,1,White,0,4,0,30,0
 1943,Middle Atlantic,72,12,1,White,0,4,0,0,0
 1944,Middle Atlantic,31,16,1,White,0,4,35,30,15
-1945,Middle Atlantic,NA,12,1,White,0,6,95,95,95
 1946,Middle Atlantic,52,17,0,White,0,6,85,85,100
 1947,Middle Atlantic,70,12,1,White,0,4,0,40,0
 1948,Middle Atlantic,47,12,1,White,0,5,70,80,60
@@ -1951,7 +1623,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1950,Middle Atlantic,85,19,0,White,1,5,50,60,15
 1951,Middle Atlantic,65,18,0,White,0,6,90,65,80
 1952,Middle Atlantic,47,12,0,White,0,6,100,40,100
-1953,Middle Atlantic,27,17,1,White,0,4,60,NA,NA
 1954,Middle Atlantic,33,12,1,White,0,5,100,100,100
 1955,Middle Atlantic,42,16,1,White,0,4,50,50,50
 1956,Middle Atlantic,64,12,1,White,0,6,85,70,85
@@ -1966,7 +1637,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1965,Middle Atlantic,42,18,1,White,0,4,60,60,30
 1966,Middle Atlantic,29,18,0,White,0,5,30,40,30
 1967,Middle Atlantic,65,16,1,White,0,6,75,70,60
-1968,Middle Atlantic,67,14,1,White,0,4,70,50,NA
 1969,Middle Atlantic,62,19,1,White,0,2,5,35,25
 1970,Middle Atlantic,46,14,0,White,0,5,60,60,50
 1971,Middle Atlantic,52,17,1,White,0,3,0,0,0
@@ -1988,7 +1658,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 1987,Middle Atlantic,48,12,0,White,0,1,0,30,0
 1988,Middle Atlantic,35,12,1,White,0,4,75,50,50
 1989,Middle Atlantic,85,16,1,White,0,5,40,50,40
-1990,Middle Atlantic,62,12,1,White,0,4,60,NA,40
 1991,Middle Atlantic,52,13,1,White,0,4,40,60,50
 1992,Middle Atlantic,64,13,0,White,0,6,60,60,80
 1993,Middle Atlantic,62,12,0,White,0,3,60,60,60
@@ -2002,10 +1671,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2001,Middle Atlantic,66,12,1,White,0,4,15,40,30
 2002,Middle Atlantic,62,16,0,White,0,5,30,0,50
 2003,Middle Atlantic,46,12,0,White,0,6,50,50,50
-2004,Middle Atlantic,71,0,1,White,0,NA,0,0,NA
 2005,Middle Atlantic,35,9,0,Other,1,6,50,50,50
 2006,Middle Atlantic,20,14,0,Black,0,2,0,30,15
-2007,Middle Atlantic,89,8,1,White,0,5,NA,30,30
 2008,Middle Atlantic,63,14,0,White,0,2,40,50,50
 2009,Middle Atlantic,80,14,0,White,0,2,0,15,15
 2010,Middle Atlantic,61,18,1,White,0,3,0,20,20
@@ -2016,7 +1683,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2015,Middle Atlantic,57,18,1,White,0,2,0,10,0
 2016,South Central,66,12,0,White,0,6,90,75,50
 2017,South Central,35,17,1,White,0,2,0,0,0
-2018,South Central,61,14,1,White,0,5,60,60,NA
 2019,South Central,49,14,1,White,1,2,0,40,0
 2020,South Central,65,17,0,White,0,7,85,60,50
 2021,South Central,30,20,0,White,0,6,85,80,65
@@ -2028,7 +1694,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2027,South Central,24,12,1,White,0,6,85,85,50
 2028,South Central,66,12,1,White,0,7,100,100,100
 2029,South Central,69,14,0,White,0,6,85,85,85
-2030,South Central,69,12,1,White,0,4,60,NA,NA
 2031,South Central,63,20,1,White,0,4,15,0,0
 2032,South Central,18,12,0,White,0,2,0,5,0
 2033,South Central,28,12,1,White,0,2,100,100,0
@@ -2039,15 +1704,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2038,South Central,74,12,1,White,0,5,100,85,85
 2039,South Central,84,16,0,White,0,7,85,50,70
 2040,South Central,63,12,1,White,1,6,50,50,50
-2041,South Central,31,0,1,White,1,6,NA,20,50
 2042,South Central,30,12,1,White,0,3,0,50,0
 2043,South Central,34,12,0,White,0,4,95,0,0
 2044,South Central,25,12,0,White,0,4,50,40,50
 2045,South Central,29,12,0,White,0,7,50,10,10
 2046,South Central,57,11,1,Black,0,4,0,0,0
-2047,South Central,29,12,0,White,0,5,60,60,NA
-2048,South Central,34,12,0,Other,1,3,50,NA,NA
-2049,South Central,39,12,1,White,0,NA,50,0,0
 2050,North Central,40,14,1,White,0,7,100,90,95
 2051,North Central,58,12,1,White,0,6,100,70,70
 2052,North Central,73,13,1,White,0,6,70,40,85
@@ -2066,7 +1727,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2065,North Central,31,19,1,White,0,1,0,15,0
 2066,North Central,67,8,1,White,0,2,1,50,0
 2067,North Central,58,14,1,Black,0,2,0,15,15
-2068,North Central,67,16,1,NA,0,6,60,50,50
 2069,North Central,45,15,1,White,0,6,10,10,10
 2070,North Central,38,8,1,White,0,7,50,40,30
 2071,North Central,89,16,0,White,0,5,40,60,50
@@ -2090,7 +1750,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2089,North Central,80,12,1,White,0,6,50,0,70
 2090,South Atlantic,27,18,1,White,0,2,0,0,0
 2091,South Atlantic,46,20,1,White,1,3,15,0,40
-2092,South Atlantic,67,17,1,White,0,6,70,70,NA
 2093,South Atlantic,70,16,0,White,0,6,90,90,100
 2094,South Atlantic,78,19,1,White,0,2,0,0,0
 2095,South Atlantic,77,20,0,White,1,3,0,40,0
@@ -2114,7 +1773,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2113,South Atlantic,35,11,0,White,0,4,100,100,30
 2114,South Atlantic,60,6,1,White,0,4,0,0,0
 2115,South Atlantic,33,14,0,White,1,4,60,50,50
-2116,South Atlantic,62,14,1,White,0,5,50,60,NA
 2117,South Atlantic,76,14,0,White,0,6,85,85,85
 2118,South Atlantic,51,14,1,White,0,4,50,60,50
 2119,South Atlantic,78,13,1,White,0,7,100,85,85
@@ -2122,10 +1780,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2121,South Atlantic,27,12,1,White,1,6,40,60,30
 2122,South Atlantic,34,8,1,Other,1,6,0,50,100
 2123,South Atlantic,71,12,1,White,0,4,60,50,50
-2124,South Atlantic,62,12,1,White,0,NA,NA,0,0
 2125,South Atlantic,23,14,1,White,0,4,70,85,50
 2126,South Atlantic,34,12,0,White,1,7,95,95,95
-2127,South Atlantic,44,NA,1,White,0,4,60,50,50
 2128,South Atlantic,60,15,1,White,0,5,70,70,85
 2129,South Atlantic,25,12,0,White,0,4,70,0,0
 2130,South Atlantic,75,17,1,White,0,5,100,75,100
@@ -2138,39 +1794,26 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2137,Pacific,68,17,0,White,0,2,0,5,5
 2138,Pacific,64,14,0,Asian,0,6,100,80,90
 2139,Pacific,42,12,1,Black,0,2,60,40,0
-2140,Pacific,NA,15,0,Asian,0,5,95,85,90
 2141,Pacific,26,15,0,Asian,0,4,30,15,50
-2142,Pacific,NA,15,0,NA,NA,4,NA,NA,NA
 2143,Pacific,27,15,0,Asian,0,4,50,50,50
 2144,Pacific,60,13,1,Pacific Islander,0,4,50,30,30
 2145,Pacific,25,17,1,Black,0,4,50,50,50
 2146,Pacific,32,15,0,Asian,0,6,50,15,50
-2147,Pacific,48,12,1,Asian,0,4,15,NA,30
-2148,Pacific,85,12,1,Asian,0,6,75,NA,NA
-2149,Pacific,45,14,0,Asian,0,4,50,NA,NA
-2150,Pacific,NA,20,0,White,0,2,0,15,0
-2151,Pacific,64,17,0,Asian,0,4,30,40,NA
-2152,Pacific,73,12,0,Asian,0,4,60,60,NA
 2153,Pacific,69,16,1,Asian,0,3,15,15,15
-2154,Pacific,NA,12,0,Asian,0,4,30,40,30
 2155,Pacific,68,17,0,Asian,0,7,100,60,95
 2156,Pacific,65,14,0,Asian,0,2,0,20,0
 2157,Pacific,58,14,0,Pacific Islander,0,2,50,20,20
-2158,Pacific,NA,20,0,Asian,0,4,0,0,0
 2159,Pacific,73,16,0,Asian,0,4,0,0,0
 2160,Pacific,63,13,0,Black,0,3,0,0,0
-2161,Pacific,NA,NA,1,Asian,0,NA,NA,NA,NA
 2162,Pacific,30,16,1,Asian,0,2,50,50,50
 2163,South Atlantic,21,15,1,White,0,3,0,40,0
 2164,South Atlantic,37,16,0,White,0,4,20,45,35
 2165,South Atlantic,21,15,0,White,1,4,40,40,15
 2166,South Atlantic,63,20,0,White,0,4,100,40,75
 2167,South Atlantic,23,13,1,White,0,4,60,40,60
-2168,South Atlantic,NA,12,1,White,0,6,NA,NA,NA
 2169,South Atlantic,24,14,1,White,0,4,60,60,40
 2170,South Atlantic,24,14,1,Black,0,3,15,15,0
 2171,South Atlantic,28,15,0,White,0,4,50,50,50
-2172,South Atlantic,19,12,1,White,1,7,NA,NA,NA
 2173,South Atlantic,46,13,0,Black,0,4,60,70,50
 2174,South Atlantic,54,18,1,Black,0,2,0,0,0
 2175,South Atlantic,52,12,1,White,0,6,85,70,85
@@ -2180,7 +1823,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2179,South Atlantic,31,14,1,Black,0,4,70,50,50
 2180,South Atlantic,51,18,1,Black,0,5,50,50,50
 2181,South Atlantic,47,17,0,Black,0,4,50,50,50
-2182,South Atlantic,24,12,1,White,0,NA,50,50,50
 2183,South Atlantic,80,12,1,White,0,3,25,50,60
 2184,South Atlantic,71,12,1,White,0,7,100,75,50
 2185,South Atlantic,71,15,1,White,0,7,100,100,100
@@ -2189,30 +1831,21 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2188,South Atlantic,29,12,1,White,0,6,70,70,85
 2189,South Atlantic,32,18,1,White,0,4,50,50,50
 2190,South Atlantic,70,18,1,White,0,6,85,100,85
-2191,South Atlantic,76,12,1,White,0,3,NA,NA,NA
 2192,South Atlantic,76,10,1,Black,0,4,0,25,0
 2193,South Atlantic,47,9,0,White,0,6,85,100,50
-2194,South Atlantic,85,13,0,White,0,7,100,85,NA
-2195,South Atlantic,24,11,0,White,0,4,NA,NA,NA
-2196,South Atlantic,18,12,1,White,0,NA,30,NA,NA
 2197,South Atlantic,39,16,1,Other,0,3,0,60,15
 2198,Pacific,65,13,1,Other,1,4,0,15,15
 2199,Pacific,65,13,1,White,0,4,0,50,0
 2200,Pacific,50,12,1,White,0,6,20,0,40
-2201,Pacific,86,12,1,White,0,NA,NA,NA,NA
 2202,Pacific,42,20,0,White,0,1,10,2,8
 2203,Pacific,67,12,1,White,0,5,100,99,75
 2204,Pacific,22,14,1,White,0,3,30,15,0
 2205,Pacific,62,14,0,White,0,5,60,60,60
 2206,Pacific,25,17,0,White,0,5,50,50,50
 2207,Pacific,37,12,1,White,0,6,70,70,0
-2208,Pacific,89,12,0,Other,0,NA,0,50,0
-2209,Pacific,35,18,1,NA,0,NA,70,70,NA
 2210,Pacific,77,20,1,Asian,0,7,50,40,50
 2211,Pacific,68,18,0,White,0,7,90,75,85
-2212,Pacific,NA,13,1,White,0,4,NA,NA,NA
 2213,Pacific,64,14,0,White,0,6,80,80,80
-2214,Pacific,56,16,0,Black,0,NA,15,40,15
 2215,Pacific,31,14,0,Black,1,2,100,80,60
 2216,Pacific,38,12,0,White,0,5,10,50,0
 2217,Pacific,53,12,1,White,0,4,70,70,70
@@ -2220,7 +1853,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2219,North Central,72,16,1,White,0,2,0,0,0
 2220,North Central,38,16,1,White,0,5,0,30,0
 2221,North Central,29,18,1,White,0,1,0,0,0
-2222,North Central,36,18,1,White,0,6,NA,NA,90
 2223,North Central,39,16,1,Black,0,2,0,0,0
 2224,North Central,59,12,1,White,0,4,100,100,100
 2225,North Central,68,10,0,Other,1,7,0,0,0
@@ -2243,11 +1875,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2242,North Central,27,12,1,Black,0,4,40,40,30
 2243,North Central,21,12,0,White,0,5,100,75,50
 2244,North Central,79,11,0,White,0,4,0,70,0
-2245,North Central,NA,14,1,White,0,5,95,50,75
-2246,North Central,66,16,0,White,0,2,0,NA,0
 2247,North Central,36,12,0,Pacific Islander,0,4,0,0,0
 2248,North Central,39,12,0,White,0,4,25,35,25
-2249,North Central,NA,12,1,White,0,4,0,50,50
 2250,North Central,77,16,0,White,0,7,70,85,85
 2251,North Central,67,16,0,Other,1,2,0,50,0
 2252,Middle Atlantic,57,14,1,White,0,4,60,0,30
@@ -2256,7 +1885,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2255,Middle Atlantic,34,14,0,White,0,5,85,70,70
 2256,Middle Atlantic,68,18,1,White,0,2,0,20,0
 2257,Middle Atlantic,45,14,0,Asian,1,4,0,0,0
-2258,Middle Atlantic,28,12,1,White,0,NA,100,100,100
 2259,Middle Atlantic,53,16,0,White,0,7,30,50,70
 2260,Middle Atlantic,82,12,0,White,0,4,100,100,85
 2261,Middle Atlantic,26,12,0,White,0,6,0,0,0
@@ -2279,22 +1907,17 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2278,Middle Atlantic,31,12,1,White,0,4,100,100,100
 2279,Middle Atlantic,27,12,0,White,1,6,50,50,0
 2280,Middle Atlantic,57,18,1,White,0,4,70,100,85
-2281,Middle Atlantic,64,16,1,White,0,NA,70,NA,NA
 2282,Middle Atlantic,65,14,1,Black,0,4,5,10,0
 2283,Middle Atlantic,47,12,1,Black,0,1,0,50,0
 2284,Middle Atlantic,63,16,1,White,0,4,70,50,50
 2285,Middle Atlantic,72,16,0,Black,0,6,60,30,60
-2286,Middle Atlantic,34,11,0,White,0,5,30,NA,0
 2287,Middle Atlantic,39,17,0,Black,0,4,15,50,0
-2288,Middle Atlantic,19,14,0,Black,0,NA,NA,NA,NA
 2289,Middle Atlantic,33,12,1,Black,0,4,0,30,0
 2290,Middle Atlantic,81,10,0,White,0,4,0,5,5
 2291,Middle Atlantic,58,16,0,Black,0,3,0,15,0
-2292,Middle Atlantic,28,12,1,White,0,NA,NA,NA,NA
 2293,Middle Atlantic,84,12,1,White,0,4,85,85,60
 2294,Middle Atlantic,72,12,1,White,0,6,90,100,100
 2295,Middle Atlantic,60,10,0,White,0,4,0,0,0
-2296,Middle Atlantic,NA,12,1,White,0,NA,70,NA,NA
 2297,Middle Atlantic,75,12,0,White,0,7,100,50,50
 2298,Middle Atlantic,34,18,1,White,0,3,0,60,0
 2299,Middle Atlantic,68,20,0,White,0,1,0,0,0
@@ -2304,7 +1927,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2303,Middle Atlantic,67,18,0,White,0,4,0,30,0
 2304,Middle Atlantic,35,12,1,White,0,4,100,50,50
 2305,Middle Atlantic,42,12,0,White,0,4,85,50,70
-2306,Middle Atlantic,75,14,0,White,0,5,85,60,NA
 2307,Middle Atlantic,37,12,0,Other,1,2,100,85,70
 2308,Middle Atlantic,57,12,1,White,0,6,100,100,100
 2309,Middle Atlantic,41,20,1,White,0,4,60,60,50
@@ -2321,9 +1943,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2320,Middle Atlantic,64,18,1,White,0,4,1,10,0
 2321,Middle Atlantic,58,12,0,White,0,7,100,100,100
 2322,Middle Atlantic,72,13,1,White,0,7,100,70,100
-2323,Middle Atlantic,64,12,1,White,0,6,85,NA,NA
-2324,Middle Atlantic,70,12,1,White,0,NA,NA,NA,NA
-2325,Middle Atlantic,84,7,1,White,0,4,NA,NA,15
 2326,Middle Atlantic,73,16,1,White,0,6,60,60,70
 2327,Middle Atlantic,55,12,1,White,0,6,60,85,75
 2328,Middle Atlantic,73,12,1,White,0,6,50,70,50
@@ -2332,14 +1951,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2331,South Atlantic,80,20,0,White,0,4,0,40,0
 2332,South Atlantic,40,20,1,White,0,2,0,0,0
 2333,South Atlantic,42,20,0,White,0,6,60,40,45
-2334,South Atlantic,80,16,1,White,0,4,30,50,NA
 2335,South Atlantic,66,17,1,White,0,2,0,15,0
 2336,South Atlantic,61,16,1,White,0,3,30,40,50
-2337,South Atlantic,NA,16,1,Black,0,4,NA,NA,NA
 2338,South Atlantic,63,8,0,White,0,5,60,70,50
 2339,South Atlantic,25,12,0,White,0,4,0,30,0
 2340,South Atlantic,75,12,1,White,0,6,100,100,85
-2341,South Atlantic,26,12,1,Black,0,NA,0,0,0
 2342,South Atlantic,49,16,1,White,0,5,60,65,70
 2343,South Atlantic,69,16,1,White,0,3,0,30,30
 2344,South Atlantic,69,12,1,White,0,5,100,100,85
@@ -2352,19 +1968,15 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2351,South Atlantic,66,14,1,Black,0,3,0,15,0
 2352,South Atlantic,82,20,0,White,0,3,0,25,0
 2353,South Atlantic,54,19,0,White,0,6,85,70,85
-2354,South Atlantic,64,20,1,Black,0,NA,15,20,NA
 2355,South Atlantic,67,20,1,White,0,2,15,15,0
 2356,South Atlantic,59,12,0,White,0,5,100,100,100
 2357,South Atlantic,38,14,0,White,0,3,15,15,15
 2358,South Atlantic,38,14,1,White,0,4,40,50,50
-2359,South Atlantic,NA,14,0,White,0,4,60,50,50
 2360,South Atlantic,74,16,0,White,0,3,0,0,0
 2361,South Atlantic,60,18,1,White,0,4,0,50,0
 2362,South Atlantic,85,12,0,White,0,6,0,0,0
 2363,South Atlantic,49,17,1,White,0,4,85,50,50
 2364,South Atlantic,32,14,0,Black,0,4,85,70,70
-2365,South Atlantic,32,10,1,Black,0,NA,85,50,70
-2366,South Atlantic,32,10,1,White,0,4,70,85,NA
 2367,South Atlantic,53,20,1,White,0,6,75,75,65
 2368,South Atlantic,78,18,0,White,0,3,100,70,50
 2369,South Atlantic,27,12,0,Black,0,4,75,50,10
@@ -2374,14 +1986,12 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2373,South Atlantic,48,20,0,Asian,0,3,0,15,0
 2374,South Atlantic,65,10,0,Black,0,2,0,0,50
 2375,South Atlantic,23,13,1,Black,0,4,70,50,50
-2376,South Atlantic,NA,NA,1,White,0,5,50,50,0
 2377,South Atlantic,55,12,0,Black,0,2,50,50,50
 2378,South Atlantic,70,10,1,White,0,5,100,95,100
 2379,South Atlantic,24,14,0,White,0,1,0,0,0
 2380,South Atlantic,76,12,1,White,0,6,80,70,70
 2381,South Atlantic,48,11,0,Black,0,4,75,80,80
 2382,South Atlantic,62,14,1,Black,0,4,0,0,0
-2383,South Atlantic,NA,20,1,Black,0,4,30,40,0
 2384,South Atlantic,47,16,0,White,1,4,0,0,0
 2385,South Atlantic,75,6,1,Black,0,3,0,0,0
 2386,South Atlantic,20,15,1,White,0,7,100,100,100
@@ -2396,9 +2006,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2395,South Atlantic,55,12,0,Black,0,4,0,0,0
 2396,South Atlantic,38,15,1,Black,0,5,30,0,30
 2397,South Atlantic,69,13,1,White,0,7,98,56,100
-2398,South Atlantic,43,16,0,NA,1,3,60,40,40
 2399,South Atlantic,54,18,1,White,0,6,85,85,95
-2400,South Atlantic,49,12,0,White,0,NA,85,85,85
 2401,South Atlantic,28,16,0,White,0,4,10,40,10
 2402,South Atlantic,76,17,0,White,0,3,1,30,1
 2403,South Atlantic,36,17,0,White,0,5,90,70,90
@@ -2408,13 +2016,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2407,South Atlantic,21,11,0,White,0,4,20,20,0
 2408,South Atlantic,23,12,0,White,1,5,100,60,70
 2409,South Atlantic,36,9,1,White,0,4,50,40,15
-2410,South Atlantic,64,12,1,Black,0,4,0,0,NA
 2411,South Atlantic,62,12,0,White,0,7,100,85,85
 2412,South Atlantic,47,16,1,White,0,5,40,50,40
 2413,South Atlantic,34,13,0,White,0,6,85,85,85
 2414,South Atlantic,44,12,1,White,0,4,50,50,50
-2415,South Atlantic,29,13,1,White,0,4,80,NA,NA
-2416,South Atlantic,45,12,0,White,1,4,50,50,NA
 2417,South Atlantic,31,10,0,White,0,7,100,100,100
 2418,South Atlantic,33,11,1,White,0,4,70,70,70
 2419,South Atlantic,73,13,1,White,0,7,100,70,85
@@ -2428,39 +2033,29 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2427,South Atlantic,37,20,0,Black,0,4,15,30,0
 2428,South Central,27,14,1,American Indian,0,4,30,50,15
 2429,South Central,34,16,1,White,0,6,100,100,100
-2430,South Central,35,14,1,NA,1,NA,60,60,50
 2431,South Central,57,13,1,White,1,4,45,50,50
 2432,South Central,80,12,1,White,0,6,100,60,60
-2433,South Central,NA,12,0,White,0,6,30,50,50
 2434,South Central,65,20,0,White,0,5,75,75,75
 2435,South Central,24,12,0,White,0,5,85,50,50
 2436,South Central,50,13,0,White,0,5,85,85,60
 2437,South Central,64,12,1,White,0,4,0,0,0
 2438,South Central,61,16,1,White,0,2,0,15,0
-2439,South Central,61,9,1,White,0,4,95,NA,NA
 2440,South Central,54,12,1,White,0,2,100,30,40
 2441,South Central,52,20,1,White,0,7,90,80,80
 2442,South Central,79,12,1,White,0,4,15,40,50
 2443,South Central,48,16,0,White,0,7,90,100,90
 2444,South Central,61,12,0,White,0,6,40,40,15
-2445,South Central,81,13,0,White,0,5,90,75,NA
 2446,South Central,59,18,0,White,0,7,90,60,90
-2447,South Central,22,12,1,White,0,4,NA,50,NA
-2448,South Central,54,20,0,White,0,5,NA,NA,NA
 2449,South Central,37,16,0,White,0,4,30,35,20
 2450,South Central,43,18,0,White,0,7,50,60,40
 2451,South Central,26,18,1,White,0,2,0,15,0
 2452,South Central,48,16,0,White,0,6,70,50,70
-2453,South Central,39,14,1,White,0,6,80,80,NA
 2454,South Central,32,18,0,White,0,6,10,20,10
 2455,South Central,86,13,0,White,0,4,50,50,50
 2456,South Central,62,20,1,White,0,4,50,45,35
 2457,South Central,60,14,1,Black,0,6,0,0,0
 2458,South Central,50,17,0,White,0,4,60,60,0
-2459,South Central,35,15,0,White,0,4,80,60,NA
-2460,South Central,49,10,0,Black,0,7,NA,NA,NA
 2461,South Central,48,12,0,Black,0,4,0,50,0
-2462,South Central,89,6,1,Black,0,6,0,NA,NA
 2463,South Central,57,12,1,White,0,6,87,80,50
 2464,South Central,72,15,1,Black,0,5,15,60,15
 2465,South Central,71,16,1,Black,0,4,15,30,0
@@ -2473,16 +2068,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2472,South Central,19,13,1,White,0,6,85,85,100
 2473,South Central,48,9,1,White,0,6,100,70,100
 2474,South Central,34,13,0,White,0,6,80,65,65
-2475,South Central,60,13,1,NA,0,NA,NA,NA,NA
 2476,South Central,53,13,0,Black,0,5,100,100,50
 2477,South Central,65,9,0,Black,0,7,0,50,50
-2478,South Central,40,NA,0,Black,0,3,NA,NA,NA
 2479,South Central,40,12,1,Black,0,4,0,3,6
-2480,South Central,73,11,1,Black,0,NA,50,NA,NA
-2481,South Central,NA,14,0,Black,0,3,15,60,60
 2482,South Central,66,15,1,Other,0,7,90,75,95
 2483,South Central,24,12,0,Black,0,4,50,50,50
-2484,South Central,39,13,0,Black,0,NA,NA,NA,NA
 2485,South Central,68,11,1,Black,0,7,40,85,60
 2486,South Central,73,12,1,American Indian,0,7,100,100,100
 2487,South Central,56,12,0,Black,0,6,40,50,40
@@ -2497,13 +2087,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2496,South Central,39,14,0,Black,0,5,50,50,50
 2497,South Central,35,13,1,Black,0,6,0,0,0
 2498,South Central,52,12,1,Black,0,5,0,0,0
-2499,South Central,53,15,0,NA,NA,NA,NA,NA,NA
 2500,South Central,70,18,0,White,0,4,60,50,50
 2501,South Central,27,15,0,Black,0,2,0,0,0
 2502,South Central,55,11,0,Black,0,7,50,50,50
 2503,South Central,67,14,1,White,0,4,60,70,70
 2504,South Central,41,12,1,Black,0,4,50,70,90
-2505,South Central,28,12,1,Black,0,NA,50,50,50
 2506,South Central,75,12,1,Black,0,5,0,70,60
 2507,South Central,18,12,1,Black,0,4,50,50,50
 2508,South Central,22,14,1,Black,0,4,20,0,0
@@ -2515,25 +2103,19 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2514,South Central,71,16,1,White,0,6,50,50,50
 2515,South Central,71,18,1,White,0,2,0,0,0
 2516,South Central,70,17,0,White,0,3,0,10,0
-2517,South Central,56,NA,0,Asian,0,2,50,50,50
 2518,South Central,74,10,1,White,0,6,0,30,50
 2519,South Central,57,12,0,Other,0,6,70,70,70
-2520,South Central,NA,6,0,White,0,NA,0,0,NA
-2521,South Central,27,12,0,NA,0,4,40,40,40
 2522,South Central,62,11,0,White,0,4,85,85,100
 2523,South Central,26,12,0,White,0,2,75,60,55
 2524,South Central,32,16,1,White,0,1,0,0,0
 2525,South Central,66,11,0,Black,0,7,0,100,50
 2526,South Central,34,12,1,Black,0,4,15,60,30
-2527,South Central,37,16,1,White,0,1,NA,NA,NA
 2528,South Central,46,18,1,Black,0,1,0,0,0
 2529,South Central,33,13,1,Black,0,5,40,0,0
 2530,South Central,44,11,0,Black,0,4,0,0,0
-2531,South Central,63,12,1,Black,0,NA,0,50,50
 2532,South Central,37,14,1,White,0,5,10,32,0
 2533,South Central,40,16,1,White,0,4,0,20,0
 2534,South Central,32,14,0,White,0,4,100,50,50
-2535,South Central,70,16,1,NA,0,2,0,0,0
 2536,South Central,72,16,1,Black,0,2,15,40,0
 2537,South Central,66,11,1,Black,0,1,0,30,15
 2538,South Central,80,15,0,Black,0,3,35,40,35
@@ -2547,18 +2129,13 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2546,South Central,29,16,1,Black,0,3,0,0,0
 2547,South Central,56,6,1,White,0,2,75,0,0
 2548,South Central,50,18,1,White,0,4,0,15,0
-2549,South Central,19,12,1,White,0,5,NA,85,20
 2550,South Central,32,18,0,White,0,5,45,30,30
 2551,South Central,30,12,1,Pacific Islander,0,4,100,50,60
-2552,South Central,NA,3,NA,White,0,4,19,30,0
-2553,South Central,22,11,1,White,0,NA,100,NA,NA
 2554,South Central,35,14,0,White,0,3,0,0,0
 2555,South Central,76,18,0,White,0,5,85,70,70
 2556,South Central,19,14,1,White,0,6,30,0,0
 2557,South Central,33,12,0,White,0,7,85,85,100
 2558,South Central,53,12,1,White,0,2,0,0,40
-2559,South Central,72,12,0,White,0,5,30,60,NA
-2560,South Central,NA,19,NA,NA,NA,4,55,55,55
 2561,South Central,30,12,1,White,0,5,80,80,50
 2562,South Central,29,16,1,Asian,0,4,70,50,60
 2563,South Central,61,16,1,White,0,7,100,85,100
@@ -2569,7 +2146,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2568,North Central,74,18,1,White,0,6,100,100,100
 2569,North Central,70,15,0,American Indian,0,4,90,60,80
 2570,North Central,72,16,1,White,0,4,0,0,0
-2571,North Central,NA,12,0,White,0,4,0,10,0
 2572,North Central,45,12,0,White,0,4,75,80,75
 2573,North Central,41,14,0,White,0,7,100,60,85
 2574,North Central,31,13,1,White,0,4,15,40,40
@@ -2577,7 +2153,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2576,North Central,75,15,0,White,0,3,15,30,0
 2577,North Central,66,14,0,White,0,1,57,50,50
 2578,North Central,69,12,1,White,0,3,100,70,50
-2579,North Central,NA,NA,NA,White,0,NA,NA,NA,NA
 2580,North Central,43,13,1,White,0,4,50,50,50
 2581,North Central,26,14,0,White,0,4,50,60,60
 2582,North Central,33,14,1,White,0,6,85,85,85
@@ -2586,9 +2161,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2585,North Central,29,11,1,White,0,4,85,70,70
 2586,North Central,67,14,0,White,0,3,0,0,0
 2587,North Central,48,12,1,Other,0,4,5,55,30
-2588,North Central,47,10,1,White,0,NA,5,5,0
 2589,North Central,76,12,1,White,0,5,100,100,100
-2590,North Central,44,17,0,Other,1,4,65,55,NA
 2591,North Central,23,13,0,White,0,6,50,25,25
 2592,North Central,62,14,1,White,0,4,80,80,80
 2593,North Central,34,12,1,White,0,4,0,0,0
@@ -2608,14 +2181,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2607,North Central,26,11,1,Black,0,7,0,0,0
 2608,North Central,29,12,1,Black,1,3,15,35,65
 2609,North Central,32,11,1,Black,0,4,0,60,60
-2610,North Central,39,12,1,Black,0,3,50,40,NA
 2611,North Central,54,10,0,Black,0,1,15,50,50
 2612,North Central,73,13,1,White,0,6,100,6,50
-2613,North Central,45,13,1,Black,0,1,60,NA,NA
 2614,North Central,30,14,1,Black,0,4,50,20,40
 2615,North Central,62,9,0,White,0,4,40,30,50
 2616,North Central,81,13,1,Black,0,4,0,60,0
-2617,North Central,74,8,1,Black,0,NA,0,0,0
 2618,North Central,67,14,1,Black,0,2,70,55,30
 2619,North Central,46,14,1,White,0,4,70,80,60
 2620,North Central,59,12,0,Black,0,5,50,55,55
@@ -2624,10 +2194,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2623,North Central,21,14,0,White,0,3,15,30,0
 2624,North Central,65,14,1,White,0,3,0,40,0
 2625,North Central,64,16,0,White,0,4,0,35,30
-2626,North Central,NA,12,0,White,0,5,NA,NA,NA
-2627,North Central,18,11,0,White,0,NA,75,50,50
 2628,North Central,41,13,0,Black,0,4,50,55,45
-2629,North Central,78,16,1,White,0,4,85,NA,NA
 2630,North Central,58,12,1,White,0,4,85,85,70
 2631,North Central,65,13,1,White,0,4,0,30,30
 2632,North Central,27,14,0,White,0,6,100,70,60
@@ -2635,7 +2202,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2634,North Central,76,20,0,White,0,2,0,15,0
 2635,North Central,56,16,1,White,0,6,100,0,0
 2636,North Central,35,12,0,White,0,4,100,100,100
-2637,North Central,42,11,0,White,0,4,40,50,NA
 2638,North Central,89,20,0,White,0,4,0,50,50
 2639,North Central,45,12,1,White,0,4,100,70,40
 2640,North Central,62,17,0,White,1,4,0,30,0
@@ -2650,8 +2216,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2649,North Central,34,16,0,White,0,4,50,50,50
 2650,North Central,22,14,1,White,0,4,50,50,40
 2651,North Central,61,12,1,White,0,4,55,50,50
-2652,North Central,30,12,1,Other,1,4,85,NA,NA
-2653,North Central,31,16,1,NA,1,4,20,30,30
 2654,North Central,83,12,1,White,0,3,80,55,50
 2655,North Central,20,14,0,White,0,2,15,35,0
 2656,North Central,75,13,1,White,0,6,60,60,60
@@ -2661,7 +2225,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2660,North Central,18,12,1,White,0,6,100,95,90
 2661,North Central,79,18,1,White,0,5,60,80,70
 2662,North Central,21,14,1,White,0,4,50,85,50
-2663,North Central,68,12,0,White,0,6,51,60,NA
 2664,North Central,86,12,0,White,0,4,60,40,40
 2665,North Central,77,12,1,White,0,2,5,35,0
 2666,North Central,67,12,1,White,0,4,0,4,0
@@ -2680,7 +2243,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2679,North Central,55,16,1,White,0,5,60,30,50
 2680,North Central,68,16,1,White,0,6,50,80,80
 2681,North Central,67,14,0,White,0,6,75,75,75
-2682,North Central,58,6,1,White,1,5,NA,NA,NA
 2683,North Central,26,12,0,Other,1,4,40,40,50
 2684,North Central,67,13,0,White,0,4,0,40,0
 2685,North Central,34,6,0,Other,1,7,100,0,0
@@ -2688,7 +2250,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2687,North Central,73,16,1,White,0,4,0,30,0
 2688,North Central,62,16,0,White,0,6,100,85,100
 2689,North Central,24,15,0,White,0,3,20,50,0
-2690,North Central,NA,17,1,White,0,3,0,40,25
 2691,North Central,70,12,0,White,0,4,60,50,50
 2692,North Central,47,11,0,Other,1,4,20,40,20
 2693,North Central,53,13,1,White,0,4,100,60,60
@@ -2696,7 +2257,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2695,North Central,67,12,1,White,0,6,70,85,85
 2696,North Central,35,12,0,Other,1,4,0,30,0
 2697,North Central,36,16,1,White,0,5,70,75,40
-2698,North Central,NA,16,1,White,0,4,50,25,70
 2699,North Central,32,17,0,White,0,1,0,2,0
 2700,North Central,65,12,0,White,0,3,0,60,0
 2701,North Central,84,16,0,White,0,7,75,75,100
@@ -2716,7 +2276,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2715,North Central,38,14,0,White,0,5,60,0,0
 2716,North Central,31,12,0,White,0,1,2,4,0
 2717,North Central,40,16,0,Asian,0,6,50,60,30
-2718,North Central,NA,17,0,NA,1,4,75,20,50
 2719,North Central,67,11,0,White,0,4,0,20,0
 2720,North Central,73,12,0,White,0,3,40,60,15
 2721,North Central,68,16,1,White,0,6,30,60,40
@@ -2724,11 +2283,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2723,North Central,67,16,1,White,0,4,0,50,0
 2724,North Central,39,17,0,White,0,4,0,25,20
 2725,North Central,57,18,1,American Indian,0,2,0,25,0
-2726,North Central,NA,16,1,White,0,4,50,50,50
 2727,North Central,60,13,0,White,0,4,100,70,85
 2728,North Central,72,14,1,White,0,3,15,40,15
 2729,North Central,66,16,1,White,0,6,85,70,70
-2730,North Central,64,12,1,White,0,6,100,100,NA
 2731,North Central,63,16,1,White,0,6,90,60,85
 2732,North Central,74,16,0,White,0,6,80,85,85
 2733,North Central,42,12,0,White,0,4,70,60,60
@@ -2742,11 +2299,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2741,North Central,70,12,1,White,0,2,0,0,0
 2742,North Central,42,12,1,White,0,4,70,50,50
 2743,North Central,32,19,1,White,0,2,0,15,0
-2744,North Central,NA,12,0,White,0,6,100,50,50
 2745,North Central,69,12,0,White,0,7,100,85,80
-2746,North Central,36,11,1,Other,1,4,15,NA,40
 2747,North Central,41,12,0,White,0,6,85,70,85
-2748,North Central,NA,12,1,White,0,6,70,85,70
 2749,North Central,33,16,0,White,0,5,40,50,20
 2750,North Central,30,16,1,White,0,2,0,0,0
 2751,North Central,69,6,0,White,0,5,50,50,50
@@ -2762,10 +2316,8 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2761,North Central,32,16,0,White,0,6,60,40,15
 2762,North Central,26,16,1,White,0,5,50,70,50
 2763,North Central,22,12,1,White,0,5,50,60,50
-2764,North Central,64,15,0,American Indian,0,4,100,30,NA
 2765,North Central,32,12,1,White,0,2,85,70,50
 2766,North Central,31,17,0,White,0,4,0,0,0
-2767,North Central,50,12,1,White,0,4,NA,NA,NA
 2768,North Central,71,18,0,White,0,4,0,35,0
 2769,North Central,29,11,1,White,1,3,50,50,50
 2770,North Central,19,13,0,White,1,4,0,0,0
@@ -2773,17 +2325,12 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2772,North Central,28,16,0,White,0,6,90,100,75
 2773,North Central,54,12,0,White,0,4,40,0,50
 2774,South Central,56,10,0,Black,0,4,0,40,15
-2775,South Central,67,7,0,Black,0,6,0,NA,NA
-2776,South Central,56,12,0,Black,0,4,50,50,NA
 2777,South Central,47,12,1,Black,0,6,0,0,0
 2778,South Central,34,10,1,Black,0,3,0,50,50
 2779,South Central,18,9,1,White,0,4,50,50,30
 2780,South Central,49,11,0,Black,0,7,0,0,0
-2781,South Central,63,NA,1,Black,0,4,50,0,0
-2782,South Central,44,14,1,Black,0,NA,0,NA,NA
 2783,South Central,66,11,1,Black,0,2,0,0,0
 2784,South Central,75,20,0,White,0,7,100,100,100
-2785,South Central,64,10,1,Black,0,NA,30,60,NA
 2786,South Central,70,12,1,White,0,6,90,90,50
 2787,South Central,59,16,1,Black,0,4,0,50,20
 2788,South Central,65,16,0,White,0,7,100,60,100
@@ -2791,33 +2338,24 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2790,South Central,21,13,1,White,0,4,60,50,40
 2791,South Central,33,12,1,Black,0,1,0,0,0
 2792,South Central,36,9,0,White,0,3,0,15,0
-2793,South Central,56,NA,NA,NA,0,NA,NA,NA,NA
 2794,South Central,22,11,0,Other,1,4,40,50,50
-2795,South Central,25,14,1,White,0,4,60,50,NA
-2796,South Central,22,12,0,NA,NA,7,50,0,0
 2797,South Central,33,14,1,Black,0,4,0,0,0
 2798,South Central,29,15,1,White,0,4,70,60,60
 2799,South Central,55,16,0,White,0,6,50,50,50
 2800,South Central,19,12,0,Black,0,4,50,50,50
-2801,South Central,46,10,1,White,0,NA,0,15,15
 2802,South Central,26,16,1,White,0,3,0,15,0
 2803,South Central,72,12,0,White,1,3,50,85,85
 2804,South Central,57,12,1,White,0,4,100,100,60
-2805,South Central,71,14,1,White,0,NA,50,85,50
 2806,South Central,62,16,0,Black,0,5,0,0,0
 2807,South Central,63,16,0,White,0,6,70,70,50
 2808,South Central,24,13,0,Black,0,6,50,50,50
 2809,South Central,39,16,0,White,0,1,0,0,0
-2810,South Central,27,12,0,Other,0,6,40,15,NA
 2811,South Central,54,14,1,White,0,7,95,90,50
 2812,South Central,46,13,0,White,0,6,100,80,80
 2813,South Central,43,14,1,White,0,6,100,85,85
-2814,South Central,30,12,1,White,1,5,90,50,NA
-2815,South Central,38,12,1,White,0,NA,100,100,40
 2816,South Central,48,14,0,White,0,6,60,60,60
 2817,South Central,45,15,0,White,1,4,85,70,100
 2818,South Central,28,14,1,White,0,7,100,100,100
-2819,South Central,42,16,1,White,0,5,NA,NA,NA
 2820,South Central,52,13,1,White,0,7,60,60,60
 2821,South Central,66,13,0,White,0,6,90,75,75
 2822,South Central,74,11,1,White,0,7,100,87,100
@@ -2826,8 +2364,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2825,South Central,22,12,0,Black,0,7,30,30,20
 2826,South Central,30,12,0,White,0,4,0,0,0
 2827,South Central,44,14,0,Asian,1,4,0,10,0
-2828,South Central,51,14,1,Black,0,NA,NA,NA,NA
-2829,South Central,43,12,0,White,0,7,70,40,NA
 2830,South Central,36,20,1,White,0,7,100,100,100
 2831,South Central,42,16,1,Black,0,4,50,60,60
 2832,South Central,39,16,0,Black,0,7,22,2,0
@@ -2835,11 +2371,9 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2834,South Central,61,12,0,Black,0,2,40,30,40
 2835,South Central,45,14,1,Black,0,4,0,10,15
 2836,South Central,20,12,1,Black,0,1,30,30,30
-2837,South Central,59,13,1,White,NA,7,NA,NA,NA
 2838,South Central,29,16,1,Black,0,4,0,30,0
 2839,South Central,55,13,1,Black,0,4,0,50,0
 2840,South Central,38,12,1,Black,0,4,30,50,10
-2841,South Central,58,12,1,Black,0,7,NA,NA,NA
 2842,South Central,39,15,1,Black,0,1,0,5,0
 2843,South Central,61,13,0,Black,0,4,40,40,0
 2844,South Central,54,16,1,Black,0,3,0,0,30
@@ -2847,13 +2381,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2846,South Central,55,12,1,Black,0,4,50,50,50
 2847,South Central,39,10,1,Black,0,4,0,40,0
 2848,South Central,23,12,0,Black,0,4,50,50,15
-2849,South Central,25,12,0,Black,0,3,0,NA,0
 2850,South Central,60,11,0,Black,0,5,0,0,0
 2851,Mountain,36,12,1,White,1,4,15,50,40
 2852,Mountain,42,12,1,White,0,6,70,60,60
 2853,Mountain,42,16,1,White,0,5,30,40,30
 2854,Mountain,26,20,1,White,0,4,15,30,0
-2855,Mountain,NA,12,0,White,0,4,100,100,100
 2856,Mountain,67,16,0,White,0,4,100,100,100
 2857,Mountain,76,16,1,White,0,4,0,30,0
 2858,Mountain,67,12,1,White,0,4,0,25,0
@@ -2863,7 +2395,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2862,Mountain,84,13,1,White,0,6,100,85,85
 2863,Mountain,66,14,0,White,0,7,100,85,100
 2864,Mountain,53,20,0,White,0,6,90,70,90
-2865,Mountain,73,12,1,White,0,4,0,NA,50
 2866,Mountain,23,16,0,White,0,6,70,75,45
 2867,Mountain,56,18,0,White,0,6,60,90,70
 2868,Mountain,36,14,0,Pacific Islander,0,4,60,60,50
@@ -2877,7 +2408,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2876,Mountain,76,16,1,White,0,5,85,70,70
 2877,Mountain,65,14,0,White,0,3,15,25,10
 2878,Mountain,24,14,0,White,0,5,70,70,50
-2879,Mountain,30,10,1,White,1,5,30,NA,NA
 2880,Mountain,31,13,0,White,1,7,85,0,0
 2881,Mountain,79,17,1,White,0,4,85,85,85
 2882,Mountain,74,13,0,White,0,7,90,50,85
@@ -2885,10 +2415,7 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2884,Mountain,38,11,0,White,1,5,95,70,80
 2885,Mountain,19,15,0,White,0,5,65,50,50
 2886,Mountain,48,18,1,White,0,4,70,50,60
-2887,Mountain,NA,15,0,White,0,5,70,60,40
-2888,Mountain,NA,6,0,Other,1,4,100,75,NA
 2889,Mountain,68,7,0,White,0,4,100,50,50
-2890,Mountain,44,18,0,White,0,NA,60,30,20
 2891,Mountain,55,14,1,White,0,2,0,0,0
 2892,Mountain,54,17,1,White,0,5,80,75,99
 2893,Mountain,52,6,1,White,1,3,50,0,0
@@ -2898,14 +2425,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2897,Mountain,60,16,1,White,0,2,0,30,0
 2898,Mountain,55,18,0,White,0,4,100,70,60
 2899,Mountain,60,14,0,Black,0,1,100,2,100
-2900,Mountain,42,14,0,American Indian,0,NA,50,50,NA
 2901,Mountain,55,20,0,American Indian,1,3,0,0,0
 2902,Mountain,56,12,0,White,1,3,0,0,0
 2903,Mountain,35,12,1,White,1,5,60,50,50
-2904,Mountain,22,12,1,White,0,NA,60,60,40
-2905,Mountain,NA,12,1,Asian,0,NA,NA,NA,NA
 2906,Mountain,67,14,1,White,0,2,0,15,0
-2907,Mountain,73,13,1,White,0,7,80,75,NA
 2908,Mountain,60,15,1,White,0,4,0,30,0
 2909,Mountain,34,10,1,Other,1,4,15,50,0
 2910,Mountain,80,16,0,White,0,4,0,30,15
@@ -2915,13 +2438,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2914,Mountain,74,20,1,White,0,3,0,0,0
 2915,Mountain,56,14,1,Asian,0,5,60,40,60
 2916,Mountain,43,20,1,White,0,2,0,15,0
-2917,Mountain,60,13,1,White,0,NA,50,50,NA
 2918,Mountain,32,18,1,White,0,2,0,40,0
-2919,Mountain,67,15,1,White,0,6,80,80,NA
 2920,Mountain,47,16,0,White,0,4,30,30,0
 2921,Mountain,80,12,1,White,0,6,60,70,60
 2922,Mountain,70,12,1,White,1,4,0,0,0
-2923,Mountain,49,16,0,NA,0,4,50,50,50
 2924,Mountain,44,12,0,White,0,4,85,60,50
 2925,Mountain,37,20,1,White,0,6,70,85,50
 2926,Mountain,33,17,0,White,0,3,0,0,0
@@ -2929,7 +2449,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2928,Mountain,22,16,1,White,0,5,70,60,50
 2929,Mountain,27,12,1,White,0,2,0,30,50
 2930,Mountain,77,12,0,White,0,3,0,0,15
-2931,Mountain,69,16,1,NA,0,3,0,30,0
 2932,Mountain,63,18,0,White,0,4,0,15,0
 2933,Mountain,41,14,1,White,0,4,15,15,30
 2934,Pacific,72,16,0,White,0,5,15,30,15
@@ -2945,8 +2464,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2944,Pacific,70,12,0,White,0,6,85,85,85
 2945,Pacific,67,17,0,White,0,3,5,30,10
 2946,Pacific,35,18,1,White,0,3,0,10,0
-2947,Pacific,NA,13,1,White,0,NA,NA,NA,NA
-2948,Pacific,55,15,0,Black,0,NA,60,60,NA
 2949,Pacific,44,15,1,White,0,4,0,40,40
 2950,Pacific,37,16,1,White,0,7,100,100,100
 2951,Pacific,68,12,1,White,0,4,0,0,0
@@ -2965,7 +2482,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2964,Pacific,54,19,1,Other,0,3,0,50,0
 2965,Pacific,64,12,1,White,0,4,50,50,50
 2966,Pacific,69,12,0,White,0,4,50,50,50
-2967,Pacific,38,12,1,White,0,4,65,NA,NA
 2968,Pacific,39,16,0,White,0,4,40,40,30
 2969,Pacific,47,18,1,White,0,1,0,0,0
 2970,Pacific,37,18,1,White,0,4,15,30,0
@@ -2974,13 +2490,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2973,Pacific,61,16,0,White,1,6,85,40,80
 2974,Pacific,55,20,1,White,0,6,0,30,15
 2975,Pacific,74,16,1,White,0,5,50,50,15
-2976,Pacific,65,16,1,NA,0,6,65,60,60
 2977,Pacific,63,16,0,White,0,6,85,15,0
 2978,Pacific,19,14,1,White,0,4,40,50,30
 2979,Pacific,51,16,1,White,0,6,95,70,90
 2980,Pacific,74,16,0,White,0,4,0,25,0
 2981,Pacific,77,16,1,White,0,3,0,5,0
-2982,Pacific,75,16,0,White,0,NA,0,NA,NA
 2983,Pacific,40,18,1,White,0,6,85,85,85
 2984,Pacific,49,16,0,White,0,7,70,70,85
 2985,Pacific,78,15,0,White,0,4,0,0,0
@@ -2991,20 +2505,15 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 2990,Pacific,58,12,0,White,0,4,30,40,15
 2991,Pacific,52,17,1,White,0,4,85,70,50
 2992,Pacific,63,13,0,White,0,6,100,50,85
-2993,Pacific,68,12,1,NA,1,6,50,50,NA
 2994,Pacific,76,12,1,White,0,4,85,100,85
-2995,Pacific,73,12,0,White,0,5,40,60,NA
 2996,Pacific,67,16,1,White,0,4,0,50,40
 2997,Pacific,79,14,0,White,0,5,60,40,40
-2998,Pacific,66,13,1,White,0,NA,0,0,0
 2999,Pacific,79,13,0,White,0,2,0,15,0
 3000,Pacific,39,16,1,American Indian,1,3,0,0,0
 3001,Pacific,30,11,1,White,0,4,0,0,0
-3002,Pacific,46,12,1,White,0,6,100,70,NA
 3003,Pacific,75,14,1,White,0,4,30,50,50
 3004,Pacific,84,17,0,White,0,5,15,60,40
 3005,Pacific,71,12,1,White,0,4,0,50,50
-3006,Pacific,66,18,0,White,0,6,85,70,NA
 3007,Pacific,69,13,0,White,0,2,0,0,0
 3008,Pacific,58,16,0,White,0,5,0,15,0
 3009,South Central,57,16,0,White,0,5,70,65,55
@@ -3012,22 +2521,17 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3011,South Central,24,14,1,Black,0,4,15,40,40
 3012,South Central,31,15,1,White,0,4,49,49,49
 3013,South Central,25,12,0,White,1,5,75,50,50
-3014,South Central,40,13,1,White,0,4,50,50,NA
 3015,South Central,73,18,0,White,0,4,50,50,50
 3016,South Central,49,13,0,White,0,6,90,100,85
 3017,South Central,41,14,1,Black,0,2,100,50,50
-3018,South Central,40,14,1,White,0,NA,0,0,0
 3019,South Central,26,10,0,White,0,6,85,0,70
 3020,South Central,27,12,1,American Indian,1,2,0,0,0
 3021,South Central,37,13,1,White,0,4,100,75,100
 3022,South Central,43,12,0,American Indian,0,7,100,100,100
 3023,South Central,36,17,0,White,0,3,70,30,25
 3024,South Central,46,13,1,White,0,4,100,85,100
-3025,South Central,61,11,1,White,0,1,60,50,NA
 3026,South Central,54,14,1,White,0,4,60,60,50
-3027,South Central,73,12,1,Black,0,4,50,NA,NA
 3028,South Central,55,12,0,White,0,6,51,45,50
-3029,South Central,63,9,0,White,0,4,70,70,NA
 3030,South Central,47,8,1,White,0,5,0,0,0
 3031,South Central,31,12,1,American Indian,0,4,100,60,85
 3032,South Central,20,12,0,American Indian,0,4,70,60,60
@@ -3039,7 +2543,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3038,South Central,21,12,0,Other,1,4,0,0,0
 3039,South Central,64,16,1,White,0,2,0,40,30
 3040,South Central,68,15,1,White,0,2,0,0,0
-3041,South Central,43,6,1,White,0,6,70,60,NA
 3042,South Central,73,12,0,White,0,6,100,85,85
 3043,South Central,28,14,0,American Indian,0,2,0,0,0
 3044,South Central,38,12,1,White,0,4,100,70,40
@@ -3050,14 +2553,11 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3049,South Central,54,14,1,White,0,6,70,60,85
 3050,South Central,64,14,0,American Indian,0,4,15,40,30
 3051,South Central,40,18,0,White,0,6,85,70,100
-3052,South Central,61,13,1,White,0,NA,100,100,95
 3053,South Central,56,14,1,White,0,7,100,100,100
 3054,South Central,48,15,1,White,0,6,85,85,85
-3055,South Central,26,14,0,White,0,NA,NA,NA,NA
 3056,South Central,42,12,0,White,0,6,50,50,50
 3057,South Central,55,12,1,White,0,6,100,70,70
 3058,South Central,37,18,0,White,0,5,75,55,55
-3059,South Central,18,11,1,White,0,NA,60,90,90
 3060,South Central,32,12,0,White,0,1,75,75,75
 3061,South Central,56,12,1,White,0,7,100,100,100
 3062,South Central,44,16,0,White,0,5,40,40,30
@@ -3071,7 +2571,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3070,South Central,41,16,0,White,0,6,100,80,100
 3071,South Central,58,15,0,White,0,5,100,60,100
 3072,South Central,43,17,1,White,0,5,85,55,60
-3073,South Central,31,16,0,White,0,4,NA,NA,NA
 3074,South Central,46,12,0,White,0,4,75,50,50
 3075,South Central,39,12,0,American Indian,1,4,60,60,60
 3076,South Central,35,13,0,White,0,6,85,60,85
@@ -3085,7 +2584,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3084,North Central,81,13,1,White,0,4,95,80,90
 3085,North Central,61,12,0,White,0,5,100,95,99
 3086,North Central,65,12,0,White,0,6,0,30,0
-3087,North Central,68,12,0,NA,0,4,85,70,70
 3088,North Central,69,14,1,White,0,6,60,85,50
 3089,North Central,55,12,1,White,0,4,95,60,10
 3090,North Central,70,14,1,White,0,5,60,40,60
@@ -3098,14 +2596,10 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3097,North Central,54,16,1,Asian,0,4,70,80,80
 3098,North Central,59,14,0,White,0,6,100,85,100
 3099,North Central,24,15,1,White,0,7,70,85,85
-3100,North Central,68,12,0,White,0,5,15,30,NA
 3101,North Central,35,15,0,American Indian,0,4,80,50,50
 3102,North Central,82,12,1,White,0,7,100,85,100
 3103,North Central,82,12,1,White,0,6,85,85,85
 3104,North Central,55,11,0,White,0,6,100,90,100
-3105,North Central,31,12,1,White,1,5,NA,NA,NA
-3106,North Central,46,13,1,Other,1,4,NA,NA,NA
-3107,North Central,58,15,0,White,0,5,NA,20,20
 3108,North Central,71,14,0,White,0,7,90,85,85
 3109,North Central,60,19,0,White,0,4,0,40,15
 3110,North Central,40,16,0,White,0,5,70,50,60
@@ -3113,7 +2607,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3112,North Central,30,12,0,White,1,3,60,50,40
 3113,North Central,85,13,1,White,0,6,70,50,70
 3114,North Central,35,16,1,Other,1,3,70,80,50
-3115,North Central,89,12,1,White,0,4,0,5,NA
 3116,North Central,75,13,1,White,0,6,100,100,85
 3117,North Central,54,17,0,White,0,6,85,80,85
 3118,North Central,61,19,0,White,0,7,70,30,50
@@ -3125,7 +2618,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3124,North Central,25,16,0,White,0,5,80,50,50
 3125,North Central,62,15,0,White,0,4,85,70,85
 3126,North Central,62,16,0,White,0,3,5,20,5
-3127,North Central,38,16,1,White,0,4,NA,50,0
 3128,North Central,47,15,0,White,0,5,85,65,70
 3129,North Central,74,16,0,White,0,5,70,60,60
 3130,North Central,65,14,0,White,0,6,15,40,15
@@ -3150,7 +2642,6 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3149,North Central,69,12,0,White,0,4,0,0,0
 3150,North Central,64,14,0,White,0,2,30,30,30
 3151,North Central,67,13,0,White,0,4,100,85,85
-3152,North Central,70,15,1,NA,0,4,0,50,50
 3153,North Central,58,12,0,White,0,6,70,80,80
 3154,North Central,66,12,0,White,0,5,0,30,15
 3155,North Central,53,12,0,White,0,4,85,70,85
@@ -3161,24 +2652,19 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3160,North Central,49,17,1,American Indian,0,4,0,50,0
 3161,North Central,26,12,1,White,0,2,0,15,0
 3162,North Central,50,14,0,White,0,4,85,60,50
-3163,North Central,80,7,1,White,0,NA,NA,NA,NA
 3164,North Central,38,12,1,White,0,4,15,60,15
 3165,North Central,67,15,0,White,0,5,30,75,25
 3166,North Central,18,12,0,White,0,4,30,70,70
 3167,North Central,40,17,1,White,0,3,0,0,0
 3168,North Central,37,16,1,White,0,5,85,40,30
 3169,North Central,70,12,0,White,0,4,0,40,0
-3170,North Central,43,12,1,White,0,3,49,50,NA
 3171,North Central,68,11,1,White,0,5,60,50,50
 3172,North Central,62,11,1,White,0,4,0,10,10
 3173,North Central,44,14,1,White,1,1,60,15,50
-3174,North Central,57,NA,1,White,0,5,15,15,15
 3175,North Central,55,10,0,American Indian,0,4,0,0,0
 3176,North Central,72,10,1,White,0,5,50,70,60
 3177,North Central,65,12,1,White,0,4,0,50,40
 3178,North Central,18,9,1,White,0,4,60,40,50
-3179,North Central,NA,12,1,White,0,NA,70,60,70
-3180,South Central,49,18,1,Black,0,7,50,NA,NA
 3181,South Central,27,14,1,Black,0,3,50,0,0
 3182,South Central,60,11,0,Black,0,4,51,50,50
 3183,South Central,40,13,0,Black,0,7,55,20,2
@@ -3186,20 +2672,16 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3185,South Central,45,15,1,Black,0,4,50,50,50
 3186,South Central,45,14,1,Black,0,4,0,0,0
 3187,South Central,48,16,0,Black,0,4,0,0,0
-3188,South Central,55,14,1,Black,0,NA,0,0,0
 3189,South Central,36,16,1,Black,0,5,50,60,60
 3190,South Central,30,13,1,Black,0,2,0,0,30
-3191,South Central,59,10,1,Black,0,NA,50,50,50
 3192,South Central,67,13,0,Black,1,1,40,40,40
 3193,South Central,47,14,1,Black,0,4,60,60,60
-3194,South Central,64,16,1,Black,0,5,0,25,NA
 3195,South Central,60,11,0,Black,0,5,70,70,70
 3196,South Central,32,14,0,Black,0,4,45,40,0
 3197,South Central,51,12,0,White,0,4,50,50,30
 3198,South Central,60,14,1,American Indian,0,5,0,0,0
 3199,South Central,62,12,0,Black,0,2,0,15,30
 3200,South Central,27,11,1,Black,0,3,80,40,60
-3201,South Central,23,12,1,Black,0,NA,50,50,50
 3202,South Central,25,14,1,Black,0,4,60,50,50
 3203,South Central,33,13,1,Black,0,4,50,40,50
 3204,South Central,47,20,0,Black,0,4,0,0,0
@@ -3208,28 +2690,20 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3207,South Central,39,16,1,Black,0,4,10,15,30
 3208,South Central,38,12,0,Black,0,5,0,0,0
 3209,South Central,75,12,0,Black,0,7,30,0,0
-3210,South Central,75,12,0,American Indian,0,NA,50,50,50
 3211,South Central,73,8,1,Black,0,7,100,80,40
-3212,South Central,66,12,0,Black,0,NA,0,0,0
 3213,South Central,52,14,0,Black,0,4,0,50,60
 3214,South Central,34,14,1,Black,0,2,0,0,0
 3215,South Central,61,11,1,Black,0,1,0,0,0
 3216,South Central,44,12,1,Black,0,6,0,40,0
 3217,South Central,34,13,1,Black,0,4,0,0,15
 3218,South Central,53,11,1,Black,0,1,1,50,1
-3219,South Central,47,12,0,Black,0,NA,45,40,45
 3220,South Central,43,11,1,Black,0,4,0,0,0
 3221,South Central,44,12,1,Black,0,2,50,50,50
 3222,South Central,52,12,0,Black,0,3,0,0,0
 3223,South Central,49,8,1,Black,0,6,0,0,0
 3224,South Central,62,12,0,Black,0,4,25,50,50
-3225,South Central,28,12,1,Black,0,4,0,0,NA
-3226,South Central,39,12,0,Black,0,2,NA,55,50
 3227,South Central,50,14,1,Black,0,4,0,0,0
-3228,South Central,28,14,1,Black,0,3,10,NA,NA
-3229,South Central,44,16,1,Black,0,NA,0,0,0
 3230,South Central,44,13,1,Black,0,1,0,0,0
-3231,South Central,42,13,0,Black,0,NA,50,0,0
 3232,South Central,29,12,1,Black,0,4,15,60,0
 3233,South Central,24,11,1,Black,0,4,0,30,0
 3234,South Central,80,11,1,Black,0,6,0,2,0
@@ -3241,17 +2715,13 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3240,South Central,64,14,1,Black,0,7,0,50,50
 3241,South Central,22,12,1,Black,0,2,50,50,50
 3242,South Central,42,11,0,Black,1,3,50,60,50
-3243,South Atlantic,39,8,1,White,0,NA,50,50,50
 3244,South Atlantic,66,14,1,White,0,2,0,30,50
-3245,South Atlantic,82,12,0,White,0,7,100,75,NA
 3246,South Atlantic,89,12,1,White,0,6,60,85,70
 3247,South Atlantic,64,16,1,White,0,2,0,15,0
 3248,South Atlantic,60,10,0,White,0,5,100,85,100
-3249,South Atlantic,64,11,0,Black,0,3,15,30,NA
 3250,South Atlantic,63,18,1,White,0,3,0,40,15
 3251,South Atlantic,40,14,1,White,0,4,0,50,0
 3252,South Atlantic,84,16,0,White,0,5,30,40,40
-3253,South Atlantic,25,17,0,White,0,2,NA,NA,NA
 3254,South Atlantic,85,16,0,White,0,6,62,70,51
 3255,South Atlantic,59,19,1,White,0,5,25,55,15
 3256,South Atlantic,79,18,0,White,0,2,0,0,0
@@ -3267,36 +2737,28 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3266,Middle Atlantic,65,16,1,White,0,2,0,0,0
 3267,Middle Atlantic,73,12,0,White,0,4,30,50,15
 3268,Middle Atlantic,55,12,0,White,0,5,60,80,60
-3269,Middle Atlantic,58,12,1,White,0,NA,30,NA,NA
 3270,Middle Atlantic,44,17,1,White,0,2,0,20,0
 3271,Middle Atlantic,62,13,1,White,0,4,100,50,100
 3272,Middle Atlantic,55,15,1,White,0,6,97,82,100
-3273,Middle Atlantic,48,11,0,Black,1,1,50,NA,NA
 3274,Middle Atlantic,76,17,1,White,0,3,0,15,0
 3275,Middle Atlantic,82,18,1,White,0,4,75,75,60
 3276,Middle Atlantic,77,16,1,White,0,1,0,0,0
 3277,Middle Atlantic,63,12,1,White,0,4,70,60,60
 3278,Middle Atlantic,86,12,1,White,0,4,50,50,50
 3279,Middle Atlantic,55,18,1,White,0,2,0,30,15
-3280,Middle Atlantic,NA,16,0,White,0,5,NA,NA,NA
 3281,Middle Atlantic,65,12,1,White,0,4,0,30,15
 3282,Middle Atlantic,71,13,0,White,0,6,85,60,80
 3283,Middle Atlantic,76,13,1,White,0,6,100,40,60
 3284,Middle Atlantic,25,14,1,White,0,7,100,100,100
 3285,Middle Atlantic,75,16,1,White,0,6,100,85,100
-3286,Middle Atlantic,NA,20,1,White,0,5,60,30,60
 3287,Middle Atlantic,83,15,0,White,0,4,30,50,0
 3288,Middle Atlantic,56,13,0,White,0,4,90,90,100
 3289,Middle Atlantic,74,13,0,White,0,7,100,100,100
-3290,Middle Atlantic,29,13,1,White,0,4,45,50,NA
 3291,Middle Atlantic,38,12,1,White,0,4,70,70,50
 3292,Middle Atlantic,77,12,1,White,0,4,25,30,35
-3293,Middle Atlantic,45,12,0,White,0,NA,40,40,NA
-3294,Middle Atlantic,54,13,1,White,0,NA,60,50,50
 3295,Middle Atlantic,58,12,0,White,0,3,15,30,0
 3296,Middle Atlantic,46,12,0,White,0,7,100,85,70
 3297,Middle Atlantic,27,13,0,White,0,1,0,15,0
-3298,Middle Atlantic,52,12,1,White,0,NA,100,100,50
 3299,Middle Atlantic,73,20,1,White,0,3,0,0,0
 3300,Middle Atlantic,60,16,1,White,0,5,30,40,40
 3301,Middle Atlantic,24,12,0,Black,0,4,0,0,0
@@ -3307,4 +2769,3 @@ id,region,age,educ,female,race,hispanic,polviews,trump_rating,repub_rating,maga_
 3306,Middle Atlantic,68,14,0,White,0,5,0,15,0
 3307,Middle Atlantic,74,12,1,White,0,6,30,40,40
 3308,Middle Atlantic,51,20,1,White,0,1,0,10,0
-3309,Middle Atlantic,69,18,1,White,0,3,0,50,NA

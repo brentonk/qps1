@@ -401,9 +401,9 @@ df_gss_raw <- read_csv(gss_file)
 df_gss_raw
 ```
 
-Extract the few columns we care about and do some mild cleaning:
+Extract the few columns we care about, do some mild cleaning, and remove all rows with missing data:
 
-```{r}
+```{r gss-cleaning}
 df_gss <- df_gss_raw |>
   mutate(
     id = id,
@@ -439,14 +439,15 @@ df_gss <- df_gss_raw |>
   select(
     id, region, age, educ, female, race, hispanic,
     polviews, trump_rating, repub_rating, maga_rating
-  )
+  ) |>
+  drop_na()
 
 glimpse(df_gss)
 ```
 
 Save to `gss_2024.csv`:
 
-```{r}
+```{r gss-save}
 write_csv(df_gss, "data/gss_2024.csv")
 ```
 
