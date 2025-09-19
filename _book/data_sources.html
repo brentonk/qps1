@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -68,14 +68,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./using_chatgpt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-80f556f9cf5c3714b4c3fe743bab0ce3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-883b25f5fe4cf763c1e99fca87094caa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +130,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative Political Science I</a> 
     </div>
@@ -262,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Required packages</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Required packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"archive"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"assertr"</span>)</span>
@@ -274,22 +277,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"_raw"</span>))</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"_raw"</span>)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"data"</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="anes_2020.csv-subset-of-2020-anes-survey" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="anes_2020.csv-subset-of-2020-anes-survey"><span class="header-section-number">B.1</span> <code>anes_2020.csv</code>: Subset of 2020 ANES survey</h2>
 <p>This file contains a small number of variables from the 2020 wave of the <a href="https://electionstudies.org/data-center/">American National Election Studies</a> Time Series Study.</p>
 <p>Despite the direct download link on ANES’s website, they’ve got it locked down to prevent programmatic access from utilities like <code>download.file()</code>. (Not running <code>glimpse()</code> this time because the data has 1700+ columns.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anes_file <span class="ot">&lt;-</span> <span class="st">"_raw/anes_timeseries_2020_csv_20220210.csv"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anes_file <span class="ot">&lt;-</span> <span class="st">"_raw/anes_timeseries_2020_csv_20220210.csv"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(anes_file))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Need to download data manually from ANES website"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_anes_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(anes_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_anes_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(anes_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Extract the few columns we care about and convert numeric codes to understandable values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes_raw <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">row_number</span>(),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">state =</span> <span class="fu">case_match</span>(</span>
@@ -435,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    <span class="at">.keep =</span> <span class="st">"none"</span></span>
 <span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8,280
 Columns: 31
@@ -474,7 +477,7 @@ $ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1,…<
 </div>
 <p>Save to <code>anes_2020.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_anes, <span class="st">"data/anes_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_anes, <span class="st">"data/anes_2020.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="county_pres.csv-county-level-presidential-election-returns-20002024" class="level2" data-number="B.2">
@@ -482,7 +485,7 @@ $ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1,…<
 <p>This file contains data from the <a href="https://electionlab.mit.edu/">MIT Election Lab</a> dataset on <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ">County Presidential Election returns</a>.</p>
 <p>Obtain raw data from Harvard Dataverse:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data from Harvard Dataverse repository</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data from Harvard Dataverse repository</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>county_pres_file <span class="ot">&lt;-</span> <span class="st">"_raw/countypres_2000-2024.csv"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(county_pres_file)) {</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  df_county_pres_dataverse <span class="ot">&lt;-</span> <span class="fu">get_dataframe_by_name</span>(</span>
@@ -496,7 +499,7 @@ $ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1,…<
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>df_county_pres_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(county_pres_file)</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_county_pres_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_county_pres_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 94,409
 Columns: 12
@@ -516,7 +519,7 @@ $ mode           &lt;chr&gt; "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL
 </div>
 <p>Clean data to have one row per county-year:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_county_pres <span class="ot">&lt;-</span> df_county_pres_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_county_pres <span class="ot">&lt;-</span> df_county_pres_raw <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(party), totalvotes <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">county =</span> county_name) <span class="sc">|&gt;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state, county) <span class="sc">|&gt;</span></span>
@@ -568,11 +571,11 @@ $ mode           &lt;chr&gt; "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL
 <span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert</span>(not_na, <span class="fu">everything</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, state, region, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, state, region, <span class="fu">everything</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Save to <code>county_pres.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_county_pres, <span class="st">"data/county_pres.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_county_pres, <span class="st">"data/county_pres.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="crises.csv-international-crises" class="level2" data-number="B.3">
@@ -580,13 +583,13 @@ $ mode           &lt;chr&gt; "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL
 <p>This file contains the <a href="https://sites.duke.edu/icbdata/data-collections/">International Crisis Behavior</a> actor-level data, version 16. There’s purposely no additional cleaning since it’s used in the data wrangling lecture.</p>
 <p>The raw data is stored via a Box link that doesn’t work with <code>download.file()</code>, and my efforts to get ChatGPT to help me get to the underlying data were unsuccessful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>crises_file <span class="ot">&lt;-</span> <span class="st">"_raw/icb2v16.csv"</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(crises_file))</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Need to download data manually from ICB website"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df_crises_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(crises_file)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_crises_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_crises_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,131
 Columns: 95
@@ -689,7 +692,7 @@ $ sourdt   &lt;dbl&gt; 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, NA, 3, 1, 1…<
 </div>
 <p>Save to <code>crises.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_crises_raw, <span class="st">"data/crises.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_crises_raw, <span class="st">"data/crises.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fed_papers.csv-federalist-papers-corpus" class="level2" data-number="B.4">
@@ -697,17 +700,17 @@ $ sourdt   &lt;dbl&gt; 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, NA, 3, 1, 1…<
 <p>This file contains the full text of each of the <a href="https://en.wikipedia.org/wiki/The_Federalist_Papers">Federalist Papers</a>, per the public domain text archived by <a href="https://www.gutenberg.org/">Project Gutenberg</a>.</p>
 <p>Obtain the raw text from Project Gutenberg:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fed_papers_url <span class="ot">&lt;-</span> <span class="st">"https://www.gutenberg.org/files/18/18-0.txt"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fed_papers_url <span class="ot">&lt;-</span> <span class="st">"https://www.gutenberg.org/files/18/18-0.txt"</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fed_papers_file <span class="ot">&lt;-</span> <span class="st">"_raw/fed_papers.txt"</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(fed_papers_file))</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> fed_papers_url, <span class="at">destfile =</span> fed_papers_file)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fed_papers_raw <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fed_papers_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fed_papers_raw <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fed_papers_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Parse text and assemble into data frame:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Eliminate table of contents and other non-text content</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Eliminate table of contents and other non-text content</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fed_papers <span class="ot">&lt;-</span> fed_papers_raw <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="sc">-</span><span class="dv">98</span>) <span class="sc">|&gt;</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="sc">-</span><span class="dv">2</span>)</span>
@@ -744,7 +747,7 @@ $ sourdt   &lt;dbl&gt; 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, NA, 3, 1, 1…<
 <span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> paper_text</span>
 <span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_fed_papers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_fed_papers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 85
 Columns: 3
@@ -755,7 +758,7 @@ $ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …<
 </div>
 <p>Save to <code>fed_papers.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_fed_papers, <span class="st">"data/fed_papers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_fed_papers, <span class="st">"data/fed_papers.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="gss_2024.csv-subset-of-2024-general-social-survey" class="level2" data-number="B.5">
@@ -763,7 +766,7 @@ $ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …<
 <p>This file contains a small number of variables from the 2024 wave of the <a href="https://gss.norc.org/">General Social Survey</a>.</p>
 <p>Using Kieran Healy’s <code>gssr</code> package to download the data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gss_file <span class="ot">&lt;-</span> <span class="st">"_raw/gss_2024.csv"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gss_file <span class="ot">&lt;-</span> <span class="st">"_raw/gss_2024.csv"</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(gss_file)) {</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  df_gss_pkg <span class="ot">&lt;-</span> <span class="fu">gss_get_yr</span>(<span class="dv">2024</span>)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(df_gss_pkg, gss_file)</span>
@@ -771,7 +774,7 @@ $ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …<
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df_gss_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(gss_file)</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df_gss_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df_gss_raw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,309 × 639
     year    id wrkstat  hrs1  hrs2 evwork marital martype divorce
@@ -797,7 +800,7 @@ $ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …<
 </div>
 <p>Extract the few columns we care about, do some mild cleaning, and remove all rows with missing data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_gss <span class="ot">&lt;-</span> df_gss_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_gss <span class="ot">&lt;-</span> df_gss_raw <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> id,</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">region =</span> <span class="fu">case_match</span>(</span>
@@ -835,7 +838,7 @@ $ text     &lt;chr&gt; "To the People of the State of New York:\n\nAfter an …<
 <span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
 <span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_gss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_gss)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,770
 Columns: 11
@@ -854,7 +857,7 @@ $ maga_rating  &lt;dbl&gt; 0, 0, 60, 0, 40, 0, 50, 0, 15, 0, 0, 0, 0, 60, 70…<
 </div>
 <p>Save to <code>gss_2024.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_gss, <span class="st">"data/gss_2024.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_gss, <span class="st">"data/gss_2024.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="military.csv-military-spending-and-personnel" class="level2" data-number="B.6">
@@ -862,7 +865,7 @@ $ maga_rating  &lt;dbl&gt; 0, 0, 60, 0, 40, 0, 50, 0, 15, 0, 0, 0, 0, 60, 70…<
 <p>This file contains data from the <a href="https://correlatesofwar.org/">Correlates of War</a> project’s dataset on <a href="https://correlatesofwar.org/data-sets/national-material-capabilities/">National Material Capabilities</a>, version 6.0.</p>
 <p>Obtain the raw data by extracting from the zip on the COW website:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download zip file containing raw data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download zip file containing raw data</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is convoluted because the csv is inside a zip within the zip</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>military_url <span class="ot">&lt;-</span> <span class="st">"https://correlatesofwar.org/wp-content/uploads/NMC_Documentation-6.0.zip"</span></span>
@@ -878,7 +881,7 @@ $ maga_rating  &lt;dbl&gt; 0, 0, 60, 0, 40, 0, 50, 0, 15, 0, 0, 0, 0, 60, 70…<
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>df_military_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(military_file)</span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 15,951
 Columns: 11
@@ -897,7 +900,7 @@ $ version  &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 202
 </div>
 <p>Convert to “long” format containing only spending and personnel, for pedagogical purposes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_military <span class="ot">&lt;-</span> df_military_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_military <span class="ot">&lt;-</span> df_military_raw <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ccode, stateabb, year, <span class="at">spending =</span> milex, <span class="at">personnel =</span> milper) <span class="sc">|&gt;</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(spending, personnel),</span>
@@ -905,7 +908,7 @@ $ version  &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 202
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"amount"</span></span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_military)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31,902
 Columns: 5
@@ -918,7 +921,7 @@ $ amount        &lt;dbl&gt; 3823, 17, 2466, 15, 1910, 14, 2301, 13, 1556, 15…<
 </div>
 <p>Save to <code>military.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_military, <span class="st">"data/military.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_military, <span class="st">"data/military.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="turnout.csv-us-voter-turnout-20002022" class="level2" data-number="B.7">
@@ -926,7 +929,7 @@ $ amount        &lt;dbl&gt; 3823, 17, 2466, 15, 1910, 14, 2301, 13, 1556, 15…<
 <p>This file uses data from the <a href="https://election.lab.ufl.edu/">University of Florida Election Lab</a>, specifically version 1.2 of the <a href="https://election.lab.ufl.edu/dataset/1980-2022-general-election-turnout-rates-v1-2/">General Election Turnout Rates</a> dataset.</p>
 <p>Obtain the raw data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>turnout_url <span class="ot">&lt;-</span> <span class="st">"https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv"</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>turnout_file <span class="ot">&lt;-</span> <span class="st">"_raw/Turnout_1980_2022_v1.2.csv"</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(turnout_file))</span>
@@ -935,7 +938,7 @@ $ amount        &lt;dbl&gt; 3823, 17, 2466, 15, 1910, 14, 2301, 13, 1556, 15…<
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in raw data</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>df_turnout_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(turnout_file)</span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,144
 Columns: 15
@@ -958,7 +961,7 @@ $ VAP_TURNOUT_RATE        &lt;chr&gt; "42.97%", "36.00%", "47.98%", "44.72%", "3
 </div>
 <p>Cleaning up into the data file used for class:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="ot">&lt;-</span> df_turnout_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="ot">&lt;-</span> df_turnout_raw <span class="sc">|&gt;</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only want national level data</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(STATE <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Grab and rename the columns we want</span></span>
@@ -1004,7 +1007,7 @@ $ VAP_TURNOUT_RATE        &lt;chr&gt; "42.97%", "36.00%", "47.98%", "44.72%", "3
 <span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Order from earliest to latest</span></span>
 <span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span>
 <span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_turnout)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 22
 Columns: 7
@@ -1019,14 +1022,14 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…<
 </div>
 <p>Double check that the manually calculated voting eligible calculation lines up with the one reported in the data frame:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_turnout <span class="sc">|&gt;</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">vep_manual =</span> voting_age_pop <span class="sc">-</span> ineligible_felons <span class="sc">-</span></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>      ineligible_noncitizens <span class="sc">+</span> eligible_overseas,</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">vep_difference =</span> <span class="fu">abs</span>(voting_eligible_pop <span class="sc">-</span> vep_manual) <span class="sc">/</span> voting_eligible_pop,</span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, voting_eligible_pop, vep_manual, vep_difference) <span class="sc">|&gt;</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 22 × 4
     year voting_eligible_pop vep_manual vep_difference
@@ -1057,7 +1060,7 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…<
 </div>
 <p>Save cleaned data to <code>turnout.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_turnout, <span class="st">"data/turnout.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_turnout, <span class="st">"data/turnout.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="wdi.csv-world-development-indicators-2019" class="level2" data-number="B.8">
@@ -1065,7 +1068,7 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…<
 <p>This file contains data from the World Bank’s <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a> dataset.</p>
 <p>Obtain raw data using the WDI package:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data via WDI package</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download raw data via WDI package</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>wdi_file <span class="ot">&lt;-</span> <span class="st">"_raw/wdi_2019.csv"</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(wdi_file)) {</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  df_wdi_pkg <span class="ot">&lt;-</span> <span class="fu">WDI</span>(</span>
@@ -1086,7 +1089,7 @@ $ eligible_overseas      &lt;dbl&gt; 1.803021, 1.981895, 2.360867, 2.216053,…<
 <span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>df_wdi_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(wdi_file)</span>
 <span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 266
 Columns: 18
@@ -1112,7 +1115,7 @@ $ lending         &lt;chr&gt; "IDA", "Aggregates", "Aggregates", "IBRD", "IBRD",
 </div>
 <p>Minor cleaning to remove unwanted rows and columns:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_wdi <span class="ot">&lt;-</span> df_wdi_raw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_wdi <span class="ot">&lt;-</span> df_wdi_raw <span class="sc">|&gt;</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>iso2c, <span class="sc">-</span>status, <span class="sc">-</span>lastupdated, <span class="sc">-</span>capital, <span class="sc">-</span>longitude, <span class="sc">-</span>latitude) <span class="sc">|&gt;</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">"Aggregates"</span>) <span class="sc">|&gt;</span></span>
@@ -1126,7 +1129,7 @@ $ lending         &lt;chr&gt; "IDA", "Aggregates", "Aggregates", "IBRD", "IBRD",
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  ))</span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_wdi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 215
 Columns: 12
@@ -1146,7 +1149,7 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not …<
 </div>
 <p>Save to <code>wdi.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_wdi, <span class="st">"data/wdi.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_wdi, <span class="st">"data/wdi.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -1204,13 +1207,14 @@ $ lending         &lt;chr&gt; "IDA", "IBRD", "IBRD", "Not classified", "Not …<
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

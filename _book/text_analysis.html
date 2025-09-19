@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./simulation_resampling.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-80f556f9cf5c3714b4c3fe743bab0ce3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-883b25f5fe4cf763c1e99fca87094caa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -119,7 +120,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -159,7 +160,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative Political Science I</a> 
     </div>
@@ -306,16 +309,16 @@ window.Quarto = {
 </ul>
 <p>To analyze text in R, we’ll be using a few new packages we haven’t used before, in addition to the usual tidyverse and broom packages.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"broom"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidytext"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"SnowballC"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"caret"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"glmnet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"glmnet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To install these, you’ll need to run the following command <em>once</em> from the R console. Don’t try to put it in a Quarto document; installing packages from within the Quarto rendering process is dicey at best. (Plus, you only need to install the package once ever, so it’d be a waste of computing time and power to reinstall it every time you render a Quarto file.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidytext"</span>, <span class="st">"SnowballC"</span>, <span class="st">"caret"</span>, <span class="st">"glmnet"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidytext"</span>, <span class="st">"SnowballC"</span>, <span class="st">"caret"</span>, <span class="st">"glmnet"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="data-the-federalist-papers" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="data-the-federalist-papers"><span class="header-section-number">7.1</span> Data: The Federalist Papers</h2>
@@ -333,9 +336,9 @@ window.Quarto = {
 </ol>
 <p>We will work with a slightly cleaned-up version of the Federalist Papers, via the data file <code>fed_papers.csv</code>. This file is available on my website at <a href="https://bkenkel.com/qps1/data/fed_papers.csv" class="uri">https://bkenkel.com/qps1/data/fed_papers.csv</a>. It’s constructed using the raw Federalist Papers text from <a href="https://www.gutenberg.org/files/1404/1404-h/1404-h.htm">Project Gutenberg</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/fed_papers.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/fed_papers.csv"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_fed_papers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_fed_papers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 85 × 3
    paper_id author   text                                               
@@ -360,9 +363,9 @@ window.Quarto = {
 <li><p><code>text</code> contains the full text of the paper.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_fed_papers <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   author               number
@@ -376,7 +379,7 @@ window.Quarto = {
 </div>
 <p>We see here that most of the papers were written solely by Hamilton, with a smaller number by Madison and an even smaller number by Jay. The 11 disputed papers are labeled <code>"hamilton or madison"</code>.</p>
 <p>If you’d like to read the full text of one of these papers … well, it’s probably easiest to just Google it. But if for some reason you wanted to read it in R, you can use the <code>cat()</code> function.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(df_fed_papers<span class="sc">$</span>text[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(df_fed_papers<span class="sc">$</span>text[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Putting in the output manually to avoid having a long document in the middle of the notes -->
 <pre class="text"><code>## To the People of the State of New York:
 ## 
@@ -398,13 +401,13 @@ window.Quarto = {
 <p>The first thing we want to do is break up the text of each document into the individual words that comprise it. Data scientists would use the term <span class="concept">tokens</span> rather than words, (1) because we’ll capture some bits of text like numerals that aren’t technically words, and (2) in some applications the unit of analysis is something smaller than words (e.g., syllables) or bigger than words (e.g., full sentences). For our purposes you don’t have to worry about the word/token distinction.</p>
 <p>The <code>unnest_tokens()</code> function takes a vector of document text and turns each document into a “bag of words”, extracting individual words. You use the <code>input</code> argument to tell it where to take the text from, and the <code>output</code> argument to tell it the name of the column to put the words into. I’ll illustrate with a simple example before applying it to the Federalist Papers data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_fake_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_fake_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="fu">c</span>(<span class="st">"The Muppets ate bananas!!"</span>, <span class="st">"Bananas are what they ate??"</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>my_fake_data <span class="sc">|&gt;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">input =</span> text, <span class="at">output =</span> word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">input =</span> text, <span class="at">output =</span> word)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
      id word   
@@ -423,10 +426,10 @@ window.Quarto = {
 <p>By default, <code>unnest_tokens()</code> gets rid of all capitalization and punctuation, leaving us with the raw words. That’s typically what we want for text analysis. We don’t want to treat <code>"bananas"</code> like a different word from <code>"Bananas"</code>, or <code>"ate"</code> different from <code>"ate??"</code>. (Of course, for some purposes you would want to make such distinctions, and then you’d use custom options in tokenization so that these would be treated as separate tokens.)</p>
 <p>When we put the Federalist Papers through the <code>unnest_tokens()</code> function, we end up with many thousands of individual words. We’ll store these in a new data frame called <code>df_fed_tokens</code>, so we don’t overwrite the original raw data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_papers <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_papers <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">input =</span> text, <span class="at">output =</span> word)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 190,623 × 3
    paper_id author   word  
@@ -446,10 +449,10 @@ window.Quarto = {
 </div>
 <p>We can use our typical data wrangling functions to see which words appear most commonly in the Federalist Papers data. Are the most common words high-minded things like “politics” and “president” and “constitution”?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8,689 × 2
    word  number
@@ -473,7 +476,7 @@ window.Quarto = {
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="removing-stop-words"><span class="header-section-number">7.2.2</span> Removing stop words</h3>
 <p>Words that appear commonly and don’t have much topical meaning — e.g., “the”, “an”, “but”, “with” — are called <span class="concept">stop words</span>. We don’t typically expect these words to do much to help us classify documents, so it’s common to remove them before performing text analysis. There are multiple different lists of English stop words out there for different use cases, but we’ll just use the default list included in the <code>stop_words</code> data frame (via the tidytext package).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>stop_words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>stop_words</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,149 × 2
    word        lexicon
@@ -493,10 +496,10 @@ window.Quarto = {
 </div>
 <p>We want to reduce <code>df_fed_tokens</code>, our “bag of words” data frame, to exclude these words. We can do that using the <code>anti_join()</code> function. Just like <code>left_join()</code>, which we saw back in the Data Wrangling unit, <code>anti_join()</code> takes two data frames and a column name as input. But it works a little bit differently: it returns only the rows of the first data frame that have <u>no</u> match in the second data frame. In this case, we want the rows of <code>df_fed_tokens</code> where the <code>word</code> column has no match in <code>stop_words</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by =</span> <span class="st">"word"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 65,387 × 3
    paper_id author   word       
@@ -516,10 +519,10 @@ window.Quarto = {
 </div>
 <p>About 2/3 of the words in the raw text were removed once we got rid of the stop words. And now if we look at the most common words, it looks a lot more like what we might intuitively expect from the Federalist Papers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8,173 × 2
    word         number
@@ -543,12 +546,12 @@ window.Quarto = {
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="from-tokens-to-stems"><span class="header-section-number">7.2.3</span> From tokens to stems</h3>
 <p>Our last word-level processing step will be to <span class="concept">stem</span> the words. This is an algorithm that removes plurals and suffixes, reducing words to their root form. We use the <code>wordStem()</code> function for this. For a simple example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gov_words <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gov_words <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"government"</span>, <span class="st">"govern"</span>, <span class="st">"governed"</span>, <span class="st">"governing"</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"governs"</span>, <span class="st">"governor"</span>, <span class="st">"governors"</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wordStem</span>(gov_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wordStem</span>(gov_words)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "govern"   "govern"   "govern"   "govern"   "govern"   "governor"
 [7] "governor"</code></pre>
@@ -557,10 +560,10 @@ window.Quarto = {
 <p>There’s a tradeoff with stemming words like this. On the plus side, we help ensure that the <em>meanings</em> of words are what drive our statistical analysis. A document that uses the word “govern” many times won’t be treated differently than one that uses “governs” many times. The downside is that we lose some grammatical and syntactical information. That doesn’t matter too much when we’re treating each document like a “bag of words”, but in other applications it would be inappropriate to neglect the differences between “govern” and “governs” and “governing.”</p>
 <p>Going back to the full Federalist Papers data, we can use a simple <code>mutate()</code> to stem the raw tokens.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word_stem =</span> <span class="fu">wordStem</span>(word))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df_fed_tokens</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 65,387 × 4
    paper_id author   word        word_stem 
@@ -580,10 +583,10 @@ window.Quarto = {
 </div>
 <p>After stemming, we end up with a similar — but not identical — list of most frequent terms across the 85 essays.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_fed_tokens <span class="sc">|&gt;</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(word_stem) <span class="sc">|&gt;</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(number))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,801 × 2
    word_stem number
@@ -613,15 +616,15 @@ window.Quarto = {
 <p>Altogether, we have a list of word stems for each document. We want to use these to calculate a set of features for each document, which we can then use to classify them.</p>
 <p>As a simple start, we will calculate the number of times each stemmed non-stop word appears in each document. At this point let’s make another new data frame, which we’ll call <code>df_fed_tf</code> (where <code>tf</code> stands for “term frequency” — more on that in a moment).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="ot">&lt;-</span> df_fed_tokens <span class="sc">|&gt;</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper_id, word_stem) <span class="sc">|&gt;</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'paper_id'. You can override using
 the `.groups` argument.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 37,834 × 3
    paper_id word_stem  number
@@ -664,10 +667,10 @@ the `.groups` argument.</code></pre>
 </ul>
 <p>In this case, our words are in <code>word_stem</code>, our document IDs are in <code>paper_id</code>, and our word counts are in <code>number</code>, so we run:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="ot">&lt;-</span> df_fed_tf <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="ot">&lt;-</span> df_fed_tf <span class="sc">|&gt;</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_tf_idf</span>(<span class="at">term =</span> word_stem, <span class="at">document =</span> paper_id, <span class="at">n =</span> number)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>df_fed_tf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>df_fed_tf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 37,834 × 6
    paper_id word_stem  number      tf   idf   tf_idf
@@ -687,10 +690,10 @@ the `.groups` argument.</code></pre>
 </div>
 <p>We’ve now got the term frequencies, inverse document frequencies, and tf-idf for each word-document pairing in our data. Let’s see which word is the most <em>distinctive</em> in each document, by pulling out the word with the highest tf-idf in each document. We can use the <code>slice_max()</code> function to do this, after grouping by document IDs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_fed_tf <span class="sc">|&gt;</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper_id) <span class="sc">|&gt;</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(tf_idf) <span class="sc">|&gt;</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tf_idf))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 6
 # Groups:   paper_id [85]
@@ -712,7 +715,7 @@ the `.groups` argument.</code></pre>
 <p>The results we get here line up with some basic intuitions. Federalist #82 and #83 are about the judiciary, so it makes sense that “juri” and “court” are particularly distinctive in these essays. Federalist #54 is about the apportionment of House of Representatives seats across states. The major controversy for this issue was whether and how to count enslaved persons towards a state’s population for apportionment purposes, hence the distinctiveness of “slave” for this essay. Federalist #67 is about how the president will fill vacancies, and Federalist #29 is about the maintenance of a militia. At least at a glance, it looks like tf-idf is doing a reasonable job at picking up the distinctive terms from each document.</p>
 <p>The last thing we need to do is transform this into a data frame where each row is an essay, each column is a word, and the entries are the tf-idf of each word in each essay. In this way, the tf-idf of each word will serve as the features we use for categorization and classification, along our way to try and identify the authorship of the 11 disputed papers. To transform the data this way, we can simply use <code>pivot_wider()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_fed_features <span class="ot">&lt;-</span> df_fed_tf <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_fed_features <span class="ot">&lt;-</span> df_fed_tf <span class="sc">|&gt;</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(paper_id, word_stem, tf_idf) <span class="sc">|&gt;</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> word_stem,</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> tf_idf,</span>
@@ -720,7 +723,7 @@ the `.groups` argument.</code></pre>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>paper_id) <span class="sc">|&gt;</span></span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">any</span>(.x <span class="sc">&gt;</span> <span class="dv">0</span>)))</span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>df_fed_features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>df_fed_features</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 85 × 4,796
        `1`  absurd   accid acknowledg      act  actuat     add   addit
@@ -756,7 +759,7 @@ the `.groups` argument.</code></pre>
 <p>Our goal here is to get a (provisional) answer about who authored the disputed documents. To do that, we’re going to use statistical methods to recognize patterns in the documents whose authorship is known, then use that pattern-matching to sort the unknown documents into “likely Hamilton” versus “likely Madison”.</p>
 <p>As a first step, we’re going to add authorship info to our data frame of word features. We will also split up the data frame into the “known” cases (those where exactly one of Hamilton or Madison is known to be the author) and the “unknown” cases (those with “Hamilton or Madison” as the listed author).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_fed_features <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_fed_features <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">paper_author =</span> df_fed_papers<span class="sc">$</span>author,</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_hamilton =</span> <span class="fu">if_else</span>(paper_author <span class="sc">==</span> <span class="st">"hamilton"</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
@@ -766,7 +769,7 @@ the `.groups` argument.</code></pre>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
 <span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(paper_author <span class="sc">==</span> <span class="st">"hamilton"</span> <span class="sc">|</span> paper_author <span class="sc">==</span> <span class="st">"madison"</span>)</span>
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>df_fed_known</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>df_fed_known</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 66 × 4,798
    paper_author is_hamilton     `1`  absurd   accid acknowledg      act
@@ -789,10 +792,10 @@ the `.groups` argument.</code></pre>
 #   ambit &lt;dbl&gt;, ambiti &lt;dbl&gt;, america &lt;dbl&gt;, amus &lt;dbl&gt;,
 #   analogi &lt;dbl&gt;, angri &lt;dbl&gt;, animos &lt;dbl&gt;, answer &lt;dbl&gt;, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_fed_unknown <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_fed_unknown <span class="ot">&lt;-</span> df_fed_features <span class="sc">|&gt;</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(paper_author <span class="sc">==</span> <span class="st">"hamilton or madison"</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>df_fed_unknown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>df_fed_unknown</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 4,798
    paper_author      is_hamilton     `1` absurd accid acknowledg     act
@@ -822,7 +825,7 @@ the `.groups` argument.</code></pre>
 <p>Say we wanted to use a linear regression to predict the authorship of each document. We immediately run into a problem: we have 4,797 features and only 66 observations. A linear regression won’t even work when there are more features than observations. To even run a regression model in the first place, we need to do some <span class="concept">feature selection</span>, reducing the huge set of possible features down to the ones we want to put in our model.</p>
 <p>As a very rough first cut at feature selection, let’s look for the words whose tf-idf is most strongly correlated with paper authorship. (The correlation coefficient isn’t <em>really</em> meant for use with a binary variable, but this is just a rough cut anyway.) We can do that in a single (admittedly complex!) data pipeline.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="sc">|&gt;</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the non-numeric paper author column</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>paper_author) <span class="sc">|&gt;</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove words that never appear in the "known" papers</span></span>
@@ -833,7 +836,7 @@ the `.groups` argument.</code></pre>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate correlation between authorship and tf-idf for each word</span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">cor =</span> <span class="fu">cor</span>(is_hamilton, tf_idf)) <span class="sc">|&gt;</span></span>
 <span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Show the strongest correlations (positive or negative) first</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(cor)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(cor)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,469 × 2
    word        cor
@@ -854,13 +857,13 @@ the `.groups` argument.</code></pre>
 <p>The word stems with the strongest correlations are “whilst”, “form”, “li”, “mix”, and “stamp”. Each of these has a negative correlation, meaning a higher frequency of usage is typical of a paper written by Madison rather than Hamilton.</p>
 <p>Let’s build a linear regression model using the tf-idf of the ten most strongly correlated words to predict paper authorship.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fit_authorship <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fit_authorship <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  is_hamilton <span class="sc">~</span> whilst <span class="sc">+</span> form <span class="sc">+</span> li <span class="sc">+</span> mix <span class="sc">+</span> stamp <span class="sc">+</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    democrat <span class="sc">+</span> dishonor <span class="sc">+</span> congress <span class="sc">+</span> compass <span class="sc">+</span> lesser,</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df_fed_known</span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_authorship)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_authorship)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -895,14 +898,14 @@ F-statistic:  33.8 on 10 and 55 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>How accurately does our model predict the authorship of the known papers? To answer this question, we can build a <span class="concept">confusion matrix</span>. A confusion matrix is a table where we put the actual responses in the rows, and the predicted responses in the columns. Ideally, we would like the prediction to match the truth as often as possible, resulting in a confusion matrix with most observations along the “diagonal”.</p>
 <p>To make a confusion matrix, first we need to extract predictions via <code>augment()</code>, then match them up with the true responses. The linear regression doesn’t directly make predictions, but we’ll treat a fitted value above 0.5 (50%) as a Hamilton prediction and a fitted value below 0.5 as a Madison prediction.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_predictions <span class="ot">&lt;-</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_predictions <span class="ot">&lt;-</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(fit_authorship, <span class="at">newdata =</span> df_fed_known) <span class="sc">|&gt;</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">if_else</span>(.fitted <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">"hamilton"</span>, <span class="st">"madison"</span>))</span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(</span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">actual =</span> df_predictions<span class="sc">$</span>paper_author,</span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">predicted =</span> df_predictions<span class="sc">$</span>prediction</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          predicted
 actual     hamilton madison
@@ -913,9 +916,9 @@ actual     hamilton madison
 <p>Incredible! (Or so it seems.) Our model correctly predicts the author of all but one of the known papers. Its <span class="concept">accuracy</span>, the proportion of observations for which it gives a correct classification, is 65/66 (0.985). So we should put a lot of faith in how it classifies the unknown papers — right?</p>
 <p>To calculate predictions for the unknown papers, we’d again use <code>augment()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_authorship, <span class="at">newdata =</span> df_fed_unknown) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_authorship, <span class="at">newdata =</span> df_fed_unknown) <span class="sc">|&gt;</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">if_else</span>(.fitted <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">"hamilton"</span>, <span class="st">"madison"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(prediction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(prediction)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   prediction     n
@@ -953,7 +956,7 @@ actual     hamilton madison
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Not cross-validating feature selection here
+<span class="screen-reader-only">Warning</span>Not cross-validating feature selection here
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -961,7 +964,7 @@ Not cross-validating feature selection here
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for replicability</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for replicability</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1789</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly assign observations to folds</span></span>
@@ -997,7 +1000,7 @@ Not cross-validating feature selection here
 <span id="cb49-34"><a href="#cb49-34" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb49-35"><a href="#cb49-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-36"><a href="#cb49-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Create confusion matrix with cross-validation predictions</span></span>
-<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(outcome_actual, outcome_cv_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(outcome_actual, outcome_cv_pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              outcome_cv_pred
 outcome_actual hamilton madison
@@ -1019,12 +1022,12 @@ y &amp;\approx \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_M x_M \\
 <li><p>The remaining non-zero coefficients are typically estimated to be closer to zero than in an ordinary regression. This “shrinkage” property helps prevent overfitting, making the elastic net better for out-of-sample prediction.</p></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled" title="Optional: Mathematical details on elastic net versus ordinary regression">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Optional: Mathematical details on elastic net versus ordinary regression
+<span class="screen-reader-only">Note</span>Optional: Mathematical details on elastic net versus ordinary regression
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1037,7 +1040,7 @@ Optional: Mathematical details on elastic net versus ordinary regression
 </div>
 <p>We will use the <code>train()</code> function to fit an elastic net. It works similarly to <code>lm()</code>, except with a lot more options. I’ll show you the code first and then explain it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove columns we don't want to use as features</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove columns we don't want to use as features</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df_fed_known <span class="ot">&lt;-</span> df_fed_known <span class="sc">|&gt;</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>is_hamilton, <span class="sc">-</span>fold)</span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1052,7 +1055,7 @@ Optional: Mathematical details on elastic net versus ordinary regression
 <span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">11</span></span>
 <span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  ),</span>
 <span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"Accuracy"</span></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here’s everything that’s going on in this function:</p>
 <ul>
@@ -1060,12 +1063,12 @@ Optional: Mathematical details on elastic net versus ordinary regression
 <li><p><code>method = "glmnet"</code> tells <code>train()</code> to use the elastic net. The <code>train()</code> function is a unified interface for fitting tons of different machine learning models; see the giant list of available models at <a href="https://topepo.github.io/caret/available-models.html" class="uri">https://topepo.github.io/caret/available-models.html</a>.</p></li>
 <li><p><code>family = "binomial"</code> tells the elastic net to perform classification with a categorical response. This results in a slight change to the regression formula under the hood, though we won’t worry about that here.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Optional: Altered regression formula">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Optional: Altered regression formula
+<span class="screen-reader-only">Note</span>Optional: Altered regression formula
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1080,7 +1083,7 @@ Optional: Altered regression formula
 </ul>
 <p>When you print out the result of a model fit with <code>train()</code>, it shows you the values of the tuning parameters that it tested, as well as the estimated out-of-fold accuracy of each one.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fit_enet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>fit_enet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>glmnet 
 
@@ -1111,7 +1114,7 @@ The final values used for the model were alpha = 0.55 and lambda
 </div>
 <p>There’s a lot of output here, and it’s different than a linear regression. The important part to extract is that out of the various elastic net specifications tested by the <code>train()</code> function, the highest cross-validation accuracy obtained was about 87%. This might be a bit easier to see by looking at the confusion matrix — which is easy to obtain when we’re working with a model fit by <code>train()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(fit_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(fit_enet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cross-Validated (11 fold) Confusion Matrix 
 
@@ -1127,7 +1130,7 @@ Prediction hamilton madison
 </div>
 <p>We can use the <code>varImp()</code> function to extract which features are most important, in terms of having the largest magnitude of coefficients in the elastic net model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(fit_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(fit_enet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>glmnet variable importance
 
@@ -1160,15 +1163,15 @@ shoot        10.26</code></pre>
 <p>You may be concerned that we did all this work to come up with a model whose out-of-sample predictive power (at least as measured by cross-validation) is worse than that of our linear regression from before. But keep in mind that we gave the elastic net a much harder job. With the linear regression, we pre-selected just 10 features. With the elastic net, we asked it to sort through all 4800ish features to identify the important ones!</p>
 <p>Finally, to make out-of-sample predictions with the elastic net, we can use the <code>predict()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>pred_enet <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_enet, <span class="at">newdata =</span> df_fed_unknown)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>pred_enet <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_enet, <span class="at">newdata =</span> df_fed_unknown)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>pred_enet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>pred_enet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] hamilton hamilton madison  hamilton hamilton madison  hamilton
  [8] hamilton madison  hamilton madison 
 Levels: hamilton madison</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pred_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pred_enet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>pred_enet
 hamilton  madison 
@@ -1233,13 +1236,14 @@ hamilton  madison
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

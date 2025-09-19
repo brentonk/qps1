@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./data_visualization.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-80f556f9cf5c3714b4c3fe743bab0ce3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-883b25f5fe4cf763c1e99fca87094caa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -122,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -162,7 +163,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative Political Science I</a> 
     </div>
@@ -324,11 +327,11 @@ window.Quarto = {
 <p>To study correlation and regression, we’ll look at a selection of data from the 2020 <a href="https://electionstudies.org">American National Election Study</a>. The data file is called <code>anes_2020.csv</code> and is hosted on my website at <a href="https://bkenkel.com/qps1/data/anes_2020.csv" class="uri">https://bkenkel.com/qps1/data/anes_2020.csv</a>.</p>
 <p>Each row in the dataset is a different American survey respondent who was randomly sampled for inclusion in the survey. The columns record a variety of demographic and political information about each respondent. There are <em>many</em> more variables available in the raw data — we are only scratching the surface here.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/anes_2020.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df_anes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8,280
 Columns: 31
@@ -467,7 +470,7 @@ $ voted_for_trump      &lt;dbl&gt; NA, 0, 0, 0, 1, 0, 1, NA, NA, 0, 0, 0, 1,…<
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Working with survey data
+<span class="screen-reader-only">Important</span>Working with survey data
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -483,19 +486,19 @@ Working with survey data
 <p>Policing was one of the major topics in the 2020 presidential election. The murder of George Floyd by a police officer in Minneapolis in May 2020 brought attention to the issue of police brutality. The Black Lives Matter movement gained political support, as did proposals ranging from minor police reforms all the way to defunding police departments. These criticisms and policy proposals sparked a backlash, with many politicians — including Donald Trump — making support for the police a key element of their appeal to voters.</p>
 <p>The question I want to ask today is <em>how strongly was support for the police in 2020 related to support for Donald Trump</em>? For now, we will quantify support using the feeling thermometer scores from the ANES. Scores from 0–49 represent cold feelings, 50 is neutral, and 51–100 is warm. Just to orient ourselves here, let’s calculate the average feeling toward the police and toward Trump in this data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_anes<span class="sc">$</span>therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_anes<span class="sc">$</span>therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 40.44061</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_anes<span class="sc">$</span>therm_police, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_anes<span class="sc">$</span>therm_police, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70.57485</code></pre>
 </div>
 </div>
 <p>In our previous unit on Data Visualization, we saw how to use scatterplots to get an idea of the correlation between two variables. So let’s make a scatterplot of feelings towards the police versus feelings toward Trump.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change ggplot theme to cowplot</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"cowplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change ggplot theme to cowplot</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"cowplot"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'cowplot'</code></pre>
@@ -505,14 +508,14 @@ Attaching package: 'cowplot'</code></pre>
 
     stamp</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_cowplot</span>()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> therm_trump)) <span class="sc">+</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs =
 "cs")'</code></pre>
@@ -564,7 +567,7 @@ range (`geom_point()`).</code></pre>
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Annoyingly, unlike the vast majority of statistical functions in R, <code>cor()</code> does not allow us to remove missing data via <code>na.rm = TRUE</code>. Instead, we have to write <code>use = "complete"</code> (as in: only use the rows with complete data).</p>
 </div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df_anes<span class="sc">$</span>therm_police, df_anes<span class="sc">$</span>therm_trump, <span class="at">use =</span> <span class="st">"complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df_anes<span class="sc">$</span>therm_police, df_anes<span class="sc">$</span>therm_trump, <span class="at">use =</span> <span class="st">"complete"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.467033</code></pre>
 </div>
@@ -582,7 +585,7 @@ range (`geom_point()`).</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Math ahead
+<span class="screen-reader-only">Warning</span>Math ahead
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -672,8 +675,8 @@ Math ahead
 <p>We refer to the intercept and slope together as the regression <span class="concept">coefficients</span>.</p>
 <p>I think it’ll be easier to wrap our heads around regression once we see it in practice. We calculate linear regressions in R using the <code>lm()</code> command, where <code>lm</code> stands for “linear model”. The basic syntax of <code>lm()</code> is <code>lm(response ~ feature, data = df)</code>, where <code>response</code> and <code>feature</code> are names of columns in <code>df</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   response   ~  feature(s)  </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   response   ~  feature(s)  </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -692,11 +695,11 @@ Coefficients:
 </ul>
 <p>You can visualize the regression line in ggplot using <code>geom_smooth(method = "lm")</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> therm_trump)) <span class="sc">+</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
@@ -768,9 +771,9 @@ Table&nbsp;5.1: Predictions from the linear regression of Trump opinions on poli
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="working-with-regression-results"><span class="header-section-number">5.3.2</span> Working with regression results</h3>
 <p>When you run a regression in R, it calculates a lot more useful information than just the slope and intercept. To access this, you will want to save the regression as a variable. This lets you run additional functions with the regression and extract additional information from it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>fit_trump_police</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>fit_trump_police</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -783,7 +786,7 @@ Coefficients:
 </div>
 <p>Running <code>summary()</code> on a regression model object gives you a bunch of additional info about the model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_police)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -824,7 +827,7 @@ F-statistic:  2005 on 1 and 7188 DF,  p-value: &lt; 2.2e-16</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Residual standard deviation terminology
+<span class="screen-reader-only">Warning</span>Residual standard deviation terminology
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -836,11 +839,11 @@ Residual standard deviation terminology
 </ul>
 <p>If you want to extract information about the regression for further calculations or visualization, the easiest way is using the <code>broom</code> package. This is yet another overly cutely named R package, intended to “sweep up” the results of statistical models in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"broom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"broom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>tidy()</code> function extracts a data frame containing the coefficients, standard errors, and related information.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit_trump_police)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term         estimate std.error statistic  p.value
@@ -851,7 +854,7 @@ Residual standard deviation terminology
 </div>
 <p>The <code>glance()</code> function extracts a data frame containing the R-squared and other model-level information.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 12
   r.squared adj.r.squared sigma statistic p.value    df  logLik    AIC
@@ -864,7 +867,7 @@ Residual standard deviation terminology
 <p>The values we most care about are <code>"r.squared"</code>, <code>"sigma"</code> (the residual standard deviation), and <code>"nobs"</code> (the number of observations used to estimate the regression).</p>
 <p>The <code>augment()</code> function “augments” the data used to fit the model with regression predictions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7,190 × 9
    .rownames therm_trump therm_police .fitted .resid     .hat .sigma
@@ -886,12 +889,12 @@ Residual standard deviation terminology
 <p>The <code>".fitted"</code> column contains the fitted values, and <code>".resid"</code> contains the residuals.</p>
 <p>We can also use the <code>augment()</code> function to calculate predictions for new data that wasn’t used to estimate the regression. For example, let’s look at the subset of ANES respondents who answered the question about their feelings towards the police but didn’t say how they felt about Trump.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_anes_notrump <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_anes_notrump <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(therm_trump)) <span class="sc">|&gt;</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(therm_police)) <span class="sc">|&gt;</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, therm_police)</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>df_anes_notrump</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>df_anes_notrump</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 198 × 2
       id therm_police
@@ -911,7 +914,7 @@ Residual standard deviation terminology
 </div>
 <p>By using the <code>newdata</code> argument of <code>augment()</code>, we can predict how these respondents feel about Trump based on their feelings toward the police.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police, <span class="at">newdata =</span> df_anes_notrump)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police, <span class="at">newdata =</span> df_anes_notrump)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 198 × 3
       id therm_police .fitted
@@ -931,12 +934,12 @@ Residual standard deviation terminology
 </div>
 <p>Using the <code>interval</code> argument, we can get a rough estimate of how precise these predictions are.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  fit_trump_police,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> df_anes_notrump,</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.level =</span> <span class="fl">0.5</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 198 × 5
       id therm_police .fitted .lower .upper
@@ -957,11 +960,11 @@ Residual standard deviation terminology
 <p><code>conf.level</code> is a number between 0 and 1 specifying the confidence level for the prediction. Here I went with 50%, aka <code>conf.level = 0.5</code>. What this is telling us, for example, is that for a respondent with the same features as our first one (namely, a police feeling thermometer of 70), we’d expect their Trump feeling thermometer to be between 15.5 and 63.6 about half of the time. In other words, there is a lot of uncertainty about these predictions!</p>
 <p>The <code>augment()</code> function can also be useful for visualizing our regression results. For example, suppose we wanted to plot our prediction + the uncertainty around it for each possible police thermometer that’s a multiple of 5. First we’d create a data frame with the values of the police thermometer we care about. I’ll use the <code>seq()</code> function to generate an evenly spaced sequence of numbers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_police_spaced <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_police_spaced <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">therm_police =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_police_spaced</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_police_spaced</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 1
    therm_police
@@ -981,7 +984,7 @@ Residual standard deviation terminology
 </div>
 <p>Now we can calculate predictions with <code>augment()</code> and plot them.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police <span class="sc">|&gt;</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> df_police_spaced,</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
@@ -989,7 +992,7 @@ Residual standard deviation terminology
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> .fitted)) <span class="sc">+</span></span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper)) <span class="sc">+</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1004,24 +1007,24 @@ Residual standard deviation terminology
 <p>When I introduced the correlation coefficient, I mentioned that its square could be thought of as the percentage of variation in one variable that is “explained” by the other. Having worked through regression, we can be much more precise about what that means.</p>
 <p>Remember that the correlation between police feeling thermometer and Trump feeling thermometer is roughly 0.47, so its square is roughly 0.22.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>cor_trump_police <span class="ot">&lt;-</span> <span class="fu">cor</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>cor_trump_police <span class="ot">&lt;-</span> <span class="fu">cor</span>(</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  df_anes<span class="sc">$</span>therm_trump,</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  df_anes<span class="sc">$</span>therm_police,</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">use =</span> <span class="st">"complete"</span></span>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>cor_trump_police</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>cor_trump_police</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.467033</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cor_trump_police<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cor_trump_police<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2181198</code></pre>
 </div>
 </div>
 <p>This lines up exactly with the R-squared value from our regression model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police)<span class="sc">$</span>r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2181198</code></pre>
 </div>
@@ -1033,22 +1036,22 @@ Residual standard deviation terminology
 </ul>
 <p>What I want to show you is that the second value is about 78% as large as the first. Why 78%? Because <span class="math inline">\(1 - R^2 = 1 - 0.22 = 0.78\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the two squared differences</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the two squared differences</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(fit_trump_police) <span class="sc">|&gt;</span></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dist_from_mean =</span> therm_trump <span class="sc">-</span> <span class="fu">mean</span>(therm_trump)) <span class="sc">|&gt;</span></span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sq_dist =</span> <span class="fu">mean</span>(dist_from_mean<span class="sc">^</span><span class="dv">2</span>),</span>
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sq_residual =</span> <span class="fu">mean</span>(.resid<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> sq_residual <span class="sc">/</span> sq_dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> sq_residual <span class="sc">/</span> sq_dist)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   sq_dist sq_residual ratio
     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
 1   1628.       1273. 0.782</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to 1 - R^2</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> cor_trump_police<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to 1 - R^2</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> cor_trump_police<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7818802</code></pre>
 </div>
@@ -1060,9 +1063,9 @@ Residual standard deviation terminology
 <p>What if we want to predict the response as a function of a binary or categorical feature? The R commands stay pretty much the same — all that changes is the way we interpret the results.</p>
 <p>As an example of a binary feature, let’s think about modeling each survey respondent’s opinion toward Trump as a function of their gender identity. Remember that gender identity is represented by the <code>female</code> column of our data frame, with 0 representing men and 1 representing women.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   female number
@@ -1074,9 +1077,9 @@ Residual standard deviation terminology
 </div>
 <p>We use the same <code>lm(response ~ feature, data = df)</code> syntax to run a regression when the feature is a binary variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fit_trump_gender <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> female, <span class="at">data =</span> df_anes)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fit_trump_gender <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> female, <span class="at">data =</span> df_anes)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1101,9 +1104,9 @@ F-statistic: 49.53 on 1 and 7990 DF,  p-value: 2.118e-12</code></pre>
 </div>
 <p>We end up with an intercept of about 44 and a slope of about -6. To interpret these numbers, let’s think again about the regression formula: <span class="math display">\[\text{Trump Feeling} \approx 44 - 6 \times \text{female}.\]</span> We have female = 0 for male respondents, so the formula predicts a Trump thermometer score of 44 for men. We have female = 1 for female respondents, so the formula predicts a Trump thermometer of 38 for women. These values line up exactly with the averages we see for each group in the raw data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(female) <span class="sc">|&gt;</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_therm_trump =</span> <span class="fu">mean</span>(therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_therm_trump =</span> <span class="fu">mean</span>(therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   female avg_therm_trump
@@ -1120,9 +1123,9 @@ F-statistic: 49.53 on 1 and 7990 DF,  p-value: 2.118e-12</code></pre>
 </ul>
 <p>Now let’s move on to more general categorical features, with potentially multiple categories. For example, we might want to predict someone’s opinion toward Trump as a function of their educational attainment, represented by the <code>education</code> column in our dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">|&gt;</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   education             number
@@ -1137,9 +1140,9 @@ F-statistic: 49.53 on 1 and 7990 DF,  p-value: 2.118e-12</code></pre>
 </div>
 <p>Once again, the syntax for running a regression is exactly the same. All that changes is how we interpret the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>fit_trump_educ <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> education, <span class="at">data =</span> df_anes)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>fit_trump_educ <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> education, <span class="at">data =</span> df_anes)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_educ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_educ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1218,9 +1221,9 @@ Some college</code></pre>
 </ul>
 <p>Once again, these predictions line up exactly with the raw averages in the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">|&gt;</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_therm_trump =</span> <span class="fu">mean</span>(therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_therm_trump =</span> <span class="fu">mean</span>(therm_trump, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   education             avg_therm_trump
@@ -1235,12 +1238,12 @@ Some college</code></pre>
 </div>
 <p>By default, R makes the omitted category whichever one comes first in alphabetical order. Sometimes you might find it easier to interpret the results by omitting a different category. Say we wanted the coefficients to reflect comparisons to those whose highest educational attainment is a high school diploma. You can use the <code>fct_relevel()</code> function to tell R which category to put first, thereby making it the omitted category.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">education =</span> <span class="fu">fct_relevel</span>(education, <span class="st">"High school"</span>))</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>fit_trump_educ_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(therm_trump <span class="sc">~</span> education, <span class="at">data =</span> df_anes)</span>
 <span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_educ_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_educ_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1279,9 +1282,9 @@ F-statistic:  77.5 on 4 and 7926 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>Slope: predicted increase (if positive) or decrease (if negative) in the probability of response = 1 due to a 1-unit increase in feature.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>fit_vote_police <span class="ot">&lt;-</span> <span class="fu">lm</span>(voted_for_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>fit_vote_police <span class="ot">&lt;-</span> <span class="fu">lm</span>(voted_for_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_vote_police)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_vote_police)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1307,7 +1310,7 @@ F-statistic:  1625 on 1 and 5842 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The regression equation here is <span class="math display">\[\Pr(\text{Voted for Trump}) \approx -0.25 + 0.01 \times \text{Police Feeling}.\]</span> The slope of 0.01, aka 1%, means that our prediction about the probability that a respondent would vote for Trump goes up 1 percentage point for each point on their feeling thermometer toward the police. In other words, if we compared Person A whose feeling toward the police is 70 to Person B whose feeling is 60, we’d guess that A is about 10% more likely to vote for Trump than B is.</p>
 <p>The intercept is a bit trickier to interpret. It tells us that for someone whose feeling thermometer toward the police is 0, their predicted probability of voting for Trump is -25% … which is nonsensical. This kind of nonsense prediction is one of the downsides of using a linear model — if you go out far enough to one extreme or the other, you’ll potentially start getting predictions below 0% or above 100%. If you find yourself in a real-world setting where you absolutely need your predictions to be between 0% and 100%, you can use an alternative model like <a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a>. For now, just know that these types of predictions are a natural consequence of the geometry of linear regression.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df_anes <span class="sc">|&gt;</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> therm_police, <span class="at">y =</span> voted_for_trump)) <span class="sc">+</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">2.5</span>, <span class="at">height =</span> <span class="fl">0.1</span>),</span>
@@ -1318,7 +1321,7 @@ F-statistic:  1625 on 1 and 5842 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)</span>
 <span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>(<span class="st">"xy"</span>, <span class="at">minor =</span> <span class="st">"xy"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
@@ -1352,12 +1355,12 @@ range (`geom_point()`).</code></pre>
 <p>Regression allows us to make this kind of all-else-equal comparison, by <span class="concept">controlling</span> for additional features. With <span class="math inline">\(K\)</span> features, the linear regression model becomes <span class="math display">\[\text{response} \approx \text{intercept} + \text{slope}_1 \times \text{feature}_1 + \text{slope}_2 \times \text{feature}_2 + \cdots + \text{slope}_K \times \text{feature}_K.\]</span> The slope on each individual feature represents: “How much does the predicted value of the response change due to a 1-unit increase in this feature, <em>holding all other feature values fixed</em>?”</p>
 <p>It’s easy to include multiple features in a regression model in R. Just use <code>lm(response ~ feature1 + feature2 + ...)</code>. For example, to control for race when analyzing the relationship between police opinion and Trump opinion:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police_race <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>fit_trump_police_race <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  therm_trump <span class="sc">~</span> therm_police <span class="sc">+</span> race,</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df_anes</span>
 <span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_police_race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_trump_police_race)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1389,18 +1392,18 @@ F-statistic: 350.8 on 6 and 7113 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>So can we conclude that more favorable attitudes toward the police <em>cause</em> more favorable attitudes toward Donald Trump? Not so fast. Loosely speaking, it’s true that controlled comparisons like this get us closer to cause-and-effect statements than uncontrolled bivariate regressions. But “closer” does not mean “all the way there”. In order to make a precise causal inference from this sort of regression model, we would need to control for <em>every</em> possible confounding variable that might affect both attitudes toward the police and one’s opinion of Donald Trump. Even with a pretty deep survey like the one the ANES fields, it’s pretty unlikely we would ever really be able to control for all of the confounding variables.</p>
 <p>Comparing the regressions with and without the race control, we also see that the predictive accuracy is higher with the control. The residual standard deviation is lower, and the <span class="math inline">\(R^2\)</span> is higher.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># w/o race control</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># w/o race control</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police) <span class="sc">|&gt;</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigma, r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigma, r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   sigma r.squared
   &lt;dbl&gt;     &lt;dbl&gt;
 1  35.7     0.218</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># w/ race control</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># w/ race control</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(fit_trump_police_race) <span class="sc">|&gt;</span></span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigma, r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigma, r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   sigma r.squared
@@ -1418,7 +1421,7 @@ F-statistic: 350.8 on 6 and 7113 DF,  p-value: &lt; 2.2e-16</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-For intellectual edification only
+<span class="screen-reader-only">Note</span>For intellectual edification only
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1443,7 +1446,7 @@ For intellectual edification only
 \end{align*}\]</span></p>
 <p>To confirm that this formula works, let’s try it out with the feeling thermometer data, checking that it gives us the same answers as <code>lm()</code> does.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Make sure to use same observations as used in the regression</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Make sure to use same observations as used in the regression</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>df_anes_no_na <span class="ot">&lt;-</span> df_anes <span class="sc">|&gt;</span></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(therm_trump)) <span class="sc">|&gt;</span></span>
 <span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(therm_police))</span>
@@ -1460,11 +1463,11 @@ For intellectual edification only
 <span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">mean</span>(y) <span class="sc">-</span> slope <span class="sc">*</span> <span class="fu">mean</span>(x)</span>
 <span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare to regression values</span></span>
-<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(intercept, slope)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(intercept, slope)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -12.7889017   0.7476096</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(therm_trump <span class="sc">~</span> therm_police, <span class="at">data =</span> df_anes))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> (Intercept) therm_police 
  -12.7889017    0.7476096 </code></pre>
@@ -1527,13 +1530,14 @@ For intellectual edification only
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

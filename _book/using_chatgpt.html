@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-80f556f9cf5c3714b4c3fe743bab0ce3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-883b25f5fe4cf763c1e99fca87094caa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -133,7 +134,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative Political Science I</a> 
     </div>
@@ -272,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Learning more
+<span class="screen-reader-only">Tip</span>Learning more
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -315,7 +318,7 @@ because I have seen it with my own eyes. I have seen it with</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Reinforcement learning
+<span class="screen-reader-only">Note</span>Reinforcement learning
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -344,12 +347,12 @@ In the context of monotone comparative statics for game theory, what is a lattic
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sample chatbot prompt: Code explanation
+<span class="screen-reader-only">Tip</span>Sample chatbot prompt: Code explanation
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Work through this R code line by line and explain what it’s doing:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_pred_usa <span class="ot">&lt;-</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_pred_usa <span class="ot">&lt;-</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    df_first_stage,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log1p</span>(d_usa_pred), <span class="at">y =</span> <span class="fu">log1p</span>(d_usa_actual))</span>
@@ -362,7 +365,7 @@ Sample chatbot prompt: Code explanation
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"log(1 + actual USA aid)"</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"figures/pred_usa_pretty.pdf"</span>, plot_pred_usa, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="fl">4.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"figures/pred_usa_pretty.pdf"</span>, plot_pred_usa, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="fl">4.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>ChatGPT can also be useful for debugging errors. You can often just plug in your code and ask it to spot the problem. However, you’ll usually do even better by giving ChatGPT some contextual information, including the error message you’re receiving when you try to run your code.</p>
@@ -372,7 +375,7 @@ Sample chatbot prompt: Code explanation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sample chatbot prompt: Debugging
+<span class="screen-reader-only">Tip</span>Sample chatbot prompt: Debugging
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -387,10 +390,10 @@ Sample chatbot prompt: Debugging
 5 Democrat       70  50000
 6 Independent    80  60000</code></pre>
 <p>I am trying to run this code:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_survey <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_survey <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age <span class="sc">&gt;=</span> <span class="dv">45</span>) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(party_id) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_income =</span> <span class="fu">mean</span>(income))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_income =</span> <span class="fu">mean</span>(income))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>But it spits out this error:</p>
 <pre class="text"><code>Error in `select()`:
 In argument: `age &gt;= 45`.
@@ -407,7 +410,7 @@ Run `rlang::last_trace()` to see where the error occurred.</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sample chatbot prompt: Code writing
+<span class="screen-reader-only">Tip</span>Sample chatbot prompt: Code writing
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -453,7 +456,7 @@ Figure&nbsp;A.1: How to use Canvas or Study mode in ChatGPT.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sample chatbot prompt: Study tool
+<span class="screen-reader-only">Tip</span>Sample chatbot prompt: Study tool
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -529,13 +532,14 @@ Sample chatbot prompt: Study tool
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

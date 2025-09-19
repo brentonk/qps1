@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./intro_r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-80f556f9cf5c3714b4c3fe743bab0ce3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-883b25f5fe4cf763c1e99fca87094caa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -130,7 +131,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative Political Science I</a> 
     </div>
@@ -298,10 +301,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div></div><p>To put it more simply, countries are in a state of crisis when something happens that raises tensions between them to the point that there is a legitimate fear of war. Every war starts as a crisis, but not all crises lead to war (and in fact the vast majority do not).</p>
 <p>We will work with the ICB Project’s “actor level” dataset, in which each observation (row) is a crisis participant. For example, in the Cuban Missile Crisis of 1962 (crisis #196 in the ICB data), the United States, Cuba, and the Soviet Union are each separate crisis participants. The data is on my website at <a href="https://bkenkel.com/qps1/data/crises.csv" class="uri">https://bkenkel.com/qps1/data/crises.csv</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df_crises <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/crises.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_crises</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_crises</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -342,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="2.2.1.1" class="anchored" data-anchor-id="basic-usage"><span class="header-section-number">2.2.1.1</span> Basic usage</h4>
 <p>The simplest way to use <code>select()</code> is to tell it what data frame you’re working with, then list the names of the columns you want to keep from it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, crisname, actor, systrgyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, crisname, actor, systrgyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 3
    crisname             actor systrgyr
@@ -362,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>An important thing to know about how R works: Just running a function like this won’t change your data frame permanently. To see this, after running <code>select()</code> like the above, go back and look at the data frame — nothing has changed:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_crises</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_crises</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -387,13 +390,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>All the original data is still there. Unlike some other programming languages, R essentially never modifies data “in place”. If you want to overwrite <code>df_crises</code> with the subsetted version, you need to explicitly tell R to overwrite it by assigning the <code>select()</code>’ed data frame to <code>df_crises</code>, as in:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I don't want to overwrite df_crises, so not actually running this</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_crises <span class="ot">&lt;-</span> <span class="fu">select</span>(df_crises, crisname, actor, systrgyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I don't want to overwrite df_crises, so not actually running this</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_crises <span class="ot">&lt;-</span> <span class="fu">select</span>(df_crises, crisname, actor, systrgyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Just as a matter of workflow, I usually try not to overwrite the raw data frame that I’ve read into R. That way, if I decide later on that I want more out of the original data, I don’t have to go back and load from the CSV file and clean it up again. So in this case, I would typically just create a new data frame with the subsetted data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_crises_reduced <span class="ot">&lt;-</span> <span class="fu">select</span>(df_crises, crisname, actor, systrgyr)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_crises_reduced <span class="ot">&lt;-</span> <span class="fu">select</span>(df_crises, crisname, actor, systrgyr)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df_crises_reduced</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df_crises_reduced</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 3
    crisname             actor systrgyr
@@ -416,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="2.2.1.2" class="anchored" data-anchor-id="selecting-by-range-or-pattern"><span class="header-section-number">2.2.1.2</span> Selecting by range or pattern</h4>
 <p>Suppose you wanted everything from the <code>crisno</code> column through the <code>systrgyr</code> column. Instead of typing out each column name explicitly, you can just use a colon (<code>:</code>) to tell <code>select()</code> to grab this range of variables:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, crisno<span class="sc">:</span>systrgyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, crisno<span class="sc">:</span>systrgyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 5
    crisno cracno cracid actor systrgyr
@@ -436,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>If you want everything <em>except</em> a particular variable, you can use the minus sign (<code>-</code>) to exclude it. Let’s see how to get rid of the useless <code>icb2</code> column that just marks the dataset version:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="sc">-</span>icb2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="sc">-</span>icb2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 94
    crisno cracno cracid actor systrgyr systrgmo systrgda crisname triggr
@@ -466,21 +469,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>What if you wanted to exclude the range of variables from <code>actor</code> through <code>yrtrig</code>? How would you do that without typing out each column name explicitly?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <p>You can use the <code>starts_with()</code> subfunction to select all of the columns whose name starts with “sys”, for example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="fu">starts_with</span>(<span class="st">"sys"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="fu">starts_with</span>(<span class="st">"sys"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 4
    systrgyr systrgmo systrgda syslev
@@ -504,7 +507,7 @@ In-class exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -515,22 +518,22 @@ In-class exercise
 </div>
 </div>
 <p>There are many other subfunctions you can use to select columns without naming them each explicitly. You can learn about them by looking at the <span class="concept">help page</span> for the <code>select()</code> function. To see the help page for any R function, just enter <code>?name_of_function</code> at the R console, like the following:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>?select</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>?select</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Select the columns whose name has <code>"fav"</code> anywhere in it. Look at the <code>?select</code> help page to figure out the subfunction you need to do this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -539,7 +542,7 @@ In-class exercise
 <h4 data-number="2.2.1.3" class="anchored" data-anchor-id="reordering-and-renaming"><span class="header-section-number">2.2.1.3</span> Reordering and renaming</h4>
 <p>As you select variables, you can rename them by using the syntax <code>newname = oldname</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="at">year =</span> systrgyr, <span class="at">name =</span> crisname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df_crises, <span class="at">year =</span> systrgyr, <span class="at">name =</span> crisname)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 2
     year name                
@@ -559,7 +562,7 @@ In-class exercise
 </div>
 <p>To rename individual columns without dropping or rearranging the other columns, use the <code>rename()</code> function instead of <code>select()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(df_crises, <span class="at">year =</span> systrgyr, <span class="at">name =</span> crisname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(df_crises, <span class="at">year =</span> systrgyr, <span class="at">name =</span> crisname)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    icb2  crisno cracno cracid actor  year systrgmo systrgda name  triggr
@@ -585,7 +588,7 @@ In-class exercise
 </div>
 <p>If you want certain columns to be placed first, use the <code>relocate()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">relocate</span>(df_crises, crisname, actor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">relocate</span>(df_crises, crisname, actor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    crisname  actor icb2  crisno cracno cracid systrgyr systrgmo systrgda
@@ -611,8 +614,8 @@ In-class exercise
 </div>
 <p>To rearrange the rows of the data, you can use the <code>arrange()</code> function. By default, it sorts the data in ascending order of the column name(s) you feed it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange in ascending order of actor numeric ID</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, cracid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange in ascending order of actor numeric ID</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, cracid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -635,8 +638,8 @@ In-class exercise
 #   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
 #   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange by start year, then by actor ID within year</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, systrgyr, cracid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange by start year, then by actor ID within year</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, systrgyr, cracid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -662,8 +665,8 @@ In-class exercise
 </div>
 <p>To instead sort in descending order, wrap the variable name in <code>desc()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange so that the most recent crises come first</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, <span class="fu">desc</span>(systrgyr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange so that the most recent crises come first</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(df_crises, <span class="fu">desc</span>(systrgyr))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,131 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -705,65 +708,65 @@ In-class exercise
 </ul>
 <p>As an example, let’s assign the value 1950 to the variable <code>x</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let’s look at the values of a few logical comparisons.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1951</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1951</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">1951</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">1951</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <p>If we use these with a vector of numbers, R calculates the comparison for each individual element of the vector. So instead of just looking at 1950, let’s look at each number from 1948 to 1952.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1948</span><span class="sc">:</span><span class="dv">1952</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1948</span><span class="sc">:</span><span class="dv">1952</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1948 1949 1950 1951 1952</code></pre>
 </div>
 </div>
 <p>We’ve got a vector of five years here, so each of our logical comparisons will now return a vector of five <code>TRUE</code>/<code>FALSE</code> values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1951</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">1951</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE  TRUE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">1951</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">1951</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;=</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
 </div>
 <p>You can combine logical comparisons like this with square brackets to select elements from a vector on the basis of a logical comparison.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&lt;</span> <span class="dv">1950</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&lt;</span> <span class="dv">1950</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1948 1949</code></pre>
 </div>
@@ -773,31 +776,31 @@ In-class exercise
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>The last possibility is comparing a vector to another vector of a <em>different</em> length. Loosely speaking, R handles this situation by repeating the shorter vector until the two match up. R’s behavior in this situation can be hard to predict, so I recommend only doing logical comparisons against either a single number, or a vector of the same length. You can check the length of a vector using the <code>length()</code> function, FYI.</p>
 </div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1948</span>, <span class="dv">1948</span>, <span class="dv">1950</span>, <span class="dv">1950</span>, <span class="dv">1946</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1948</span>, <span class="dv">1948</span>, <span class="dv">1950</span>, <span class="dv">1950</span>, <span class="dv">1946</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1948 1948 1950 1950 1946</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE  TRUE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">!=</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE  TRUE  TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE  TRUE  TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;=</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE TRUE TRUE TRUE</code></pre>
 </div>
 </div>
 <p>The exclamation point means “not”. You can use it to turn <code>TRUE</code> into <code>FALSE</code> and vice versa. Just make sure that you put parentheses around the whole statement that you’re trying to negate.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&gt;=</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(x <span class="sc">&gt;=</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
@@ -844,31 +847,31 @@ In-class exercise
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reminder:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reminder:</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x = 1948, 1949, 1950, 1951, 1952</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y = 1948, 1948, 1950, 1950, 1946</span></span>
 <span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">|</span> x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y <span class="sc">|</span> x <span class="sc">&lt;</span> <span class="dv">1950</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
 </div>
 </div>
 <p>Be aware that <code>&amp;</code> and <code>|</code> only operate on <code>TRUE</code> and <code>FALSE</code> values, not on other values. There are situations where you might use “and” or “or” in an English sentence, but where <code>&amp;</code> and <code>|</code> can’t just be substituted into your R code. For example, think about trying to code up the logical statement “<code>x</code> or <code>y</code> is less than 100.”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">150</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">150</span>)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">150</span>, <span class="dv">99</span>)</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Won't work correctly, because x and y aren't TRUE/FALSE</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">|</span> y) <span class="sc">&lt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">|</span> y) <span class="sc">&lt;</span> <span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE TRUE TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Will work correctly, because "x &lt; 100" and "y &lt; 100" are TRUE/FALSE</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="sc">|</span> (y <span class="sc">&lt;</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Will work correctly, because "x &lt; 100" and "y &lt; 100" are TRUE/FALSE</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="sc">|</span> (y <span class="sc">&lt;</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE FALSE  TRUE</code></pre>
 </div>
@@ -878,14 +881,14 @@ In-class exercise
 <p>Completely optional aside for those who are morbidly curious why we get all <code>TRUE</code> values when we run <code>(x | y) &lt; 100</code>: When you plug numbers into a logical operator, any non-zero number evaluates to <code>TRUE</code>. Since every element of <code>x</code> and <code>y</code> is nonzero, <code>x | y</code> evaluates to <code>TRUE, TRUE, TRUE, TRUE</code>. Then, when you plug logical values into a numerical comparison, <code>TRUE</code> values are treated like 1 and <code>FALSE</code> values like 0. So R converts each <code>TRUE</code> to 1, observes that 1 is less than 100, and again returns <code>TRUE</code> for each one.</p>
 </div></div><p>One final minor note: If you look for R help on the Internet, you’ll sometimes see people use <code>&amp;&amp;</code> and <code>||</code>. What’s the difference between <code>&amp;</code> and <code>&amp;&amp;</code>, or between <code>|</code> and <code>||</code>? The doubled versions only work on a <u>single</u> <code>TRUE</code>/<code>FALSE</code> statement. This distinction is important in programming situations where you need to make sure you’re only working with a single value. That won’t typically come up in this course, so to make our lives easier we’ll just always use the single versions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> y <span class="sc">|</span> x <span class="sc">&gt;</span> y   <span class="co"># returns c(FALSE, TRUE, TRUE, FALSE, TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> y <span class="sc">|</span> x <span class="sc">&gt;</span> y   <span class="co"># returns c(FALSE, TRUE, TRUE, FALSE, TRUE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> y <span class="sc">||</span> x <span class="sc">&gt;</span> y  <span class="co"># won't run, will give error message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> y <span class="sc">||</span> x <span class="sc">&gt;</span> y  <span class="co"># won't run, will give error message</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in x &lt; y || x &gt; y: 'length = 5' in coercion to 'logical(1)'</code></pre>
 </div>
@@ -896,7 +899,7 @@ In-class exercise
 <p>Now that we’re familiar with comparisons and logical operators, let’s return to the crisis data to reduce it down to Cold War–era observations.</p>
 <p>Remember that we can pull a single column from a data frame using the dollar sign. And we can use square brackets on a data frame to select particular observations from it. So we <em>could</em> subset to the Cold War observations that way.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>df_crises[df_crises<span class="sc">$</span>systrgyr <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> df_crises<span class="sc">$</span>systrgyr <span class="sc">&lt;=</span> <span class="dv">1989</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>df_crises[df_crises<span class="sc">$</span>systrgyr <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> df_crises<span class="sc">$</span>systrgyr <span class="sc">&lt;=</span> <span class="dv">1989</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 585 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -922,7 +925,7 @@ In-class exercise
 </div>
 <p>That works, but it’s a bit ugly and unwieldy. The <code>filter()</code> function gives us an easier way to do the same thing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, systrgyr <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> systrgyr <span class="sc">&lt;=</span> <span class="dv">1989</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, systrgyr <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> systrgyr <span class="sc">&lt;=</span> <span class="dv">1989</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 580 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -948,7 +951,7 @@ In-class exercise
 </div>
 <p>When dealing with character columns, the greater/lesser comparisons no longer make sense, but we can still use the equality and inequality comparisons. Just make sure to use quotation marks around whatever you’re comparing to!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">==</span> <span class="st">"USA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">==</span> <span class="st">"USA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 78 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -971,7 +974,7 @@ In-class exercise
 #   trgresra &lt;dbl&gt;, crismg &lt;dbl&gt;, cenvio &lt;dbl&gt;, sevvio &lt;dbl&gt;,
 #   usinv &lt;dbl&gt;, usfavr &lt;dbl&gt;, suinv &lt;dbl&gt;, sufavr &lt;dbl&gt;, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">!=</span> <span class="st">"RUS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">!=</span> <span class="st">"RUS"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,079 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -997,7 +1000,7 @@ In-class exercise
 </div>
 <p>What if you wanted to get all of the observations involving the United States (USA), Russia (RUS), or the United Kingdom (UKG)? One kind of tedious way to go about it would be to string many “or” statements together.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">==</span> <span class="st">"USA"</span> <span class="sc">|</span> actor <span class="sc">==</span> <span class="st">"RUS"</span> <span class="sc">|</span> actor <span class="sc">==</span> <span class="st">"UKG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">==</span> <span class="st">"USA"</span> <span class="sc">|</span> actor <span class="sc">==</span> <span class="st">"RUS"</span> <span class="sc">|</span> actor <span class="sc">==</span> <span class="st">"UKG"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 178 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -1023,7 +1026,7 @@ In-class exercise
 </div>
 <p>The easier way — especially if you’re matching a large number of values — is to use the <code>%in%</code> operator in R. When you run <code>x %in% y</code>, it gives you a <code>TRUE</code> or <code>FALSE</code> for each entry of <code>x</code>: <code>TRUE</code> if it matches at least one entry of <code>y</code>, and <code>FALSE</code> otherwise.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df_crises, actor <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 178 × 95
    icb2  crisno cracno cracid actor systrgyr systrgmo systrgda crisname 
@@ -1053,15 +1056,15 @@ In-class exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>How can you filter down to the observations that are <em>not</em> those three countries?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1078,7 +1081,7 @@ In-class exercise
 <p>Remember that R doesn’t save what you do to a data frame unless you explicitly assign the result to a variable. This means that a data cleaning process might involve a lot of intermediate assignments that you never end up using again.</p>
 <p>Imagine we want to extract the name of the crisis, the name and numeric ID of the country involved, the year the crisis began, the number of days it lasted (<code>trgterra</code>), and the outcome for the given actor (<code>outcom</code>) Along the way we’ll rename the variables to be less ugly. And furthermore imagine we only want Cold War–era observations, and only for the USA, Russia, and the United Kingdom. We could run the following sequence of commands:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> <span class="fu">select</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> <span class="fu">select</span>(</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  df_crises,</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">crisis_name =</span> crisname,</span>
 <span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">actor_name =</span> actor,</span>
@@ -1089,7 +1092,7 @@ In-class exercise
 <span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb93-10"><a href="#cb93-10" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_crises_cw, year <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">1989</span>)</span>
 <span id="cb93-11"><a href="#cb93-11" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_crises_cw, actor_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span>
-<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 6
    crisis_name          actor_name actor_id  year duration outcome
@@ -1110,22 +1113,22 @@ In-class exercise
 <p>That certainly works fine to give us what we want, but it involved a lot of repetitive typing and retyping of <code>df_crises_cw &lt;- function_name(df_crises_cw, ...)</code>. And that’s only with fairly simple subsetting operations.</p>
 <p>The <span class="concept">pipe operator</span> in R lets us chain together commands like this much more succinctly. <code>x |&gt; function_name(...)</code> is equivalent to <code>function_name(x, ...)</code> in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
 </div>
 <p>On its own the pipe might seem dumb, like just more typing for the same result. Weren’t we trying to reduce the amount of typing? The pipe is mainly useful when we are chaining many commands together.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chained commands</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chained commands</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">first_command</span>(x, arg1, arg2)</span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">second_command</span>(y, arg3)</span>
 <span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">third_command</span>(y, arg4, arg5)</span>
@@ -1136,10 +1139,10 @@ In-class exercise
 <span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">first_command</span>(arg1, arg2) <span class="sc">|&gt;</span></span>
 <span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">second_command</span>(arg3) <span class="sc">|&gt;</span></span>
 <span id="cb101-11"><a href="#cb101-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">third_command</span>(arg4, arg5) <span class="sc">|&gt;</span></span>
-<span id="cb101-12"><a href="#cb101-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fourth_command</span>(arg6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb101-12"><a href="#cb101-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fourth_command</span>(arg6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s see the pipe in action in the context of our data cleaning example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>df_crises <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>df_crises <span class="sc">|&gt;</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">crisis_name =</span> crisname,</span>
 <span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">actor_name =</span> actor,</span>
@@ -1149,7 +1152,7 @@ In-class exercise
 <span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> outcom</span>
 <span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">1989</span>) <span class="sc">|&gt;</span></span>
-<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(actor_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(actor_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 6
    crisis_name          actor_name actor_id  year duration outcome
@@ -1169,7 +1172,7 @@ In-class exercise
 </div>
 <p>It might take a bit getting used to, but I personally find it much easier to use the pipe when going through the data cleaning process. One thing to keep in mind, just like when you run these commands the regular way, they won’t change your data frame in place. You need to explicitly assign the output to a variable name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises <span class="sc">|&gt;</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">crisis_name =</span> crisname,</span>
 <span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">actor_name =</span> actor,</span>
@@ -1179,7 +1182,7 @@ In-class exercise
 <span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> outcom</span>
 <span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1946</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">1989</span>) <span class="sc">|&gt;</span></span>
-<span id="cb104-11"><a href="#cb104-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(actor_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb104-11"><a href="#cb104-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(actor_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"RUS"</span>, <span class="st">"UKG"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Final note on the pipe. Until pretty recently, the pipe was <code>%&gt;%</code> instead of <code>|&gt;</code>. So you’ll see a lot of code on the Internet that uses <code>%&gt;%</code>. Don’t worry, it works exactly the same as <code>|&gt;</code> (except in some edge cases that won’t come up for us).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="In-class exercise">
@@ -1188,7 +1191,7 @@ In-class exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1199,9 +1202,9 @@ In-class exercise
 <li>Exclude observations of Russia from 1990 onward</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1213,13 +1216,13 @@ In-class exercise
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="changing-variables-and-making-new-ones"><span class="header-section-number">2.3.1</span> Changing variables and making new ones</h3>
 <p>The <code>mutate()</code> function lets you change a column in the dataframe, or create a new column using the values in existing columns. For example, right now the duration of each crisis is measured in days. We can add new columns to measure duration in weeks and years instead. As always, if we want our new columns to persist instead of vanishing into the ether, we need to assign the output to a variable — either overwriting <code>df_crises_cw</code> or creating a new data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">duration_weeks =</span> duration <span class="sc">/</span> <span class="dv">7</span>,</span>
 <span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">duration_years =</span> duration <span class="sc">/</span> <span class="dv">365</span></span>
 <span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 8
    crisis_name actor_name actor_id  year duration outcome duration_weeks
@@ -1245,14 +1248,14 @@ In-class exercise
 <li><code>b</code>: value, or vector of values, to use for entries where <code>condition</code> is <code>FALSE</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple if_else example</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple if_else example</span></span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">100</span>, <span class="sc">-</span><span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>)</span>
-<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> y, x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> y, x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   1   2 300 400</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> y, <span class="st">"ice cream"</span>, <span class="st">"pizza"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> y, <span class="st">"ice cream"</span>, <span class="st">"pizza"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ice cream" "ice cream" "pizza"     "pizza"    </code></pre>
 </div>
@@ -1263,15 +1266,15 @@ In-class exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Use <code>mutate()</code> and <code>if_else()</code> together to add another column to <code>df_crises_cw</code> called <code>crisis_length</code>. This variable should say <code>"long"</code> if the crisis is 100 or more days, and <code>"short"</code> otherwise.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1285,9 +1288,9 @@ In-class exercise
 </ol>
 <p>So for example, looking at the rows associated with the Berlin Blockade, we see that the USA and United Kingdom experienced victory, while the Soviet Union was defeated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(crisis_name <span class="sc">==</span> <span class="st">"BERLIN BLOCKADE"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(actor_name, outcome, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(actor_name, outcome, <span class="fu">everything</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 8
   actor_name outcome crisis_name  actor_id  year duration duration_weeks
@@ -1300,7 +1303,7 @@ In-class exercise
 </div>
 <p>We <em>could</em> use a sequence of 5 <code>if_else()</code> statements to convert the <code>outcome</code> variable in terms of category names instead of (hard to remember) numeric identifiers. But it’s easier to use <code>case_when()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="ot">&lt;-</span> df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome =</span> <span class="fu">case_when</span>(</span>
 <span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>      outcome <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"victory"</span>,</span>
@@ -1311,7 +1314,7 @@ In-class exercise
 <span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>df_crises_cw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 8
    crisis_name actor_name actor_id  year duration outcome duration_weeks
@@ -1338,12 +1341,12 @@ In-class exercise
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="grouping-and-summarizing"><span class="header-section-number">2.3.2</span> Grouping and summarizing</h3>
 <p>The <code>summarize()</code> function lets us calculate summaries of columns in the data. For example, let’s find the shortest, longest, and average crisis durations among the USA/UK/USSR during the Cold War.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">shortest =</span> <span class="fu">min</span>(duration),</span>
 <span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">longest =</span> <span class="fu">max</span>(duration),</span>
 <span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">average =</span> <span class="fu">mean</span>(duration)</span>
-<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   shortest longest average
@@ -1352,37 +1355,37 @@ In-class exercise
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seemingly easier way</span></span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(df_crises_cw<span class="sc">$</span>duration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seemingly easier way</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(df_crises_cw<span class="sc">$</span>duration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(df_crises_cw<span class="sc">$</span>duration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(df_crises_cw<span class="sc">$</span>duration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 486</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_crises_cw<span class="sc">$</span>duration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_crises_cw<span class="sc">$</span>duration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 99.24138</code></pre>
 </div>
 </div>
 <p>The real power of <code>summarize()</code> comes in when you combine it with <code>group_by()</code> to calculate summaries for subcategories of the data. For example, say we wanted to calculate the shortest, longest, and average crisis duration separately for the USA, UK, and USSR. That would be tedious to do the “normal” way:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one of nine long expressions you'd have to type out</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(df_crises_cw<span class="sc">$</span>duration[df_crises_cw<span class="sc">$</span>actor_name <span class="sc">==</span> <span class="st">"USA"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one of nine long expressions you'd have to type out</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(df_crises_cw<span class="sc">$</span>duration[df_crises_cw<span class="sc">$</span>actor_name <span class="sc">==</span> <span class="st">"USA"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p><code>group_by |&gt; summarize</code> makes this <em>much</em> easier.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(actor_name) <span class="sc">|&gt;</span></span>
 <span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">shortest =</span> <span class="fu">min</span>(duration),</span>
 <span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">longest =</span> <span class="fu">max</span>(duration),</span>
 <span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">average =</span> <span class="fu">mean</span>(duration)</span>
-<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   actor_name shortest longest average
@@ -1398,23 +1401,23 @@ In-class exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>In which year of the Cold War did the USA spend the most total days in crises? Use <code>filter()</code>, <code>group_by()</code>, <code>summarize()</code>, and <code>arrange()</code> together to figure it out.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <p>What if you wanted to count the number of crises involving each country? There’s a special function called <code>n()</code> that counts the number of observations within each group.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(actor_name) <span class="sc">|&gt;</span></span>
-<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   actor_name number
@@ -1426,13 +1429,13 @@ In-class exercise
 </div>
 <p>You can group on multiple variables at once. The number of rows in the result will be the number of unique combinations of values across the grouping variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>df_crises_cw <span class="sc">|&gt;</span></span>
 <span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(actor_name, outcome) <span class="sc">|&gt;</span></span>
 <span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="fu">n</span>(),</span>
 <span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">shortest =</span> <span class="fu">min</span>(duration),</span>
 <span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">longest =</span> <span class="fu">max</span>(duration)</span>
-<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'actor_name'. You can override
 using the `.groups` argument.</code></pre>
@@ -1463,9 +1466,9 @@ using the `.groups` argument.</code></pre>
 <h2 data-number="2.4" class="anchored" data-anchor-id="reshaping"><span class="header-section-number">2.4</span> Reshaping</h2>
 <p>To get practice with reshaping and merging data, we’re going to bring in a second dataset. <code>military.csv</code>, stored at <a href="https://bkenkel.com/qps1/data/military.csv" class="uri">https://bkenkel.com/qps1/data/military.csv</a>, contains data on military spending and force sizes by country from 1816 to 2019.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>df_military <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/military.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>df_military <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://bkenkel.com/qps1/data/military.csv"</span>)</span>
 <span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a>df_military</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a>df_military</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 31,902 × 5
    ccode stateabb  year mil_indicator amount
@@ -1486,10 +1489,10 @@ using the `.groups` argument.</code></pre>
 <p>The amounts here are in thousands of dollars and people respectively. For example, looking at the first two rows, in 1816 the USA spent $3.8 million on the military, which consisted of 17,000 soldiers.</p>
 <p>How can we reshape this data so that there’s a single row for the USA in 1816, a single row for the USA in 1817, and so on? As of now the data is “longer” than we want it to be, and we’d like it to be “wider”. Hence we’ll use the function <code>pivot_wider()</code>. Here’s how we use it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>df_military_wide <span class="ot">&lt;-</span> df_military <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>df_military_wide <span class="ot">&lt;-</span> df_military <span class="sc">|&gt;</span></span>
 <span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> mil_indicator, <span class="at">values_from =</span> amount)</span>
 <span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>df_military_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>df_military_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15,951 × 5
    ccode stateabb  year spending personnel
@@ -1514,21 +1517,21 @@ using the `.groups` argument.</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Go back to our data on the USA, UK, and USSR in Cold War crises. Use <code>pivot_wider()</code> to create a new data frame where each row is a unique crisis name, and there are columns for the USA, UK, and USSR telling that country’s outcome from the given crisis. Were there any crises that ended in victory for both the USA and the USSR?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Write your answer here]</span></span>
-<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <p>The opposite of <code>pivot_wider()</code> is, naturally enough, <code>pivot_longer()</code>. For example, imagine your raw data had a single row for each country, then a separate column for its military spending each year.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>df_too_wide <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>df_too_wide <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ccode =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">200</span>, <span class="dv">365</span>),</span>
 <span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">stateabb =</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"UKG"</span>, <span class="st">"RUS"</span>),</span>
 <span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mil1816 =</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">255</span>, <span class="dv">800</span>),</span>
@@ -1536,7 +1539,7 @@ In-class exercise
 <span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mil1818 =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">173</span>, <span class="dv">600</span>)</span>
 <span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-9"><a href="#cb140-9" aria-hidden="true" tabindex="-1"></a>df_too_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb140-9"><a href="#cb140-9" aria-hidden="true" tabindex="-1"></a>df_too_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   ccode stateabb mil1816 mil1817 mil1818
@@ -1548,12 +1551,12 @@ In-class exercise
 </div>
 <p>To use <code>pivot_longer()</code>, we have to tell it (1) the set of columns whose values we want to collapse into a single column, (2) what we want to name the column that stores the column names from the original data, and (3) what we want to name the column that stores the values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>df_too_wide <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>df_too_wide <span class="sc">|&gt;</span></span>
 <span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">"mil"</span>),</span>
 <span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
 <span id="cb142-5"><a href="#cb142-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"personnel"</span></span>
-<span id="cb142-6"><a href="#cb142-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb142-6"><a href="#cb142-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 4
   ccode stateabb year    personnel
@@ -1571,7 +1574,7 @@ In-class exercise
 </div>
 <p>FYI: If you wanted to turn the year column there into a proper year, you could <code>mutate()</code> it to remove the “mil” text and then convert it to a number.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>df_too_wide <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>df_too_wide <span class="sc">|&gt;</span></span>
 <span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">"mil"</span>),</span>
 <span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
@@ -1580,7 +1583,7 @@ In-class exercise
 <span id="cb144-7"><a href="#cb144-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">str_replace</span>(year, <span class="st">"mil"</span>, <span class="st">""</span>),</span>
 <span id="cb144-9"><a href="#cb144-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">as.numeric</span>(year)</span>
-<span id="cb144-10"><a href="#cb144-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb144-10"><a href="#cb144-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 4
   ccode stateabb  year personnel
@@ -1604,11 +1607,11 @@ In-class exercise
 <p>The first thing to do is decide which dataset should be the “base” that we merge other data sources into. What’s appropriate depends on the question you’re trying to answer. For our purposes here, let’s imagine we want to know whether crisis winners tend to spend more on their military than crisis losers. That means we only care about the countries that actually ended up in crises, so we should use the crisis data as our base and merge the military size data into that.</p>
 <p>The next thing we need to make sure of is that we have some way to identify the same observation across datasets. Here we are going to match observations by the numerical “country code” and by year. First we’ll edit the military size data so that the country code indicator has the same name as in <code>df_crises_cw</code>. (We’ll also drop the country name variable, since we already have that in the original data.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>df_military_wide <span class="ot">&lt;-</span> df_military_wide <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>df_military_wide <span class="ot">&lt;-</span> df_military_wide <span class="sc">|&gt;</span></span>
 <span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">actor_id =</span> ccode) <span class="sc">|&gt;</span></span>
 <span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>stateabb)</span>
 <span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>df_military_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>df_military_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15,951 × 4
    actor_id  year spending personnel
@@ -1633,13 +1636,13 @@ In-class exercise
 <li>The column names to match observations by.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
 <span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>  df_crises_cw,</span>
 <span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a>  df_military_wide,</span>
 <span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"actor_id"</span>, <span class="st">"year"</span>)</span>
 <span id="cb148-5"><a href="#cb148-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb148-6"><a href="#cb148-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-7"><a href="#cb148-7" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb148-7"><a href="#cb148-7" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 10
    crisis_name actor_name actor_id  year duration outcome duration_weeks
@@ -1661,10 +1664,10 @@ In-class exercise
 </div>
 <p>Now we can use <code>group_by()</code> and <code>summarize()</code> to calculate the average size and spending of the military among crisis winners, crisis losers, and so on.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>df_crisis_and_mil <span class="sc">|&gt;</span></span>
 <span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(outcome) <span class="sc">|&gt;</span></span>
 <span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_spending =</span> <span class="fu">mean</span>(spending),</span>
-<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_personnel =</span> <span class="fu">mean</span>(personnel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_personnel =</span> <span class="fu">mean</span>(personnel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   outcome    avg_spending avg_personnel
@@ -1682,7 +1685,7 @@ In-class exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In-class exercise
+<span class="screen-reader-only">Note</span>In-class exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1748,13 +1751,14 @@ In-class exercise
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
