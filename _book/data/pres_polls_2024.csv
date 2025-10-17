@@ -1,0 +1,507 @@
+poll_id,pollster,end_date,days_to_election,state,sample_size,pct_trump,pct_harris,margin_of_error
+87787,ActiVote,2024-08-15,82,Florida,400,54.1,45.9,4.9
+87800,Cygnal,2024-08-15,82,Pennsylvania,800,45.7,45.599999999999994,3.5
+87802,Quantus Polls and News,2024-08-15,82,Wisconsin,601,46.9,47.8,4
+87806,Siena/NYT,2024-08-15,82,Arizona,677,43.75,47.75,3.8
+87807,Siena/NYT,2024-08-15,82,Nevada,677,46.75,44.75,3.8
+87812,Focaldata,2024-08-16,81,Pennsylvania,719,47.425,48.6,3.7
+87813,Focaldata,2024-08-16,81,Michigan,702,44.175,50.975,3.7
+87814,Focaldata,2024-08-16,81,Georgia,651,48.85,46.325,3.8
+87815,Focaldata,2024-08-16,81,Arizona,702,47.075,45.125,3.7
+87816,Focaldata,2024-08-16,81,North Carolina,702,45.7,47.7,3.7
+87817,Focaldata,2024-08-16,81,Wisconsin,700,44.125,50.525,3.7
+87818,Focaldata,2024-08-16,81,Nevada,678,41.675,49.875,3.8
+87821,Redfield & Wilton Strategies,2024-08-15,82,Arizona,592,44,43,4
+87822,Redfield & Wilton Strategies,2024-08-15,82,Florida,1296,48,43,2.7
+87823,Redfield & Wilton Strategies,2024-08-15,82,Georgia,692,46,46,3.7
+87824,Redfield & Wilton Strategies,2024-08-15,82,Michigan,530,45,44,4.3
+87825,Redfield & Wilton Strategies,2024-08-15,82,Minnesota,475,40,47,4.5
+87826,Redfield & Wilton Strategies,2024-08-15,82,Nevada,536,43,42,4.2
+87827,Redfield & Wilton Strategies,2024-08-15,82,New Mexico,453,41,47,4.6
+87828,Redfield & Wilton Strategies,2024-08-15,82,North Carolina,601,47,44,4
+87829,Redfield & Wilton Strategies,2024-08-15,82,Pennsylvania,825,44,46,3.4
+87830,Redfield & Wilton Strategies,2024-08-15,82,Wisconsin,469,44,48,4.5
+87834,ActiVote,2024-08-19,78,California,400,34.7,65.3,4.9
+87841,InsiderAdvantage,2024-08-19,78,Pennsylvania,800,46.6,46,3.5
+87845,Roanoke College,2024-08-16,81,Virginia,691,43,46,3.7
+87856,U. New Hampshire,2024-08-19,78,New Hampshire,2048,45,51,2.2
+87857,U. New Hampshire,2024-08-19,78,Vermont,924,28,68.5,3.2
+87858,U. New Hampshire,2024-08-19,78,Maine,951,39.5,56.5,3.2
+87861,University of Houston/Texas Southern University,2024-08-16,81,Texas,1365,49.5,44.6,2.7
+87862,ActiVote,2024-08-21,76,New York,400,41.7,58.3,4.9
+87870,SurveyUSA/High Point University,2024-08-21,76,North Carolina,1053,46,46.5,3
+87877,ActiVote,2024-08-22,75,Pennsylvania,400,48.9,51.1,4.9
+87878,ActiVote,2024-08-22,75,Ohio,400,56.2,43.8,4.9
+87879,ActiVote,2024-08-22,75,Missouri,400,58.7,41.3,4.9
+87882,Emerson,2024-08-22,75,New Mexico,965,43.3,52.3,3.2
+87888,Quantus Polls and News,2024-08-22,75,Virginia,629,45.8,48.6,3.9
+87891,Capitol Weekly,2024-08-15,82,California,1738,36.5,57,2.4
+87893,TIPP,2024-08-22,75,Michigan,1001,44.2,46.325,3.1
+87894,SoCal Strategies,2024-08-23,74,Pennsylvania,800,47,47,3.5
+87910,PPP,2024-08-22,75,Texas,725,47,43,3.6
+87911,PPP,2024-08-22,75,Florida,837,49.5,46,3.4
+87912,Noble Predictive Insights,2024-08-16,81,Arizona,1003,45.5,43.5,3.1
+87915,Fabrizio/Impact,2024-08-20,77,Maryland,600,30.5,61.5,4
+87917,SoCal Strategies,2024-08-27,70,North Carolina,612,50,46,4
+87926,ActiVote,2024-08-28,69,Michigan,400,49.9,50.1,4.9
+87930,Beacon/Shaw,2024-08-26,71,Arizona,1014,48,49,3.1
+87931,Beacon/Shaw,2024-08-26,71,Georgia,1014,47,49,3.1
+87932,Beacon/Shaw,2024-08-26,71,Nevada,1026,47,49,3.1
+87933,Beacon/Shaw,2024-08-26,71,North Carolina,999,49,48,3.1
+87934,YouGov,2024-08-16,81,Missouri,900,54,41,3.3
+87935,Emerson,2024-08-28,69,Arizona,720,51.2,47.5,3.7
+87936,Emerson,2024-08-28,69,Michigan,800,47.6,51.2,3.5
+87937,Emerson,2024-08-28,69,Nevada,1168,48.8,49.4,2.9
+87938,Emerson,2024-08-28,69,Pennsylvania,950,49.4,49.4,3.2
+87939,Emerson,2024-08-28,69,Wisconsin,850,49.8,49.1,3.4
+87940,Fabrizio Ward,2024-08-21,76,Michigan,400,45.5,45,4.9
+87941,Fabrizio Ward,2024-08-21,76,Pennsylvania,400,45,44.5,4.9
+87942,Fabrizio Ward,2024-08-21,76,Wisconsin,400,43.5,48,4.9
+87943,Emerson,2024-08-28,69,North Carolina,775,49.9,49,3.5
+87944,Emerson,2024-08-28,69,Georgia,800,49,50.1,3.5
+87951,Morning Consult,2024-08-27,70,Arizona,805,47.5,48.5,3.5
+87952,Morning Consult,2024-08-26,71,Georgia,801,46.5,48.5,3.5
+87953,Morning Consult,2024-08-26,71,Michigan,702,46.5,48.75,3.7
+87954,Morning Consult,2024-08-26,71,Nevada,450,45.5,48.75,4.6
+87955,Morning Consult,2024-08-26,71,North Carolina,700,47.75,48.5,3.7
+87956,Morning Consult,2024-08-26,71,Pennsylvania,803,46.5,51,3.5
+87957,Morning Consult,2024-08-26,71,Wisconsin,701,44,52,3.7
+87959,Spry Strategies,2024-08-20,77,Arizona,600,47.55,46.85,4
+87960,Spry Strategies,2024-08-20,77,Georgia,600,48.7,47.849999999999994,4
+87961,Spry Strategies,2024-08-20,77,North Carolina,600,46.25,46.85,4
+87962,Spry Strategies,2024-08-20,77,Pennsylvania,600,46.1,47.25,4
+87963,Spry Strategies,2024-08-20,77,Wisconsin,600,43.8,47.099999999999994,4
+87964,Cherry Communications,2024-08-26,71,Florida,600,52,45,4
+87966,ActiVote,2024-08-29,68,Tennessee,400,63.1,36.9,4.9
+87967,ActiVote,2024-08-29,68,Illinois,400,42.2,57.8,4.9
+87970,EPIC/MRA,2024-08-26,71,Michigan,600,46.5,45.5,4
+87971,Redfield & Wilton Strategies,2024-08-28,69,North Carolina,812,45,44,3.4
+87972,Redfield & Wilton Strategies,2024-08-28,69,Arizona,530,46,45,4.3
+87973,Redfield & Wilton Strategies,2024-08-28,69,Florida,850,48,43,3.4
+87974,Redfield & Wilton Strategies,2024-08-28,69,Georgia,699,44,42,3.7
+87975,Redfield & Wilton Strategies,2024-08-28,69,Michigan,761,44,47,3.6
+87976,Redfield & Wilton Strategies,2024-08-28,69,Minnesota,426,42,51,4.7
+87977,Redfield & Wilton Strategies,2024-08-28,69,Nevada,490,47,47,4.4
+87978,Redfield & Wilton Strategies,2024-08-28,69,New Mexico,488,40,47,4.4
+87979,Redfield & Wilton Strategies,2024-08-28,69,Pennsylvania,1071,45,46,3
+87980,Redfield & Wilton Strategies,2024-08-28,69,Wisconsin,672,44,48,3.8
+87984,Research America,2024-08-27,70,West Virginia,400,61,34,4.9
+87986,Wick,2024-08-29,68,Pennsylvania,1607,48.5,48,2.4
+87988,SurveyUSA,2024-08-29,68,Minnesota,635,43,48,3.9
+87989,InsiderAdvantage,2024-08-31,66,Nevada,800,47.9,46.5,3.5
+87990,InsiderAdvantage,2024-08-31,66,Arizona,800,48.6,48.4,3.5
+87991,Trafalgar Group,2024-08-30,67,Wisconsin,1083,47.3,46.2,3
+87992,Trafalgar Group,2024-08-30,67,Michigan,1089,47,46.6,3
+87993,Trafalgar Group,2024-08-30,67,Pennsylvania,1082,47,44.9,3
+87994,InsiderAdvantage,2024-08-31,66,North Carolina,800,49.2,48.4,3.5
+87995,InsiderAdvantage,2024-08-31,66,Georgia,800,47.6,48.3,3.5
+87996,ActiVote,2024-08-31,66,North Carolina,400,50,50,4.9
+87997,ActiVote,2024-08-31,66,Florida,400,53.4,46.6,4.9
+87998,ActiVote,2024-08-31,66,Texas,400,54.5,45.5,4.9
+88000,SurveyUSA,2024-08-27,70,Nebraska,1293,54,37,2.7
+88002,SoCal Strategies,2024-09-01,65,Ohio,600,52,43,4
+88006,Capitol Weekly,2024-08-26,71,California,3154,35.5,58,1.7
+88010,Gonzales Research & Media Services,2024-08-30,67,Maryland,820,35,56,3.4
+88011,East Carolina University,2024-08-28,69,North Carolina,920,47.6,46.9,3.2
+88014,Glengariff Group Inc.,2024-08-28,69,Michigan,600,44.7,43.5,4
+88015,CNN/SSRS,2024-08-29,68,Arizona,682,49,44,3.8
+88016,CNN/SSRS,2024-08-29,68,Georgia,617,47,48,3.9
+88017,CNN/SSRS,2024-08-29,68,Michigan,708,43,48,3.7
+88018,CNN/SSRS,2024-08-29,68,Nevada,626,47,48,3.9
+88019,CNN/SSRS,2024-08-29,68,Pennsylvania,789,47,47,3.5
+88020,CNN/SSRS,2024-08-29,68,Wisconsin,976,44,50,3.1
+88028,SoonerPoll.com,2024-08-31,66,Oklahoma,323,56,39.9,5.5
+88032,Z to A Research,2024-08-26,71,Michigan,500,47,47,4.4
+88033,Z to A Research,2024-08-26,71,Pennsylvania,613,46,46,4
+88034,Z to A Research,2024-08-26,71,Wisconsin,518,47,47,4.3
+88036,Fabrizio/David Binder Research,2024-08-29,68,Montana,600,56,41,4
+88037,Cygnal,2024-09-01,65,Alaska,400,53,43.1,4.9
+88044,Patriot Polling,2024-09-03,63,Pennsylvania,857,49,47.9,3.3
+88045,Patriot Polling,2024-09-03,63,Michigan,822,47.6,48.4,3.4
+88046,Patriot Polling,2024-09-03,63,Wisconsin,826,47.7,47.9,3.4
+88047,Patriot Polling,2024-09-03,63,North Carolina,804,50,47.5,3.5
+88048,Patriot Polling,2024-09-03,63,Georgia,814,48.9,48.3,3.4
+88049,Patriot Polling,2024-09-03,63,Arizona,804,48.5,46.9,3.5
+88050,Patriot Polling,2024-09-03,63,Nevada,788,47,46.8,3.5
+88063,Emerson,2024-09-05,61,California,815,38,60.8,3.4
+88064,Emerson,2024-09-05,61,Florida,815,51.1,47.6,3.4
+88065,Emerson,2024-09-05,61,Texas,845,50.9,48,3.4
+88066,Emerson,2024-09-05,61,Ohio,945,54.3,44.7,3.2
+88067,YouGov,2024-08-31,66,Texas,1200,49,44,2.8
+88069,TIPP,2024-09-05,61,Arizona,1015,46.55,46.65,3.1
+88070,YouGov,2024-09-06,60,Michigan,1077,49,50,3
+88071,YouGov,2024-09-06,60,Pennsylvania,1078,50,50,3
+88072,YouGov,2024-09-06,60,Wisconsin,946,49,51,3.2
+88076,BK Strategies,2024-08-21,76,Wisconsin,600,45,48,4
+88077,Florida Atlantic University/Mainstreet Research,2024-09-06,60,North Carolina,692,47.5,46.5,3.7
+88078,Florida Atlantic University/Mainstreet Research,2024-09-06,60,Georgia,647,47,44.5,3.9
+88080,YouGov,2024-08-23,74,Pennsylvania,500,44.125,45.25,4.4
+88081,YouGov,2024-08-23,74,Wisconsin,500,43.25,48.25,4.4
+88082,YouGov,2024-08-23,74,Michigan,500,44.75,45.5,4.4
+88083,SurveyUSA,2024-09-07,59,North Carolina,676,46,49,3.8
+88085,Morning Consult,2024-09-08,58,Arizona,901,49.05,46.89,3.3
+88086,Morning Consult,2024-09-08,58,Florida,3182,49.12,47.05,1.7
+88087,Morning Consult,2024-09-08,58,Maryland,640,34.13,62.23,3.9
+88088,Morning Consult,2024-09-08,58,Michigan,1368,46.12,49.19,2.6
+88089,Morning Consult,2024-09-08,58,Nevada,516,48.45,47.58,4.3
+88090,Morning Consult,2024-09-08,58,Ohio,1558,51.92,43.58,2.5
+88091,Morning Consult,2024-09-08,58,Pennsylvania,1910,46.34,49.34,2.2
+88092,Morning Consult,2024-09-08,58,Texas,2940,51.75,43.43,1.8
+88093,Morning Consult,2024-09-08,58,Wisconsin,638,46.19,49.48,3.9
+88094,Morning Consult,2024-09-08,58,North Carolina,1369,47.82,48.22,2.6
+88095,Quinnipiac,2024-09-08,58,North Carolina,940,46.5,49.5,3.2
+88097,Morning Consult,2024-09-08,58,Colorado,498,40.08,54.8,4.4
+88098,Morning Consult,2024-09-08,58,Georgia,1405,47.51,48.39,2.6
+88099,Morning Consult,2024-09-08,58,Minnesota,501,44.28,50.92,4.4
+88100,Morning Consult,2024-09-08,58,Virginia,873,42.24,51.97,3.3
+88101,Quinnipiac,2024-09-08,58,Georgia,969,49,45.5,3.1
+88105,Washington Post/George Mason University,2024-09-08,58,Virginia,1005,42.5,50.25,3.1
+88113,Redfield & Wilton Strategies,2024-09-09,57,North Carolina,495,44,45,4.4
+88114,Redfield & Wilton Strategies,2024-09-09,57,Arizona,765,47,46,3.5
+88115,Redfield & Wilton Strategies,2024-09-09,57,Florida,1465,50,44,2.6
+88116,Redfield & Wilton Strategies,2024-09-09,57,Georgia,562,49,47,4.1
+88117,Redfield & Wilton Strategies,2024-09-09,57,Michigan,556,45,48,4.2
+88118,Redfield & Wilton Strategies,2024-09-09,57,Minnesota,617,44,51,3.9
+88119,Redfield & Wilton Strategies,2024-09-09,57,Nevada,698,46,45,3.7
+88120,Redfield & Wilton Strategies,2024-09-09,57,New Mexico,521,44,49,4.3
+88121,Redfield & Wilton Strategies,2024-09-09,57,Pennsylvania,801,45,45,3.5
+88122,Redfield & Wilton Strategies,2024-09-09,57,Wisconsin,626,46,49,3.9
+88125,co/efficient,2024-09-06,60,Michigan,931,47,47,3.2
+88126,co/efficient,2024-09-06,60,Wisconsin,917,47,47,3.2
+88127,co/efficient,2024-09-06,60,Pennsylvania,889,48,46,3.3
+88128,ActiVote,2024-09-10,56,Georgia,400,50.2,49.8,4.9
+88134,Virginia Commonwealth U.,2024-09-06,60,Virginia,813,35.85,47.7,3.4
+88135,Marquette Law School,2024-09-05,61,Wisconsin,822,45.5,49.75,3.4
+88143,InsiderAdvantage,2024-09-12,54,Michigan,800,48.6,48,3.5
+88149,Elway,2024-09-06,60,Washington,403,32,53,4.9
+88150,Cygnal,2024-09-01,65,Michigan,600,46,47,4
+88151,Lake Research,2024-09-02,64,Indiana,600,52,42,4
+88155,Embold Research,2024-09-08,58,Minnesota,1616,44.6,48.8,2.4
+88159,Hendrix College,2024-09-06,60,Arkansas,696,55,40,3.7
+88160,Mitchell,2024-09-11,55,Michigan,580,47,47.5,4.1
+88161,Quantus Polls and News,2024-09-12,54,North Carolina,815,48.4,46.8,3.4
+88162,Lake Research,2024-08-29,68,Texas,800,51,43,3.5
+88163,St. Anselm,2024-09-12,54,New Hampshire,2241,43,51,2.1
+88165,Alaska Survey Research,2024-09-12,54,Alaska,1254,47,42,2.8
+88166,GQR,2024-09-12,54,Missouri,645,55,44,3.9
+88169,Trafalgar Group,2024-09-12,54,North Carolina,1094,48.4,46,3
+88172,TIPP,2024-09-13,53,North Carolina,973,48.9,45.9,3.1
+88173,InsiderAdvantage,2024-09-12,54,Wisconsin,800,46.6,49,3.5
+88175,Trafalgar Group,2024-09-12,54,Arizona,1088,47.1,45.5,3
+88178,Research & Polling,2024-09-13,53,New Mexico,532,39,49,4.2
+88179,Selzer,2024-09-11,55,Iowa,656,47,43,3.8
+88180,Trafalgar Group,2024-09-13,53,Nevada,1079,43.5,45.3,3
+88184,Suffolk,2024-09-14,52,Pennsylvania,500,45.6,48.6,4.4
+88186,InsiderAdvantage,2024-09-15,51,Pennsylvania,800,49.8,48.4,3.5
+88187,Emerson,2024-09-13,53,Maryland,890,33.3,65.3,3.3
+88188,Emerson,2024-09-13,53,Missouri,850,55.2,43.4,3.4
+88189,Emerson,2024-09-13,53,Indiana,1000,57.9,40.7,3.1
+88197,Trafalgar Group,2024-09-15,51,Georgia,1098,46.2,44.5,3
+88202,Change Research,2024-09-13,53,Missouri,1237,50,41,2.8
+88203,Data Orbital,2024-09-09,57,Arizona,550,46.2,46,4.2
+88204,Capitol Weekly,2024-09-16,50,California,1054,34,59,3
+88206,U. Georgia SPIA,2024-09-15,51,Georgia,1000,46.9,44.4,3.1
+88207,ActiVote,2024-09-17,49,Virginia,400,44.8,55.2,4.9
+88209,Fabrizio/Impact,2024-09-14,52,Wisconsin,600,46.5,48.5,4
+88211,Quinnipiac,2024-09-16,50,Pennsylvania,1331,45.5,51,2.7
+88212,Quinnipiac,2024-09-16,50,Michigan,905,45.5,50.5,3.3
+88213,Quinnipiac,2024-09-16,50,Wisconsin,1075,47.5,48.5,3
+88217,U. New Hampshire,2024-09-16,50,Rhode Island,683,38,58,3.7
+88218,U. New Hampshire,2024-09-16,50,Massachusetts,564,31,62,4.1
+88219,U. New Hampshire,2024-09-16,50,New Hampshire,1695,43,54,2.4
+88220,Pan Atlantic Research,2024-09-15,51,Maine,812,41,50,3.4
+88225,PPIC,2024-09-09,57,California,1071,29,60,3
+88227,Franklin and Marshall College,2024-09-15,51,Pennsylvania,890,46,49,3.3
+88229,Siena,2024-09-16,50,New York,1003,41,53.5,3.1
+88230,PPP,2024-09-17,49,Maryland,543,33,64,4.2
+88231,The Washington Post,2024-09-16,50,Pennsylvania,1003,47.5,48,3.1
+88232,Marist,2024-09-17,49,Pennsylvania,1663,48.5,49,2.4
+88233,Marist,2024-09-17,49,Wisconsin,1312,48,50,2.7
+88234,Marist,2024-09-17,49,Michigan,1282,47,51,2.7
+88235,Emerson,2024-09-18,48,Arizona,868,49.8,48.7,3.3
+88236,Emerson,2024-09-18,48,Georgia,975,50.3,48.2,3.1
+88237,Emerson,2024-09-18,48,Michigan,875,49.1,50,3.3
+88238,Emerson,2024-09-18,48,Nevada,895,49,48.8,3.3
+88239,Emerson,2024-09-18,48,Pennsylvania,880,49.3,49.6,3.3
+88240,Emerson,2024-09-18,48,North Carolina,1000,49.3,49.7,3.1
+88241,Emerson,2024-09-18,48,Wisconsin,1000,50.3,48.7,3.1
+88242,Siena/NYT,2024-09-16,50,Pennsylvania,1082,45.5,49.25,3
+88243,Cygnal,2024-09-16,50,North Carolina,600,45.6,45.3,4
+88244,Victory Insights,2024-09-18,48,North Carolina,600,48.5,44.9,4
+88248,Morning Consult,2024-09-18,48,Arizona,862,47.35,48.37,3.3
+88249,Morning Consult,2024-09-18,48,Florida,2948,49.52,46.8,1.8
+88250,Morning Consult,2024-09-18,48,Maryland,578,33.04,61.41,4.1
+88251,Morning Consult,2024-09-18,48,Michigan,1297,44.46,51.97,2.7
+88252,Morning Consult,2024-09-18,48,Nevada,474,46.53,50.87,4.5
+88253,Morning Consult,2024-09-18,48,Ohio,1488,52.16,43.02,2.5
+88254,Morning Consult,2024-09-18,48,Pennsylvania,1756,46.7,48.74,2.3
+88255,Morning Consult,2024-09-18,48,Texas,2716,49.58,45.77,1.9
+88256,Morning Consult,2024-09-18,48,Wisconsin,600,44.3,50.22,4
+88257,Morning Consult,2024-09-18,48,North Carolina,1314,47.16,49.33,2.7
+88258,Morning Consult,2024-09-18,48,Colorado,512,42.42,52.5,4.3
+88259,Morning Consult,2024-09-18,48,Georgia,1347,48.63,47.68,2.7
+88260,Morning Consult,2024-09-18,48,Minnesota,517,43,49.56,4.3
+88261,Morning Consult,2024-09-18,48,Virginia,899,44.44,50.76,3.3
+88262,TIPP,2024-09-18,48,Georgia,1046,46.425,47.325,3
+88265,Research America,2024-09-09,57,Virginia,1000,45.25,46,3.1
+88266,Global Strategy Group,2024-08-29,68,Nebraska,600,54,37,4
+88267,MassINC Polling Group,2024-09-18,48,Pennsylvania,800,46.5,51,3.5
+88269,ActiVote,2024-09-21,45,California,400,36,64,4.9
+88275,MassINC Polling Group,2024-09-18,48,Massachusetts,800,33.5,61.5,3.5
+88276,Siena/NYT,2024-09-21,45,Arizona,713,48.5,43.75,3.7
+88277,Siena/NYT,2024-09-21,45,Georgia,682,47.5,44,3.8
+88278,Siena/NYT,2024-09-21,45,North Carolina,682,47.5,46.25,3.8
+88279,Mason-Dixon,2024-09-18,48,Minnesota,800,43,48,3.5
+88280,SurveyUSA,2024-09-18,48,New Mexico,619,42,50,3.9
+88285,Texas Hispanic Policy Foundation,2024-09-18,48,Texas,1200,50,44,2.8
+88286,MassINC Polling Group,2024-09-18,48,Wisconsin,800,45.5,52,3.5
+88288,Redfield & Wilton Strategies,2024-09-19,47,Arizona,789,47,47,3.5
+88289,Redfield & Wilton Strategies,2024-09-19,47,Florida,1602,50,45,2.4
+88290,Redfield & Wilton Strategies,2024-09-19,47,Michigan,993,45,46,3.1
+88291,Redfield & Wilton Strategies,2024-09-19,47,Minnesota,703,44,50,3.7
+88292,Redfield & Wilton Strategies,2024-09-19,47,Nevada,652,45,45,3.8
+88293,Redfield & Wilton Strategies,2024-09-19,47,Pennsylvania,1086,47,47,3
+88294,Redfield & Wilton Strategies,2024-09-19,47,Wisconsin,600,47,47,4
+88295,Redfield & Wilton Strategies,2024-09-19,47,Georgia,1043,48,46,3
+88296,Redfield & Wilton Strategies,2024-09-19,47,North Carolina,868,48,47,3.3
+88297,RMG Research,2024-09-19,47,Montana,491,59,38,4.4
+88298,MassINC Polling Group,2024-09-18,48,Connecticut,800,37,53,3.5
+88301,Suffolk,2024-09-18,48,Michigan,500,45.4,47.6,4.4
+88302,Elon U.,2024-09-13,53,North Carolina,800,45,46,3.5
+88303,Slingshot Strategies,2024-09-21,45,Delaware,500,37,54,4.4
+88311,MassINC Polling Group,2024-09-18,48,Rhode Island,800,41.5,54.5,3.5
+88313,Noble Predictive Insights,2024-09-16,50,Nevada,692,45.5,47.25,3.7
+88327,RMG Research,2024-09-20,46,Ohio,781,54,43,3.5
+88331,Bullfinch,2024-09-23,43,Florida,600,48,47,4
+88332,Bullfinch,2024-09-23,43,Georgia,600,47,49,4
+88333,Bullfinch,2024-09-23,43,North Carolina,600,48,49,4
+88338,SurveyUSA,2024-09-23,43,Nebraska,558,56,40,4.1
+88339,Muhlenberg,2024-09-19,47,Pennsylvania,450,48,48,4.6
+88341,ActiVote,2024-09-24,42,Texas,400,54.3,45.7,4.9
+88342,Focaldata,2024-09-16,50,Arizona,1097,47.475,50.525,3
+88343,Focaldata,2024-09-16,50,Georgia,1081,47.115,50.925,3
+88344,Focaldata,2024-09-16,50,Michigan,1114,47.6425,49.6,2.9
+88345,Focaldata,2024-09-16,50,Nevada,1038,47.175,50.5,3
+88346,Focaldata,2024-09-16,50,North Carolina,1094,50.475,47.144999999999996,3
+88347,Focaldata,2024-09-16,50,Ohio,1115,52.295,45.6775,2.9
+88348,Focaldata,2024-09-16,50,Pennsylvania,1120,47.725,50.45,2.9
+88349,Focaldata,2024-09-16,50,Wisconsin,1019,45.975,52.075,3.1
+88353,Fabrizio/Impact,2024-09-17,49,North Carolina,600,49,46.5,4
+88355,RMG Research,2024-09-20,46,Pennsylvania,783,49,49,3.5
+88357,Susquehanna,2024-09-22,44,Pennsylvania,700,46,46,3.7
+88360,Keating Research,2024-09-14,52,Colorado,500,42,53,4.4
+88361,YouGov,2024-09-24,42,Georgia,1441,51,49,2.6
+88362,University of Maryland/Washington Post,2024-09-23,43,Maryland,1012,31.5,62.5,3.1
+88363,Marist,2024-09-24,42,Arizona,1416,50,48.5,2.6
+88364,Emerson,2024-09-24,42,Texas,950,52.3,46.7,3.2
+88365,Emerson,2024-09-24,42,Virginia,860,46.2,52.7,3.3
+88366,Marist,2024-09-24,42,North Carolina,1507,48.5,49,2.5
+88368,Marist,2024-09-24,42,Georgia,1420,49,49,2.6
+88370,ActiVote,2024-09-25,41,Pennsylvania,400,48.4,51.6,4.9
+88371,University of Massachusetts Lowell/YouGov,2024-09-19,47,Michigan,650,43,48,3.8
+88372,University of Massachusetts Lowell/YouGov,2024-09-19,47,Pennsylvania,800,46,48,3.5
+88376,RMG Research,2024-09-23,43,Wisconsin,788,49,50,3.5
+88378,TIPP,2024-09-25,41,Nevada,1044,45.9,48.625,3
+88380,Beacon/Shaw,2024-09-24,42,Arizona,1021,50,47.5,3.1
+88381,Beacon/Shaw,2024-09-24,42,Georgia,1006,47.75,50.25,3.1
+88382,Quantus Insights,2024-09-25,41,Nevada,628,48.8,47.7,3.9
+88383,Morning Consult,2024-09-25,41,Arizona,977,46.5,49.5,3.1
+88384,Morning Consult,2024-09-25,41,Georgia,989,47.75,48.25,3.1
+88385,Morning Consult,2024-09-25,41,Michigan,894,46.25,49.5,3.3
+88386,Morning Consult,2024-09-25,41,Nevada,574,44.5,49.25,4.1
+88387,Morning Consult,2024-09-25,41,North Carolina,889,47,49.25,3.3
+88388,Morning Consult,2024-09-25,41,Pennsylvania,993,45.25,50.25,3.1
+88389,Morning Consult,2024-09-25,41,Wisconsin,849,47.5,50,3.4
+88390,Suffolk,2024-09-24,42,Arizona,500,48.4,42.4,4.4
+88391,Emerson,2024-09-25,41,New York,1000,41.6,55.5,3.1
+88393,SurveyUSA,2024-09-26,40,Minnesota,646,44,50,3.9
+88394,Meredith College,2024-09-20,46,North Carolina,802,48,48,3.5
+88395,CNN/SSRS,2024-09-25,41,North Carolina,931,48,48,3.2
+88402,Beacon/Shaw,2024-09-24,42,North Carolina,787,48.5,48.5,3.5
+88403,Beacon/Shaw,2024-09-24,42,Pennsylvania,775,47.75,48.5,3.5
+88404,Siena/NYT,2024-09-26,40,Michigan,688,46.5,45.5,3.7
+88405,Siena/NYT,2024-09-26,40,Ohio,687,48.75,44,3.7
+88406,Siena/NYT,2024-09-26,40,Wisconsin,680,46.25,48.5,3.8
+88409,University of Delaware,2024-09-19,47,Delaware,383,35.9,55.6,5
+88410,AtlasIntel,2024-09-25,41,Arizona,946,49.75,48.6,3.2
+88411,AtlasIntel,2024-09-25,41,Michigan,918,50.5,46.900000000000006,3.2
+88412,AtlasIntel,2024-09-25,41,Nevada,858,47.7,50.55,3.3
+88413,AtlasIntel,2024-09-25,41,Pennsylvania,1775,50.8,48.05,2.3
+88414,AtlasIntel,2024-09-25,41,Wisconsin,1077,49.650000000000006,48.2,3
+88415,AtlasIntel,2024-09-25,41,North Carolina,1173,47.7,50.65,2.9
+88416,AtlasIntel,2024-09-25,41,Georgia,1200,49.45,49,2.8
+88417,Victory Insights,2024-09-25,41,Florida,600,46.9,44.9,4
+88418,PPP,2024-09-26,40,Florida,808,49.5,45.5,3.4
+88419,PPP,2024-09-26,40,Texas,759,50,45,3.6
+88420,Trafalgar Group,2024-09-29,37,Pennsylvania,1090,47.5,45.3,3
+88421,ActiVote,2024-09-29,37,Wisconsin,400,47.9,52.1,4.9
+88422,USC Dornsife/CSU Long Beach/Cal Poly Pomona,2024-09-25,41,California,1685,35.5,57.7,2.4
+88423,East Carolina University,2024-09-26,40,North Carolina,1005,49.4,47.1,3.1
+88424,ARW Strategies,2024-09-25,41,Indiana,600,55,39,4
+88425,Patriot Polling,2024-09-29,37,Pennsylvania,816,50,49,3.4
+88428,Embold Research,2024-09-20,46,Rhode Island,876,38,52,3.3
+88430,Fabrizio/Impact,2024-09-24,42,Pennsylvania,600,47,49.5,4
+88431,The Washington Post,2024-09-29,37,North Carolina,1001,50,47.5,3.1
+88439,Alaska Survey Research,2024-09-29,37,Alaska,1182,52,43,2.9
+88440,RMG Research,2024-09-27,39,Michigan,789,47,50,3.5
+88441,Remington,2024-09-20,46,Michigan,800,47,49,3.5
+88442,Remington,2024-09-20,46,Nevada,800,49,48,3.5
+88443,Remington,2024-09-20,46,Pennsylvania,800,48,47,3.5
+88444,Remington,2024-09-20,46,Wisconsin,800,48,48,3.5
+88445,Remington,2024-09-20,46,Montana,800,56,39,3.5
+88447,ActiVote,2024-09-30,36,Ohio,400,53.6,46.4,4.9
+88448,ActiVote,2024-09-30,36,Indiana,400,57,43,4.9
+88449,ActiVote,2024-09-30,36,New York,400,39.4,60.6,4.9
+88450,InsiderAdvantage,2024-09-30,36,Arizona,800,49.1,47.7,3.5
+88451,InsiderAdvantage,2024-09-30,36,Nevada,800,49.3,48.4,3.5
+88452,InsiderAdvantage,2024-09-30,36,North Carolina,800,49.5,49.3,3.5
+88453,InsiderAdvantage,2024-09-30,36,Georgia,800,48.1,48.3,3.5
+88457,Quinnipiac,2024-09-29,37,North Carolina,953,49,47.5,3.2
+88458,Quinnipiac,2024-09-29,37,Georgia,942,50,44.5,3.2
+88459,RMG Research,2024-09-27,39,Texas,779,53,46,3.5
+88460,Lake Research,2024-09-26,40,North Dakota,500,50,40,4.4
+88461,Emerson,2024-09-28,38,Arizona,920,51.7,47.6,3.2
+88462,Emerson,2024-09-28,38,North Carolina,850,49.9,49.1,3.4
+88465,Emerson,2024-09-28,38,Pennsylvania,1000,48.8,49.3,3.1
+88468,Trafalgar Group,2024-09-30,36,Wisconsin,1079,47.1,46,3
+88469,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,Arizona,409,47.5,50,4.8
+88470,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,Georgia,411,48.5,47,4.8
+88471,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,Michigan,416,47,50,4.8
+88472,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,Nevada,409,47,48,4.8
+88473,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,North Carolina,411,47.5,49,4.8
+88474,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,Pennsylvania,474,48,49.5,4.5
+88475,Benenson Strategy Group/GS Strategy Group,2024-09-25,41,Wisconsin,411,46.5,48.5,4.8
+88476,Cygnal,2024-09-28,38,Iowa,600,51.3,44.6,4
+88477,Winthrop U.,2024-09-29,37,South Carolina,1068,51.6,42,3
+88484,Trafalgar Group,2024-09-30,36,Michigan,1086,46.9,44.7,3
+88485,McLaughlin,2024-09-25,41,Florida,1200,51,46,2.8
+88486,WPAi,2024-09-30,36,North Dakota,500,59,32,4.4
+88488,Marquette Law School,2024-09-26,40,Wisconsin,882,46,50.25,3.3
+88489,Virginia Commonwealth U.,2024-09-25,41,Virginia,832,36.8,45.2,3.4
+88490,Bullfinch,2024-10-01,35,Nebraska,400,53,42,4.9
+88494,HighGround,2024-09-29,37,Arizona,500,45.4,47.6,4.4
+88497,RMG Research,2024-09-27,39,Florida,774,50,48,3.5
+88499,OnMessage Inc.,2024-09-29,37,Pennsylvania,800,47,47,3.5
+88501,ActiVote,2024-10-02,34,New Jersey,400,44,56,4.9
+88503,High Point University,2024-09-29,37,North Carolina,814,47,48,3.4
+88504,Mitchell,2024-09-30,36,Michigan,709,48,47.5,3.7
+88507,St. Anselm,2024-10-02,34,New Hampshire,2104,44,51,2.1
+88508,Bowling Green State University/YouGov,2024-09-27,39,Ohio,1000,51,44,3.1
+88510,Tarrance,2024-09-19,47,Nevada,600,44,47,4
+88511,CWS Research,2024-09-09,57,Texas,504,51,41,4.4
+88512,RMG Research,2024-09-27,39,North Carolina,780,51,47,3.5
+88514,UC Berkeley,2024-10-01,35,California,3045,35,57,1.8
+88518,ActiVote,2024-10-05,31,Illinois,400,41.2,58.8,4.9
+88524,ActiVote,2024-10-06,30,North Carolina,400,49.2,50.8,4.9
+88525,ActiVote,2024-10-06,30,Florida,400,53,47,4.9
+88526,RMG Research,2024-10-02,34,Arizona,783,50,46,3.5
+88530,Redfield & Wilton Strategies,2024-10-02,34,Arizona,555,48,47,4.2
+88531,Redfield & Wilton Strategies,2024-10-02,34,Florida,2946,49,45,1.8
+88532,Redfield & Wilton Strategies,2024-10-02,34,Georgia,3783,47,47,1.6
+88533,Redfield & Wilton Strategies,2024-10-02,34,Michigan,839,46,48,3.4
+88534,Redfield & Wilton Strategies,2024-10-02,34,Minnesota,551,43,51,4.2
+88535,Redfield & Wilton Strategies,2024-10-02,34,Nevada,514,47,48,4.3
+88536,Redfield & Wilton Strategies,2024-10-02,34,North Carolina,753,47,45,3.6
+88537,Redfield & Wilton Strategies,2024-10-02,34,Pennsylvania,5686,47,48,1.3
+88538,Redfield & Wilton Strategies,2024-10-02,34,Wisconsin,533,46,47,4.2
+88541,Christopher Newport U.,2024-10-04,32,Virginia,800,41,52,3.5
+88545,Glengariff Group Inc.,2024-10-04,32,Michigan,600,44.2,46.8,4
+88551,Suffolk,2024-10-05,31,Massachusetts,500,32.2,61.2,4.4
+88552,SoCal Strategies,2024-10-07,29,Arizona,735,47.8,48.7,3.6
+88555,Siena/NYT,2024-10-06,30,Florida,622,53.75,40.5,3.9
+88556,Siena/NYT,2024-10-04,32,Texas,617,49.25,42.75,3.9
+88557,RMG Research,2024-10-03,33,Nevada,782,49,49,3.5
+88569,Florida Atlantic University/Mainstreet Research,2024-10-06,30,Texas,811,50,45,3.4
+88570,Bullfinch,2024-09-29,37,Pennsylvania,800,46,50,3.5
+88572,Fabrizio/Impact,2024-10-01,35,Arizona,600,49.5,47.5,4
+88574,Research Co.,2024-10-07,29,Michigan,450,48,51,4.6
+88575,Research Co.,2024-10-07,29,Pennsylvania,450,49,50,4.6
+88576,Research Co.,2024-10-07,29,Wisconsin,450,48,50,4.6
+88578,Impact Research,2024-10-03,33,Nebraska,600,58,38,4
+88579,InsiderAdvantage,2024-10-08,28,Pennsylvania,800,49,47,3.5
+88580,National Research,2024-09-29,37,Arizona,600,46,47,4
+88586,UMBC,2024-09-28,38,Maryland,863,35,57,3.3
+88588,ActiVote,2024-10-08,28,Arizona,400,50.7,49.3,4.9
+88591,Quinnipiac,2024-10-07,29,Michigan,1007,50.5,47,3.1
+88592,Quinnipiac,2024-10-07,29,Pennsylvania,1412,46.5,49,2.6
+88593,Quinnipiac,2024-10-07,29,Wisconsin,1073,48.5,46.5,3
+88594,Global Strategy Group/North Star Opinion Research,2024-09-29,37,Arizona,400,47,47.5,4.9
+88595,Global Strategy Group/North Star Opinion Research,2024-09-29,37,Georgia,400,47,46.5,4.9
+88596,Global Strategy Group/North Star Opinion Research,2024-09-29,37,Michigan,404,48.5,46.5,4.9
+88597,Global Strategy Group/North Star Opinion Research,2024-09-29,37,Nevada,407,47,47.5,4.9
+88598,Global Strategy Group/North Star Opinion Research,2024-09-29,37,North Carolina,401,47.5,47,4.9
+88599,Global Strategy Group/North Star Opinion Research,2024-09-29,37,Pennsylvania,408,47.5,47.5,4.9
+88600,Global Strategy Group/North Star Opinion Research,2024-09-29,37,Wisconsin,408,45.5,47,4.9
+88601,Arc Insights,2024-10-06,30,Wisconsin,700,48,47,3.7
+88603,PPP,2024-09-28,38,Utah,612,54,39,4
+88604,Trafalgar Group,2024-10-08,28,Georgia,1089,46.2,44.9,3
+88605,Hunt Research,2024-10-07,29,Pennsylvania,1037,47.599999999999994,47,3
+88606,Emerson,2024-10-08,28,Arizona,1000,50.5,48.2,3.1
+88607,Emerson,2024-10-08,28,Georgia,1000,49.7,49.8,3.1
+88608,Emerson,2024-10-08,28,Michigan,950,49.6,49.7,3.2
+88609,Emerson,2024-10-08,28,Nevada,900,48.1,49.2,3.3
+88610,Emerson,2024-10-08,28,North Carolina,1000,49.9,49,3.1
+88611,Emerson,2024-10-08,28,Pennsylvania,1000,49.7,49,3.1
+88612,Emerson,2024-10-08,28,Wisconsin,1000,49.9,49.2,3.1
+88613,Marist,2024-10-07,29,Florida,1257,51,47,2.8
+88614,Marist,2024-10-07,29,Texas,1365,52.5,46,2.7
+88615,Marist,2024-10-07,29,Ohio,1511,52,46,2.5
+88616,The Washington Post,2024-10-07,29,Ohio,1002,51,44.5,3.1
+88617,Siena/NYT,2024-10-08,28,Montana,656,56.5,39,3.8
+88618,YouGov/Center for Working Class Politics,2024-10-02,34,Pennsylvania,1000,44.7,46.8,3.1
+88624,Fabrizio/McLaughlin,2024-10-09,27,Arizona,800,49,46,3.5
+88625,Fabrizio/McLaughlin,2024-10-09,27,Georgia,800,50,45,3.5
+88626,Fabrizio/McLaughlin,2024-10-09,27,Michigan,800,49,48,3.5
+88627,Fabrizio/McLaughlin,2024-10-09,27,Nevada,800,50,47,3.5
+88628,Fabrizio/McLaughlin,2024-10-09,27,North Carolina,800,48,47,3.5
+88629,Fabrizio/McLaughlin,2024-10-09,27,Pennsylvania,800,49,48,3.5
+88630,Fabrizio/McLaughlin,2024-10-09,27,Wisconsin,800,49,48,3.5
+88633,TIPP,2024-10-09,27,Pennsylvania,1079,47.025,48.375,3
+88636,InsiderAdvantage,2024-10-09,27,Michigan,800,48,46,3.5
+88637,InsiderAdvantage,2024-10-09,27,Wisconsin,800,48,48,3.5
+88638,Change Research,2024-10-08,28,Nebraska,895,58,38,3.3
+88639,Fabrizio/GBAO,2024-10-08,28,Arizona,600,45.5,47.5,4
+88640,Fabrizio/GBAO,2024-10-08,28,Georgia,600,45.5,47,4
+88641,Fabrizio/GBAO,2024-10-08,28,Michigan,600,46,48,4
+88642,Fabrizio/GBAO,2024-10-08,28,North Carolina,600,46.5,46,4
+88643,Fabrizio/GBAO,2024-10-08,28,Nevada,600,48,42.5,4
+88644,Fabrizio/GBAO,2024-10-08,28,Pennsylvania,600,46.5,45.5,4
+88645,Fabrizio/GBAO,2024-10-08,28,Wisconsin,600,46.5,47,4
+88646,Torchlight Strategies,2024-10-08,28,Nebraska,600,57,37,4
+88648,OnMessage Inc.,2024-10-02,34,Arizona,500,47,45,4.4
+88649,OnMessage Inc.,2024-10-02,34,Georgia,500,47,44,4.4
+88650,OnMessage Inc.,2024-10-02,34,Michigan,500,46,48,4.4
+88651,OnMessage Inc.,2024-10-02,34,Nevada,500,47,45,4.4
+88652,OnMessage Inc.,2024-10-02,34,Pennsylvania,500,46,46,4.4
+88653,OnMessage Inc.,2024-10-02,34,Wisconsin,500,47,46,4.4
+88654,ActiVote,2024-10-10,26,Missouri,400,57.2,42.8,4.9
+88655,ActiVote,2024-10-10,26,California,400,36.5,63.5,4.9
+88656,ActiVote,2024-10-09,27,Michigan,400,48.8,51.2,4.9
+88657,ActiVote,2024-10-09,27,Minnesota,400,47.1,52.9,4.9
+88661,Redfield & Wilton Strategies,2024-10-09,27,Georgia,608,48,47,4
+88662,Redfield & Wilton Strategies,2024-10-09,27,Pennsylvania,707,48,46,3.7
+88664,Siena/NYT,2024-10-10,26,Pennsylvania,857,46,49.5,3.3
+88665,Siena/NYT,2024-10-10,26,Arizona,808,50.25,45,3.4
+88669,Mason-Dixon,2024-10-04,32,Florida,625,49,43,3.9
+88671,J.L. Partners,2024-10-08,28,Pennsylvania,800,47,47,3.5
+88673,RMG Research,2024-10-10,26,Georgia,731,50,47,3.6
+88674,ActiVote,2024-10-13,23,Washington,400,40,60,4.9
+88677,Trafalgar Group,2024-10-13,23,Arizona,1090,47.5,46,3
+88686,U. Houston,2024-10-10,26,Texas,1329,51,46,2.7
+88687,Tarrance,2024-10-08,28,Florida,818,51,44,3.4
+88688,UMass Amherst/YouGov,2024-10-10,26,Massachusetts,700,30,56,3.7
+88689,SoCal Strategies,2024-10-13,23,Michigan,692,48,49,3.7
+88690,American Pulse,2024-10-10,26,Pennsylvania,1193,49.75,48.55,2.8
+88691,Patriot Polling,2024-10-14,22,Wisconsin,803,50,49,3.5
+88695,Targoz Market Research,2024-10-08,28,Tennessee,1200,55,35,2.8
+88697,ActiVote,2024-10-14,22,Maryland,400,37.1,62.9,4.9
+88700,Fabrizio/Impact,2024-10-08,28,Michigan,600,47.5,47,4
+88702,U. Rhode Island,2024-09-08,58,Rhode Island,500,27,53,4.4
+88704,Trafalgar Group,2024-10-13,23,North Carolina,1085,46.5,44.6,3
+88706,Trafalgar Group,2024-10-13,23,Nevada,1088,44.8,45.6,3
+88707,InsiderAdvantage,2024-10-15,21,Georgia,800,49,47,3.5
+88708,MRG (Marketing Resource Group),2024-10-11,25,Michigan,600,44,44.9,4
+88717,Alaska Survey Research,2024-10-09,27,Alaska,1254,52,44.5,2.8
+88718,Noble Predictive Insights,2024-10-07,29,Utah,539,52.75,37.5,4.2
+88721,Emerson,2024-10-14,22,California,1000,36.6,61,3.1
+88722,SurveyUSA,2024-10-14,22,Washington,703,35,57,3.7
