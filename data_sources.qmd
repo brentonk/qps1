@@ -213,7 +213,7 @@ if (!file.exists(county_pres_file)) {
     filename = "countypres_2000-2024.tab",
     dataset = "10.7910/DVN/VOQCHQ",
     server = "dataverse.harvard.edu",
-    version = "15.0"
+    version = "16.0"
   )
   write_csv(df_county_pres_dataverse, county_pres_file)
 }
@@ -227,7 +227,7 @@ Clean data to have one row per county-year:
 
 ```{r county-pres-cleaning}
 df_county_pres <- df_county_pres_raw |>
-  filter(!is.na(party), totalvotes > 0) |>
+  filter(!is.na(county_fips), !is.na(party), totalvotes > 0) |>
   rename(county = county_name) |>
   group_by(year, state, county) |>
   summarize(
